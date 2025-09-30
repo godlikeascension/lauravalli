@@ -90,7 +90,7 @@
 
             <div class="col-lg-4 position-relative">
                 <video autoplay muted playsinline loop style="border: none; border-radius: 8px;">
-                    <source src="/video/vidlau.mp4" type="video/mp4">
+                    <source src="/video/vidlau2.mp4" type="video/mp4">
                 </video>
             </div>
             <div class="col-lg-7 offset-lg-1 md-mt-20 sm-mt-0 my-auto" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
