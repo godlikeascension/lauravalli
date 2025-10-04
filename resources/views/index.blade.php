@@ -102,11 +102,34 @@
                 <h4 class="text-dark-gray alt-font fw-600 ls-minus-2px mb-20px">Dipingo per dare voce all'animo umano</h4>
 
 
-                <p class="w-90 md-w-100 mb-35px sm-mb-20px">Le mie opere nascono da emozioni profonde e non dette.</p>
-                <p class="w-90 md-w-100 mb-35px sm-mb-20px">Bambini, animali e figure evocative emergono dalle sue tele come specchi interiori, invitando chi osserva a
-                    riconnettersi con la propria autenticità</p>
-                <p class="w-90 md-w-100 mb-35px sm-mb-20px">Ogni quadro è un ponte tra fragilità e forza, un invito
-                    a trasformare ciò che si sente in forma e colore.</p>
+                <p class="w-90 md-w-100 mb-35px sm-mb-20px">
+                    Parlo della fragilità.
+
+                    Non come debolezza,
+                    ma come verità.
+                    Come quella crepa che si apre nell’anima…
+                    e finalmente lascia entrare la luce.<br><br>
+
+                    La fragilità non finge.
+                    Non recita.
+                    Non cerca approvazione.
+                    È AUTENTICA. Nuda. Reale.<br><br>
+
+                    È lì che le maschere cadono.
+                    È lì che scopriamo chi siamo davvero.<br><br>
+
+                    Siamo fatti di crepe.
+                    Di cicatrici.
+                    Di parti rotte che, invece di distruggerci,
+                    ci ricompongono in forme nuove.
+                    Più vere. Più armoniche.
+                    Più nostre.<br><br>
+
+                    La fragilità non ci limita.
+                    Ci libera.
+                    È da lì che tutto comincia.
+                    È da lì che rinasciamo.
+                </p>
                 <p class="text-dark-gray alt-font w-90 md-w-100 mb-35px sm-mb-20px font-style-italic fw-semibold">
                     “Il coraggio sta in ciò che ti permetti di manifestare con autenticità.”
                 </p>
@@ -328,22 +351,27 @@
                         <span class="text-gradient-base-color fs-15 alt-font fw-700 ls-05px text-uppercase d-inline-block align-middle">Invia un messaggio</span>
                     </div>
                     <h2 class="text-dark-gray alt-font fw-600 w-90 xxl-w-100 ls-minus-2px">Per qualsiasi domanda o richiesta, scrivimi. Sarò felice di ascoltarti.</h2>
-                    <div class="position-relative form-group mb-20px">
-                        <span class="form-icon"><i class="bi bi-person icon-extra-medium text-dark-gray"></i></span>
-                        <input class="ps-0 border-radius-0px border-color-extra-medium-gray form-control required" type="text" name="name" placeholder="Il tuo nome*" />
-                    </div>
-                    <div class="position-relative form-group mb-20px">
-                        <span class="form-icon"><i class="bi bi-envelope icon-extra-medium text-dark-gray"></i></span>
-                        <input class="ps-0 border-radius-0px border-bottom border-color-extra-medium-gray form-control required" type="email" name="email" placeholder="Il tuo indirizzo email*" />
-                    </div>
-                    <div class="position-relative form-group form-textarea mt-15px mb-0">
-                        <textarea class="ps-0 border-radius-0px border-bottom border-color-extra-medium-gray form-control" name="comment" placeholder="Il tuo messaggio" rows="3"></textarea>
-                        <span class="form-icon"><i class="bi bi-chat-square-dots icon-extra-medium text-dark-gray"></i></span>
-                        <input type="hidden" name="redirect" value="">
-                        <button class="btn btn-medium btn-dark-gray btn-round-edge btn-box-shadow mb-20px mt-25px submit w-100 left-icon" type="submit"><i class="fa-regular fa-envelope"></i>Invia il tuo messaggio</button>
-                        <p class="fs-14 lh-24 w-100 mb-0 text-center text-lg-start">Avrò cura dei tuoi dati, che utilizzerò solamente per la richiesta che invierai.</p>
-                        <div class="form-results mt-20px d-none"></div>
-                    </div>
+                    <form method="POST" action="{{ route('contatti.send') }}">
+                        @csrf
+                        <div class="position-relative form-group mb-20px">
+                            <span class="form-icon"><i class="bi bi-person icon-extra-medium text-dark-gray"></i></span>
+                            <input class="ps-0 border-radius-0px border-color-extra-medium-gray form-control required" type="text" name="name" placeholder="Il tuo nome*" required />
+                        </div>
+                        <div class="position-relative form-group mb-20px">
+                            <span class="form-icon"><i class="bi bi-envelope icon-extra-medium text-dark-gray"></i></span>
+                            <input class="ps-0 border-radius-0px border-bottom border-color-extra-medium-gray form-control required" type="email" name="email" placeholder="Il tuo indirizzo email*" required />
+                        </div>
+                        <div class="position-relative form-group form-textarea mt-15px mb-0">
+                            <textarea class="ps-0 border-radius-0px border-bottom border-color-extra-medium-gray form-control" name="comment" placeholder="Il tuo messaggio" rows="3" required></textarea>
+                            <span class="form-icon"><i class="bi bi-chat-square-dots icon-extra-medium text-dark-gray"></i></span>
+                            <button class="btn btn-medium btn-dark-gray btn-round-edge btn-box-shadow mb-20px mt-25px submit w-100 left-icon" type="submit">
+                                <i class="fa-regular fa-envelope"></i> Invia il tuo messaggio
+                            </button>
+                        </div>
+                    </form>
+                    @if(session('success'))
+                        <p class="text-success">{{ session('success') }}</p>
+                    @endif
             </div>
             </div>
             <div class="col-xl-6 col-lg-7 cover-background md-h-500px sm-h-400px md-mb-50px" style="background-image:url('/images/opera5.jpg')">
