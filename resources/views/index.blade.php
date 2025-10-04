@@ -1,13 +1,14 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="it">
 
 <head>
-    <title>Crafto - The Multipurpose HTML5 Template</title>
+    <title>Laura Valli Art | Oil Paintings & Jewllery</title>
+    <meta name="description" content="Meet the artist. Dipingere per dare voce all'animo umano. Scopri e acquista pezzi d'arte esclusivi">
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="author" content="ThemeZaa">
+    <meta name="author" content="Luca Dei Rossi">
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <meta name="description" content="Elevate your online presence with Crafto - a modern, versatile, multipurpose Bootstrap 5 responsive HTML5, SCSS template using highly creative 52+ ready demos.">
     <!-- favicon icon -->
     <link rel="shortcut icon" href="images/favicon.png">
     <link rel="apple-touch-icon" href="images/apple-touch-icon-57x57.png">
@@ -31,13 +32,16 @@
     <div class="container-fluid p-0 h-100 position-relative">
         <div class="row h-100 g-0">
             <div class="col-xl-5 col-lg-6 d-flex justify-content-center flex-column ps-10 xxl-ps-5 xl-ps-2 md-ps-0 position-relative order-2 order-lg-1">
-                <div class="vertical-title-center align-items-center w-75px justify-content-center position-absolute h-auto d-none d-md-flex">
-                    <div class="title fs-16 alt-font text-dark-gray fw-700 text-uppercase ls-05px text-uppercase" data-fancy-text='{ "opacity": [0, 1], "translateY": [50, 0], "filter": ["blur(20px)", "blur(0px)"], "string": ["advanced branding solutions"], "duration": 400, "delay": 0, "speed": 50, "easing": "easeOutQuad" }'></div>
-                </div>
                 <div class="border-start border-color-extra-medium-gray ps-60px ms-100px lg-ps-30px lg-ms-70px position-relative z-index-9 sm-ps-30px sm-pe-30px sm-ms-0 border-0" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                    <h1 class="text-dark-gray fw-600 alt-font outside-box-right-10 xl-outside-box-right-15 md-me-0">Provide branding solutions to grow your business.</h1>
-                    <p class="w-75 mb-35px lg-w-90 sm-w-100">Creating products with a strong identity. We provide brilliant ideas and adding the world called success brand.</p>
-                    <a href="#" class="btn btn-extra-large btn-ptalo fw-400">Let's talk - Send a message</a>
+                    <h1 class="text-dark-gray fw-600 alt-font outside-box-right-10 xl-outside-box-right-15 md-me-0">Sono le imperfezioni a renderti unico</h1>
+                    <p class="w-75 mb-35px lg-w-90 sm-w-100">Dipingo per dare voce a ciò che non sempre sappiamo comunicare a parole. Ogni quadro
+                        è un invito a guardarti dentro, a riconoscere le tue imperfezioni come la vera radice della tua unicità.</p>
+                    <a href="#contatti" class="btn btn-extra-large border-1 btn-transparent-light-gray btn-medium left-icon btn-switch-text">
+                            <span>
+                                <span><i class="fa-regular fa-envelope"></i></span>
+                                <span class="btn-double-text" data-text="Invia un messaggio">Invia un messaggio</span>
+                            </span>
+                    </a>
                 </div>
             </div>
             <div class="col-xl-7 col-lg-6 position-relative swiper-number-pagination-progress md-h-500px order-1 order-lg-2 md-mb-50px">
@@ -96,12 +100,19 @@
             <div class="col-lg-7 offset-lg-1 md-mt-20 sm-mt-0 my-auto" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
                 <div class="mb-10px">
                     <span class="w-25px h-1px d-inline-block bg-base-color me-5px align-middle"></span>
-                    <span class="text-gradient-base-color fs-15 alt-font fw-700 ls-05px text-uppercase d-inline-block align-middle">About branding agency</span>
+                    <span class="text-gradient-base-color fs-15 alt-font fw-700 ls-05px text-uppercase d-inline-block align-middle">The Artist</span>
                 </div>
-                <h4 class="text-dark-gray alt-font fw-600 ls-minus-2px mb-20px">We provide brilliant ideas and adding the world called success to your brand.</h4>
-                <p class="w-90 md-w-100 mb-35px sm-mb-20px">Creating products with a strong identity. We provide brilliant ideas and adding the world called success brand. We deliver customized marketing campaign to use your audience to make a positive move.</p>
-                <p class="w-90 md-w-100 mb-35px sm-mb-20px">Creating products with a strong identity. We provide brilliant ideas and adding the world called success brand. We deliver customized marketing campaign to use your audience to make a positive move.</p>
-                <p class="w-90 md-w-100 mb-35px sm-mb-20px">Creating products with a strong identity. We provide brilliant ideas and adding the world called success brand. We deliver customized marketing campaign to use your audience to make a positive move.</p>
+                <h4 class="text-dark-gray alt-font fw-600 ls-minus-2px mb-20px">Dipingo per dare voce all'animo umano</h4>
+
+
+                <p class="w-90 md-w-100 mb-35px sm-mb-20px">Le mie opere nascono da emozioni profonde e non dette.</p>
+                <p class="w-90 md-w-100 mb-35px sm-mb-20px">Bambini, animali e figure evocative emergono dalle sue tele come specchi interiori, invitando chi osserva a
+                    riconnettersi con la propria autenticità</p>
+                <p class="w-90 md-w-100 mb-35px sm-mb-20px">Ogni quadro è un ponte tra fragilità e forza, un invito
+                    a trasformare ciò che si sente in forma e colore.</p>
+                <p class="text-dark-gray alt-font w-90 md-w-100 mb-35px sm-mb-20px font-style-italic fw-semibold">
+                    “Il coraggio sta in ciò che ti permetti di manifestare con autenticità.”
+                </p>
                 <a href="demo-branding-agency-about.html" class="btn btn-large btn-dark-gray btn-switch-text btn-box-shadow border-1 left-icon me-10px sm-mb-15px sm-mt-15px">
                             <span>
                                 <span><i class="feather icon-feather-edit"></i></span>
@@ -123,45 +134,85 @@
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
-                <h2 class="text-dark-gray fw-600 alt-font pt-70 pb-70">Scopri le opere del bla bla bla bla</h2>
+                <h2 class="text-dark-gray fw-600 alt-font pt-70 pb-70">Ultima Collezione</h2>
             </div>
-            <div class="col-3">
+            <div class="col-xl-3 col-lg-6">
                 <img class="w-100" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;" src="/images/opera1.jpg" alt="" />
                 <div class="row">
                     <div class="col-12 text-center">
-                        <p class="text-dark-gray alt-font fs-20 pt-20 mb-20"><strong>Opera 1</strong></p>
-                        <p class="mb-5">Una piccola descrizione di qualche parola sul quadro</p>
-                        <p>125,00 €</p>
+                        <p class="text-dark-gray alt-font fs-20 pt-20 mb-10"><strong>Senza difese</strong></p>
+                        <p class="mb-0">150,00 €</p>
+                        <p class="mt-0 alt-font fs-12">40cm x 40cm</p>
                     </div>
                 </div>
             </div>
-            <div class="col-3">
+            <div class="col-xl-3 col-lg-6">
                 <img class="w-100" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;" src="/images/opera1.jpg" alt="" />
                 <div class="row">
                     <div class="col-12 text-center">
-                        <p class="text-dark-gray alt-font fs-20 pt-20 mb-20"><strong>Opera 1</strong></p>
-                        <p class="mb-5">Una piccola descrizione di qualche parola sul quadro</p>
-                        <p>125,00 €</p>
+                        <p class="text-dark-gray alt-font fs-20 pt-20 mb-10"><strong>Dove l'anima si sazia</strong></p>
+                        <p class="mb-0">150,00 €</p>
+                        <p class="mt-0 alt-font fs-12">40cm x 40cm</p>
                     </div>
                 </div>
             </div>
-            <div class="col-3">
+            <div class="col-xl-3 col-lg-6">
                 <img class="w-100" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;" src="/images/opera1.jpg" alt="" />
                 <div class="row">
                     <div class="col-12 text-center">
-                        <p class="text-dark-gray alt-font fs-20 pt-20 mb-20"><strong>Opera 1</strong></p>
-                        <p class="mb-5">Una piccola descrizione di qualche parola sul quadro</p>
-                        <p>125,00 €</p>
+                        <p class="text-dark-gray alt-font fs-20 pt-20 mb-10"><strong>Osserva-ti</strong></p>
+                        <p class="mb-0">150,00 €</p>
+                        <p class="mt-0 alt-font fs-12">40cm x 40cm</p>
                     </div>
                 </div>
             </div>
-            <div class="col-3">
+            <div class="col-xl-3 col-lg-6">
                 <img class="w-100" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;" src="/images/opera1.jpg" alt="" />
                 <div class="row">
                     <div class="col-12 text-center">
-                        <p class="text-dark-gray alt-font fs-20 pt-20 mb-20"><strong>Opera 1</strong></p>
-                        <p class="mb-5">Una piccola descrizione di qualche parola sul quadro</p>
-                        <p>125,00 €</p>
+                        <p class="text-dark-gray alt-font fs-20 pt-20 mb-10"><strong>La ricerca</strong></p>
+                        <p class="mb-0 text-gradient-base-color alt-font fw-700 fs-20">SOLD</p>
+                        <p class="mt-0 alt-font fs-12">40cm x 40cm</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-6">
+                <img class="w-100" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;" src="/images/opera1.jpg" alt="" />
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <p class="text-dark-gray alt-font fs-20 pt-20 mb-10"><strong>Oltre il vuoto</strong></p>
+                        <p class="mb-0">900,00 €</p>
+                        <p class="mt-0 alt-font fs-12">40cm x 40cm</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-6">
+                <img class="w-100" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;" src="/images/opera1.jpg" alt="" />
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <p class="text-dark-gray alt-font fs-20 pt-20 mb-10"><strong>Fragile intensità</strong></p>
+                        <p class="mb-0">900,00 €</p>
+                        <p class="mt-0 alt-font fs-12">40cm x 40cm</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-6">
+                <img class="w-100" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;" src="/images/opera1.jpg" alt="" />
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <p class="text-dark-gray alt-font fs-20 pt-20 mb-10"><strong>Innocenza sospesa</strong></p>
+                        <p class="mb-0">1250,00 €</p>
+                        <p class="mt-0 alt-font fs-12">40cm x 40cm</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-6">
+                <img class="w-100" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;" src="/images/opera1.jpg" alt="" />
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <p class="text-dark-gray alt-font fs-20 pt-20 mb-10"><strong>Respiro</strong></p>
+                        <p class="mb-0">550,00 €</p>
+                        <p class="mt-0 alt-font fs-12">40cm x 40cm</p>
                     </div>
                 </div>
             </div>
@@ -286,7 +337,7 @@
 </section>
 <!-- end section -->
 
-<section class="pt-200 pb-200">
+<section class="pt-200 pb-200" id="contatti">
     <div class="container-fluid p-0">
         <div class="row g-0">
             <div class="col-xxl-6 col-xl-5 col-lg-5 position-relative">
@@ -385,5 +436,19 @@
 <script type="text/javascript" src="/js/jquery.js"></script>
 <script type="text/javascript" src="/js/vendors.min.js"></script>
 <script type="text/javascript" src="/js/main.js"></script>
+<script>
+    // Add smooth scrolling behavior
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+</script>
 </body>
 </html>
