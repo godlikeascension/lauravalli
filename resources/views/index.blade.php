@@ -94,7 +94,7 @@
                     <source src="/video/vidlau2.mp4" type="video/mp4">
                 </video>
             </div>
-            <div class="col-lg-7 offset-lg-1 md-mt-20 sm-mt-0 my-auto" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+            <div class="col-lg-7 offset-lg-1 md-mt-20  my-auto" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
                 <div class="mb-10px">
                     <span class="w-25px h-1px d-inline-block bg-base-color me-5px align-middle"></span>
                     <span class="text-gradient-base-color fs-15 alt-font fw-700 ls-05px text-uppercase d-inline-block align-middle">The Artist</span>
