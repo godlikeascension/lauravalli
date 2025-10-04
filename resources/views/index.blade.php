@@ -154,7 +154,8 @@
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
-                <h2 class="text-dark-gray fw-600 alt-font pt-70 pb-70">Ultima Collezione</h2>
+                <h2 class="text-dark-gray fw-600 alt-font pt-70">Ultima Collezione</h2>
+                <h4 class="text-dark-gray fw-600 pb-70 fs-24 alt-font font-style-italic ">Lo sguardo dell'anima</h4>
             </div>
             <div class="col-xl-3 col-lg-6">
                 <img class="w-100" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;" src="/images/senza-difese.jpg" alt="" />
@@ -346,14 +347,8 @@
     </div>
 </section>
 <!-- end section -->
-<!-- start section -->
-<section class="pt-200 pb-0 d-lg-block d-none">
 
-</section>
-<section class="pt-80 pb-0 d-lg-none">
-
-</section>
-<section class="pt-0 pb-0">
+<section class="pt-200 pb-200" id="contatti">
     <div class="container-fluid p-0">
         <div class="row g-0">
             <div class="col-xxl-6 col-xl-5 col-lg-5 position-relative">
