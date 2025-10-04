@@ -346,8 +346,14 @@
     </div>
 </section>
 <!-- end section -->
+<!-- start section -->
+<section class="pt-200 pb-0 d-lg-block d-none">
 
-<section class="pt-200 pb-200" id="contatti">
+</section>
+<section class="pt-80 pb-0 d-lg-none">
+
+</section>
+<section class="pt-0 pb-0">
     <div class="container-fluid p-0">
         <div class="row g-0">
             <div class="col-xxl-6 col-xl-5 col-lg-5 position-relative">
