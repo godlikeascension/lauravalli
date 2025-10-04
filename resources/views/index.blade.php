@@ -84,7 +84,13 @@
 <!-- end banner -->
 
 <!-- start section -->
-<section class="pt-200">
+<section class="pt-200 pb-0 d-lg-block d-none">
+
+</section>
+<section class="pt-80 pb-0 d-lg-none">
+
+</section>
+<section class="pt-0 pb-0">
     <div class="container">
         <div class="row">
 
