@@ -8,7 +8,7 @@
             <div class="col-lg-5 offset-lg-4 col-md-6 offset-md-2 sm-mb-30px">
                 <h3 class="text-white fw-500 alt-font mb-50px ls-minus-1px sm-mb-30px">Diamo vita a qualcosa di unico insieme</h3>
                 <div class="row">
-                    <div class="col-lg-5 col-6">
+                    <div class="col-lg-5 col-md-6">
                         <span class="alt-font fs-14 text-uppercase d-block text-white ls-1px lh-24">Contattami per email</span>
                         <a href="mailto:lauravalliart@gmail.com">lauravalliart@gmail.com</a>
                     </div>
