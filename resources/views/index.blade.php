@@ -21,6 +21,9 @@
     <link rel="stylesheet" href="/css/responsive.css"/>
     <link rel="stylesheet" href="/css/branding-agency.css" />
     <link rel="stylesheet" href="/css/custom.css" />
+    <meta property="og:image" content="/images/innocenza-sospesa.jpg">
+    <meta property="og:image:width" content="1920">
+    <meta property="og:image:height" content="1080">
 </head>
 <body data-mobile-nav-trigger-alignment="right" data-mobile-nav-style="modern" data-mobile-nav-bg-color="#1d1d1d">
 @include('inc.front.header')
