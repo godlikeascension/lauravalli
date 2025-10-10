@@ -33,7 +33,7 @@
         <div class="row h-100 g-0">
             <div class="col-xl-5 col-lg-6 d-flex justify-content-center flex-column ps-10 xxl-ps-5 xl-ps-2 md-ps-0 position-relative order-2 order-lg-1">
                 <div class="border-start border-color-extra-medium-gray ps-60px ms-100px lg-ps-30px lg-ms-70px position-relative z-index-9 sm-ps-30px sm-pe-30px sm-ms-0 border-0" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                    <h1 style="font-size: 4rem !important;" class="text-dark-gray fw-600 alt-font outside-box-right-10 xl-outside-box-right-15 md-me-0">Opere su commissione. <br>Dai vita alle tue emozioni.</h1>
+                    <h1 style="font-size: 3.5rem !important;" class="text-dark-gray fw-600 alt-font outside-box-right-10 xl-outside-box-right-15 md-me-0">Opere su commissione. <br>Dai vita alle tue emozioni.</h1>
                     <p class="w-75 mb-35px lg-w-90 sm-w-100">
                         Ogni opera su commissione è una storia da raccontare.
                         La <strong>tua</strong> storia.
