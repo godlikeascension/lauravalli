@@ -19,10 +19,10 @@
                 <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                     <ul class="navbar-nav alt-font">
                         <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-                        <li class="nav-item"><a href="/galleria" class="nav-link">Galleria</a></li>
+{{--                        <li class="nav-item"><a href="/galleria" class="nav-link">Galleria</a></li>--}}
                         <li class="nav-item"><a href="/commissioni" class="nav-link">Commissioni</a></li>
-                        <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
-                        <li class="nav-item"><a href="/contatti" class="nav-link">Contatti</a></li>
+{{--                        <li class="nav-item"><a href="/about" class="nav-link">About</a></li>--}}
+{{--                        <li class="nav-item"><a href="/contatti" class="nav-link">Contatti</a></li>--}}
                     </ul>
                 </div>
             </div>
