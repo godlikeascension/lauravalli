@@ -148,66 +148,64 @@
                 <h3 class="alt-font fw-700 text-dark-gray ls-minus-1px">Diamo vita a un'opera che nasce dal tuo sentire più autentico </h3>
             </div>
         </div>
-        <div class="row justify-content-center align-items-center" data-anime='{ "el": "childs", "opacity": [0, 1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+        <div class="row justify-content-center align-items-center"
+             data-anime='{ "el": "childs", "opacity": [0, 1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
             <div class="col-12 position-relative testimonials-style-12">
-                <div class="swiper" data-slider-options='{ "slidesPerView": 2, "spaceBetween": 50, "loop": true, "autoplay": { "delay": 10000, "disableOnInteraction": false },  "keyboard": { "enabled": true, "onlyInViewport": true }, "breakpoints": { "1200": { "slidesPerView": 1 },  "768": { "slidesPerView": 1 }, "768": { "slidesPerView": 1 }, "320": { "slidesPerView": 1 }, "effect": "slide" }, "navigation": { "nextEl": ".swiper-button-next-nav", "prevEl": ".swiper-button-previous-nav", "effect": "fade" } }'>
-                    <div class="swiper-wrapper pt-20px pb-20px">
-                        <!-- start slider item -->
-                        <div class="swiper-slide">
-                            <div class="row g-0 border-radius-6px overflow-hidden">
-                                <div class="col-sm-5 services-box-img xs-h-350px">
-                                    <div class="h-100 cover-background" style="background-image: url(/images/falbors.jpg)"></div>
-                                </div>
-                                <div class="col-sm-7 testimonials-box bg-white p-9 sm-p-7 box-shadow-extra-large">
-                                    <div class="testimonials-box-content">
-                                        <p class="mb-20px">
-                                            Laura sa trasmettere arte, passione, emozione, energia e consapevolezza. Quest’opera è per me un dono prezioso perché nata dalla forza di credere in se stessa. Bravissima.
-                                        </p>
-                                        <div class="fs-18 lh-20 fw-600 text-dark-gray">Charlotte smith</div>
-                                        <span class="fs-16 lh-20">Business owner</span>
+
+                @if(isset($recensioni) && $recensioni->count())
+                    <div class="swiper"
+                         data-slider-options='{ "slidesPerView": 2, "spaceBetween": 50, "loop": true, "autoplay": { "delay": 10000, "disableOnInteraction": false },  "keyboard": { "enabled": true, "onlyInViewport": true }, "breakpoints": { "1200": { "slidesPerView": 1 },  "768": { "slidesPerView": 1 }, "768": { "slidesPerView": 1 }, "320": { "slidesPerView": 1 }, "effect": "slide" }, "navigation": { "nextEl": ".swiper-button-next-nav", "prevEl": ".swiper-button-previous-nav", "effect": "fade" } }'>
+                        <div class="swiper-wrapper pt-20px pb-20px">
+
+                            @foreach($recensioni as $recensione)
+                                <div class="swiper-slide">
+                                    <div class="row g-0 border-radius-6px overflow-hidden">
+                                        <div class="col-sm-5 services-box-img xs-h-350px">
+                                            @if($recensione->immagine)
+                                                <div class="h-100 cover-background"
+                                                     style="background-image: url('{{ asset('storage/' . $recensione->immagine) }}')">
+                                                </div>
+                                            @else
+                                                {{-- fallback se non c'è immagine --}}
+                                                <div class="h-100 cover-background"
+                                                     style="background-image: url('https://placehold.co/305x380')">
+                                                </div>
+                                            @endif
+                                        </div>
+                                        <div class="col-sm-7 testimonials-box bg-white p-9 sm-p-7 box-shadow-extra-large">
+                                            <div class="testimonials-box-content">
+                                                <p class="mb-20px">
+                                                    {{ \Illuminate\Support\Str::limit($recensione->testo, 260) }}
+                                                </p>
+                                                <div class="fs-18 lh-20 fw-600 text-dark-gray">
+                                                    {{ $recensione->nome }}
+                                                </div>
+                                                {{-- se in futuro aggiungi un campo "ruolo" o "descrizione", puoi metterlo qui --}}
+                                                {{-- <span class="fs-16 lh-20">{{ $recensione->ruolo }}</span> --}}
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endforeach
+
                         </div>
-                        <!-- end slider item -->
-                        <!-- start slider item -->
-                        <div class="swiper-slide">
-                            <div class="row g-0 border-radius-6px overflow-hidden">
-                                <div class="col-sm-5 services-box-img xs-h-350px">
-                                    <div class="h-100 cover-background" style="background-image: url(/images/tritticorece.jpg)"></div>
-                                </div>
-                                <div class="col-sm-7 testimonials-box bg-white p-9 sm-p-7 box-shadow-extra-large">
-                                    <div class="testimonials-box-content">
-                                        <p class="mb-20px">Course materials were good, the mentoring approach was good and working with other people via the internet was good.</p>
-                                        <div class="fs-18 lh-20 fw-600 text-dark-gray">Herman miller</div>
-                                        <span class="fs-16 lh-20">Behavioral science</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end slider item -->
-                        <!-- start slider item -->
-                        <div class="swiper-slide">
-                            <div class="row g-0 border-radius-6px overflow-hidden">
-                                <div class="col-sm-5 services-box-img xs-h-350px">
-                                    <div class="h-100 cover-background" style="background-image: url(https://placehold.co/305x380)"></div>
-                                </div>
-                                <div class="col-sm-7 testimonials-box bg-white p-9 sm-p-7 box-shadow-extra-large">
-                                    <div class="testimonials-box-content">
-                                        <p class="mb-20px">Course materials were good, the mentoring approach was good and working with other people via the internet was good.</p>
-                                        <div class="fs-18 lh-20 fw-600 text-dark-gray">Matthew taylor</div>
-                                        <span class="fs-16 lh-20">Network security</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end slider item -->
                     </div>
-                </div>
-                <!-- start slider navigation -->
-                <div class="swiper-button-next-nav border-radius-100px swiper-button-next bg-white box-shadow-small"><i class="feather icon-feather-chevron-right icon-extra-medium"></i></div>
-                <div class="swiper-button-previous-nav border-radius-100px swiper-button-prev bg-white box-shadow-small"><i class="feather icon-feather-chevron-left icon-extra-medium"></i></div>
-                <!-- end slider pagination -->
+
+                    <!-- start slider navigation -->
+                    <div class="swiper-button-next-nav border-radius-100px swiper-button-next bg-white box-shadow-small">
+                        <i class="feather icon-feather-chevron-right icon-extra-medium"></i>
+                    </div>
+                    <div class="swiper-button-previous-nav border-radius-100px swiper-button-prev bg-white box-shadow-small">
+                        <i class="feather icon-feather-chevron-left icon-extra-medium"></i>
+                    </div>
+                    <!-- end slider navigation -->
+                @else
+                    {{-- Se non ci sono recensioni, puoi lasciare vuoto o mettere un messaggio --}}
+                    <p class="text-center text-muted mt-3 mb-0">
+                        Al momento non ci sono ancora recensioni visibili.
+                    </p>
+                @endif
+
             </div>
         </div>
     </div>
