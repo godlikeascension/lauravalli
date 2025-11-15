@@ -4,12 +4,12 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <meta name="author" content="GAT"/>
-    <meta name="description" content="GAT">
+    <meta name="author" content="Laura Valli"/>
+    <meta name="description" content="Laura Valli">
     <link rel="icon" type="image/png" href="/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Document title -->
-    <title>Accesso | GAT</title>
+    <title>Accesso | Laura Valli</title>
     <!-- Stylesheets & Fonts -->
     <link href="/auth/css/plugins.css" rel="stylesheet">
     <link href="/auth/css/style.css" rel="stylesheet">
