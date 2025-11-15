@@ -28,8 +28,8 @@ Route::get('/commissioni', function () {
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 
- Route::get('/registrazione', [AuthController::class, 'showRegistrationForm'])->name('registrazione');
- Route::post('/register', [AuthController::class, 'register'])->name('register');
+// Route::get('/registrazione', [AuthController::class, 'showRegistrationForm'])->name('registrazione');
+// Route::post('/register', [AuthController::class, 'register'])->name('register');
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
