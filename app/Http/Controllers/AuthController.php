@@ -1,63 +1,85 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\RecensioneController;
+namespace App\Http\Controllers;
 
-// -----------------------------
-// Form contatti
-// -----------------------------
-Route::post('/contatti', [ContactController::class, 'send'])->name('contatti.send');
+use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
-// -----------------------------
-// Pagine pubbliche sito
-// -----------------------------
-Route::get('/', function () {
-    return view('index');
-});
+class AuthController extends Controller
+{
+    // Mostra il form di login
+    public function showLoginForm()
+    {
+        return view('auth.login');
+    }
 
-Route::get('/commissioni', function () {
-    return view('commissioni');
-});
+    // Gestisce la richiesta di login
+    public function login(Request $request)
+    {
+        // Validazione dei dati in ingresso
+        $credentials = $request->validate([
+            'email'    => ['required', 'email'],
+            'password' => ['required'],
+        ]);
 
-// -----------------------------
-// Autenticazione
-// -----------------------------
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [AuthController::class, 'login']);
+        // Tentativo di autenticazione
+        if (Auth::attempt($credentials)) {
+            // Rigenera la sessione per prevenire fixation attack
+            $request->session()->regenerate();
 
-// Route::get('/registrazione', [AuthController::class, 'showRegistrationForm'])->name('registrazione');
-// Route::post('/register', [AuthController::class, 'register'])->name('register');
+            // Reindirizza l'utente alla dashboard o alla pagina desiderata
+            return redirect()->intended(route('dashboard.recensioni'));
+        }
 
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+        // In caso di errore, si ritorna al form con messaggi di errore
+        return back()->withErrors([
+            'email' => 'Le credenziali fornite non corrispondono ai nostri record.',
+        ])->onlyInput('email');
+    }
 
-// -----------------------------
-// Dashboard (area admin/pannello) - protetta da auth
-// -----------------------------
-Route::middleware(['auth'])->group(function () {
+    // Mostra il form di registrazione
+    public function showRegistrationForm()
+    {
+        return view('auth.registration');
+    }
 
-    // LISTA RECENSIONI (pagina con tabella + bottone "Aggiungi recensione")
-    Route::get('/dashboard/recensioni', [AdminController::class, 'index'])
-        ->name('dashboard.recensioni');
+    // Gestisce la registrazione di un nuovo utente
+    public function register(Request $request)
+    {
+        // Validazione dei dati in ingresso
+        $data = $request->validate([
+            'name'                  => ['required', 'string', 'max:255'],
+            'email'                 => ['required', 'email', 'max:255', 'unique:users'],
+            'password'              => ['required', 'confirmed', 'min:8'],
+        ]);
 
-    // FORM CREAZIONE RECENSIONE
-    Route::get('/dashboard/recensioni/crea', [AdminController::class, 'create'])
-        ->name('dashboard.recensioni.create');
+        // Creazione dell'utente
+        $user = User::create([
+            'name'     => $data['name'],
+            'email'    => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
 
-    // SALVATAGGIO NUOVA RECENSIONE
-    Route::post('/dashboard/recensioni', [AdminController::class, 'store'])
-        ->name('dashboard.recensioni.store');
+        // Login automatico dopo la registrazione
+        Auth::login($user);
 
-    // FORM MODIFICA RECENSIONE
-    Route::get('/dashboard/recensioni/{recensione}/edit', [AdminController::class, 'edit'])
-        ->name('dashboard.recensioni.edit');
+        // Reindirizza alla dashboard o alla pagina desiderata
+        return redirect()->intended(route('dashboard.documents'));
+    }
 
-    // AGGIORNAMENTO RECENSIONE
-    Route::put('/dashboard/recensioni/{recensione}', [AdminController::class, 'update'])
-        ->name('dashboard.recensioni.update');
+    // Gestisce il logout
+    public function logout(Request $request)
+    {
+        Auth::logout();
 
-    // ELIMINAZIONE RECENSIONE
-    Route::delete('/dashboard/recensioni/{recensione}', [AdminController::class, 'destroy'])
-        ->name('dashboard.recensioni.destroy');
-});
+        // Invalida la sessione corrente e rigenera il token CSRF
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        // Reindirizza alla homepage o al form di login
+        return redirect('/login');
+
+    }
+}
