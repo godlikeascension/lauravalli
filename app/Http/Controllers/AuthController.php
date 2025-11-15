@@ -66,7 +66,7 @@ class AuthController extends Controller
         Auth::login($user);
 
         // Reindirizza alla dashboard o alla pagina desiderata
-        return redirect()->intended(route('dashboard.documents'));
+        return redirect()->intended(route('dashboard.recensioni'));
     }
 
     // Gestisce il logout
