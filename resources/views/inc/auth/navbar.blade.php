@@ -62,6 +62,11 @@
             <div class="collapse navbar-collapse" id="topnav-menu-content">
                 <ul class="navbar-nav">
                     <li class="nav-item">
+                        <a class="nav-link" href="/dashboard/opere">
+                            <i class="mdi mdi-image-album me-1"></i> Opere
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/dashboard/recensioni">
                             <i class="mdi mdi-file-document me-1"></i> Recensioni
                         </a>

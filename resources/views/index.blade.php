@@ -158,99 +158,83 @@
         <div class="row">
             <div class="col-12 text-center">
                 <h2 class="text-dark-gray fw-600 alt-font pt-70">Ultima Collezione</h2>
-                <h4 class="text-dark-gray fw-600 pb-70 fs-24 alt-font font-style-italic ">Lo sguardo dell'anima</h4>
+                <h4 class="text-dark-gray fw-600 pb-70 fs-24 alt-font font-style-italic ">
+                    Lo sguardo dell'anima
+                </h4>
             </div>
-            <div class="col-xl-3 col-lg-6">
-                <img class="w-100" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;" src="/images/senza-difese.jpg" alt="" />
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <p class="text-dark-gray alt-font fs-20 pt-20 mb-10"><strong>Senza difese</strong></p>
-                        <p class="mb-0">150,00 €</p>
-                        <p class="mt-0 alt-font fs-12">30cm x 40cm</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-6">
-                <img class="w-100" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;" src="/images/dove-anima.jpg" alt="" />
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <p class="text-dark-gray alt-font fs-20 pt-20 mb-10"><strong>Dove l'anima si sazia</strong></p>
-                        <p class="mb-0">150,00 €</p>
-                        <p class="mt-0 alt-font fs-12">30cm x 40cm</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-6">
-                <img class="w-100" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;" src="/images/osserva-ti.jpg" alt="" />
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <p class="text-dark-gray alt-font fs-20 pt-20 mb-10"><strong>Osserva-ti</strong></p>
-                        <p class="mb-0">150,00 €</p>
-                        <p class="mt-0 alt-font fs-12">30cm x 40cm</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-6">
-                <img class="w-100" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;" src="/images/la-ricerca.jpg" alt="" />
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <p class="text-dark-gray alt-font fs-20 pt-20 mb-10"><strong>La ricerca</strong></p>
-                        <p class="mb-0 text-gradient-base-color alt-font fw-700 fs-20">SOLD</p>
-                        <p class="mt-0 alt-font fs-12">30cm x 40cm</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-6">
-                <img class="w-100" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;" src="/images/oltre-vuoto.jpg" alt="" />
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <p class="text-dark-gray alt-font fs-20 pt-20 mb-10"><strong>Oltre il vuoto</strong></p>
-                        <p class="mb-0">900,00 €</p>
-                        <p class="mt-0 alt-font fs-12">90cm x 120cm</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-6">
-                <img class="w-100" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;" src="/images/fragile-intensita.jpg" alt="" />
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <p class="text-dark-gray alt-font fs-20 pt-20 mb-10"><strong>Fragile intensità</strong></p>
-                        <p class="mb-0">900,00 €</p>
-                        <p class="mt-0 alt-font fs-12">80cm x 130cm</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-6">
-                <img class="w-100" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;" src="/images/innocenza-sospesa.jpg" alt="" />
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <p class="text-dark-gray alt-font fs-20 pt-20 mb-10"><strong>Innocenza sospesa</strong></p>
-                        <p class="mb-0">1250,00 €</p>
-                        <p class="mt-0 alt-font fs-12">120cm x 120cm</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-6">
-                <img class="w-100" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;" src="/images/respiro.jpg" alt="" />
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <p class="text-dark-gray alt-font fs-20 pt-20 mb-10"><strong>Respiro</strong></p>
-                        <p class="mb-0">550,00 €</p>
-                        <p class="mt-0 alt-font fs-12">60cm x 100cm</p>
-                    </div>
-                </div>
-            </div>
-{{--            <div class="col-12 text-center pt-25">--}}
-{{--                <a href="demo-branding-agency-single-project-slider.html" class="btn btn-large btn-dark-gray btn-switch-text btn-box-shadow fw-400">--}}
-{{--                                        <span>--}}
-{{--                                            <span class="btn-double-text" data-text="Vai alla galleria">Vai alla galleria</span>--}}
-{{--                                            <span><i class="feather icon-feather-arrow-right"></i></span>--}}
-{{--                                        </span>--}}
-{{--                </a>--}}
-{{--            </div>--}}
         </div>
+
+        @if(isset($opere) && $opere->count())
+            <div class="row">
+                @foreach($opere as $opera)
+                    <div class="col-xl-3 col-lg-6 mb-30">
+                        <img class="w-100"
+                             style="box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;"
+                             src="{{ $opera->immagine ? asset('storage/' . $opera->immagine) : '/images/placeholder.jpg' }}"
+                             alt="{{ $opera->titolo }}" />
+
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <p class="text-dark-gray alt-font fs-20 pt-20 mb-10">
+                                    <strong>{{ $opera->titolo }}</strong>
+                                </p>
+
+                                {{-- Prezzo o SOLD --}}
+                                @if($opera->venduto)
+                                    <p class="mb-0 text-gradient-base-color alt-font fw-700 fs-20">
+                                        SOLD
+                                    </p>
+                                @elseif(!is_null($opera->prezzo))
+                                    <p class="mb-0">
+                                        {{ number_format($opera->prezzo, 2, ',', '.') }} €
+                                    </p>
+                                @else
+                                    <p class="mb-0 text-muted">Su richiesta</p>
+                                @endif
+
+                                {{-- Dimensioni --}}
+                                <p class="mt-0 alt-font fs-12">
+                                    {{ $opera->dimensioni ?? '' }}
+                                </p>
+
+                                {{-- Pulsanti --}}
+                                <div class="mt-2 mb-30">
+                                    @if($opera->immagine)
+                                        <button type="button"
+                                                class="btn btn-very-small btn-dark-gray btn-rounded d-inline-flex align-items-center"
+                                                data-image="{{ asset('storage/' . $opera->immagine) }}"
+                                                onclick="openOperaLightbox(this)">
+                                            <i class="feather icon-feather-search me-5px"></i>
+                                            <span>Ingrandisci</span>
+                                        </button>
+                                    @endif
+
+
+                                    {{-- Pulsante per la pagina dell'opera (commentato per ora) --}}
+                                    {{--
+                                    <a href="{{ route('opere.show', $opera->slug) }}"
+                                       class="btn btn-sm btn-outline-secondary ms-1">
+                                        Scopri di più
+                                    </a>
+                                    --}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        @else
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="text-muted pb-70">
+                        Le opere della collezione verranno presto aggiornate.
+                    </p>
+                </div>
+            </div>
+        @endif
     </div>
 </section>
+
 <!-- start section -->
 <section class="stack-box z-index-99 pb-0">
     <div class="stack-box-contain">
@@ -409,5 +393,67 @@
         });
     });
 </script>
+<div id="opera-lightbox"
+     class="d-none justify-content-center align-items-center"
+     style="position: fixed; inset: 0; background-color: rgba(0,0,0,0.85); z-index: 9999;">
+    <div class="position-relative text-center">
+        <!-- Pulsante X chiudi -->
+        <button type="button"
+                onclick="closeOperaLightbox()"
+                style="
+            position: absolute;
+            top: -18px;
+            right: -18px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: none;
+            background-color: #ffffff;
+            color: #111111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+        ">
+            <i class="feather icon-feather-x" style="font-size: 16px; line-height: 1;"></i>
+        </button>
+
+
+        <!-- Immagine ingrandita -->
+        <img id="opera-lightbox-image"
+             src=""
+             alt=""
+             class="max-w-100"
+             style="max-width: 90vw; max-height: 80vh; border-radius: 6px; box-shadow: rgba(0, 0, 0, 0.4) 0px 20px 50px;">
+    </div>
+</div>
+<script>
+    function openOperaLightbox(button) {
+        const imageUrl = button.getAttribute('data-image');
+        const lightbox = document.getElementById('opera-lightbox');
+        const img = document.getElementById('opera-lightbox-image');
+
+        img.src = imageUrl;
+        lightbox.classList.remove('d-none');
+        lightbox.classList.add('d-flex');
+
+        // evita scroll della pagina sotto
+        document.body.classList.add('overflow-hidden');
+    }
+
+    function closeOperaLightbox() {
+        const lightbox = document.getElementById('opera-lightbox');
+        const img = document.getElementById('opera-lightbox-image');
+
+        img.src = '';
+        lightbox.classList.remove('d-flex');
+        lightbox.classList.add('d-none');
+
+        document.body.classList.remove('overflow-hidden');
+    }
+</script>
+
 </body>
 </html>

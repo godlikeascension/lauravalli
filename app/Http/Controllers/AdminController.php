@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Recensione;
 use Illuminate\Http\Request;
+use App\Models\Opera;
 
 class AdminController extends Controller
 {
@@ -88,4 +89,102 @@ class AdminController extends Controller
             ->route('dashboard.recensioni')
             ->with('success', 'Recensione eliminata con successo.');
     }
+    // =============================
+// OPERE - Dashboard
+// =============================
+
+    public function opereIndex()
+    {
+        $opere = Opera::orderBy('created_at', 'desc')->get();
+
+        return view('dashboard.opere', compact('opere'));
+    }
+
+    public function opereCreate()
+    {
+        return view('dashboard.opere-create');
+    }
+
+    public function opereStore(Request $request)
+    {
+        $data = $request->validate([
+            'immagine'      => 'nullable|image|max:4096',
+            'titolo'        => 'required|string|max:255',
+            'prezzo'        => 'nullable|numeric|min:0',
+            'venduto'       => 'nullable|boolean',
+            'larghezza_cm'  => 'nullable|numeric|min:0',
+            'altezza_cm'    => 'nullable|numeric|min:0',
+            'descrizione_html' => 'nullable|string',
+            'commissione'   => 'nullable|boolean',
+        ]);
+
+        $pathImmagine = null;
+
+        if ($request->hasFile('immagine')) {
+            $pathImmagine = $request->file('immagine')->store('opere', 'public');
+        }
+
+        Opera::create([
+            'immagine'        => $pathImmagine,
+            'titolo'          => $data['titolo'],
+            'prezzo'          => $data['prezzo'] ?? null,
+            'venduto'         => $request->boolean('venduto'),
+            'larghezza_cm'    => $data['larghezza_cm'] ?? null,
+            'altezza_cm'      => $data['altezza_cm'] ?? null,
+            'descrizione_html'=> $data['descrizione_html'] ?? null,
+            'commissione'     => $request->boolean('commissione'),
+        ]);
+
+        return redirect()
+            ->route('dashboard.opere.index')
+            ->with('success', 'Opera creata con successo.');
+    }
+
+    public function opereEdit(Opera $opera)
+    {
+        return view('dashboard.opere-edit', compact('opera'));
+    }
+
+    public function opereUpdate(Request $request, Opera $opera)
+    {
+        $data = $request->validate([
+            'immagine'      => 'nullable|image|max:4096',
+            'titolo'        => 'required|string|max:255',
+            'prezzo'        => 'nullable|numeric|min:0',
+            'venduto'       => 'nullable|boolean',
+            'larghezza_cm'  => 'nullable|numeric|min:0',
+            'altezza_cm'    => 'nullable|numeric|min:0',
+            'descrizione_html' => 'nullable|string',
+            'commissione'   => 'nullable|boolean',
+        ]);
+
+        if ($request->hasFile('immagine')) {
+            $pathImmagine = $request->file('immagine')->store('opere', 'public');
+            $opera->immagine = $pathImmagine;
+        }
+
+        $opera->titolo           = $data['titolo'];
+        $opera->prezzo           = $data['prezzo'] ?? null;
+        $opera->venduto          = $request->boolean('venduto');
+        $opera->larghezza_cm     = $data['larghezza_cm'] ?? null;
+        $opera->altezza_cm       = $data['altezza_cm'] ?? null;
+        $opera->descrizione_html = $data['descrizione_html'] ?? null;
+        $opera->commissione      = $request->boolean('commissione');
+
+        $opera->save();
+
+        return redirect()
+            ->route('dashboard.opere.index')
+            ->with('success', 'Opera aggiornata con successo.');
+    }
+
+    public function opereDestroy(Opera $opera)
+    {
+        $opera->delete();
+
+        return redirect()
+            ->route('dashboard.opere.index')
+            ->with('success', 'Opera eliminata con successo.');
+    }
+
 }

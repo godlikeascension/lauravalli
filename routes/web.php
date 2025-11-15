@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AdminController;
 use App\Models\Recensione;
+use App\Models\Opera;
 
 // -----------------------------
 // Form contatti
@@ -15,7 +16,12 @@ Route::post('/contatti', [ContactController::class, 'send'])->name('contatti.sen
 // Pagine pubbliche sito
 // -----------------------------
 Route::get('/', function () {
-    return view('index');
+    // qui puoi filtrare come vuoi, ad es. solo non-commissione
+    $opere = Opera::where('commissione', false)
+        ->orderBy('created_at', 'asc')
+        ->get();
+
+    return view('index', compact('opere'));
 });
 
 Route::get('/commissioni', function () {
@@ -61,6 +67,26 @@ Route::middleware(['auth'])->group(function () {
     // ELIMINAZIONE RECENSIONE
     Route::delete('/dashboard/recensioni/{recensione}', [AdminController::class, 'recensioniDestroy'])
         ->name('dashboard.recensioni.destroy');
+    // -----------------------------
+    // OPERE - gestione da dashboard
+    // -----------------------------
+    Route::get('/dashboard/opere', [AdminController::class, 'opereIndex'])
+        ->name('dashboard.opere.index');
+
+    Route::get('/dashboard/opere/crea', [AdminController::class, 'opereCreate'])
+        ->name('dashboard.opere.create');
+
+    Route::post('/dashboard/opere', [AdminController::class, 'opereStore'])
+        ->name('dashboard.opere.store');
+
+    Route::get('/dashboard/opere/{opera}/edit', [AdminController::class, 'opereEdit'])
+        ->name('dashboard.opere.edit');
+
+    Route::put('/dashboard/opere/{opera}', [AdminController::class, 'opereUpdate'])
+        ->name('dashboard.opere.update');
+
+    Route::delete('/dashboard/opere/{opera}', [AdminController::class, 'opereDestroy'])
+        ->name('dashboard.opere.destroy');
 });
 Route::get('/commissioni', function () {
     $recensioni = Recensione::orderBy('created_at', 'desc')->get();
