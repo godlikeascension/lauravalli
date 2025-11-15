@@ -33,7 +33,7 @@
         <div class="row h-100 g-0">
             <div class="col-xl-5 col-lg-6 d-flex justify-content-center flex-column ps-10 xxl-ps-5 xl-ps-2 md-ps-0 position-relative order-2 order-lg-1">
                 <div class="border-start border-color-extra-medium-gray ps-60px ms-100px lg-ps-30px lg-ms-70px position-relative z-index-9 sm-ps-30px sm-pe-30px sm-ms-0 border-0" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                    <h1 style="font-size: 3.5rem !important;" class="text-dark-gray fw-600 alt-font outside-box-right-10 xl-outside-box-right-15 md-me-0">Opere su commissione. <br>Dai vita alle tue emozioni.</h1>
+                    <h1 style="font-size: 3.5rem !important;" class="text-dark-gray fw-600 alt-font outside-box-right-10 xl-outside-box-right-15 md-me-0">Opere su <br>commissione. <br>Dai vita alle tue emozioni.</h1>
                     <p class="w-75 mb-35px lg-w-90 sm-w-100">
                         Ogni opera su commissione è una storia da raccontare.
                         La <strong>tua</strong> storia.
@@ -55,7 +55,7 @@
                 <div class="swiper h-100 banner-slider" data-slider-options='{ "slidesPerView": 1, "loop": true, "pagination": { "el": ".swiper-number-line-pagination", "clickable": true }, "autoplay": { "delay": 8000, "stopOnLastSlide": true, "disableOnInteraction": false },"keyboard": { "enabled": true, "onlyInViewport": true }, "effect": "fade" }' data-swiper-number-pagination-progress="true">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <div class="position-absolute left-0px top-0px w-100 h-100 cover-background background-position-center-top" style="background-image:url('/images/innocenza-sospesa.jpg');"></div>
+                            <div class="position-absolute left-0px top-0px w-100 h-100 cover-background background-position-center-top" style="background-image:url('/images/trittico-full.jpg');"></div>
                         </div>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-xxl-7 col-lg-7 md-mb-15 sm-mb-20 text-center text-lg-start">
-                <span class="text-gradient-base-color fs-15 alt-font fw-700 ls-05px text-uppercase d-inline-block align-middle">Opera su commissione</span>
+                <span class="text-gradient-base-color fs-15 alt-font fw-700 ls-05px text-uppercase d-inline-block align-middle">Come funziona il lavoro su commissione</span>
                 <h3 class="alt-font fw-700 text-dark-gray ls-minus-1px">Diamo vita a un'opera che nasce dal tuo sentire più autentico </h3>
 
                 <div class="row row-cols-1 mt-40">
@@ -83,12 +83,10 @@
                                 <span class="progress-step-separator bg-dark-gray opacity-1"></span>
                             </div>
                             <div class="process-content ps-30px last-paragraph-no-margin mb-30px">
-                                <span class="d-block fw-600 text-dark-gray mb-5px fs-18">Condivisione e ascolto</span>
+                                <span class="d-block fw-600 text-dark-gray mb-5px fs-18">Consulenza gratuita</span>
                                 <p class="w-90 lg-w-100">
-                                    Il primo passo è entrare in connessione: mi racconterai ciò che vorresti esprimere, i colori che
-                                    ti rappresentano, le emozioni da cui partire e le dimensioni del quadro.
-                                    Nessuna pressione e senza alcun impegno: se hai le idee chiare, meraviglioso; se invece non
-                                    sai da dove iniziare, ti guiderò con cura attraverso domande e ispirazioni.
+                                    Il primo passo è entrare in connessione: inizieremo con una chiacchierata conoscitiva, dove mi racconterai ciò che vorresti esprimere, i colori che ti rappresentano, le emozioni da cui partire e le dimensioni del quadro.
+                                    Andremo dunque a  definire il budget e ti guiderò con cura nella tua proposta personalizzata.
                                 </p>
                             </div>
                         </div>
@@ -105,11 +103,10 @@
                                 <span class="progress-step-separator bg-dark-gray opacity-1"></span>
                             </div>
                             <div class="process-content ps-30px last-paragraph-no-margin mb-30px">
-                                <span class="d-block fw-600 text-dark-gray mb-5px fs-18">Consultazione e accordo</span>
+                                <span class="d-block fw-600 text-dark-gray mb-5px fs-18">Scelta di ogni dettaglio</span>
                                 <p class="w-90 lg-w-100">
                                     Prima di iniziare la commissione, riceverai un bozzetto digitale basato sulla tua ispirazione.
-                                    Potrai darmi il tuo feedback e solo dopo la tua approvazione definitiva passeremo alla fase di
-                                    pittura.
+                                    Potrai darmi il tuo feedback e solo dopo la tua approvazione definitiva passeremo alla fase di pittura.
                                 </p>
                             </div>
                         </div>
@@ -126,12 +123,11 @@
                             </div>
                             <div class="process-content ps-30px last-paragraph-no-margin">
                                 <span class="d-block fw-600 text-dark-gray mb-5px fs-18">Realizzazione dell’opera</span>
-                                <p class="w-90 lg-w-100">Dopo l’approvazione del bozzetto, inizierò a dipingere ad olio.
-                                    Durante la realizzazione ti invierò aggiornamenti visivi, così potrai seguire la nascita della tua
-                                    opera passo dopo passo.
-                                    A questo punto non saranno possibili modifiche sostanziali (solo piccoli dettagli). Eventuali
-                                    richieste di cambi radicali a opera terminata comporteranno un costo aggiuntivo del +50% sul
-                                    prezzo.</p>
+                                <p class="w-90 lg-w-100">
+                                    Dopo l’approvazione del bozzetto, inizio la lavorazione del tuo quadro ad olio.
+                                    Durante la realizzazione ti invierò aggiornamenti visivi, così potrai seguire la nascita della tua opera passo dopo passo.
+                                    A questo punto non saranno possibili modifiche.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -139,7 +135,79 @@
                 </div>
             </div>
             <div class="col-lg-5 position-relative md-mb-30px sm-mb-15">
-                <img src="/images/oltre-vuoto.jpg" class="position-relative z-index-9 top-40px" alt="">
+                <img src="/images/mockup2.jpg" class="position-relative z-index-9 top-40px" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="position-relative bg-linen overflow-hidden background-position-center-top sm-background-image-none text-dark-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <span class="text-gradient-base-color fs-15 alt-font fw-700 ls-05px text-uppercase d-inline-block align-middle">Come funziona il lavoro su commissione</span>
+                <h3 class="alt-font fw-700 text-dark-gray ls-minus-1px">Diamo vita a un'opera che nasce dal tuo sentire più autentico </h3>
+            </div>
+        </div>
+        <div class="row justify-content-center align-items-center" data-anime='{ "el": "childs", "opacity": [0, 1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
+            <div class="col-12 position-relative testimonials-style-12">
+                <div class="swiper" data-slider-options='{ "slidesPerView": 2, "spaceBetween": 50, "loop": true, "autoplay": { "delay": 10000, "disableOnInteraction": false },  "keyboard": { "enabled": true, "onlyInViewport": true }, "breakpoints": { "1200": { "slidesPerView": 1 },  "768": { "slidesPerView": 1 }, "768": { "slidesPerView": 1 }, "320": { "slidesPerView": 1 }, "effect": "slide" }, "navigation": { "nextEl": ".swiper-button-next-nav", "prevEl": ".swiper-button-previous-nav", "effect": "fade" } }'>
+                    <div class="swiper-wrapper pt-20px pb-20px">
+                        <!-- start slider item -->
+                        <div class="swiper-slide">
+                            <div class="row g-0 border-radius-6px overflow-hidden">
+                                <div class="col-sm-5 services-box-img xs-h-350px">
+                                    <div class="h-100 cover-background" style="background-image: url(/images/falbors.jpg)"></div>
+                                </div>
+                                <div class="col-sm-7 testimonials-box bg-white p-9 sm-p-7 box-shadow-extra-large">
+                                    <div class="testimonials-box-content">
+                                        <p class="mb-20px">
+                                            Laura sa trasmettere arte, passione, emozione, energia e consapevolezza. Quest’opera è per me un dono prezioso perché nata dalla forza di credere in se stessa. Bravissima.
+                                        </p>
+                                        <div class="fs-18 lh-20 fw-600 text-dark-gray">Charlotte smith</div>
+                                        <span class="fs-16 lh-20">Business owner</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end slider item -->
+                        <!-- start slider item -->
+                        <div class="swiper-slide">
+                            <div class="row g-0 border-radius-6px overflow-hidden">
+                                <div class="col-sm-5 services-box-img xs-h-350px">
+                                    <div class="h-100 cover-background" style="background-image: url(/images/tritticorece.jpg)"></div>
+                                </div>
+                                <div class="col-sm-7 testimonials-box bg-white p-9 sm-p-7 box-shadow-extra-large">
+                                    <div class="testimonials-box-content">
+                                        <p class="mb-20px">Course materials were good, the mentoring approach was good and working with other people via the internet was good.</p>
+                                        <div class="fs-18 lh-20 fw-600 text-dark-gray">Herman miller</div>
+                                        <span class="fs-16 lh-20">Behavioral science</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end slider item -->
+                        <!-- start slider item -->
+                        <div class="swiper-slide">
+                            <div class="row g-0 border-radius-6px overflow-hidden">
+                                <div class="col-sm-5 services-box-img xs-h-350px">
+                                    <div class="h-100 cover-background" style="background-image: url(https://placehold.co/305x380)"></div>
+                                </div>
+                                <div class="col-sm-7 testimonials-box bg-white p-9 sm-p-7 box-shadow-extra-large">
+                                    <div class="testimonials-box-content">
+                                        <p class="mb-20px">Course materials were good, the mentoring approach was good and working with other people via the internet was good.</p>
+                                        <div class="fs-18 lh-20 fw-600 text-dark-gray">Matthew taylor</div>
+                                        <span class="fs-16 lh-20">Network security</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end slider item -->
+                    </div>
+                </div>
+                <!-- start slider navigation -->
+                <div class="swiper-button-next-nav border-radius-100px swiper-button-next bg-white box-shadow-small"><i class="feather icon-feather-chevron-right icon-extra-medium"></i></div>
+                <div class="swiper-button-previous-nav border-radius-100px swiper-button-prev bg-white box-shadow-small"><i class="feather icon-feather-chevron-left icon-extra-medium"></i></div>
+                <!-- end slider pagination -->
             </div>
         </div>
     </div>
@@ -255,174 +323,175 @@
     <div class="container">
         <div class="row align-items-center mt-8 sm-mt-40px" data-anime='{ "translateY": [0, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
             <div class="col-12">
-                <div class="bg-linen p-9 md-p-6 xs-p-9 border-radius-6px overflow-hidden position-relative">
-
-                    <div class="mb-10px">
-                        <span class="w-25px h-1px d-inline-block bg-base-color me-5px align-middle"></span>
-                        <span class="text-gradient-base-color fs-15 alt-font fw-700 ls-05px text-uppercase d-inline-block align-middle">Domande frequenti</span>
-                    </div>
-                    <h3 class="alt-font fw-600 text-dark-gray ls-minus-1px">Se hai altre domande, non esitare a contattarmi</h3>
-
-                    <div class="accordion accordion-style-02" id="accordion-style-02" data-active-icon="icon-feather-minus" data-inactive-icon="icon-feather-plus">
-
-                        <!-- start accordion item -->
-                        <div class="accordion-item active-accordion">
-                            <div class="accordion-header border-bottom border-color-transparent-dark-very-light">
-                                <a href="#" data-bs-toggle="collapse" data-bs-target="#accordion-style-02-01" aria-expanded="true" data-bs-parent="#accordion-style-02">
-                                    <div class="accordion-title mb-0 position-relative text-dark-gray pe-30px">
-                                        <i class="feather icon-feather-minus fs-20"></i>
-                                        <span class="fw-500">Quanto tempo serve per una commissione?</span>
-                                    </div>
-                                </a>
-                            </div>
-                            <div id="accordion-style-02-01" class="accordion-collapse collapse show" data-bs-parent="#accordion-style-02">
-                                <div class="accordion-body last-paragraph-no-margin border-bottom border-color-transparent-dark-very-light">
-                                    <p class="w-90 sm-w-95 xs-w-100">
-                                        Ogni opera richiede cura, tempo e presenza. La tempistica media varia da 3 a 6 settimane, in base alla complessità e alla lista d’attesa.
-                                        Sarai sempre aggiornata/o su ogni fase del processo.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end accordion item -->
-
-                        <!-- start accordion item -->
-                        <div class="accordion-item">
-                            <div class="accordion-header border-bottom border-color-transparent-dark-very-light">
-                                <a href="#" data-bs-toggle="collapse" data-bs-target="#accordion-style-02-02" aria-expanded="false" data-bs-parent="#accordion-style-02">
-                                    <div class="accordion-title mb-0 position-relative text-dark-gray pe-30px">
-                                        <i class="feather icon-feather-plus fs-20"></i>
-                                        <span class="fw-500">Posso richiedere modifiche?</span>
-                                    </div>
-                                </a>
-                            </div>
-                            <div id="accordion-style-02-02" class="accordion-collapse collapse" data-bs-parent="#accordion-style-02">
-                                <div class="accordion-body last-paragraph-no-margin border-bottom border-color-transparent-dark-very-light">
-                                    <p class="w-90 sm-w-95 xs-w-100">
-                                        Sì. Al momento del bozzetto digitale terrò conto di tutti i tuoi input prima di iniziare l’opera originale ad olio.
-                                        Durante la realizzazione ti invierò aggiornamenti e foto, così potrai seguire passo dopo passo la nascita del dipinto.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end accordion item -->
-
-                        <!-- start accordion item -->
-                        <div class="accordion-item">
-                            <div class="accordion-header border-bottom border-color-transparent-dark-very-light">
-                                <a href="#" data-bs-toggle="collapse" data-bs-target="#accordion-style-02-03" aria-expanded="false" data-bs-parent="#accordion-style-02">
-                                    <div class="accordion-title mb-0 position-relative text-dark-gray pe-30px">
-                                        <i class="feather icon-feather-plus fs-20"></i>
-                                        <span class="fw-500">Quali misure sono disponibili?</span>
-                                    </div>
-                                </a>
-                            </div>
-                            <div id="accordion-style-02-03" class="accordion-collapse collapse" data-bs-parent="#accordion-style-02">
-                                <div class="accordion-body last-paragraph-no-margin border-bottom border-color-transparent-dark-very-light">
-                                    <p class="w-90 sm-w-95 xs-w-100">
-                                        La dimensione minima è <strong>30 × 40 cm</strong>.<br>
-                                        Al momento la più grande è <strong>240 × 120 cm</strong>.<br>
-                                        Per formati personalizzati possiamo confrontarci e trovare la soluzione più adatta a te.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end accordion item -->
-
-                        <!-- start accordion item -->
-                        <div class="accordion-item">
-                            <div class="accordion-header border-bottom border-color-transparent-dark-very-light">
-                                <a href="#" data-bs-toggle="collapse" data-bs-target="#accordion-style-02-04" aria-expanded="false" data-bs-parent="#accordion-style-02">
-                                    <div class="accordion-title mb-0 position-relative text-dark-gray pe-30px">
-                                        <i class="feather icon-feather-plus fs-20"></i>
-                                        <span class="fw-500">Come viene spedita l’opera?</span>
-                                    </div>
-                                </a>
-                            </div>
-                            <div id="accordion-style-02-04" class="accordion-collapse collapse" data-bs-parent="#accordion-style-02">
-                                <div class="accordion-body last-paragraph-no-margin border-bottom border-color-transparent-dark-very-light">
-                                    <p class="w-90 sm-w-95 xs-w-100">
-                                        Ogni dipinto è accuratamente protetto e spedito in tutto il mondo. Puoi scegliere tra:
-                                    </p>
-                                    <ul class="w-90 sm-w-95 xs-w-100 mb-0">
-                                        <li>Spedizione del quadro montato (stirato sul telaio)</li>
-                                        <li>Spedizione solo della tela arrotolata in un tubo in PVC</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end accordion item -->
-
-                        <!-- start accordion item -->
-                        <div class="accordion-item">
-                            <div class="accordion-header border-bottom border-color-transparent-dark-very-light">
-                                <a href="#" data-bs-toggle="collapse" data-bs-target="#accordion-style-02-05" aria-expanded="false" data-bs-parent="#accordion-style-02">
-                                    <div class="accordion-title mb-0 position-relative text-dark-gray pe-30px">
-                                        <i class="feather icon-feather-plus fs-20"></i>
-                                        <span class="fw-500">Prezzi indicativi</span>
-                                    </div>
-                                </a>
-                            </div>
-                            <div id="accordion-style-02-05" class="accordion-collapse collapse" data-bs-parent="#accordion-style-02">
-                                <div class="accordion-body last-paragraph-no-margin border-bottom border-color-transparent-dark-very-light">
-                                    <div class="w-90 sm-w-95 xs-w-100">
-                                        <p class="mb-10px"><strong>Olio su tela</strong></p>
-                                        <ul>
-                                            <li>30 × 40 cm → 220 €</li>
-                                            <li>60 × 80 cm → 450 €</li>
-                                            <li>60 × 120 cm → 520 €</li>
-                                            <li>120 × 120 cm → 850 €</li>
-                                            <li>240 × 120 cm → 1.850 €</li>
-                                        </ul>
-                                        <p class="mb-10px"><strong>Olio su carta 300 g</strong></p>
-                                        <ul>
-                                            <li>30 × 40 cm → 150 €</li>
-                                            <li>65 × 50 cm → 300 €</li>
-                                        </ul>
-                                        <p class="mb-0">
-                                            <em>Spese di spedizione escluse.</em><br>
-                                            Se desideri un formato diverso, scrivimi: creeremo insieme la soluzione perfetta.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end accordion item -->
-
-                        <!-- start accordion item -->
-                        <div class="accordion-item">
-                            <div class="accordion-header border-bottom border-color-transparent">
-                                <a href="#" data-bs-toggle="collapse" data-bs-target="#accordion-style-02-06" aria-expanded="false" data-bs-parent="#accordion-style-02">
-                                    <div class="accordion-title mb-0 position-relative text-dark-gray pe-30px">
-                                        <i class="feather icon-feather-plus fs-20"></i>
-                                        <span class="fw-500">Modalità di pagamento</span>
-                                    </div>
-                                </a>
-                            </div>
-                            <div id="accordion-style-02-06" class="accordion-collapse collapse" data-bs-parent="#accordion-style-02">
-                                <div class="accordion-body last-paragraph-no-margin border-bottom border-color-transparent">
-                                    <div class="w-90 sm-w-95 xs-w-100">
-                                        <p class="mb-10px">Il pagamento è diviso in 3 fasi:</p>
-                                        <ul>
-                                            <li><strong>30%</strong> all’ordine – per riservare la tua commissione (non rimborsabile)</li>
-                                            <li><strong>30%</strong> all’inizio del lavoro – prima della fase di bozzetto</li>
-                                            <li><strong>40% + spedizione</strong> – entro 7 giorni dalla consegna del dipinto</li>
-                                        </ul>
-                                        <p class="mb-0">
-                                            Prima di iniziare riceverai via email un preventivo dettagliato da firmare e approvare.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end accordion item -->
-
-                    </div>
+                <div class="mb-10px">
+                    <span class="w-25px h-1px d-inline-block bg-base-color me-5px align-middle"></span>
+                    <span class="text-gradient-base-color fs-15 alt-font fw-700 ls-05px text-uppercase d-inline-block align-middle">Domande frequenti</span>
                 </div>
+                <h3 class="alt-font fw-600 text-dark-gray ls-minus-1px">Se hai altre domande, non esitare a contattarmi</h3>
+
+                <div class="accordion accordion-style-02" id="accordion-style-02" data-active-icon="icon-feather-minus" data-inactive-icon="icon-feather-plus">
+
+                    <!-- start accordion item -->
+                    <div class="accordion-item active-accordion">
+                        <div class="accordion-header border-bottom border-color-transparent-dark-very-light">
+                            <a href="#" data-bs-toggle="collapse" data-bs-target="#accordion-style-02-01" aria-expanded="true" data-bs-parent="#accordion-style-02">
+                                <div class="accordion-title mb-0 position-relative text-dark-gray pe-30px">
+                                    <i class="feather icon-feather-minus fs-20"></i>
+                                    <span class="fw-500">Quanto tempo serve per una commissione?</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div id="accordion-style-02-01" class="accordion-collapse collapse show" data-bs-parent="#accordion-style-02">
+                            <div class="accordion-body last-paragraph-no-margin border-bottom border-color-transparent-dark-very-light">
+                                <p class="w-90 sm-w-95 xs-w-100">
+                                    Ogni opera richiede cura, tempo e presenza. La tempistica media varia da 3 a 6 settimane, in base alla complessità e alla lista d’attesa.
+                                    Sarai sempre aggiornata/o su ogni fase del processo.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end accordion item -->
+
+                    <!-- start accordion item -->
+                    <div class="accordion-item">
+                        <div class="accordion-header border-bottom border-color-transparent-dark-very-light">
+                            <a href="#" data-bs-toggle="collapse" data-bs-target="#accordion-style-02-02" aria-expanded="false" data-bs-parent="#accordion-style-02">
+                                <div class="accordion-title mb-0 position-relative text-dark-gray pe-30px">
+                                    <i class="feather icon-feather-plus fs-20"></i>
+                                    <span class="fw-500">Posso richiedere modifiche?</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div id="accordion-style-02-02" class="accordion-collapse collapse" data-bs-parent="#accordion-style-02">
+                            <div class="accordion-body last-paragraph-no-margin border-bottom border-color-transparent-dark-very-light">
+                                <p class="w-90 sm-w-95 xs-w-100">
+                                    Sì. Al momento del bozzetto digitale terrò conto di tutti i tuoi input prima di iniziare l’opera originale ad olio.
+                                    Durante la realizzazione ti invierò aggiornamenti e foto, così potrai seguire passo dopo passo la nascita del dipinto.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end accordion item -->
+
+                    <!-- start accordion item -->
+                    <div class="accordion-item">
+                        <div class="accordion-header border-bottom border-color-transparent-dark-very-light">
+                            <a href="#" data-bs-toggle="collapse" data-bs-target="#accordion-style-02-03" aria-expanded="false" data-bs-parent="#accordion-style-02">
+                                <div class="accordion-title mb-0 position-relative text-dark-gray pe-30px">
+                                    <i class="feather icon-feather-plus fs-20"></i>
+                                    <span class="fw-500">Quali misure sono disponibili?</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div id="accordion-style-02-03" class="accordion-collapse collapse" data-bs-parent="#accordion-style-02">
+                            <div class="accordion-body last-paragraph-no-margin border-bottom border-color-transparent-dark-very-light">
+                                <p class="w-90 sm-w-95 xs-w-100">
+                                    La dimensione minima è <strong>30 × 40 cm</strong>.<br>
+                                    Al momento la più grande è <strong>240 × 120 cm</strong>.<br>
+                                    Per formati personalizzati possiamo confrontarci e trovare la soluzione più adatta a te.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end accordion item -->
+
+                    <!-- start accordion item -->
+                    <div class="accordion-item">
+                        <div class="accordion-header border-bottom border-color-transparent-dark-very-light">
+                            <a href="#" data-bs-toggle="collapse" data-bs-target="#accordion-style-02-04" aria-expanded="false" data-bs-parent="#accordion-style-02">
+                                <div class="accordion-title mb-0 position-relative text-dark-gray pe-30px">
+                                    <i class="feather icon-feather-plus fs-20"></i>
+                                    <span class="fw-500">Come viene spedita l’opera?</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div id="accordion-style-02-04" class="accordion-collapse collapse" data-bs-parent="#accordion-style-02">
+                            <div class="accordion-body last-paragraph-no-margin border-bottom border-color-transparent-dark-very-light">
+                                <p class="w-90 sm-w-95 xs-w-100">
+                                    Ogni dipinto è accuratamente protetto e spedito in tutto il mondo. Puoi scegliere tra:
+                                </p>
+                                <ul class="w-90 sm-w-95 xs-w-100 mb-0">
+                                    <li>Spedizione del quadro montato (stirato sul telaio)</li>
+                                    <li>Spedizione solo della tela arrotolata in un tubo in PVC</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end accordion item -->
+
+                    <!-- start accordion item -->
+                    <div class="accordion-item">
+                        <div class="accordion-header border-bottom border-color-transparent-dark-very-light">
+                            <a href="#" data-bs-toggle="collapse" data-bs-target="#accordion-style-02-05" aria-expanded="false" data-bs-parent="#accordion-style-02">
+                                <div class="accordion-title mb-0 position-relative text-dark-gray pe-30px">
+                                    <i class="feather icon-feather-plus fs-20"></i>
+                                    <span class="fw-500">Prezzi indicativi</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div id="accordion-style-02-05" class="accordion-collapse collapse" data-bs-parent="#accordion-style-02">
+                            <div class="accordion-body last-paragraph-no-margin border-bottom border-color-transparent-dark-very-light">
+                                <div class="w-90 sm-w-95 xs-w-100">
+                                    <p class="mb-10px"><strong>Olio su tela</strong></p>
+                                    <ul>
+                                        <li>30 × 40 cm → 220 €</li>
+                                        <li>60 × 80 cm → 450 €</li>
+                                        <li>60 × 120 cm → 520 €</li>
+                                        <li>120 × 120 cm → 850 €</li>
+                                        <li>240 × 120 cm → 1.850 €</li>
+                                    </ul>
+                                    <p class="mb-10px"><strong>Olio su carta 300 g</strong></p>
+                                    <ul>
+                                        <li>30 × 40 cm → 150 €</li>
+                                        <li>65 × 50 cm → 300 €</li>
+                                    </ul>
+                                    <p class="mb-0">
+                                        <em>Spese di spedizione escluse.</em><br>
+                                        Se desideri un formato diverso, scrivimi: creeremo insieme la soluzione perfetta.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end accordion item -->
+
+                    <!-- start accordion item -->
+                    <div class="accordion-item">
+                        <div class="accordion-header border-bottom border-color-transparent">
+                            <a href="#" data-bs-toggle="collapse" data-bs-target="#accordion-style-02-06" aria-expanded="false" data-bs-parent="#accordion-style-02">
+                                <div class="accordion-title mb-0 position-relative text-dark-gray pe-30px">
+                                    <i class="feather icon-feather-plus fs-20"></i>
+                                    <span class="fw-500">Modalità di pagamento</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div id="accordion-style-02-06" class="accordion-collapse collapse" data-bs-parent="#accordion-style-02">
+                            <div class="accordion-body last-paragraph-no-margin border-bottom border-color-transparent">
+                                <div class="w-90 sm-w-95 xs-w-100">
+                                    <p class="mb-10px">Il pagamento è diviso in 3 fasi:</p>
+                                    <ul>
+                                        <li><strong>30%</strong> all’ordine – per riservare la tua commissione (non rimborsabile)</li>
+                                        <li><strong>30%</strong> all’inizio del lavoro – prima della fase di bozzetto</li>
+                                        <li><strong>40% + spedizione</strong> – entro 7 giorni dalla consegna del dipinto</li>
+                                    </ul>
+                                    <p class="mb-0">
+                                        Prima di iniziare riceverai via email un preventivo dettagliato da firmare e approvare.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end accordion item -->
+
+                </div>
+            </div>
+            <div class="col-12">
+                <img src="/images/falborsmock.jpg" alt="">
             </div>
         </div>
     </div>
 </section>
+
 @include('inc.front.footer')
 <!-- javascript libraries -->
 <script type="text/javascript" src="/js/jquery.js"></script>
