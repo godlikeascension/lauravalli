@@ -10,7 +10,7 @@
     <meta name="author" content="Luca Dei Rossi">
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <!-- favicon icon -->
-    <link rel="shortcut icon" href="images/favicon.png">
+    <link rel="shortcut icon" href="/images/favicon.png">
     <!-- google fonts preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
