@@ -44,7 +44,7 @@ class ContactController extends Controller
         ]);
 
         // indirizzo email a cui inviare la richiesta di commissione
-        $toEmail = 'luca.deirossi91@gmail.com'; // CAMBIA con l'email dell'artista
+        $toEmail = 'lauravalliart@gmail.com'; // CAMBIA con l'email dell'artista
 
         Mail::send('emails.commissione', ['data' => $data], function ($message) use ($toEmail, $data) {
             $message->to($toEmail)
