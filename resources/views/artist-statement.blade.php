@@ -80,10 +80,10 @@
                     dell’essere umano.<br>
                     Affascinata dallo spirito espressivo del Rinascimento, concentra la sua
                     ricerca sui moti dell’anima, traducendoli in pennellate marcate, colori
-                    simbolici e una fusione tra figurativo e astratto.<br>
+                    simbolici e una fusione tra figurativo e astratto.<br><br>
                     I suoi soggetti - bambini, animali e volti non sempre definiti - emergono
                     come specchi interiori, richiamando emozioni che la società tende a
-                    reprimere.<br>
+                    reprimere.<br><br>
                     Le sue opere, che definisce psicologiche, nascono da un processo di ascolto
                     profondo e invitano l’osservatore a riconnettersi con la propria autenticità,
                     trasformando fragilità e dolore in forza espressiva.
