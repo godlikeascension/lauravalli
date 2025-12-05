@@ -139,8 +139,6 @@
             </div>
             <div class="col-lg-10 mb-6 sm-mb-35px last-paragraph-no-margin text-center">
                 <img src="/images/about6.jpg" style="border-radius: 20px;" class="mb-20px" alt="">
-                <p class="pb-20px alt-font fs-14 text-uppercase">Laura Valli</p>
-                <div class="h-1px w-100 bg-extra-medium-gray"></div>
             </div>
         </div>
     </div>
