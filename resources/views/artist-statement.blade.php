@@ -69,9 +69,7 @@
                 </div>
             </div>
             <div class="col-lg-10 mb-6 sm-mb-35px last-paragraph-no-margin text-center">
-                <img src="/images/innocenza-sospesa.jpg" style="border-radius: 20px;" class="mb-20px" alt="">
-                <p class="pb-20px alt-font fs-14 text-uppercase">Innocenza Sospesa</p>
-                <div class="h-1px w-100 bg-extra-medium-gray"></div>
+                <img src="/images/about1.jpg" style="border-radius: 20px;" class="mb-20px" alt="">
             </div>
             <div class="col-lg-10 mb-6 sm-mb-35px last-paragraph-no-margin">
                 <h3 class="alt-font text-dark-gray fw-600 ls-minus-1px w-95 md-w-100">Biografia</h3>
@@ -95,14 +93,10 @@
             <div class="col-lg-10 mb-6 sm-mb-35px">
                 <div class="row">
                     <div class="col-md-6 sm-mb-30px text-center">
-                        <img style="border-radius: 20px;" class="mb-20px" src="/images/respiro.jpg" alt="">
-                        <p class="alt-font fs-14 text-uppercase">Respiro</p>
-                        <div class="h-1px w-100 bg-extra-medium-gray"></div>
+                        <img style="border-radius: 20px;" class="mb-20px" src="/images/about4.jpg" alt="">
                     </div>
                     <div class="col-md-6 text-center">
-                        <img style="border-radius: 20px;" class="mb-20px" src="/images/oltre-vuoto-norm.jpg" alt="">
-                        <p class="alt-font fs-14 text-uppercase">Oltre il vuoto</p>
-                        <div class="h-1px w-100 bg-extra-medium-gray"></div>
+                        <img style="border-radius: 20px;" class="mb-20px" src="/images/about5.jpg" alt="">
                     </div>
                 </div>
             </div>
@@ -144,7 +138,7 @@
                 </p>
             </div>
             <div class="col-lg-10 mb-6 sm-mb-35px last-paragraph-no-margin text-center">
-                <img src="/images/lau2test.jpg" style="border-radius: 20px;" class="mb-20px" alt="">
+                <img src="/images/about6.jpg" style="border-radius: 20px;" class="mb-20px" alt="">
                 <p class="pb-20px alt-font fs-14 text-uppercase">Laura Valli</p>
                 <div class="h-1px w-100 bg-extra-medium-gray"></div>
             </div>
