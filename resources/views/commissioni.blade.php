@@ -24,6 +24,12 @@
     <meta property="og:image" content="/images/innocenza-sospesa.jpg">
     <meta property="og:image:width" content="967">
     <meta property="og:image:height" content="1000">
+    <style>
+        .select:after {
+            top: 70% !important;
+        }
+    </style>
+
 </head>
 <body data-mobile-nav-trigger-alignment="right" data-mobile-nav-style="modern" data-mobile-nav-bg-color="#1d1d1d">
 @include('inc.front.header')
@@ -215,100 +221,191 @@
         <div class="row">
             <div class="col-12 md-mb-50px">
                 <h3 class="alt-font fw-700 ls-minus-1px text-dark-gray mb-20px">Pronto a iniziare?</h3>
-                <p class="mb-30px">Compila il formulario di seguito, sarà un piacere accompagnarti in questo
-                    processo!</p>
+                <p class="mb-30px">Compila il formulario di seguito, sarà un piacere accompagnarti in questo processo!</p>
             </div>
+
             <div class="col-12">
                 <div class="contact-form-style-05">
+
+                    {{-- messaggi di successo --}}
+                    @if(session('success'))
+                        <div class="alert alert-success alert-dismissible fade show mb-3" role="alert">
+                            {{ session('success') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    @endif
+
                     <!-- start contact form -->
-                    <form action="email-templates/contact-form.php" method="post">
+                    <form id="commissioni-form"
+                          action="{{ route('commissioni.send') }}"
+                          method="post">
+                        @csrf
+
                         <div class="row justify-content-center">
+
+                            {{-- TRASMETTERE --}}
                             <div class="col-md-6">
                                 <div class="mb-20px select">
-                                    <select class="form-control border-color-transparent-dark-very-light bg-transparent" name="select">
-                                        <option value="">Cosa ti piacerebbe che questa opera trasmettesse?</option>
-                                        <option value="Haircut">Forza e rinascita</option>
-                                        <option value="Hair styling">Tenerezza e dolcezza</option>
-                                        <option value="Shaving">Mistero e introspezione</option>
-                                        <option value="Beard sculpting">Non lo so ancora</option>
+                                    <label class="form-label alt-font fs-14 text-dark-gray">
+                                        Cosa ti piacerebbe che questa opera trasmettesse?
+                                    </label>
+                                    <select class="form-control border-color-transparent-dark-very-light bg-transparent @error('trasmettere') is-invalid @enderror"
+                                            name="trasmettere"
+                                            required>
+                                        <option value="">Seleziona un'opzione</option>
+                                        <option value="Forza e rinascita" {{ old('trasmettere') == 'Forza e rinascita' ? 'selected' : '' }}>Forza e rinascita</option>
+                                        <option value="Tenerezza e dolcezza" {{ old('trasmettere') == 'Tenerezza e dolcezza' ? 'selected' : '' }}>Tenerezza e dolcezza</option>
+                                        <option value="Mistero e introspezione" {{ old('trasmettere') == 'Mistero e introspezione' ? 'selected' : '' }}>Mistero e introspezione</option>
+                                        <option value="Non lo so ancora" {{ old('trasmettere') == 'Non lo so ancora' ? 'selected' : '' }}>Non lo so ancora</option>
                                     </select>
+
+                                    @error('trasmettere')
+                                    <small class="text-danger">{{ $message }}</small>
+                                    @enderror
                                 </div>
                             </div>
+
+                            {{-- RAFFIGURARE --}}
                             <div class="col-md-6">
                                 <div class="mb-20px select">
-                                    <select class="form-control border-color-transparent-dark-very-light bg-transparent" name="select">
-                                        <option value="">Cosa desideri che questa opera raffiguri?</option>
-                                        <option value="Haircut">Un tema astratto</option>
-                                        <option value="Hair styling">Un ritratto di una persona</option>
-                                        <option value="Shaving">Un ritratto di animale</option>
-                                        <option value="Shaving">Un paesaggio</option>
-                                        <option value="Beard sculpting">Non lo so ancora</option>
+                                    <label class="form-label alt-font fs-14 text-dark-gray">
+                                        Cosa desideri che questa opera raffiguri?
+                                    </label>
+                                    <select class="form-control border-color-transparent-dark-very-light bg-transparent @error('raffigurare') is-invalid @enderror"
+                                            name="raffigurare"
+                                            required>
+                                        <option value="">Seleziona un'opzione</option>
+                                        <option value="Tema astratto" {{ old('raffigurare') == 'Tema astratto' ? 'selected' : '' }}>Un tema astratto</option>
+                                        <option value="Ritratto persona" {{ old('raffigurare') == 'Ritratto persona' ? 'selected' : '' }}>Un ritratto di una persona</option>
+                                        <option value="Ritratto animale" {{ old('raffigurare') == 'Ritratto animale' ? 'selected' : '' }}>Un ritratto di animale</option>
+                                        <option value="Paesaggio" {{ old('raffigurare') == 'Paesaggio' ? 'selected' : '' }}>Un paesaggio</option>
+                                        <option value="Non lo so ancora" {{ old('raffigurare') == 'Non lo so ancora' ? 'selected' : '' }}>Non lo so ancora</option>
                                     </select>
+
+                                    @error('raffigurare')
+                                    <small class="text-danger">{{ $message }}</small>
+                                    @enderror
                                 </div>
                             </div>
+
+                            {{-- COLORI --}}
                             <div class="col-md-6">
                                 <div class="mb-20px select">
-                                    <select class="form-control border-color-transparent-dark-very-light bg-transparent" name="select">
-                                        <option value="">Ci sono colori, che vorresti predominassero?</option>
-                                        <option value="Haircut">Tonalità calde e avvolgenti</option>
-                                        <option value="Hair styling">Colori freddi e profondi</option>
-                                        <option value="Shaving">Entrambi</option>
-                                        <option value="Beard sculpting">Non lo so ancora</option>
+                                    <label class="form-label alt-font fs-14 text-dark-gray">
+                                        Ci sono colori che vorresti predominassero?
+                                    </label>
+                                    <select class="form-control border-color-transparent-dark-very-light bg-transparent @error('colori') is-invalid @enderror"
+                                            name="colori"
+                                            required>
+                                        <option value="">Seleziona un'opzione</option>
+                                        <option value="Tonalità calde e avvolgenti" {{ old('colori') == 'Tonalità calde e avvolgenti' ? 'selected' : '' }}>Tonalità calde e avvolgenti</option>
+                                        <option value="Colori freddi e profondi" {{ old('colori') == 'Colori freddi e profondi' ? 'selected' : '' }}>Colori freddi e profondi</option>
+                                        <option value="Entrambi" {{ old('colori') == 'Entrambi' ? 'selected' : '' }}>Entrambi</option>
+                                        <option value="Non lo so ancora" {{ old('colori') == 'Non lo so ancora' ? 'selected' : '' }}>Non lo so ancora</option>
                                     </select>
+
+                                    @error('colori')
+                                    <small class="text-danger">{{ $message }}</small>
+                                    @enderror
                                 </div>
                             </div>
+
+                            {{-- DESTINAZIONE --}}
                             <div class="col-md-6">
                                 <div class="mb-20px select">
-                                    <select class="form-control border-color-transparent-dark-very-light bg-transparent" name="select">
-                                        <option value="">A chi è destinata quest’opera?</option>
-                                        <option value="Haircut">Forza e rinascita</option>
-                                        <option value="Hair styling">Tenerezza e dolcezza</option>
-                                        <option value="Shaving">Mistero e introspezione</option>
-                                        <option value="Beard sculpting">Non lo so ancora</option>
+                                    <label class="form-label alt-font fs-14 text-dark-gray">
+                                        A chi è destinata quest’opera?
+                                    </label>
+                                    <select class="form-control border-color-transparent-dark-very-light bg-transparent @error('destinazione') is-invalid @enderror"
+                                            name="destinazione"
+                                            required>
+                                        <option value="">Seleziona un'opzione</option>
+                                        <option value="A me stessa/o" {{ old('destinazione') == 'A me stessa/o' ? 'selected' : '' }}>A me stessa/o</option>
+                                        <option value="A una persona cara" {{ old('destinazione') == 'A una persona cara' ? 'selected' : '' }}>A una persona cara</option>
+                                        <option value="Studio o luogo di lavoro" {{ old('destinazione') == 'Studio o luogo di lavoro' ? 'selected' : '' }}>Studio/lavoro</option>
+                                        <option value="Non lo so ancora" {{ old('destinazione') == 'Non lo so ancora' ? 'selected' : '' }}>Non lo so ancora</option>
                                     </select>
+
+                                    @error('destinazione')
+                                    <small class="text-danger">{{ $message }}</small>
+                                    @enderror
                                 </div>
                             </div>
+
+                            {{-- MOTIVO --}}
                             <div class="col-md-6">
                                 <div class="mb-20px select">
-                                    <select class="form-control border-color-transparent-dark-very-light bg-transparent" name="select">
-                                        <option value="">A chi è destinata quest’opera?</option>
-                                        <option value="Haircut">A me stessa/o</option>
-                                        <option value="Hair styling">A una persona cara (è un regalo)</option>
-                                        <option value="Shaving">A uno studio o luogo di lavoro</option>
-                                        <option value="Beard sculpting">Non lo so ancora</option>
+                                    <label class="form-label alt-font fs-14 text-dark-gray">
+                                        Cosa ti ha spinto a richiedere un’opera su misura?
+                                    </label>
+                                    <select class="form-control border-color-transparent-dark-very-light bg-transparent @error('motivo') is-invalid @enderror"
+                                            name="motivo"
+                                            required>
+                                        <option value="">Seleziona un'opzione</option>
+                                        <option value="Qualcosa che mi rappresenti" {{ old('motivo') == 'Qualcosa che mi rappresenti' ? 'selected' : '' }}>Qualcosa che mi rappresenti</option>
+                                        <option value="Significato profondo" {{ old('motivo') == 'Significato profondo' ? 'selected' : '' }}>Significato profondo</option>
+                                        <option value="Regalo unico" {{ old('motivo') == 'Regalo unico' ? 'selected' : '' }}>Regalo unico</option>
+                                        <option value="Ispirato dal tuo lavoro" {{ old('motivo') == 'Ispirato dal tuo lavoro' ? 'selected' : '' }}>Ispirato dal tuo lavoro</option>
+                                        <option value="Impulso" {{ old('motivo') == 'Impulso' ? 'selected' : '' }}>Impulso</option>
                                     </select>
+
+                                    @error('motivo')
+                                    <small class="text-danger">{{ $message }}</small>
+                                    @enderror
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="mb-20px select">
-                                    <select class="form-control border-color-transparent-dark-very-light bg-transparent" name="select">
-                                        <option value="">Cosa ti ha spinto a richiedere un’opera su misura?</option>
-                                        <option value="Haircut">Sentivo il bisogno di qualcosa che mi rappresentasse</option>
-                                        <option value="Hair styling">Desidero un’opera con un significato profondo</option>
-                                        <option value="Shaving">Voglio fare un regalo unico</option>
-                                        <option value="Shaving">Mi ha ispirato il tuo lavoro</option>
-                                        <option value="Beard sculpting">Non lo so, è stato un impulso</option>
-                                    </select>
-                                </div>
-                            </div>
+
+                            <div class="col-md-6"></div>
+
+                            {{-- NOME --}}
                             <div class="col-md-3 sm-mb-20px">
-                                <input class="mb-20px border-color-transparent-dark-very-light form-control bg-transparent required" type="text" name="nome" placeholder="Inserisci il tuo nome*" />
+                                <label class="form-label alt-font fs-14 text-dark-gray">Nome</label>
+                                <input class="mb-20px border-color-transparent-dark-very-light form-control bg-transparent required @error('nome') is-invalid @enderror"
+                                       type="text"
+                                       name="nome"
+                                       value="{{ old('nome') }}"
+                                       required />
+                                @error('nome')
+                                <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
+
+                            {{-- TELEFONO --}}
                             <div class="col-md-3 sm-mb-20px">
-                                <input class="mb-20px border-color-transparent-dark-very-light form-control bg-transparent required" type="text" name="tel" placeholder="Inserisci il tuo telefono*" />
+                                <label class="form-label alt-font fs-14 text-dark-gray">Telefono</label>
+                                <input class="mb-20px border-color-transparent-dark-very-light form-control bg-transparent required @error('telefono') is-invalid @enderror"
+                                       type="text"
+                                       name="telefono"
+                                       value="{{ old('telefono') }}"
+                                       required />
+                                @error('telefono')
+                                <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
+
+                            {{-- EMAIL --}}
                             <div class="col-md-3 sm-mb-20px">
-                                <input class="mb-20px border-color-transparent-dark-very-light form-control bg-transparent required" type="email" name="email" placeholder="Inserisci la tua email*" />
+                                <label class="form-label alt-font fs-14 text-dark-gray">Email</label>
+                                <input class="mb-20px border-color-transparent-dark-very-light form-control bg-transparent required @error('email') is-invalid @enderror"
+                                       type="email"
+                                       name="email"
+                                       value="{{ old('email') }}"
+                                       required />
+                                @error('email')
+                                <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
-                            <div class="col-md-3">
-                                <input class="bg-transparent" type="hidden" name="redirect" value="">
-                                <button class="btn btn-large btn-round-edge btn-box-shadow btn-switch-text btn-dark-gray left-icon submit w-100" type="submit">
-                                        <span>
-                                            <span><i class="feather icon-feather-calendar"></i></span>
-                                            <span class="btn-double-text" data-text="Crea la tua arte">Crea la tua arte</span>
-                                        </span>
+
+                            {{-- SUBMIT --}}
+                            <div class="col-md-3 mt-40px">
+                                <button class="btn btn-large btn-round-edge btn-box-shadow btn-switch-text btn-dark-gray left-icon w-100"
+                                        type="submit">
+                                    <span>
+                                        <span class="btn-double-text" data-text="Crea la tua arte">Crea la tua arte</span>
+                                    </span>
                                 </button>
                             </div>
+
                         </div>
                     </form>
                     <!-- end contact form -->
@@ -317,6 +414,8 @@
         </div>
     </div>
 </section>
+
+
 <section>
     <div class="container">
         <div class="row align-items-center mt-8 sm-mt-40px" data-anime='{ "translateY": [0, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
@@ -509,5 +608,7 @@
         });
     });
 </script>
+
+
 </body>
 </html>

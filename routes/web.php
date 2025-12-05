@@ -11,6 +11,12 @@ use App\Models\Opera;
 // Form contatti
 // -----------------------------
 Route::post('/contatti', [ContactController::class, 'send'])->name('contatti.send');
+Route::post('/commissioni-form', [ContactController::class, 'sendCommissione'])
+    ->name('commissioni.send');
+Route::get('/commissioni/grazie', function () {
+    return view('commissioni-grazie');
+})->name('commissioni.grazie');
+
 
 // -----------------------------
 // Pagine pubbliche sito
