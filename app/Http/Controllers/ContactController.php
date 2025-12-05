@@ -52,7 +52,9 @@ class ContactController extends Controller
                 ->subject('Nuova richiesta opera su commissione');
         });
 
-        return back()->with('success', 'La tua richiesta è stata inviata con successo. Ti risponderò al più presto.');
+        return redirect()->route('commissioni.grazie');
+
+
     }
 
 }
