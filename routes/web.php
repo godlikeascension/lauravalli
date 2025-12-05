@@ -27,6 +27,9 @@ Route::get('/', function () {
 Route::get('/commissioni', function () {
     return view('commissioni');
 });
+Route::get('/artist-statement', function () {
+    return view('artist-statement');
+});
 
 // -----------------------------
 // Autenticazione
