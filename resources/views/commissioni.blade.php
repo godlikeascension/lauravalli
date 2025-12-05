@@ -363,6 +363,7 @@
                                 <input class="mb-20px border-color-transparent-dark-very-light form-control bg-transparent required @error('nome') is-invalid @enderror"
                                        type="text"
                                        name="nome"
+                                       name="nome"
                                        value="{{ old('nome') }}"
                                        required />
                                 @error('nome')
