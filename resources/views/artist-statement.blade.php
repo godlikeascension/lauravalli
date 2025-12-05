@@ -33,7 +33,7 @@
 <section>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-10 mb-6 sm-mb-35px last-paragraph-no-margin text-center">
+            <div class="col-lg-10 mb-6 sm-mb-35px last-paragraph-no-margin text-center" style="padding-top:100px;">
                 <img src="/images/atfas.jpg" style="border-radius: 20px;" class="mb-20px" alt="">
             </div>
             <div class="col-lg-10 mb-6 sm-mb-35px">
