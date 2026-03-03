@@ -239,7 +239,7 @@
     $hasMultiple = $imgCount > 1;
 @endphp
 
-<section class="ipad-top-space-margin" style="padding-top: 70px; padding-bottom: 110px;">
+<section class="big-section ipad-top-space-margin" style="padding-bottom: 110px;">
     <div class="container">
 
 
