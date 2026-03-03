@@ -29,7 +29,7 @@
 @include('inc.front.header')
 
 <!-- start section -->
-<section class=”ipad-top-space-margin pb-0”>
+<section>
     <div class=”container”>
         <div class=”row justify-content-center”>
             {!! $contenuto !!}
