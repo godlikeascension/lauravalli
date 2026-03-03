@@ -332,37 +332,30 @@
         </div>
         <!-- end stack item -->
         <!-- start stack item -->
-{{--        <div class="stack-item stack-item-03 bg-ocra lg-pt-8 md-pb-0 md-pt-0">--}}
-{{--            <div class="stack-item-wrapper">--}}
-{{--                <div class="container-fluid">--}}
-{{--                    <div class="row align-items-center full-screen md-h-auto">--}}
-{{--                        <div class="col-lg-6 cover-background overflow-visible h-100 md-h-500px" style="background-image: url(/images/opera2.jpg)">--}}
-{{--                            <div class="position-absolute right-0px bottom-minus-1px">--}}
-{{--                                <div class="vertical-title-center">--}}
-{{--                                    <div class="title fw-700 fs-15 alt-font text-uppercase text-dark-gray bg-white pt-30px pb-30px ps-10px pe-10px">--}}
-{{--                                        <span class="d-inline-block">Latest projects</span>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="col-lg-6 ps-12 pe-14 xxl-ps-10 xxl-pe-10 xl-pe-8 lg-ps-6 lg-pe-4 md-p-50px sm-ps-30px sm-pe-30px sm-pb-0 position-relative align-self-center text-md-start text-center">--}}
-{{--                            <div class="mb-15px">--}}
-{{--                                <span class="w-25px h-1px d-inline-block bg-base-color me-5px align-middle"></span>--}}
-{{--                                <span class="text-gradient-base-color fs-15 alt-font fw-700 ls-05px text-uppercase d-inline-block align-middle">Branding and design</span>--}}
-{{--                            </div>--}}
-{{--                            <h1 class="text-dark-gray alt-font fw-600 ls-minus-4px mb-25px">Decorator hard carpet.</h1>--}}
-{{--                            <p class="w-95 md-w-100 mb-35px">Creating products with a strong identity. Provide brilliant ideas and adding the world called success brand. We deliver customized marketing campaign to use your audience to make a positive move.</p>--}}
-{{--                            <a href="demo-branding-agency-single-project-slider.html" class="btn btn-large btn-dark-gray btn-switch-text btn-box-shadow fw-400">--}}
-{{--                                        <span>--}}
-{{--                                            <span class="btn-double-text" data-text="Explore project">Explore project</span>--}}
-{{--                                            <span><i class="feather icon-feather-arrow-right"></i></span>--}}
-{{--                                        </span>--}}
-{{--                            </a>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
+        <div class="stack-item stack-item-03 bg-ocra lg-pt-8 md-pb-0 md-pt-0">
+            <div class="stack-item-wrapper">
+                <div class="container-fluid">
+                    <div class="row align-items-center full-screen md-h-auto">
+                        <div class="col-lg-6 cover-background overflow-visible h-100 md-h-500px" style="background-image: url(/images/opera2.jpg)">
+                        </div>
+                        <div class="col-lg-6 ps-12 pe-14 xxl-ps-10 xxl-pe-10 xl-pe-8 lg-ps-6 lg-pe-4 md-p-50px sm-ps-30px sm-pe-30px sm-pb-0 position-relative align-self-center text-md-start text-center">
+                            <div class="mb-15px">
+                                <span class="w-25px h-1px d-inline-block bg-base-color me-5px align-middle"></span>
+                                <span class="text-gradient-base-color fs-15 alt-font fw-700 ls-05px text-uppercase d-inline-block align-middle">Le Opere</span>
+                            </div>
+                            <h2 class="text-dark-gray alt-font fw-600 ls-minus-4px mb-25px">Ogni dipinto racconta una storia che aspetta di incontrare la tua</h2>
+                            <p class="w-95 md-w-100 mb-35px">Esplora le collezioni e lasciati guidare dalle emozioni. Ogni opera nasce da un momento vissuto, da un'emozione autentica, da un desiderio di lasciare un segno. Forse una di esse parla già di te.</p>
+                            <a href="/opere" class="btn btn-large btn-dark-gray btn-switch-text btn-box-shadow fw-400">
+                                        <span>
+                                            <span class="btn-double-text" data-text="Esplora le opere">Esplora le opere</span>
+                                            <span><i class="feather icon-feather-arrow-right"></i></span>
+                                        </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- end stack item -->
     </div>
 </section>
