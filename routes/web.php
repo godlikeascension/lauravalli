@@ -48,6 +48,13 @@ Route::get('/opere', function () {
 // Redirect vecchio URL per backward compatibility
 Route::redirect('/collezioni', '/opere', 301);
 
+Route::get('/opera/{slug}', function (string $slug) {
+    $opera = Opera::where('slug', $slug)
+        ->with(['immagini', 'collezione'])
+        ->firstOrFail();
+    return view('opera', compact('opera'));
+})->name('opera.show');
+
 // -----------------------------
 // Autenticazione
 // -----------------------------

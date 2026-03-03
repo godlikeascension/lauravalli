@@ -237,6 +237,15 @@
                                                 </button>
                                             </div>
                                         @endif
+
+                                        {{-- Detail page link --}}
+                                        <div class="mt-10px">
+                                            <a href="{{ route('opera.show', $opera->slug) }}"
+                                               class="btn btn-very-small btn-transparent-light-gray border-1 btn-rounded d-inline-flex align-items-center">
+                                                <span>Scopri l'opera</span>
+                                                <i class="feather icon-feather-arrow-right ms-5px"></i>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
