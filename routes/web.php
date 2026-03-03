@@ -38,12 +38,15 @@ Route::get('/artist-statement', function () {
     $contenuto = Impostazione::get('artist_statement');
     return view('artist-statement', compact('contenuto'));
 });
-Route::get('/collezioni', function () {
+Route::get('/opere', function () {
     $collezioni = Collezione::with('opere')
         ->orderByRaw('is_default DESC, nome ASC')
         ->get();
     return view('collezioni-pubblica', compact('collezioni'));
 })->name('collezioni.pubblica');
+
+// Redirect vecchio URL per backward compatibility
+Route::redirect('/collezioni', '/opere', 301);
 
 // -----------------------------
 // Autenticazione
