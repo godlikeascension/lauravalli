@@ -226,7 +226,7 @@
                                         @endif
 
                                         {{-- Buttons wrapper --}}
-                                        <div class="mt-28px mt-md-28px">
+                                        <div style="margin-top: 20px;">
                                             @if($opera->immagine)
                                                 <div class="d-md-none d-grid mb-15px">
                                                     <button type="button"
