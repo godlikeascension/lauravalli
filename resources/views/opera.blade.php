@@ -232,18 +232,6 @@
 <section class="ipad-top-space-margin" style="padding-top: 70px; padding-bottom: 110px;">
     <div class="container">
 
-        {{-- Breadcrumb --}}
-        <nav class="opera-breadcrumb alt-font fs-13 text-muted mb-45px d-none d-md-block" aria-label="breadcrumb">
-            <a href="/">Home</a>
-            <span class="sep">·</span>
-            <a href="/opere">Opere</a>
-            @if($opera->collezione)
-                <span class="sep">·</span>
-                <span>{{ $opera->collezione->nome }}</span>
-            @endif
-            <span class="sep">·</span>
-            <span class="text-dark-gray">{{ $opera->titolo }}</span>
-        </nav>
 
         <div class="row gx-5 gy-5 align-items-start">
 
