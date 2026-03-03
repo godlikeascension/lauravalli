@@ -233,7 +233,7 @@
                                 {{-- Buttons wrapper: more space on desktop, zoom only on mobile --}}
                                 <div class="mt-16px mt-md-22px">
                                     @if($opera->immagine)
-                                        <div class="d-md-none mb-8px">
+                                        <div class="d-md-none mb-15px">
                                             <button type="button"
                                                     class="btn btn-very-small btn-dark-gray btn-rounded d-inline-flex align-items-center"
                                                     data-image="{{ asset('storage/' . $opera->immagine) }}"
