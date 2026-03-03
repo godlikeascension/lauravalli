@@ -121,6 +121,8 @@ class AdminController extends Controller
             'venduto'          => 'nullable|boolean',
             'larghezza_cm'     => 'nullable|numeric|min:0',
             'altezza_cm'       => 'nullable|numeric|min:0',
+            'opera_type'       => 'nullable|string|max:255',
+            'year'             => 'nullable|integer|min:1800|max:2100',
             'descrizione_html' => 'nullable|string',
             'commissione'      => 'nullable|boolean',
             'collezione_id'    => 'nullable|exists:collezioni,id',
@@ -139,6 +141,8 @@ class AdminController extends Controller
             'venduto'          => $request->boolean('venduto'),
             'larghezza_cm'     => $data['larghezza_cm'] ?? null,
             'altezza_cm'       => $data['altezza_cm'] ?? null,
+            'opera_type'       => $data['opera_type'] ?? null,
+            'year'             => $data['year'] ?? null,
             'descrizione_html' => $data['descrizione_html'] ?? null,
             'commissione'      => $request->boolean('commissione'),
             'collezione_id'    => $data['collezione_id'] ?? null,
@@ -195,6 +199,8 @@ class AdminController extends Controller
             'venduto'          => 'nullable|boolean',
             'larghezza_cm'     => 'nullable|numeric|min:0',
             'altezza_cm'       => 'nullable|numeric|min:0',
+            'opera_type'       => 'nullable|string|max:255',
+            'year'             => 'nullable|integer|min:1800|max:2100',
             'descrizione_html' => 'nullable|string',
             'commissione'      => 'nullable|boolean',
             'collezione_id'    => 'nullable|exists:collezioni,id',
@@ -210,6 +216,8 @@ class AdminController extends Controller
         $opera->venduto          = $request->boolean('venduto');
         $opera->larghezza_cm     = $data['larghezza_cm'] ?? null;
         $opera->altezza_cm       = $data['altezza_cm'] ?? null;
+        $opera->opera_type       = $data['opera_type'] ?? null;
+        $opera->year             = $data['year'] ?? null;
         $opera->descrizione_html = $data['descrizione_html'] ?? null;
         $opera->commissione      = $request->boolean('commissione');
         $opera->collezione_id    = $data['collezione_id'] ?? null;

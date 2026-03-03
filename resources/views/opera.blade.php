@@ -256,15 +256,11 @@
             <h1 class="alt-font fw-600 text-dark-gray ls-minus-2px mb-8px">
                 {{ $opera->titolo }}
             </h1>
-            @if($opera->dimensioni || $opera->commissione)
-                <div class="d-flex flex-wrap gap-3">
-                    @if($opera->dimensioni)
-                        <span class="text-muted alt-font fs-14">{{ $opera->dimensioni }}</span>
-                    @endif
-                    @if($opera->commissione)
-                        <span class="text-muted alt-font fs-13">&middot; Opera su commissione</span>
-                    @endif
-                </div>
+            @if($opera->meta)
+                <p class="text-muted alt-font fs-14 mb-0">{{ $opera->meta }}</p>
+            @endif
+            @if($opera->commissione)
+                <p class="text-muted alt-font fs-13 mb-0">Opera su commissione</p>
             @endif
         </div>
 
@@ -339,15 +335,11 @@
                         <h1 class="alt-font fw-600 text-dark-gray ls-minus-2px mb-10px">
                             {{ $opera->titolo }}
                         </h1>
-                        @if($opera->dimensioni || $opera->commissione)
-                            <div class="d-flex flex-wrap gap-3 mb-0">
-                                @if($opera->dimensioni)
-                                    <span class="text-muted alt-font fs-14">{{ $opera->dimensioni }}</span>
-                                @endif
-                                @if($opera->commissione)
-                                    <span class="text-muted alt-font fs-13">&middot; Opera su commissione</span>
-                                @endif
-                            </div>
+                        @if($opera->meta)
+                            <p class="text-muted alt-font fs-14 mb-0">{{ $opera->meta }}</p>
+                        @endif
+                        @if($opera->commissione)
+                            <p class="text-muted alt-font fs-13 mb-0">Opera su commissione</p>
                         @endif
                         <hr class="info-divider">
                     </div>

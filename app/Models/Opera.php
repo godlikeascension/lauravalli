@@ -17,6 +17,8 @@ class Opera extends Model
         'venduto',
         'larghezza_cm',
         'altezza_cm',
+        'opera_type',
+        'year',
         'descrizione_html',
         'commissione',
         'collezione_id',
@@ -28,6 +30,7 @@ class Opera extends Model
         'prezzo'        => 'decimal:2',
         'larghezza_cm'  => 'decimal:2',
         'altezza_cm'    => 'decimal:2',
+        'year'          => 'integer',
         'collezione_id' => 'integer',
     ];
 
@@ -76,7 +79,7 @@ class Opera extends Model
         return $this->hasMany(OperaImmagine::class);
     }
 
-    // Accessor comodo per mostrare dimensioni formattate "L x H cm"
+    // Dimensioni formattate "L x H cm"
     public function getDimensioniAttribute(): ?string
     {
         if ($this->larghezza_cm && $this->altezza_cm) {
@@ -85,5 +88,17 @@ class Opera extends Model
         }
 
         return null;
+    }
+
+    // Meta line: "Olio su tela 300gr - 30 x 40 cm - Anno 2025"
+    public function getMetaAttribute(): ?string
+    {
+        $parts = array_filter([
+            $this->opera_type ?: null,
+            $this->getDimensioniAttribute(),
+            $this->year ? 'Anno ' . $this->year : null,
+        ]);
+
+        return $parts ? implode(' · ', $parts) : null;
     }
 }

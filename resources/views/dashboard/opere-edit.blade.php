@@ -126,6 +126,29 @@
                                         </div>
                                     </div>
 
+                                    <div class="row">
+                                        <div class="col-md-8 mb-3">
+                                            <label for="opera_type" class="form-label">Come è fatta l'opera</label>
+                                            <input type="text"
+                                                   name="opera_type"
+                                                   id="opera_type"
+                                                   class="form-control"
+                                                   placeholder="es. Olio su tela 300g"
+                                                   value="{{ old('opera_type', $opera->opera_type) }}">
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="year" class="form-label">Anno opera</label>
+                                            <input type="number"
+                                                   min="1800"
+                                                   max="2100"
+                                                   name="year"
+                                                   id="year"
+                                                   class="form-control"
+                                                   placeholder="es. 2024"
+                                                   value="{{ old('year', $opera->year) }}">
+                                        </div>
+                                    </div>
+
                                     <div class="mb-3">
                                         <label for="collezione_id" class="form-label">Collezione</label>
                                         <select name="collezione_id" id="collezione_id" class="form-select">
