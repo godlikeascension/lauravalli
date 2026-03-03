@@ -26,7 +26,12 @@
     {{ $data['destinazione'] ?? '-' }}</p>
 
 <p><strong>Cosa ti ha spinto a richiedere un’opera su misura?</strong><br>
-    {{ $data['motivo'] ?? '-' }}</p>
+    {{ $data[‘motivo’] ?? ‘-’ }}</p>
+
+@if(!empty($data[‘messaggio’]))
+<p><strong>Messaggio aggiuntivo:</strong><br>
+    {{ $data[‘messaggio’] }}</p>
+@endif
 
 </body>
 </html>

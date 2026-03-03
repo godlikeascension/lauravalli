@@ -357,6 +357,22 @@
 
                             <div class="col-md-6"></div>
 
+                            {{-- MESSAGGIO LIBERO --}}
+                            <div class="col-12">
+                                <div class="mb-20px">
+                                    <label class="form-label alt-font fs-14 text-dark-gray">
+                                        Vuoi aggiungere qualcosa? (opzionale)
+                                    </label>
+                                    <textarea class="border-color-transparent-dark-very-light form-control bg-transparent @error('messaggio') is-invalid @enderror"
+                                              name="messaggio"
+                                              rows="4"
+                                              placeholder="Raccontami la tua idea, un ricordo, un'emozione… ogni dettaglio mi aiuta a creare qualcosa di davvero tuo.">{{ old('messaggio') }}</textarea>
+                                    @error('messaggio')
+                                    <small class="text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div>
+
                             {{-- NOME --}}
                             <div class="col-md-3 sm-mb-20px">
                                 <label class="form-label alt-font fs-14 text-dark-gray">Nome</label>

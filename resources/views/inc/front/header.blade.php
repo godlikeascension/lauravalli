@@ -19,7 +19,7 @@
                 <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                     <ul class="navbar-nav alt-font">
                         <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-{{--                        <li class="nav-item"><a href="/galleria" class="nav-link">Galleria</a></li>--}}
+                        <li class="nav-item"><a href="/collezioni" class="nav-link">Collezioni</a></li>
                         <li class="nav-item"><a href="/commissioni" class="nav-link">Commissioni</a></li>
                         <li class="nav-item"><a href="/artist-statement" class="nav-link">Chi Sono</a></li>
 {{--                        <li class="nav-item"><a href="/about" class="nav-link">About</a></li>--}}

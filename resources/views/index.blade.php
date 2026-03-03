@@ -158,15 +158,26 @@
         <div class="row">
             <div class="col-12 text-center">
                 <h2 class="text-dark-gray fw-600 alt-font pt-70">Ultima Collezione</h2>
-                <h4 class="text-dark-gray fw-600 pb-70 fs-24 alt-font font-style-italic ">
-                    Lo sguardo dell'anima
-                </h4>
+                @if($collezione)
+                    <h4 class="text-dark-gray fw-600 fs-24 alt-font font-style-italic mt-10">
+                        {{ $collezione->nome }}
+                    </h4>
+                    @if($collezione->descrizione)
+                        <p class="mx-auto mb-0 pb-50" style="max-width: 600px;">
+                            {{ $collezione->descrizione }}
+                        </p>
+                    @else
+                        <div class="pb-50"></div>
+                    @endif
+                @else
+                    <div class="pb-70"></div>
+                @endif
             </div>
         </div>
 
-        @if(isset($opere) && $opere->count())
+        @if($collezione && $collezione->opere->count())
             <div class="row">
-                @foreach($opere as $opera)
+                @foreach($collezione->opere as $opera)
                     <div class="col-xl-3 col-lg-6 mb-30">
                         <img class="w-100"
                              style="box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;"
@@ -208,15 +219,6 @@
                                             <span>Ingrandisci</span>
                                         </button>
                                     @endif
-
-
-                                    {{-- Pulsante per la pagina dell'opera (commentato per ora) --}}
-                                    {{--
-                                    <a href="{{ route('opere.show', $opera->slug) }}"
-                                       class="btn btn-sm btn-outline-secondary ms-1">
-                                        Scopri di più
-                                    </a>
-                                    --}}
                                 </div>
                             </div>
                         </div>

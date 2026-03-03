@@ -107,6 +107,21 @@
                                         </div>
                                     </div>
 
+                                    <div class="mb-3">
+                                        <label for="collezione_id" class="form-label">Collezione</label>
+                                        <select name="collezione_id" id="collezione_id" class="form-select">
+                                            <option value="">— Nessuna collezione —</option>
+                                            @foreach($collezioni as $collezione)
+                                                <option value="{{ $collezione->id }}"
+                                                    {{ old('collezione_id') == $collezione->id ? 'selected' : '' }}>
+                                                    {{ $collezione->nome }}
+                                                    @if($collezione->is_default) (default) @endif
+                                                    @if($collezione->is_featured) (featured) @endif
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
                                     <div class="mb-3 form-check form-switch">
                                         <input type="checkbox"
                                                name="venduto"

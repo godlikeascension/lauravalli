@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Recensione;
 use Illuminate\Http\Request;
 use App\Models\Opera;
+use App\Models\Collezione;
 
 class AdminController extends Controller
 {
@@ -95,27 +96,30 @@ class AdminController extends Controller
 
     public function opereIndex()
     {
-        $opere = Opera::orderBy('created_at', 'desc')->get();
+        $opere = Opera::with('collezione')->orderBy('created_at', 'desc')->get();
 
         return view('dashboard.opere', compact('opere'));
     }
 
     public function opereCreate()
     {
-        return view('dashboard.opere-create');
+        $collezioni = Collezione::orderBy('nome')->get();
+
+        return view('dashboard.opere-create', compact('collezioni'));
     }
 
     public function opereStore(Request $request)
     {
         $data = $request->validate([
-            'immagine'      => 'nullable|image|max:4096',
-            'titolo'        => 'required|string|max:255',
-            'prezzo'        => 'nullable|numeric|min:0',
-            'venduto'       => 'nullable|boolean',
-            'larghezza_cm'  => 'nullable|numeric|min:0',
-            'altezza_cm'    => 'nullable|numeric|min:0',
+            'immagine'         => 'nullable|image|max:4096',
+            'titolo'           => 'required|string|max:255',
+            'prezzo'           => 'nullable|numeric|min:0',
+            'venduto'          => 'nullable|boolean',
+            'larghezza_cm'     => 'nullable|numeric|min:0',
+            'altezza_cm'       => 'nullable|numeric|min:0',
             'descrizione_html' => 'nullable|string',
-            'commissione'   => 'nullable|boolean',
+            'commissione'      => 'nullable|boolean',
+            'collezione_id'    => 'nullable|exists:collezioni,id',
         ]);
 
         $pathImmagine = null;
@@ -125,14 +129,15 @@ class AdminController extends Controller
         }
 
         Opera::create([
-            'immagine'        => $pathImmagine,
-            'titolo'          => $data['titolo'],
-            'prezzo'          => $data['prezzo'] ?? null,
-            'venduto'         => $request->boolean('venduto'),
-            'larghezza_cm'    => $data['larghezza_cm'] ?? null,
-            'altezza_cm'      => $data['altezza_cm'] ?? null,
-            'descrizione_html'=> $data['descrizione_html'] ?? null,
-            'commissione'     => $request->boolean('commissione'),
+            'immagine'         => $pathImmagine,
+            'titolo'           => $data['titolo'],
+            'prezzo'           => $data['prezzo'] ?? null,
+            'venduto'          => $request->boolean('venduto'),
+            'larghezza_cm'     => $data['larghezza_cm'] ?? null,
+            'altezza_cm'       => $data['altezza_cm'] ?? null,
+            'descrizione_html' => $data['descrizione_html'] ?? null,
+            'commissione'      => $request->boolean('commissione'),
+            'collezione_id'    => $data['collezione_id'] ?? null,
         ]);
 
         return redirect()
@@ -142,20 +147,23 @@ class AdminController extends Controller
 
     public function opereEdit(Opera $opera)
     {
-        return view('dashboard.opere-edit', compact('opera'));
+        $collezioni = Collezione::orderBy('nome')->get();
+
+        return view('dashboard.opere-edit', compact('opera', 'collezioni'));
     }
 
     public function opereUpdate(Request $request, Opera $opera)
     {
         $data = $request->validate([
-            'immagine'      => 'nullable|image|max:4096',
-            'titolo'        => 'required|string|max:255',
-            'prezzo'        => 'nullable|numeric|min:0',
-            'venduto'       => 'nullable|boolean',
-            'larghezza_cm'  => 'nullable|numeric|min:0',
-            'altezza_cm'    => 'nullable|numeric|min:0',
+            'immagine'         => 'nullable|image|max:4096',
+            'titolo'           => 'required|string|max:255',
+            'prezzo'           => 'nullable|numeric|min:0',
+            'venduto'          => 'nullable|boolean',
+            'larghezza_cm'     => 'nullable|numeric|min:0',
+            'altezza_cm'       => 'nullable|numeric|min:0',
             'descrizione_html' => 'nullable|string',
-            'commissione'   => 'nullable|boolean',
+            'commissione'      => 'nullable|boolean',
+            'collezione_id'    => 'nullable|exists:collezioni,id',
         ]);
 
         if ($request->hasFile('immagine')) {
@@ -170,6 +178,7 @@ class AdminController extends Controller
         $opera->altezza_cm       = $data['altezza_cm'] ?? null;
         $opera->descrizione_html = $data['descrizione_html'] ?? null;
         $opera->commissione      = $request->boolean('commissione');
+        $opera->collezione_id    = $data['collezione_id'] ?? null;
 
         $opera->save();
 
@@ -185,6 +194,133 @@ class AdminController extends Controller
         return redirect()
             ->route('dashboard.opere.index')
             ->with('success', 'Opera eliminata con successo.');
+    }
+
+    // =============================
+    // COLLEZIONI - Dashboard
+    // =============================
+
+    public function collezioniIndex()
+    {
+        $collezioni = Collezione::orderBy('created_at', 'desc')->get();
+
+        return view('dashboard.collezioni', compact('collezioni'));
+    }
+
+    public function collezioniCreate()
+    {
+        return view('dashboard.collezioni-create');
+    }
+
+    public function collezioniStore(Request $request)
+    {
+        $data = $request->validate([
+            'nome'        => 'required|string|max:255',
+            'descrizione' => 'nullable|string',
+            'is_default'  => 'nullable|boolean',
+            'is_featured' => 'nullable|boolean',
+        ]);
+
+        $collezione = Collezione::create([
+            'nome'        => $data['nome'],
+            'descrizione' => $data['descrizione'] ?? null,
+            'is_default'  => false,
+            'is_featured' => false,
+        ]);
+
+        if ($request->boolean('is_default')) {
+            Collezione::setDefault($collezione->id);
+        }
+
+        if ($request->boolean('is_featured')) {
+            Collezione::setFeatured($collezione->id);
+        }
+
+        return redirect()
+            ->route('dashboard.collezioni.index')
+            ->with('success', 'Collezione creata con successo.');
+    }
+
+    public function collezioniEdit(Collezione $collezione)
+    {
+        $collezione->load('opere');
+
+        $opereDisponibili = Opera::with('collezione')
+            ->where(function ($q) use ($collezione) {
+                $q->whereNull('collezione_id')
+                  ->orWhere('collezione_id', '!=', $collezione->id);
+            })->orderBy('titolo')->get();
+
+        return view('dashboard.collezioni-edit', compact('collezione', 'opereDisponibili'));
+    }
+
+    public function collezioniAggiungiOpera(Request $request, Collezione $collezione)
+    {
+        $data = $request->validate(['opera_id' => 'required|exists:opere,id']);
+
+        Opera::where('id', $data['opera_id'])->update(['collezione_id' => $collezione->id]);
+
+        return redirect()
+            ->route('dashboard.collezioni.edit', $collezione->id)
+            ->with('success', 'Opera aggiunta alla collezione.');
+    }
+
+    public function collezioniRimuoviOpera(Collezione $collezione, Opera $opera)
+    {
+        $opera->collezione_id = null;
+        $opera->save();
+
+        return redirect()
+            ->route('dashboard.collezioni.edit', $collezione->id)
+            ->with('success', 'Opera rimossa dalla collezione.');
+    }
+
+    public function collezioniUpdate(Request $request, Collezione $collezione)
+    {
+        $data = $request->validate([
+            'nome'        => 'required|string|max:255',
+            'descrizione' => 'nullable|string',
+            'is_default'  => 'nullable|boolean',
+            'is_featured' => 'nullable|boolean',
+        ]);
+
+        $collezione->nome        = $data['nome'];
+        $collezione->descrizione = $data['descrizione'] ?? null;
+        $collezione->save();
+
+        if ($request->boolean('is_default')) {
+            Collezione::setDefault($collezione->id);
+        } else {
+            // deselect only if it was this one
+            if ($collezione->fresh()->is_default) {
+                \Illuminate\Support\Facades\DB::table('collezioni')
+                    ->where('id', $collezione->id)
+                    ->update(['is_default' => false]);
+            }
+        }
+
+        if ($request->boolean('is_featured')) {
+            Collezione::setFeatured($collezione->id);
+        } else {
+            if ($collezione->fresh()->is_featured) {
+                \Illuminate\Support\Facades\DB::table('collezioni')
+                    ->where('id', $collezione->id)
+                    ->update(['is_featured' => false]);
+            }
+        }
+
+        return redirect()
+            ->route('dashboard.collezioni.index')
+            ->with('success', 'Collezione aggiornata con successo.');
+    }
+
+    public function collezioniDestroy(Collezione $collezione)
+    {
+        $collezione->delete();
+
+        return redirect()
+            ->route('dashboard.collezioni.index')
+            ->with('success', 'Collezione eliminata con successo.');
     }
 
 }

@@ -19,14 +19,16 @@ class Opera extends Model
         'altezza_cm',
         'descrizione_html',
         'commissione',
+        'collezione_id',
     ];
 
     protected $casts = [
-        'venduto'     => 'boolean',
-        'commissione' => 'boolean',
-        'prezzo'      => 'decimal:2',
-        'larghezza_cm'=> 'decimal:2',
-        'altezza_cm'  => 'decimal:2',
+        'venduto'       => 'boolean',
+        'commissione'   => 'boolean',
+        'prezzo'        => 'decimal:2',
+        'larghezza_cm'  => 'decimal:2',
+        'altezza_cm'    => 'decimal:2',
+        'collezione_id' => 'integer',
     ];
 
     // Generazione automatica dello slug dal titolo
@@ -62,6 +64,11 @@ class Opera extends Model
         }
 
         return $slug;
+    }
+
+    public function collezione()
+    {
+        return $this->belongsTo(Collezione::class);
     }
 
     // Accessor comodo per mostrare dimensioni formattate "L x H cm"

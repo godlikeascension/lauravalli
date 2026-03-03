@@ -2,19 +2,14 @@
 <html lang="it">
 <head>
     <meta charset="utf-8" />
-    <title>Tutte le Opere</title>
+    <title>Tutte le Collezioni</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Admin panel" name="description" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!-- App favicon -->
     <link rel="shortcut icon" href="/img/favicon.png">
-
-    <!-- App css -->
     <link href="/dashboard-backend/css/config/creative/bootstrap.min.css" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
     <link href="/dashboard-backend/css/config/creative/app.min.css" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
-
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!-- icons -->
     <link href="/dashboard-backend/css/icons.min.css" rel="stylesheet" type="text/css" />
 </head>
 
@@ -53,12 +48,12 @@
                             <div class="card-body">
                                 <div class="row mb-4">
                                     <div class="col-12">
-                                        <a href="{{ route('dashboard.opere.create') }}"
+                                        <a href="{{ route('dashboard.collezioni.create') }}"
                                            class="btn btn-sm btn-blue waves-effect waves-light float-end">
                                             <i class="mdi mdi-plus-circle" style="margin-right: 10px;"></i>
-                                            Aggiungi opera
+                                            Aggiungi collezione
                                         </a>
-                                        <h4 class="header-title">Tutte le opere</h4>
+                                        <h4 class="header-title">Tutte le collezioni</h4>
                                     </div>
                                 </div>
 
@@ -67,81 +62,43 @@
                                         <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Immagine</th>
-                                            <th>Titolo</th>
-                                            <th>Prezzo</th>
-                                            <th>Dimensioni</th>
-                                            <th>Collezione</th>
-                                            <th>Commissione</th>
-                                            <th>Venduto</th>
+                                            <th>Nome</th>
+                                            <th>Opere</th>
+                                            <th>Default</th>
+                                            <th>Featured</th>
                                             <th>Azioni</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @forelse($opere as $opera)
+                                        @forelse($collezioni as $collezione)
                                             <tr>
-                                                <td>{{ $opera->id }}</td>
-
+                                                <td>{{ $collezione->id }}</td>
+                                                <td>{{ $collezione->nome }}</td>
+                                                <td>{{ $collezione->opere()->count() }}</td>
                                                 <td>
-                                                    @if($opera->immagine)
-                                                        <img src="{{ asset('storage/' . $opera->immagine) }}"
-                                                             alt="Immagine opera"
-                                                             style="height: 50px; width: 50px; object-fit: cover; border-radius: 4px;">
-                                                    @else
-                                                        <span class="text-muted">Nessuna</span>
-                                                    @endif
-                                                </td>
-
-                                                <td>{{ $opera->titolo }}</td>
-
-                                                <td>
-                                                    @if($opera->venduto)
-                                                        <span class="badge bg-danger">SOLD</span>
-                                                    @elseif(!is_null($opera->prezzo))
-                                                        € {{ number_format($opera->prezzo, 2, ',', '.') }}
-                                                    @else
-                                                        <span class="text-muted">-</span>
-                                                    @endif
-                                                </td>
-
-                                                <td>
-                                                    {{ $opera->dimensioni ?? '-' }}
-                                                </td>
-
-                                                <td>
-                                                    @if($opera->collezione)
-                                                        <span class="badge bg-dark">{{ $opera->collezione->nome }}</span>
+                                                    @if($collezione->is_default)
+                                                        <span class="badge bg-success">Default</span>
                                                     @else
                                                         <span class="text-muted">—</span>
                                                     @endif
                                                 </td>
-
                                                 <td>
-                                                    @if($opera->commissione)
-                                                        <span class="badge bg-info">Commissione</span>
+                                                    @if($collezione->is_featured)
+                                                        <span class="badge bg-primary">Featured</span>
                                                     @else
-                                                        <span class="badge bg-secondary">Non commissione</span>
+                                                        <span class="text-muted">—</span>
                                                     @endif
                                                 </td>
-
                                                 <td>
-                                                    @if($opera->venduto)
-                                                        <span class="badge bg-success">Venduto</span>
-                                                    @else
-                                                        <span class="badge bg-warning text-dark">Disponibile</span>
-                                                    @endif
-                                                </td>
-
-                                                <td>
-                                                    <a href="{{ route('dashboard.opere.edit', $opera->id) }}"
+                                                    <a href="{{ route('dashboard.collezioni.edit', $collezione->id) }}"
                                                        class="btn btn-xs btn-primary">
                                                         <i class="mdi mdi-pencil"></i> Modifica
                                                     </a>
 
-                                                    <form action="{{ route('dashboard.opere.destroy', $opera->id) }}"
+                                                    <form action="{{ route('dashboard.collezioni.destroy', $collezione->id) }}"
                                                           method="POST"
                                                           style="display: inline-block;"
-                                                          onsubmit="return confirm('Sei sicuro di voler eliminare questa opera?');">
+                                                          onsubmit="return confirm('Sei sicuro di voler eliminare questa collezione?');">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-xs btn-danger">
@@ -152,8 +109,8 @@
                                             </tr>
                                         @empty
                                             <tr>
-                                                <td colspan="9" class="text-center text-muted">
-                                                    Nessuna opera presente.
+                                                <td colspan="6" class="text-center text-muted">
+                                                    Nessuna collezione presente.
                                                 </td>
                                             </tr>
                                         @endforelse
@@ -174,16 +131,6 @@
 
 <script src="/dashboard-backend/js/vendor.min.js"></script>
 <script src="/dashboard-backend/js/app.min.js"></script>
-
-<script>
-    (function () {
-        document.querySelectorAll('.nav-item').forEach(function (el) {
-            el.classList.remove('active');
-        });
-        // se hai una voce di menu specifica per le opere, puoi attivarla qui
-        // document.getElementById('nav-opere')?.classList.add('active');
-    })();
-</script>
 
 </body>
 </html>

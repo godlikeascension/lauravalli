@@ -6,6 +6,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AdminController;
 use App\Models\Recensione;
 use App\Models\Opera;
+use App\Models\Collezione;
 
 // -----------------------------
 // Form contatti
@@ -22,12 +23,11 @@ Route::get('/commissioni/grazie', function () {
 // Pagine pubbliche sito
 // -----------------------------
 Route::get('/', function () {
-    // qui puoi filtrare come vuoi, ad es. solo non-commissione
-    $opere = Opera::where('commissione', false)
-        ->orderBy('created_at', 'asc')
-        ->get();
+    $collezione = Collezione::where('is_featured', true)
+        ->with('opere')
+        ->first();
 
-    return view('index', compact('opere'));
+    return view('index', compact('collezione'));
 });
 
 Route::get('/commissioni', function () {
@@ -36,6 +36,10 @@ Route::get('/commissioni', function () {
 Route::get('/artist-statement', function () {
     return view('artist-statement');
 });
+Route::get('/collezioni', function () {
+    $collezioni = Collezione::with('opere')->orderBy('nome')->get();
+    return view('collezioni-pubblica', compact('collezioni'));
+})->name('collezioni.pubblica');
 
 // -----------------------------
 // Autenticazione
@@ -96,6 +100,33 @@ Route::middleware(['auth'])->group(function () {
 
     Route::delete('/dashboard/opere/{opera}', [AdminController::class, 'opereDestroy'])
         ->name('dashboard.opere.destroy');
+
+    // -----------------------------
+    // COLLEZIONI - gestione da dashboard
+    // -----------------------------
+    Route::get('/dashboard/collezioni', [AdminController::class, 'collezioniIndex'])
+        ->name('dashboard.collezioni.index');
+
+    Route::get('/dashboard/collezioni/crea', [AdminController::class, 'collezioniCreate'])
+        ->name('dashboard.collezioni.create');
+
+    Route::post('/dashboard/collezioni', [AdminController::class, 'collezioniStore'])
+        ->name('dashboard.collezioni.store');
+
+    Route::get('/dashboard/collezioni/{collezione}/edit', [AdminController::class, 'collezioniEdit'])
+        ->name('dashboard.collezioni.edit');
+
+    Route::put('/dashboard/collezioni/{collezione}', [AdminController::class, 'collezioniUpdate'])
+        ->name('dashboard.collezioni.update');
+
+    Route::delete('/dashboard/collezioni/{collezione}', [AdminController::class, 'collezioniDestroy'])
+        ->name('dashboard.collezioni.destroy');
+
+    Route::post('/dashboard/collezioni/{collezione}/opere', [AdminController::class, 'collezioniAggiungiOpera'])
+        ->name('dashboard.collezioni.opere.add');
+
+    Route::delete('/dashboard/collezioni/{collezione}/opere/{opera}', [AdminController::class, 'collezioniRimuoviOpera'])
+        ->name('dashboard.collezioni.opere.remove');
 });
 Route::get('/commissioni', function () {
     $recensioni = Recensione::orderBy('created_at', 'desc')->get();

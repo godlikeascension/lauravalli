@@ -41,6 +41,7 @@ class ContactController extends Controller
             'nome'         => 'required|string',
             'telefono'     => 'required|string',
             'email'        => 'required|email',
+            'messaggio'    => 'nullable|string',
         ]);
 
         // indirizzo email a cui inviare la richiesta di commissione
