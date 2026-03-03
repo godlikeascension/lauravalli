@@ -43,20 +43,20 @@
 
                                 <p class="text-muted small mb-3">L'ordine determina la sequenza di visualizzazione nella pagina commissioni.</p>
 
-                                <table class="table table-hover align-middle">
+                                <table class="table table-hover align-middle" style="table-layout:fixed">
                                     <thead>
                                         <tr>
-                                            <th style="width:60px">Ordine</th>
+                                            <th style="width:70px">Ordine</th>
                                             <th>Domanda</th>
-                                            <th style="width:140px">Azioni</th>
+                                            <th style="width:160px;white-space:nowrap">Azioni</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @forelse($faqs as $faq)
                                             <tr>
-                                                <td class="text-muted">{{ $faq->ordine }}</td>
-                                                <td>{{ $faq->domanda }}</td>
-                                                <td>
+                                                <td class="text-muted text-center">{{ $faq->ordine }}</td>
+                                                <td style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ $faq->domanda }}</td>
+                                                <td style="white-space:nowrap">
                                                     <a href="{{ route('dashboard.faqs.edit', $faq->id) }}"
                                                        class="btn btn-sm btn-light me-1">
                                                         <i class="mdi mdi-pencil"></i> Modifica

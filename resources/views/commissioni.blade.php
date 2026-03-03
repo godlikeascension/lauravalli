@@ -446,21 +446,31 @@
                 <div class="accordion accordion-style-02" id="accordion-style-02" data-active-icon="icon-feather-minus" data-inactive-icon="icon-feather-plus">
 
                     @forelse($faqs as $faq)
-                        <div class="accordion-item {{ $loop->first ? ‘active-accordion’ : ‘’ }}">
+                        @if($loop->first)
+                        <div class="accordion-item active-accordion">
+                        @else
+                        <div class="accordion-item">
+                        @endif
                             <div class="accordion-header border-bottom border-color-transparent-dark-very-light">
                                 <a href="#" data-bs-toggle="collapse"
                                    data-bs-target="#faq-{{ $faq->id }}"
-                                   aria-expanded="{{ $loop->first ? ‘true’ : ‘false’ }}"
+                                   @if($loop->first) aria-expanded="true" @else aria-expanded="false" @endif
                                    data-bs-parent="#accordion-style-02">
                                     <div class="accordion-title mb-0 position-relative text-dark-gray pe-30px">
-                                        <i class="feather {{ $loop->first ? ‘icon-feather-minus’ : ‘icon-feather-plus’ }} fs-20"></i>
+                                        @if($loop->first)
+                                        <i class="feather icon-feather-minus fs-20"></i>
+                                        @else
+                                        <i class="feather icon-feather-plus fs-20"></i>
+                                        @endif
                                         <span class="fw-500">{{ $faq->domanda }}</span>
                                     </div>
                                 </a>
                             </div>
-                            <div id="faq-{{ $faq->id }}"
-                                 class="accordion-collapse collapse {{ $loop->first ? ‘show’ : ‘’ }}"
-                                 data-bs-parent="#accordion-style-02">
+                            @if($loop->first)
+                            <div id="faq-{{ $faq->id }}" class="accordion-collapse collapse show" data-bs-parent="#accordion-style-02">
+                            @else
+                            <div id="faq-{{ $faq->id }}" class="accordion-collapse collapse" data-bs-parent="#accordion-style-02">
+                            @endif
                                 <div class="accordion-body last-paragraph-no-margin border-bottom border-color-transparent-dark-very-light">
                                     <div class="w-90 sm-w-95 xs-w-100">
                                         {!! $faq->risposta_html !!}
