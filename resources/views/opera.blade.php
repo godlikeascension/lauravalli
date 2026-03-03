@@ -128,7 +128,7 @@
         .info-divider {
             border: none;
             border-top: 1px solid #ebebeb;
-            margin: 22px 0;
+            margin: 20px 0;
         }
 
         /* ── Lightbox ── */
@@ -303,7 +303,7 @@
 
                     {{-- Collection label --}}
                     @if($opera->collezione)
-                        <div class="mb-18px">
+                        <div class="mb-15px">
                             <span class="w-25px h-1px d-inline-block bg-base-color me-5px align-middle"></span>
                             <span class="text-gradient-base-color fs-13 alt-font fw-700 ls-05px text-uppercase align-middle">
                                 {{ $opera->collezione->nome }}
@@ -312,34 +312,32 @@
                     @endif
 
                     {{-- Title --}}
-                    <h1 class="alt-font fw-600 text-dark-gray ls-minus-2px mb-10px"
-                        style="font-size: clamp(1.7rem, 3.5vw, 2.5rem); line-height: 1.15;">
+                    <h1 class="alt-font fw-600 text-dark-gray ls-minus-2px mb-10px">
                         {{ $opera->titolo }}
                     </h1>
 
                     {{-- Dimensions + commission --}}
-                    <div class="d-flex flex-wrap gap-3 mb-0">
-                        @if($opera->dimensioni)
-                            <span class="text-muted alt-font fs-14">{{ $opera->dimensioni }}</span>
-                        @endif
-                        @if($opera->commissione)
-                            <span class="text-muted alt-font fs-13">&middot; Opera su commissione</span>
-                        @endif
-                    </div>
+                    @if($opera->dimensioni || $opera->commissione)
+                        <div class="d-flex flex-wrap gap-3 mb-0">
+                            @if($opera->dimensioni)
+                                <span class="text-muted alt-font fs-14">{{ $opera->dimensioni }}</span>
+                            @endif
+                            @if($opera->commissione)
+                                <span class="text-muted alt-font fs-13">&middot; Opera su commissione</span>
+                            @endif
+                        </div>
+                    @endif
 
                     <hr class="info-divider">
 
                     {{-- Price --}}
-                    <div class="mb-25px">
+                    <div class="mb-0">
                         @if($opera->venduto)
-                            <p class="opera-sold-tag mb-4px">SOLD</p>
-                            <p class="text-muted fs-13 mb-0">Quest'opera non è più disponibile</p>
+                            <p class="opera-sold-tag mb-0">SOLD</p>
                         @elseif(!is_null($opera->prezzo))
-                            <p class="opera-price-tag mb-4px">{{ number_format($opera->prezzo, 2, ',', '.') }} €</p>
-                            <p class="text-muted fs-13 mb-0">IVA inclusa · spedizione su richiesta</p>
+                            <p class="opera-price-tag mb-0">{{ number_format($opera->prezzo, 2, ',', '.') }} €</p>
                         @else
-                            <p class="alt-font fs-18 text-dark-gray fw-500 mb-4px">Prezzo su richiesta</p>
-                            <p class="text-muted fs-13 mb-0">Contattami per informazioni</p>
+                            <p class="alt-font fs-18 text-dark-gray fw-500 mb-0">Prezzo su richiesta</p>
                         @endif
                     </div>
 
