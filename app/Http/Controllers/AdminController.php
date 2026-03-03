@@ -289,24 +289,21 @@ class AdminController extends Controller
         $collezione->save();
 
         if ($request->boolean('is_default')) {
+            // Imposta questa come default e rimuove il flag da tutte le altre
             Collezione::setDefault($collezione->id);
         } else {
-            // deselect only if it was this one
-            if ($collezione->fresh()->is_default) {
-                \Illuminate\Support\Facades\DB::table('collezioni')
-                    ->where('id', $collezione->id)
-                    ->update(['is_default' => false]);
-            }
+            \Illuminate\Support\Facades\DB::table('collezioni')
+                ->where('id', $collezione->id)
+                ->update(['is_default' => false]);
         }
 
         if ($request->boolean('is_featured')) {
+            // Imposta questa come featured e rimuove il flag da tutte le altre
             Collezione::setFeatured($collezione->id);
         } else {
-            if ($collezione->fresh()->is_featured) {
-                \Illuminate\Support\Facades\DB::table('collezioni')
-                    ->where('id', $collezione->id)
-                    ->update(['is_featured' => false]);
-            }
+            \Illuminate\Support\Facades\DB::table('collezioni')
+                ->where('id', $collezione->id)
+                ->update(['is_featured' => false]);
         }
 
         return redirect()

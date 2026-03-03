@@ -37,7 +37,9 @@ Route::get('/artist-statement', function () {
     return view('artist-statement');
 });
 Route::get('/collezioni', function () {
-    $collezioni = Collezione::with('opere')->orderBy('nome')->get();
+    $collezioni = Collezione::with('opere')
+        ->orderByRaw('is_default DESC, nome ASC')
+        ->get();
     return view('collezioni-pubblica', compact('collezioni'));
 })->name('collezioni.pubblica');
 
