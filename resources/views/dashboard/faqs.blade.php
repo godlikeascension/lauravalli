@@ -46,7 +46,7 @@
                                 <table class="table table-hover align-middle" style="table-layout:fixed">
                                     <thead>
                                         <tr>
-                                            <th style="width:70px">Ordine</th>
+                                            <th style="width:90px;white-space:nowrap">Ordine</th>
                                             <th>Domanda</th>
                                             <th style="width:160px;white-space:nowrap">Azioni</th>
                                         </tr>
