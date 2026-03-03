@@ -230,12 +230,12 @@
                                     <p class="mb-0 text-muted fs-14">Su richiesta</p>
                                 @endif
 
-                                {{-- Buttons wrapper: more space on desktop, zoom only on mobile --}}
+                                {{-- Buttons wrapper --}}
                                 <div class="mt-16px mt-md-22px">
                                     @if($opera->immagine)
-                                        <div class="d-md-none mb-15px">
+                                        <div class="d-md-none d-grid mb-15px">
                                             <button type="button"
-                                                    class="btn btn-very-small btn-dark-gray btn-rounded d-inline-flex align-items-center"
+                                                    class="btn btn-very-small btn-dark-gray btn-rounded d-flex justify-content-center align-items-center"
                                                     data-image="{{ asset('storage/' . $opera->immagine) }}"
                                                     onclick="openOperaLightbox(this)">
                                                 <i class="feather icon-feather-search me-5px"></i>
@@ -243,11 +243,13 @@
                                             </button>
                                         </div>
                                     @endif
-                                    <a href="{{ route('opera.show', $opera->slug) }}"
-                                       class="btn btn-very-small btn-transparent-light-gray border-1 btn-rounded d-inline-flex align-items-center">
-                                        <span>Scopri l'opera</span>
-                                        <i class="feather icon-feather-arrow-right ms-5px"></i>
-                                    </a>
+                                    <div class="d-grid d-md-block">
+                                        <a href="{{ route('opera.show', $opera->slug) }}"
+                                           class="btn btn-very-small btn-transparent-light-gray border-1 btn-rounded d-flex justify-content-center align-items-center">
+                                            <i class="feather icon-feather-arrow-right me-5px"></i>
+                                            <span>Scopri l'opera</span>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
