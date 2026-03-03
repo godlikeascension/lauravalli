@@ -30,8 +30,8 @@
 
 <!-- start section -->
 <section>
-    <div class=”container”>
-        <div class=”row justify-content-center”>
+    <div class="container">
+        <div class="row justify-content-center">
             {!! $contenuto !!}
         </div>
     </div>
