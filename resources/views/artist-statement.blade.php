@@ -34,7 +34,7 @@
         .artist-statement-content h5,
         .artist-statement-content h6 {
             font-family: var(--alt-font);
-            color: #232323;
+            color: var(--dark-gray);
             font-weight: 600;
             letter-spacing: -1px;
             line-height: 1.2;
@@ -42,9 +42,9 @@
         }
         .artist-statement-content p {
             font-family: var(--primary-font);
-            color: #232323;
-            line-height: 1.8;
-            margin-bottom: 1rem;
+            color: var(--medium-gray);
+            line-height: 30px;
+            margin-bottom: 25px;
         }
         .artist-statement-content img {
             max-width: 100%;
