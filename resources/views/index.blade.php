@@ -172,9 +172,9 @@
                         {{ $collezione->nome }}
                     </h4>
                     @if($collezione->descrizione)
-                        <p class="mx-auto mb-0 pb-50" style="max-width: 600px;">
-                            {{ $collezione->descrizione }}
-                        </p>
+                        <div class="mx-auto mb-0 pb-50" style="max-width: 600px;">
+                            {!! $collezione->descrizione !!}
+                        </div>
                     @else
                         <div class="pb-50"></div>
                     @endif

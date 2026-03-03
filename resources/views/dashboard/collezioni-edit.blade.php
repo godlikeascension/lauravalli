@@ -223,5 +223,20 @@
 <script src="/dashboard-backend/js/vendor.min.js"></script>
 <script src="/dashboard-backend/js/app.min.js"></script>
 
+<!-- CKEditor 5 -->
+<script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
+<script>
+    ClassicEditor
+        .create(document.querySelector('#descrizione'), {
+            toolbar: [
+                'undo', 'redo', '|',
+                'bold', 'italic', 'underline', 'link', '|',
+                'bulletedList', 'numberedList', '|',
+                'removeFormat'
+            ]
+        })
+        .catch(error => { console.error(error); });
+</script>
+
 </body>
 </html>

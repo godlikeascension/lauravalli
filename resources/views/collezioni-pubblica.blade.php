@@ -194,9 +194,9 @@
                     @if($col->descrizione)
                         <div class="row mb-40px">
                             <div class="col-12 text-center">
-                                <p class="mx-auto text-muted" style="max-width: 620px;">
-                                    {{ $col->descrizione }}
-                                </p>
+                                <div class="mx-auto text-muted" style="max-width: 620px;">
+                                    {!! $col->descrizione !!}
+                                </div>
                             </div>
                         </div>
                     @endif
