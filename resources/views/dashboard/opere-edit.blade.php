@@ -129,12 +129,15 @@
                                     <div class="row">
                                         <div class="col-md-8 mb-3">
                                             <label for="opera_type" class="form-label">Come è fatta l'opera</label>
-                                            <input type="text"
-                                                   name="opera_type"
-                                                   id="opera_type"
-                                                   class="form-control"
-                                                   placeholder="es. Olio su tela 300g"
-                                                   value="{{ old('opera_type', $opera->opera_type) }}">
+                                            <select name="opera_type" id="opera_type" class="form-select">
+                                                <option value="">— Seleziona —</option>
+                                                @foreach(['Olio su tela', 'Olio su legno', 'Olio su carta 300g'] as $tipo)
+                                                    <option value="{{ $tipo }}"
+                                                        {{ old('opera_type', $opera->opera_type) === $tipo ? 'selected' : '' }}>
+                                                        {{ $tipo }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                         <div class="col-md-4 mb-3">
                                             <label for="year" class="form-label">Anno opera</label>
