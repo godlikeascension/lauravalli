@@ -173,7 +173,7 @@
                     @endphp
                     <div class="row g-3 g-md-4 justify-content-center">
                         @forelse($col->opere as $opera)
-                            <div class="col-6 col-md-6 col-lg-4 {{ $xlCol }} opera-col">
+                            <div class="col-12 col-md-6 col-lg-4 {{ $xlCol }} opera-col">
                                 <div class="opera-card h-100"
                                      style="box-shadow: rgba(0,0,0,.12) 0 6px 24px 0, rgba(0,0,0,.05) 0 0 0 1px; border-radius: 6px; overflow: hidden; background:#fff;">
                                     {{-- Image --}}
