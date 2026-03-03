@@ -24,6 +24,15 @@
     <meta property="og:image" content="/images/innocenza-sospesa.jpg">
     <meta property="og:image:width" content="967">
     <meta property="og:image:height" content="1000">
+    <style>
+        .opera-card {
+            transition: transform .3s ease, box-shadow .3s ease;
+        }
+        .opera-card:hover {
+            transform: translateY(-6px);
+            box-shadow: rgba(0,0,0,.22) 0 16px 40px 0, rgba(0,0,0,.06) 0 0 0 1px !important;
+        }
+    </style>
 </head>
 <body data-mobile-nav-trigger-alignment="right" data-mobile-nav-style="modern" data-mobile-nav-bg-color="#1d1d1d">
 @include('inc.front.header')
@@ -178,39 +187,59 @@
         @if($collezione && $collezione->opere->count())
             <div class="row">
                 @foreach($collezione->opere as $opera)
-                    <div class="col-xl-3 col-lg-6 mb-30">
-                        <img class="w-100"
-                             style="box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;"
-                             src="{{ $opera->immagine ? asset('storage/' . $opera->immagine) : '/images/placeholder.jpg' }}"
-                             alt="{{ $opera->titolo }}" />
+                    <div class="col-xl-3 col-lg-4 col-md-6 mb-50px">
+                        <div class="opera-card"
+                             style="box-shadow: rgba(0,0,0,.12) 0 6px 24px 0, rgba(0,0,0,.05) 0 0 0 1px; border-radius: 6px; overflow: hidden; background:#fff;">
 
-                        <div class="row">
-                            <div class="col-12 text-center">
-                                <p class="text-dark-gray alt-font fs-20 pt-20 mb-10">
-                                    <strong>{{ $opera->titolo }}</strong>
+                            {{-- Image with hover zoom overlay --}}
+                            <div style="position:relative; overflow:hidden;">
+                                <img src="{{ $opera->immagine ? asset('storage/' . $opera->immagine) : '/images/placeholder.jpg' }}"
+                                     alt="{{ $opera->titolo }}"
+                                     loading="lazy"
+                                     style="aspect-ratio:4/5; object-fit:cover; width:100%; display:block;" />
+
+                                @if($opera->immagine)
+                                    <div class="opera-zoom-overlay"
+                                         style="position:absolute; inset:0; background:rgba(0,0,0,0); display:flex; align-items:center; justify-content:center; transition:background .3s;"
+                                         onmouseenter="this.style.background='rgba(0,0,0,0.35)'; this.querySelector('button').style.opacity='1';"
+                                         onmouseleave="this.style.background='rgba(0,0,0,0)'; this.querySelector('button').style.opacity='0';">
+                                        <button type="button"
+                                                class="btn btn-medium btn-white btn-rounded"
+                                                style="opacity:0; transition:opacity .3s;"
+                                                data-image="{{ asset('storage/' . $opera->immagine) }}"
+                                                onclick="openOperaLightbox(this)">
+                                            <i class="feather icon-feather-search me-5px"></i>
+                                            <span>Ingrandisci</span>
+                                        </button>
+                                    </div>
+                                @endif
+                            </div>
+
+                            {{-- Info --}}
+                            <div class="p-20px text-center">
+                                <p class="text-dark-gray alt-font fs-18 mb-5px fw-600">
+                                    {{ $opera->titolo }}
                                 </p>
 
-                                {{-- Prezzo o SOLD --}}
-                                @if($opera->venduto)
-                                    <p class="mb-0 text-gradient-base-color alt-font fw-700 fs-20">
-                                        SOLD
+                                @if($opera->dimensioni)
+                                    <p class="alt-font fs-12 text-muted mb-5px">
+                                        {{ $opera->dimensioni }}
                                     </p>
+                                @endif
+
+                                @if($opera->venduto)
+                                    <p class="mb-0 text-gradient-base-color alt-font fw-700 fs-16">SOLD</p>
                                 @elseif(!is_null($opera->prezzo))
-                                    <p class="mb-0">
+                                    <p class="mb-0 text-dark-gray alt-font fw-500 fs-16">
                                         {{ number_format($opera->prezzo, 2, ',', '.') }} €
                                     </p>
                                 @else
-                                    <p class="mb-0 text-muted">Su richiesta</p>
+                                    <p class="mb-0 text-muted fs-14">Su richiesta</p>
                                 @endif
 
-                                {{-- Dimensioni --}}
-                                <p class="mt-0 alt-font fs-12">
-                                    {{ $opera->dimensioni ?? '' }}
-                                </p>
-
-                                {{-- Pulsanti --}}
-                                <div class="mt-2 mb-30">
-                                    @if($opera->immagine)
+                                {{-- Mobile zoom button --}}
+                                @if($opera->immagine)
+                                    <div class="d-block d-md-none mt-10px">
                                         <button type="button"
                                                 class="btn btn-very-small btn-dark-gray btn-rounded d-inline-flex align-items-center"
                                                 data-image="{{ asset('storage/' . $opera->immagine) }}"
@@ -218,8 +247,8 @@
                                             <i class="feather icon-feather-search me-5px"></i>
                                             <span>Ingrandisci</span>
                                         </button>
-                                    @endif
-                                </div>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>
