@@ -236,7 +236,7 @@
 </div> <!-- END wrapper -->
 
 {{-- Toast container --}}
-<div class="position-fixed top-0 end-0 p-3" style="z-index:9999" id="toast-container"></div>
+<div class="position-fixed bottom-0 start-50 translate-middle-x p-3" style="z-index:9999" id="toast-container"></div>
 
 {{-- Confirm modal --}}
 <div class="modal fade" id="confirmModal" tabindex="-1" aria-hidden="true">
