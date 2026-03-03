@@ -225,21 +225,19 @@
                                             <p class="mb-0 text-muted fs-13">Su richiesta</p>
                                         @endif
 
-                                        {{-- Mobile zoom button (always visible on touch) --}}
-                                        @if($opera->immagine)
-                                            <div class="d-block d-md-none mt-8px">
-                                                <button type="button"
-                                                        class="btn btn-very-small btn-dark-gray btn-rounded d-inline-flex align-items-center"
-                                                        data-image="{{ asset('storage/' . $opera->immagine) }}"
-                                                        onclick="openOperaLightbox(this)">
-                                                    <i class="feather icon-feather-search me-5px"></i>
-                                                    <span>Zoom</span>
-                                                </button>
-                                            </div>
-                                        @endif
-
-                                        {{-- Detail page link --}}
-                                        <div class="mt-10px">
+                                        {{-- Buttons wrapper: more space on desktop, zoom only on mobile --}}
+                                        <div class="mt-16px mt-md-22px">
+                                            @if($opera->immagine)
+                                                <div class="d-md-none mb-8px">
+                                                    <button type="button"
+                                                            class="btn btn-very-small btn-dark-gray btn-rounded d-inline-flex align-items-center"
+                                                            data-image="{{ asset('storage/' . $opera->immagine) }}"
+                                                            onclick="openOperaLightbox(this)">
+                                                        <i class="feather icon-feather-search me-5px"></i>
+                                                        <span>Zoom</span>
+                                                    </button>
+                                                </div>
+                                            @endif
                                             <a href="{{ route('opera.show', $opera->slug) }}"
                                                class="btn btn-very-small btn-transparent-light-gray border-1 btn-rounded d-inline-flex align-items-center">
                                                 <span>Scopri l'opera</span>
