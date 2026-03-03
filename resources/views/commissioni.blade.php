@@ -445,21 +445,21 @@
 
                 <div class="accordion accordion-style-02" id="accordion-style-02" data-active-icon="icon-feather-minus" data-inactive-icon="icon-feather-plus">
 
-                    @forelse($faqs as $i => $faq)
-                        <div class="accordion-item {{ $i === 0 ? ‘active-accordion’ : ‘’ }}">
+                    @forelse($faqs as $faq)
+                        <div class="accordion-item {{ $loop->first ? ‘active-accordion’ : ‘’ }}">
                             <div class="accordion-header border-bottom border-color-transparent-dark-very-light">
                                 <a href="#" data-bs-toggle="collapse"
                                    data-bs-target="#faq-{{ $faq->id }}"
-                                   aria-expanded="{{ $i === 0 ? ‘true’ : ‘false’ }}"
+                                   aria-expanded="{{ $loop->first ? ‘true’ : ‘false’ }}"
                                    data-bs-parent="#accordion-style-02">
                                     <div class="accordion-title mb-0 position-relative text-dark-gray pe-30px">
-                                        <i class="feather {{ $i === 0 ? ‘icon-feather-minus’ : ‘icon-feather-plus’ }} fs-20"></i>
+                                        <i class="feather {{ $loop->first ? ‘icon-feather-minus’ : ‘icon-feather-plus’ }} fs-20"></i>
                                         <span class="fw-500">{{ $faq->domanda }}</span>
                                     </div>
                                 </a>
                             </div>
                             <div id="faq-{{ $faq->id }}"
-                                 class="accordion-collapse collapse {{ $i === 0 ? ‘show’ : ‘’ }}"
+                                 class="accordion-collapse collapse {{ $loop->first ? ‘show’ : ‘’ }}"
                                  data-bs-parent="#accordion-style-02">
                                 <div class="accordion-body last-paragraph-no-margin border-bottom border-color-transparent-dark-very-light">
                                     <div class="w-90 sm-w-95 xs-w-100">
