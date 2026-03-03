@@ -214,7 +214,7 @@
                                         @endif
 
                                         @if($opera->venduto)
-                                            <p class="mb-0 text-gradient-base-color alt-font fw-700 fs-14">
+                                            <p class="mb-0 alt-font fw-700 fs-14" style="color:#b5341a;">
                                                 SOLD
                                             </p>
                                         @elseif(!is_null($opera->prezzo))

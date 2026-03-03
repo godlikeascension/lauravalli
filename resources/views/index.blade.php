@@ -221,7 +221,7 @@
                                 @endif
 
                                 @if($opera->venduto)
-                                    <p class="mb-0 text-gradient-base-color alt-font fw-700 fs-16">SOLD</p>
+                                    <p class="mb-0 alt-font fw-700 fs-16" style="color:#b5341a;">SOLD</p>
                                 @elseif(!is_null($opera->prezzo))
                                     <p class="mb-0 text-dark-gray alt-font fw-500 fs-16">
                                         {{ number_format($opera->prezzo, 2, ',', '.') }} €
