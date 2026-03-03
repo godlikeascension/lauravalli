@@ -167,20 +167,7 @@
         <div class="row">
             <div class="col-12 text-center">
                 <h2 class="text-dark-gray fw-600 alt-font pt-70">Ultima Collezione</h2>
-                @if($collezione)
-                    <h4 class="text-dark-gray fw-600 fs-24 alt-font font-style-italic mt-10">
-                        {{ $collezione->nome }}
-                    </h4>
-                    @if($collezione->descrizione)
-                        <div class="mx-auto mb-0 pb-50" style="max-width: 600px;">
-                            {!! $collezione->descrizione !!}
-                        </div>
-                    @else
-                        <div class="pb-50"></div>
-                    @endif
-                @else
-                    <div class="pb-70"></div>
-                @endif
+                <div class="{{ $collezione ? 'pb-50' : 'pb-70' }}"></div>
             </div>
         </div>
 
