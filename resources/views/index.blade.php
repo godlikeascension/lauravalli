@@ -172,9 +172,15 @@
         </div>
 
         @if($collezione && $collezione->opere->count())
-            <div class="row">
+            @php
+                $n    = $collezione->opere->count();
+                $rem3 = $n % 3 === 0 ? 0 : (3 - $n % 3);
+                $rem4 = $n % 4 === 0 ? 0 : (4 - $n % 4);
+                $xlCol = $rem4 <= $rem3 ? 'col-xl-3' : 'col-xl-4';
+            @endphp
+            <div class="row justify-content-center">
                 @foreach($collezione->opere as $opera)
-                    <div class="col-xl-3 col-lg-4 col-md-6 mb-50px">
+                    <div class="{{ $xlCol }} col-lg-4 col-md-6 mb-50px">
                         <div class="opera-card"
                              style="box-shadow: rgba(0,0,0,.12) 0 6px 24px 0, rgba(0,0,0,.05) 0 0 0 1px; border-radius: 6px; overflow: hidden; background:#fff;">
 
