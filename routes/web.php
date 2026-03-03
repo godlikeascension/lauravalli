@@ -40,7 +40,7 @@ Route::get('/artist-statement', function () {
 });
 Route::get('/opere', function () {
     $collezioni = Collezione::with('opere')
-        ->orderByRaw('is_default DESC, nome ASC')
+        ->orderByRaw("CASE WHEN nome = 'Commissioni' THEN 1 ELSE 0 END ASC, is_default DESC, nome ASC")
         ->get();
     return view('collezioni-pubblica', compact('collezioni'));
 })->name('collezioni.pubblica');
