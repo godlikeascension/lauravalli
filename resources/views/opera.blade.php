@@ -358,16 +358,16 @@
                     {{-- CTA --}}
                     @if(!$opera->venduto)
                         <a href="/#contatti"
-                           class="btn btn-large btn-dark-gray btn-switch-text btn-box-shadow fw-400 w-100 mb-12px">
-                            <span>
-                                <span class="btn-double-text" data-text="Invia una richiesta">Invia una richiesta</span>
-                                <span><i class="fa-regular fa-envelope"></i></span>
-                            </span>
+                           class="btn btn-medium btn-dark-gray btn-rounded d-flex align-items-center justify-content-center w-100"
+                           style="margin-bottom: 12px;">
+                            <i class="fa-regular fa-envelope" style="margin-right: 8px;"></i>
+                            Invia una richiesta
                         </a>
                     @endif
                     <a href="/opere"
-                       class="btn btn-medium btn-transparent-light-gray border-1 fw-400 w-100">
-                        ← Torna alle opere
+                       class="btn btn-medium btn-transparent-light-gray border-1 btn-rounded d-flex align-items-center justify-content-center w-100">
+                        <i class="feather icon-feather-arrow-left" style="margin-right: 8px;"></i>
+                        Torna alle opere
                     </a>
 
                 </div>
