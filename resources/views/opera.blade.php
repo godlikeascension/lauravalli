@@ -31,6 +31,8 @@
             width: 100%;
             display: block;
             cursor: zoom-in;
+            aspect-ratio: 4 / 5;
+            object-fit: cover;
             transition: transform .45s ease;
         }
         .opera-main-swiper .swiper-slide img:hover {
