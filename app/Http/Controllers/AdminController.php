@@ -6,6 +6,7 @@ use App\Models\Recensione;
 use Illuminate\Http\Request;
 use App\Models\Opera;
 use App\Models\Collezione;
+use App\Models\Faq;
 use App\Models\Impostazione;
 use App\Models\OperaImmagine;
 use Illuminate\Support\Facades\Storage;
@@ -385,6 +386,67 @@ class AdminController extends Controller
         $path = $request->file('upload')->store('artist-statement', 'public');
 
         return response()->json(['url' => asset('storage/' . $path)]);
+    }
+
+    // -----------------------------
+    // FAQ CRUD
+    // -----------------------------
+    public function faqsIndex()
+    {
+        $faqs = Faq::orderBy('ordine')->orderBy('id')->get();
+        return view('dashboard.faqs', compact('faqs'));
+    }
+
+    public function faqsCreate()
+    {
+        return view('dashboard.faqs-create');
+    }
+
+    public function faqsStore(Request $request)
+    {
+        $data = $request->validate([
+            'domanda'      => 'required|string|max:255',
+            'risposta_html' => 'required|string',
+            'ordine'       => 'nullable|integer|min:0',
+        ]);
+
+        Faq::create([
+            'domanda'      => $data['domanda'],
+            'risposta_html' => $data['risposta_html'],
+            'ordine'       => $data['ordine'] ?? 0,
+        ]);
+
+        return redirect()->route('dashboard.faqs.index')
+            ->with('success', 'FAQ creata con successo.');
+    }
+
+    public function faqsEdit(Faq $faq)
+    {
+        return view('dashboard.faqs-edit', compact('faq'));
+    }
+
+    public function faqsUpdate(Request $request, Faq $faq)
+    {
+        $data = $request->validate([
+            'domanda'      => 'required|string|max:255',
+            'risposta_html' => 'required|string',
+            'ordine'       => 'nullable|integer|min:0',
+        ]);
+
+        $faq->domanda       = $data['domanda'];
+        $faq->risposta_html = $data['risposta_html'];
+        $faq->ordine        = $data['ordine'] ?? 0;
+        $faq->save();
+
+        return redirect()->route('dashboard.faqs.index')
+            ->with('success', 'FAQ aggiornata con successo.');
+    }
+
+    public function faqsDestroy(Faq $faq)
+    {
+        $faq->delete();
+        return redirect()->route('dashboard.faqs.index')
+            ->with('success', 'FAQ eliminata.');
     }
 
 }

@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminController;
 use App\Models\Recensione;
 use App\Models\Opera;
 use App\Models\Collezione;
+use App\Models\Faq;
 use App\Models\Impostazione;
 
 // -----------------------------
@@ -32,7 +33,9 @@ Route::get('/', function () {
 });
 
 Route::get('/commissioni', function () {
-    return view('commissioni');
+    $recensioni = Recensione::orderBy('created_at', 'desc')->get();
+    $faqs       = Faq::orderBy('ordine')->orderBy('id')->get();
+    return view('commissioni', compact('recensioni', 'faqs'));
 });
 Route::get('/artist-statement', function () {
     $contenuto = Impostazione::get('artist_statement');
@@ -166,9 +169,21 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('/dashboard/upload-image', [AdminController::class, 'uploadImage'])
         ->name('dashboard.upload-image');
-});
-Route::get('/commissioni', function () {
-    $recensioni = Recensione::orderBy('created_at', 'desc')->get();
-    return view('commissioni', compact('recensioni'));
+
+    // -----------------------------
+    // FAQ
+    // -----------------------------
+    Route::get('/dashboard/faqs', [AdminController::class, 'faqsIndex'])
+        ->name('dashboard.faqs.index');
+    Route::get('/dashboard/faqs/crea', [AdminController::class, 'faqsCreate'])
+        ->name('dashboard.faqs.create');
+    Route::post('/dashboard/faqs', [AdminController::class, 'faqsStore'])
+        ->name('dashboard.faqs.store');
+    Route::get('/dashboard/faqs/{faq}/edit', [AdminController::class, 'faqsEdit'])
+        ->name('dashboard.faqs.edit');
+    Route::put('/dashboard/faqs/{faq}', [AdminController::class, 'faqsUpdate'])
+        ->name('dashboard.faqs.update');
+    Route::delete('/dashboard/faqs/{faq}', [AdminController::class, 'faqsDestroy'])
+        ->name('dashboard.faqs.destroy');
 });
 

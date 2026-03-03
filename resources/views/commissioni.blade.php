@@ -445,157 +445,32 @@
 
                 <div class="accordion accordion-style-02" id="accordion-style-02" data-active-icon="icon-feather-minus" data-inactive-icon="icon-feather-plus">
 
-                    <!-- start accordion item -->
-                    <div class="accordion-item active-accordion">
-                        <div class="accordion-header border-bottom border-color-transparent-dark-very-light">
-                            <a href="#" data-bs-toggle="collapse" data-bs-target="#accordion-style-02-01" aria-expanded="true" data-bs-parent="#accordion-style-02">
-                                <div class="accordion-title mb-0 position-relative text-dark-gray pe-30px">
-                                    <i class="feather icon-feather-minus fs-20"></i>
-                                    <span class="fw-500">Quanto tempo serve per una commissione?</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div id="accordion-style-02-01" class="accordion-collapse collapse show" data-bs-parent="#accordion-style-02">
-                            <div class="accordion-body last-paragraph-no-margin border-bottom border-color-transparent-dark-very-light">
-                                <p class="w-90 sm-w-95 xs-w-100">
-                                    Ogni opera richiede cura, tempo e presenza. La tempistica media varia da 3 a 6 settimane, in base alla complessità e alla lista d’attesa.
-                                    Sarai sempre aggiornata/o su ogni fase del processo.
-                                </p>
+                    @forelse($faqs as $i => $faq)
+                        <div class="accordion-item {{ $i === 0 ? ‘active-accordion’ : ‘’ }}">
+                            <div class="accordion-header border-bottom border-color-transparent-dark-very-light">
+                                <a href="#" data-bs-toggle="collapse"
+                                   data-bs-target="#faq-{{ $faq->id }}"
+                                   aria-expanded="{{ $i === 0 ? ‘true’ : ‘false’ }}"
+                                   data-bs-parent="#accordion-style-02">
+                                    <div class="accordion-title mb-0 position-relative text-dark-gray pe-30px">
+                                        <i class="feather {{ $i === 0 ? ‘icon-feather-minus’ : ‘icon-feather-plus’ }} fs-20"></i>
+                                        <span class="fw-500">{{ $faq->domanda }}</span>
+                                    </div>
+                                </a>
                             </div>
-                        </div>
-                    </div>
-                    <!-- end accordion item -->
-
-                    <!-- start accordion item -->
-                    <div class="accordion-item">
-                        <div class="accordion-header border-bottom border-color-transparent-dark-very-light">
-                            <a href="#" data-bs-toggle="collapse" data-bs-target="#accordion-style-02-02" aria-expanded="false" data-bs-parent="#accordion-style-02">
-                                <div class="accordion-title mb-0 position-relative text-dark-gray pe-30px">
-                                    <i class="feather icon-feather-plus fs-20"></i>
-                                    <span class="fw-500">Posso richiedere modifiche?</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div id="accordion-style-02-02" class="accordion-collapse collapse" data-bs-parent="#accordion-style-02">
-                            <div class="accordion-body last-paragraph-no-margin border-bottom border-color-transparent-dark-very-light">
-                                <p class="w-90 sm-w-95 xs-w-100">
-                                    Sì. Al momento del bozzetto digitale terrò conto di tutti i tuoi input prima di iniziare l’opera originale ad olio.
-                                    Durante la realizzazione ti invierò aggiornamenti e foto, così potrai seguire passo dopo passo la nascita del dipinto.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end accordion item -->
-
-                    <!-- start accordion item -->
-                    <div class="accordion-item">
-                        <div class="accordion-header border-bottom border-color-transparent-dark-very-light">
-                            <a href="#" data-bs-toggle="collapse" data-bs-target="#accordion-style-02-03" aria-expanded="false" data-bs-parent="#accordion-style-02">
-                                <div class="accordion-title mb-0 position-relative text-dark-gray pe-30px">
-                                    <i class="feather icon-feather-plus fs-20"></i>
-                                    <span class="fw-500">Quali misure sono disponibili?</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div id="accordion-style-02-03" class="accordion-collapse collapse" data-bs-parent="#accordion-style-02">
-                            <div class="accordion-body last-paragraph-no-margin border-bottom border-color-transparent-dark-very-light">
-                                <p class="w-90 sm-w-95 xs-w-100">
-                                    La dimensione minima è <strong>30 × 40 cm</strong>.<br>
-                                    Al momento la più grande è <strong>240 × 120 cm</strong>.<br>
-                                    Per formati personalizzati possiamo confrontarci e trovare la soluzione più adatta a te.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end accordion item -->
-
-                    <!-- start accordion item -->
-                    <div class="accordion-item">
-                        <div class="accordion-header border-bottom border-color-transparent-dark-very-light">
-                            <a href="#" data-bs-toggle="collapse" data-bs-target="#accordion-style-02-04" aria-expanded="false" data-bs-parent="#accordion-style-02">
-                                <div class="accordion-title mb-0 position-relative text-dark-gray pe-30px">
-                                    <i class="feather icon-feather-plus fs-20"></i>
-                                    <span class="fw-500">Come viene spedita l’opera?</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div id="accordion-style-02-04" class="accordion-collapse collapse" data-bs-parent="#accordion-style-02">
-                            <div class="accordion-body last-paragraph-no-margin border-bottom border-color-transparent-dark-very-light">
-                                <p class="w-90 sm-w-95 xs-w-100">
-                                    Ogni dipinto è accuratamente protetto e spedito in tutto il mondo. Puoi scegliere tra:
-                                </p>
-                                <ul class="w-90 sm-w-95 xs-w-100 mb-0">
-                                    <li>Spedizione del quadro montato (stirato sul telaio)</li>
-                                    <li>Spedizione solo della tela arrotolata in un tubo in PVC</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end accordion item -->
-
-                    <!-- start accordion item -->
-                    <div class="accordion-item">
-                        <div class="accordion-header border-bottom border-color-transparent-dark-very-light">
-                            <a href="#" data-bs-toggle="collapse" data-bs-target="#accordion-style-02-05" aria-expanded="false" data-bs-parent="#accordion-style-02">
-                                <div class="accordion-title mb-0 position-relative text-dark-gray pe-30px">
-                                    <i class="feather icon-feather-plus fs-20"></i>
-                                    <span class="fw-500">Prezzi indicativi</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div id="accordion-style-02-05" class="accordion-collapse collapse" data-bs-parent="#accordion-style-02">
-                            <div class="accordion-body last-paragraph-no-margin border-bottom border-color-transparent-dark-very-light">
-                                <div class="w-90 sm-w-95 xs-w-100">
-                                    <p class="mb-10px"><strong>Olio su tela</strong></p>
-                                    <ul>
-                                        <li>30 × 40 cm → 220 €</li>
-                                        <li>60 × 80 cm → 450 €</li>
-                                        <li>60 × 120 cm → 520 €</li>
-                                        <li>120 × 120 cm → 850 €</li>
-                                        <li>240 × 120 cm → 1.850 €</li>
-                                    </ul>
-                                    <p class="mb-10px"><strong>Olio su carta 300 g</strong></p>
-                                    <ul>
-                                        <li>30 × 40 cm → 150 €</li>
-                                        <li>65 × 50 cm → 300 €</li>
-                                    </ul>
-                                    <p class="mb-0">
-                                        <em>Spese di spedizione escluse.</em><br>
-                                        Se desideri un formato diverso, scrivimi: creeremo insieme la soluzione perfetta.
-                                    </p>
+                            <div id="faq-{{ $faq->id }}"
+                                 class="accordion-collapse collapse {{ $i === 0 ? ‘show’ : ‘’ }}"
+                                 data-bs-parent="#accordion-style-02">
+                                <div class="accordion-body last-paragraph-no-margin border-bottom border-color-transparent-dark-very-light">
+                                    <div class="w-90 sm-w-95 xs-w-100">
+                                        {!! $faq->risposta_html !!}
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- end accordion item -->
-
-                    <!-- start accordion item -->
-                    <div class="accordion-item">
-                        <div class="accordion-header border-bottom border-color-transparent">
-                            <a href="#" data-bs-toggle="collapse" data-bs-target="#accordion-style-02-06" aria-expanded="false" data-bs-parent="#accordion-style-02">
-                                <div class="accordion-title mb-0 position-relative text-dark-gray pe-30px">
-                                    <i class="feather icon-feather-plus fs-20"></i>
-                                    <span class="fw-500">Modalità di pagamento</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div id="accordion-style-02-06" class="accordion-collapse collapse" data-bs-parent="#accordion-style-02">
-                            <div class="accordion-body last-paragraph-no-margin border-bottom border-color-transparent">
-                                <div class="w-90 sm-w-95 xs-w-100">
-                                    <p class="mb-10px">Il pagamento è diviso in 3 fasi:</p>
-                                    <ul>
-                                        <li><strong>30%</strong> all’ordine – per riservare la tua commissione (non rimborsabile)</li>
-                                        <li><strong>30%</strong> all’inizio del lavoro – prima della fase di bozzetto</li>
-                                        <li><strong>40% + spedizione</strong> – entro 7 giorni dalla consegna del dipinto</li>
-                                    </ul>
-                                    <p class="mb-0">
-                                        Prima di iniziare riceverai via email un preventivo dettagliato da firmare e approvare.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end accordion item -->
+                    @empty
+                        <p class="text-muted">Nessuna domanda frequente al momento.</p>
+                    @endforelse
 
                 </div>
             </div>
