@@ -243,6 +243,31 @@
     <div class="container">
 
 
+        {{-- ── MOBILE HEADER (collection / title / dimensions) — hidden on desktop ── --}}
+        <div class="d-lg-none mb-25px">
+            @if($opera->collezione)
+                <div class="mb-12px">
+                    <span class="w-25px h-1px d-inline-block bg-base-color me-5px align-middle"></span>
+                    <span class="text-gradient-base-color fs-13 alt-font fw-700 ls-05px text-uppercase align-middle">
+                        {{ $opera->collezione->nome }}
+                    </span>
+                </div>
+            @endif
+            <h1 class="alt-font fw-600 text-dark-gray ls-minus-2px mb-8px">
+                {{ $opera->titolo }}
+            </h1>
+            @if($opera->dimensioni || $opera->commissione)
+                <div class="d-flex flex-wrap gap-3">
+                    @if($opera->dimensioni)
+                        <span class="text-muted alt-font fs-14">{{ $opera->dimensioni }}</span>
+                    @endif
+                    @if($opera->commissione)
+                        <span class="text-muted alt-font fs-13">&middot; Opera su commissione</span>
+                    @endif
+                </div>
+            @endif
+        </div>
+
         <div class="row gx-5 gy-5 align-items-start">
 
             {{-- ── LEFT: image(s) ── --}}
@@ -301,34 +326,31 @@
             <div class="col-lg-5">
                 <div class="opera-info-sticky">
 
-                    {{-- Collection label --}}
-                    @if($opera->collezione)
-                        <div class="mb-15px">
-                            <span class="w-25px h-1px d-inline-block bg-base-color me-5px align-middle"></span>
-                            <span class="text-gradient-base-color fs-13 alt-font fw-700 ls-05px text-uppercase align-middle">
-                                {{ $opera->collezione->nome }}
-                            </span>
-                        </div>
-                    @endif
-
-                    {{-- Title --}}
-                    <h1 class="alt-font fw-600 text-dark-gray ls-minus-2px mb-10px">
-                        {{ $opera->titolo }}
-                    </h1>
-
-                    {{-- Dimensions + commission --}}
-                    @if($opera->dimensioni || $opera->commissione)
-                        <div class="d-flex flex-wrap gap-3 mb-0">
-                            @if($opera->dimensioni)
-                                <span class="text-muted alt-font fs-14">{{ $opera->dimensioni }}</span>
-                            @endif
-                            @if($opera->commissione)
-                                <span class="text-muted alt-font fs-13">&middot; Opera su commissione</span>
-                            @endif
-                        </div>
-                    @endif
-
-                    <hr class="info-divider">
+                    {{-- Collection label / title / dimensions — desktop only (mobile renders these above the image) --}}
+                    <div class="d-none d-lg-block">
+                        @if($opera->collezione)
+                            <div class="mb-15px">
+                                <span class="w-25px h-1px d-inline-block bg-base-color me-5px align-middle"></span>
+                                <span class="text-gradient-base-color fs-13 alt-font fw-700 ls-05px text-uppercase align-middle">
+                                    {{ $opera->collezione->nome }}
+                                </span>
+                            </div>
+                        @endif
+                        <h1 class="alt-font fw-600 text-dark-gray ls-minus-2px mb-10px">
+                            {{ $opera->titolo }}
+                        </h1>
+                        @if($opera->dimensioni || $opera->commissione)
+                            <div class="d-flex flex-wrap gap-3 mb-0">
+                                @if($opera->dimensioni)
+                                    <span class="text-muted alt-font fs-14">{{ $opera->dimensioni }}</span>
+                                @endif
+                                @if($opera->commissione)
+                                    <span class="text-muted alt-font fs-13">&middot; Opera su commissione</span>
+                                @endif
+                            </div>
+                        @endif
+                        <hr class="info-divider">
+                    </div>
 
                     {{-- Price --}}
                     <div class="mb-0">
