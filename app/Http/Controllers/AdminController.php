@@ -100,8 +100,9 @@ class AdminController extends Controller
     public function opereIndex()
     {
         $opere = Opera::with('collezione')->orderBy('created_at', 'desc')->get();
+        $collezioni = Collezione::orderBy('nome')->get();
 
-        return view('dashboard.opere', compact('opere'));
+        return view('dashboard.opere', compact('opere', 'collezioni'));
     }
 
     public function opereCreate()

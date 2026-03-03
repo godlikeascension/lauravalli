@@ -62,6 +62,18 @@
                                     </div>
                                 </div>
 
+                                {{-- Collection filter tags --}}
+                                <div class="mb-3 d-flex flex-wrap gap-2">
+                                    <button type="button" class="btn btn-sm btn-dark collection-filter active" data-collezione="">
+                                        Tutte le collezioni
+                                    </button>
+                                    @foreach($collezioni as $col)
+                                        <button type="button" class="btn btn-sm btn-outline-dark collection-filter" data-collezione="{{ $col->id }}">
+                                            {{ $col->nome }}
+                                        </button>
+                                    @endforeach
+                                </div>
+
                                 <div class="table-responsive">
                                     <table class="table table-hover m-0 table-centered nowrap w-100">
                                         <thead>
@@ -79,7 +91,7 @@
                                         </thead>
                                         <tbody>
                                         @forelse($opere as $opera)
-                                            <tr>
+                                            <tr data-collezione-id="{{ $opera->collezione_id ?? '' }}">
                                                 <td>{{ $opera->id }}</td>
 
                                                 <td>
@@ -180,9 +192,30 @@
         document.querySelectorAll('.nav-item').forEach(function (el) {
             el.classList.remove('active');
         });
-        // se hai una voce di menu specifica per le opere, puoi attivarla qui
-        // document.getElementById('nav-opere')?.classList.add('active');
     })();
+
+    // ── Collection filter ─────────────────────────────────────────────────────
+    document.querySelectorAll('.collection-filter').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            // Update active state
+            document.querySelectorAll('.collection-filter').forEach(function (b) {
+                b.classList.remove('btn-dark', 'active');
+                b.classList.add('btn-outline-dark');
+            });
+            this.classList.remove('btn-outline-dark');
+            this.classList.add('btn-dark', 'active');
+
+            var selectedId = this.dataset.collezione;
+
+            document.querySelectorAll('tbody tr[data-collezione-id]').forEach(function (row) {
+                if (!selectedId || row.dataset.collezioneId === selectedId) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    });
 </script>
 
 </body>
