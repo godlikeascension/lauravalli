@@ -86,7 +86,8 @@
                                 <div class="d-flex align-items-start gap-3 flex-wrap">
                                     <input type="file" id="img-upload-input" accept="image/*" class="form-control" style="max-width:320px;">
                                     <button type="button" id="img-upload-btn" class="btn btn-secondary">
-                                        <i class="mdi mdi-upload me-1"></i> Carica
+                                        <span id="img-upload-spinner" class="spinner-border spinner-border-sm me-1 d-none" role="status"></span>
+                                        <i id="img-upload-icon" class="mdi mdi-upload me-1"></i> Carica
                                     </button>
                                 </div>
 
@@ -176,6 +177,14 @@
         var file = document.getElementById('img-upload-input').files[0];
         if (!file) { alert('Seleziona prima un file.'); return; }
 
+        var btn     = document.getElementById('img-upload-btn');
+        var spinner = document.getElementById('img-upload-spinner');
+        var icon    = document.getElementById('img-upload-icon');
+
+        btn.disabled = true;
+        spinner.classList.remove('d-none');
+        icon.classList.add('d-none');
+
         var data = new FormData();
         data.append('upload', file);
         data.append('_token', document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
@@ -192,7 +201,12 @@
                     alert('Errore durante l\'upload.');
                 }
             })
-            .catch(function () { alert('Errore durante l\'upload.'); });
+            .catch(function () { alert('Errore durante l\'upload.'); })
+            .finally(function () {
+                btn.disabled = false;
+                spinner.classList.add('d-none');
+                icon.classList.remove('d-none');
+            });
     });
 
     document.getElementById('img-copy-btn').addEventListener('click', function () {
