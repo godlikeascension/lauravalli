@@ -24,6 +24,33 @@
     <meta property="og:image" content="/images/innocenza-sospesa.jpg">
     <meta property="og:image:width" content="967">
     <meta property="og:image:height" content="1000">
+    <style>
+        /* Scoped styles for CKEditor-generated content — ensures headings and
+           paragraphs match the site theme even after utility classes are stripped */
+        .artist-statement-content h1,
+        .artist-statement-content h2,
+        .artist-statement-content h3,
+        .artist-statement-content h4,
+        .artist-statement-content h5,
+        .artist-statement-content h6 {
+            font-family: var(--alt-font);
+            color: #232323;
+            font-weight: 600;
+            letter-spacing: -1px;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        .artist-statement-content p {
+            font-family: var(--primary-font);
+            color: #232323;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        .artist-statement-content img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
 </head>
 <body data-mobile-nav-trigger-alignment="right" data-mobile-nav-style="modern" data-mobile-nav-bg-color="#1d1d1d">
 @include('inc.front.header')
@@ -31,7 +58,7 @@
 <!-- start section -->
 <section>
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center artist-statement-content">
             {!! $contenuto !!}
         </div>
     </div>
