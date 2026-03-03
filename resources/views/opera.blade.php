@@ -51,8 +51,13 @@
         }
         .opera-main-swiper .swiper-button-prev::after,
         .opera-main-swiper .swiper-button-next::after {
-            font-size: 15px;
-            font-weight: 700;
+            display: none;
+        }
+        .opera-main-swiper .swiper-button-prev,
+        .opera-main-swiper .swiper-button-next {
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .opera-main-swiper .swiper-pagination-bullet-active {
             background: #1d1d1d;
@@ -157,10 +162,13 @@
         #lightbox-swiper-wrap .swiper-button-prev,
         #lightbox-swiper-wrap .swiper-button-next {
             color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         #lightbox-swiper-wrap .swiper-button-prev::after,
         #lightbox-swiper-wrap .swiper-button-next::after {
-            font-size: 22px;
+            display: none;
         }
         .lb-close {
             position: fixed;
@@ -252,8 +260,8 @@
                                 </div>
                             @endforeach
                         </div>
-                        <div class="swiper-button-prev"></div>
-                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"><i class="feather icon-feather-arrow-left" style="font-size:18px;"></i></div>
+                        <div class="swiper-button-next"><i class="feather icon-feather-arrow-right" style="font-size:18px;"></i></div>
                         <div class="swiper-pagination"></div>
                     </div>
 
@@ -459,8 +467,8 @@
             @endforeach
         </div>
         @if($hasMultiple)
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"><i class="feather icon-feather-arrow-left" style="font-size:22px;"></i></div>
+            <div class="swiper-button-next"><i class="feather icon-feather-arrow-right" style="font-size:22px;"></i></div>
         @endif
     </div>
     @if($hasMultiple)
