@@ -82,6 +82,25 @@
             color: #9a9a9a;
             font-size: 16px;
         }
+
+        /* ── Mobile ── */
+        @media (max-width: 991px) {
+            /* Hero image più bassa su tablet/mobile */
+            .collezioni-hero-img { height: 320px !important; }
+        }
+        @media (max-width: 767px) {
+            /* Riduci padding della sezione */
+            section#collezioni { padding-top: 50px !important; padding-bottom: 50px !important; }
+            /* Titolo sezione meno spazio sotto */
+            .collezioni-heading { margin-bottom: 24px !important; }
+            /* Tab pills più compatti */
+            .collezione-tabs { gap: 7px; margin-bottom: 28px !important; }
+            .collezione-tab-btn { padding: 8px 16px; font-size: 13px; }
+            /* Meno spazio sotto ogni card */
+            .opera-col { margin-bottom: 20px !important; }
+            /* Info card più compatta */
+            .opera-card-info { padding: 12px !important; }
+        }
     </style>
 </head>
 
@@ -115,7 +134,7 @@
             </div>
 
             {{-- Right: cover image --}}
-            <div class="col-xl-7 col-lg-6 position-relative swiper-number-pagination-progress md-h-500px order-1 order-lg-2 md-mb-50px">
+            <div class="col-xl-7 col-lg-6 position-relative swiper-number-pagination-progress md-h-500px collezioni-hero-img order-1 order-lg-2 md-mb-30px">
                 <div class="swiper h-100 banner-slider"
                      data-slider-options='{ "slidesPerView": 1, "loop": true, "autoplay": { "delay": 7000, "disableOnInteraction": false }, "effect": "fade" }'
                      data-swiper-number-pagination-progress="true">
@@ -147,7 +166,7 @@
 
         {{-- Section label + heading --}}
         <div class="row">
-            <div class="col-12 text-center mb-50px"
+            <div class="col-12 text-center mb-50px collezioni-heading"
                  data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
                 <div class="mb-10px">
                     <span class="w-25px h-1px d-inline-block bg-base-color me-5px align-middle"></span>
@@ -167,7 +186,7 @@
 
             {{-- ── TAB PILLS ── --}}
             <div class="row">
-                <div class="col-12 text-center mb-50px">
+                <div class="col-12 text-center mb-50px collezione-tabs-wrap">
                     <ul class="collezione-tabs" id="collezioneTabs" role="tablist">
                         @foreach($collezioni as $i => $col)
                             <li>
@@ -202,10 +221,10 @@
                     @endif
 
                     {{-- Opera grid --}}
-                    <div class="row">
+                    <div class="row g-3 g-md-4">
                         @forelse($col->opere as $opera)
-                            <div class="col-xl-3 col-lg-4 col-md-6 mb-50px">
-                                <div class="opera-card"
+                            <div class="col-6 col-md-6 col-lg-4 col-xl-3 opera-col">
+                                <div class="opera-card h-100"
                                      style="box-shadow: rgba(0,0,0,.12) 0 6px 24px 0, rgba(0,0,0,.05) 0 0 0 1px; border-radius: 6px; overflow: hidden; background:#fff;">
                                     {{-- Image --}}
                                     <div style="position:relative; overflow:hidden;">
@@ -214,9 +233,9 @@
                                              loading="lazy"
                                              style="aspect-ratio:4/5; object-fit:cover; width:100%; display:block;" />
 
-                                        {{-- Zoom overlay on hover --}}
+                                        {{-- Zoom overlay on hover (desktop) --}}
                                         @if($opera->immagine)
-                                            <div class="opera-zoom-overlay"
+                                            <div class="opera-zoom-overlay d-none d-md-flex"
                                                  style="position:absolute; inset:0; background:rgba(0,0,0,0); display:flex; align-items:center; justify-content:center; transition:background .3s;"
                                                  onmouseenter="this.style.background='rgba(0,0,0,0.35)'; this.querySelector('button').style.opacity='1';"
                                                  onmouseleave="this.style.background='rgba(0,0,0,0)'; this.querySelector('button').style.opacity='0';">
@@ -233,8 +252,8 @@
                                     </div>
 
                                     {{-- Info --}}
-                                    <div class="p-20px text-center">
-                                        <p class="text-dark-gray alt-font fs-18 mb-5px fw-600">
+                                    <div class="p-20px opera-card-info text-center">
+                                        <p class="text-dark-gray alt-font fs-16 mb-5px fw-600">
                                             {{ $opera->titolo }}
                                         </p>
 
@@ -245,26 +264,26 @@
                                         @endif
 
                                         @if($opera->venduto)
-                                            <p class="mb-0 text-gradient-base-color alt-font fw-700 fs-16">
+                                            <p class="mb-0 text-gradient-base-color alt-font fw-700 fs-14">
                                                 SOLD
                                             </p>
                                         @elseif(!is_null($opera->prezzo))
-                                            <p class="mb-0 text-dark-gray alt-font fw-500 fs-16">
+                                            <p class="mb-0 text-dark-gray alt-font fw-500 fs-14">
                                                 {{ number_format($opera->prezzo, 2, ',', '.') }} €
                                             </p>
                                         @else
-                                            <p class="mb-0 text-muted fs-14">Su richiesta</p>
+                                            <p class="mb-0 text-muted fs-13">Su richiesta</p>
                                         @endif
 
                                         {{-- Mobile zoom button (always visible on touch) --}}
                                         @if($opera->immagine)
-                                            <div class="d-block d-md-none mt-10px">
+                                            <div class="d-block d-md-none mt-8px">
                                                 <button type="button"
                                                         class="btn btn-very-small btn-dark-gray btn-rounded d-inline-flex align-items-center"
                                                         data-image="{{ asset('storage/' . $opera->immagine) }}"
                                                         onclick="openOperaLightbox(this)">
                                                     <i class="feather icon-feather-search me-5px"></i>
-                                                    <span>Ingrandisci</span>
+                                                    <span>Zoom</span>
                                                 </button>
                                             </div>
                                         @endif
