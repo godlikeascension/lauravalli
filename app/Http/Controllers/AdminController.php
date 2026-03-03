@@ -6,6 +6,7 @@ use App\Models\Recensione;
 use Illuminate\Http\Request;
 use App\Models\Opera;
 use App\Models\Collezione;
+use App\Models\Impostazione;
 
 class AdminController extends Controller
 {
@@ -318,6 +319,31 @@ class AdminController extends Controller
         return redirect()
             ->route('dashboard.collezioni.index')
             ->with('success', 'Collezione eliminata con successo.');
+    }
+
+    // ── ARTIST STATEMENT ──────────────────────────────────────────────────────
+
+    public function artistStatementEdit()
+    {
+        $contenuto = Impostazione::get('artist_statement');
+        return view('dashboard.artist-statement', compact('contenuto'));
+    }
+
+    public function artistStatementUpdate(Request $request)
+    {
+        $request->validate(['contenuto' => 'nullable|string']);
+        Impostazione::set('artist_statement', $request->input('contenuto'));
+
+        return back()->with('success', 'Artist statement aggiornato con successo.');
+    }
+
+    public function uploadImage(Request $request)
+    {
+        $request->validate(['upload' => 'required|image|max:10240']);
+
+        $path = $request->file('upload')->store('artist-statement', 'public');
+
+        return response()->json(['url' => asset('storage/' . $path)]);
     }
 
 }

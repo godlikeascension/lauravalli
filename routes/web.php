@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminController;
 use App\Models\Recensione;
 use App\Models\Opera;
 use App\Models\Collezione;
+use App\Models\Impostazione;
 
 // -----------------------------
 // Form contatti
@@ -34,7 +35,8 @@ Route::get('/commissioni', function () {
     return view('commissioni');
 });
 Route::get('/artist-statement', function () {
-    return view('artist-statement');
+    $contenuto = Impostazione::get('artist_statement');
+    return view('artist-statement', compact('contenuto'));
 });
 Route::get('/collezioni', function () {
     $collezioni = Collezione::with('opere')
@@ -129,6 +131,18 @@ Route::middleware(['auth'])->group(function () {
 
     Route::delete('/dashboard/collezioni/{collezione}/opere/{opera}', [AdminController::class, 'collezioniRimuoviOpera'])
         ->name('dashboard.collezioni.opere.remove');
+
+    // -----------------------------
+    // ARTIST STATEMENT
+    // -----------------------------
+    Route::get('/dashboard/artist-statement', [AdminController::class, 'artistStatementEdit'])
+        ->name('dashboard.artist-statement');
+
+    Route::post('/dashboard/artist-statement', [AdminController::class, 'artistStatementUpdate'])
+        ->name('dashboard.artist-statement.update');
+
+    Route::post('/dashboard/upload-image', [AdminController::class, 'uploadImage'])
+        ->name('dashboard.upload-image');
 });
 Route::get('/commissioni', function () {
     $recensioni = Recensione::orderBy('created_at', 'desc')->get();

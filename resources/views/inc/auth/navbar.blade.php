@@ -76,6 +76,11 @@
                             <i class="mdi mdi-file-document me-1"></i> Recensioni
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dashboard/artist-statement">
+                            <i class="mdi mdi-fountain-pen-tip me-1"></i> Artist Statement
+                        </a>
+                    </li>
                 </ul>
             </div>
             <!-- end .collapsed -->
