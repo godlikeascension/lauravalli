@@ -98,6 +98,9 @@
                                         <button class="btn btn-outline-secondary" type="button" id="img-copy-btn">
                                             <i class="mdi mdi-content-copy"></i> Copia
                                         </button>
+                                        <button class="btn btn-primary" type="button" id="img-insert-btn">
+                                            <i class="mdi mdi-image-plus"></i> Inserisci nell'editor
+                                        </button>
                                     </div>
                                     <div class="mt-2">
                                         <img id="img-upload-preview" src="" alt="" style="max-height:160px; border-radius:6px; border:1px solid #dee2e6;">
@@ -151,6 +154,8 @@
     }
 
     // ── CKEditor init ────────────────────────────────────────────────────────
+    var editorInstance = null;
+
     ClassicEditor
         .create(document.querySelector('#artist-statement-editor'), {
             extraPlugins: [UploadAdapterPlugin],
@@ -170,6 +175,7 @@
                 allow: [{ name: /.*/, attributes: true, classes: true, styles: true }]
             }
         })
+        .then(function (editor) { editorInstance = editor; })
         .catch(function (err) { console.error(err); });
 
     // ── Standalone image uploader ────────────────────────────────────────────
@@ -216,6 +222,15 @@
             btn.textContent = 'Copiato!';
             setTimeout(function () { btn.innerHTML = '<i class="mdi mdi-content-copy"></i> Copia'; }, 2000);
         });
+    });
+
+    document.getElementById('img-insert-btn').addEventListener('click', function () {
+        var url = document.getElementById('img-upload-url').value;
+        if (!url || !editorInstance) return;
+        editorInstance.execute('insertImage', { source: url });
+        var btn = this;
+        btn.innerHTML = '<i class="mdi mdi-check"></i> Inserita!';
+        setTimeout(function () { btn.innerHTML = '<i class="mdi mdi-image-plus"></i> Inserisci nell\'editor'; }, 2000);
     });
 </script>
 
