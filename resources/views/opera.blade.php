@@ -233,7 +233,7 @@
     <div class="container">
 
         {{-- Breadcrumb --}}
-        <nav class="opera-breadcrumb alt-font fs-13 text-muted mb-45px" aria-label="breadcrumb">
+        <nav class="opera-breadcrumb alt-font fs-13 text-muted mb-45px d-none d-md-block" aria-label="breadcrumb">
             <a href="/">Home</a>
             <span class="sep">·</span>
             <a href="/opere">Opere</a>
