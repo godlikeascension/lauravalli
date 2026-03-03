@@ -105,6 +105,12 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/dashboard/opere/{opera}', [AdminController::class, 'opereDestroy'])
         ->name('dashboard.opere.destroy');
 
+    Route::post('/dashboard/opere/{opera}/immagini', [AdminController::class, 'opereAddImmagine'])
+        ->name('dashboard.opere.immagini.add');
+
+    Route::delete('/dashboard/opere/{opera}/immagini/{immagine}', [AdminController::class, 'opereDeleteImmagine'])
+        ->name('dashboard.opere.immagini.delete');
+
     // -----------------------------
     // COLLEZIONI - gestione da dashboard
     // -----------------------------

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Opera;
 use App\Models\Collezione;
 use App\Models\Impostazione;
+use App\Models\OperaImmagine;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -148,9 +150,39 @@ class AdminController extends Controller
 
     public function opereEdit(Opera $opera)
     {
+        $opera->load('immagini');
         $collezioni = Collezione::orderBy('nome')->get();
 
         return view('dashboard.opere-edit', compact('opera', 'collezioni'));
+    }
+
+    public function opereAddImmagine(Request $request, Opera $opera)
+    {
+        if ($opera->immagini()->count() >= 8) {
+            return response()->json(['error' => 'Massimo 8 immagini aggiuntive raggiunto.'], 422);
+        }
+
+        $request->validate(['immagine' => 'required|image|max:4096']);
+
+        $path = $request->file('immagine')->store('opere', 'public');
+        $immagine = $opera->immagini()->create(['path' => $path]);
+
+        return response()->json([
+            'id'  => $immagine->id,
+            'url' => asset('storage/' . $path),
+        ]);
+    }
+
+    public function opereDeleteImmagine(Opera $opera, OperaImmagine $immagine)
+    {
+        if ($immagine->opera_id !== $opera->id) {
+            abort(403);
+        }
+
+        Storage::disk('public')->delete($immagine->path);
+        $immagine->delete();
+
+        return response()->json(['ok' => true]);
     }
 
     public function opereUpdate(Request $request, Opera $opera)

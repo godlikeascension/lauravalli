@@ -71,6 +71,11 @@ class Opera extends Model
         return $this->belongsTo(Collezione::class);
     }
 
+    public function immagini()
+    {
+        return $this->hasMany(OperaImmagine::class);
+    }
+
     // Accessor comodo per mostrare dimensioni formattate "L x H cm"
     public function getDimensioniAttribute(): ?string
     {
