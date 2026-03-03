@@ -77,6 +77,11 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="/dashboard/faqs">
+                            <i class="mdi mdi-help-circle-outline me-1"></i> FAQ
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/dashboard/artist-statement">
                             <i class="mdi mdi-fountain-pen-tip me-1"></i> Artist Statement
                         </a>
