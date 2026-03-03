@@ -176,7 +176,7 @@ class AdminController extends Controller
 
     public function opereDeleteImmagine(Opera $opera, OperaImmagine $immagine)
     {
-        if ($immagine->opera_id !== $opera->id) {
+        if ((int) $immagine->opera_id !== (int) $opera->id) {
             abort(403);
         }
 

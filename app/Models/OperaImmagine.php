@@ -10,6 +10,8 @@ class OperaImmagine extends Model
 
     protected $fillable = ['opera_id', 'path'];
 
+    protected $casts = ['opera_id' => 'integer'];
+
     public function opera()
     {
         return $this->belongsTo(Opera::class);

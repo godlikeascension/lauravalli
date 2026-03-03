@@ -117,11 +117,33 @@
     </div>
 </div>
 
+{{-- Toast container --}}
+<div class="position-fixed top-0 end-0 p-3" style="z-index:9999" id="toast-container"></div>
+
 <script src="/dashboard-backend/js/vendor.min.js"></script>
 <script src="/dashboard-backend/js/app.min.js"></script>
 
 <!-- CKEditor 5 -->
 <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
+<script>
+    function showToast(message, type) {
+        var container = document.getElementById('toast-container');
+        var id  = 'toast-' + Date.now();
+        var bg  = type === 'success' ? 'bg-success' : 'bg-danger';
+        container.insertAdjacentHTML('beforeend',
+            '<div id="' + id + '" class="toast align-items-center text-white ' + bg + ' border-0" role="alert">' +
+                '<div class="d-flex">' +
+                    '<div class="toast-body">' + message + '</div>' +
+                    '<button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>' +
+                '</div>' +
+            '</div>'
+        );
+        var el = document.getElementById(id);
+        var toast = new bootstrap.Toast(el, { delay: 3500 });
+        toast.show();
+        el.addEventListener('hidden.bs.toast', function () { el.remove(); });
+    }
+</script>
 <script>
     // ── Custom upload adapter per CKEditor ──────────────────────────────────
     function UploadAdapter(loader) {
@@ -181,7 +203,7 @@
     // ── Standalone image uploader ────────────────────────────────────────────
     document.getElementById('img-upload-btn').addEventListener('click', function () {
         var file = document.getElementById('img-upload-input').files[0];
-        if (!file) { alert('Seleziona prima un file.'); return; }
+        if (!file) { showToast('Seleziona prima un file.', 'error'); return; }
 
         var btn     = document.getElementById('img-upload-btn');
         var spinner = document.getElementById('img-upload-spinner');
@@ -204,10 +226,10 @@
                     document.getElementById('img-upload-preview').src = res.url;
                     document.getElementById('img-upload-result').classList.remove('d-none');
                 } else {
-                    alert('Errore durante l\'upload.');
+                    showToast('Errore durante l\'upload.', 'error');
                 }
             })
-            .catch(function () { alert('Errore durante l\'upload.'); })
+            .catch(function () { showToast('Errore durante l\'upload.', 'error'); })
             .finally(function () {
                 btn.disabled = false;
                 spinner.classList.add('d-none');

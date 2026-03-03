@@ -235,6 +235,26 @@
     </div> <!-- content-page -->
 </div> <!-- END wrapper -->
 
+{{-- Toast container --}}
+<div class="position-fixed top-0 end-0 p-3" style="z-index:9999" id="toast-container"></div>
+
+{{-- Confirm modal --}}
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header py-2">
+                <h6 class="modal-title mb-0">Conferma eliminazione</h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="confirm-modal-body">Eliminare questa immagine?</div>
+            <div class="modal-footer py-2">
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Annulla</button>
+                <button type="button" class="btn btn-danger btn-sm" id="confirm-modal-ok">Elimina</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="/dashboard-backend/js/vendor.min.js"></script>
 <script src="/dashboard-backend/js/app.min.js"></script>
 
@@ -252,11 +272,43 @@
         })
         .catch(error => { console.error(error); });
 
+    // ── UI helpers ────────────────────────────────────────────────────────────
+    function showToast(message, type) {
+        var container = document.getElementById('toast-container');
+        var id  = 'toast-' + Date.now();
+        var bg  = type === 'success' ? 'bg-success' : 'bg-danger';
+        container.insertAdjacentHTML('beforeend',
+            '<div id="' + id + '" class="toast align-items-center text-white ' + bg + ' border-0" role="alert">' +
+                '<div class="d-flex">' +
+                    '<div class="toast-body">' + message + '</div>' +
+                    '<button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>' +
+                '</div>' +
+            '</div>'
+        );
+        var el = document.getElementById(id);
+        var toast = new bootstrap.Toast(el, { delay: 3500 });
+        toast.show();
+        el.addEventListener('hidden.bs.toast', function () { el.remove(); });
+    }
+
+    function confirmAction(message, onConfirm) {
+        document.getElementById('confirm-modal-body').textContent = message;
+        var modal  = new bootstrap.Modal(document.getElementById('confirmModal'));
+        var okBtn  = document.getElementById('confirm-modal-ok');
+        function handler() {
+            modal.hide();
+            okBtn.removeEventListener('click', handler);
+            onConfirm();
+        }
+        okBtn.addEventListener('click', handler);
+        modal.show();
+    }
+
     // ── Main image live preview ───────────────────────────────────────────────
     document.getElementById('immagine').addEventListener('change', function () {
         var file = this.files[0];
         if (!file) return;
-        var preview = document.getElementById('main-img-preview');
+        var preview     = document.getElementById('main-img-preview');
         var placeholder = document.getElementById('main-img-placeholder');
         preview.src = URL.createObjectURL(file);
         preview.style.display = 'block';
@@ -270,49 +322,46 @@
     function updateGallery() {
         var count = document.querySelectorAll('.gallery-card').length;
         document.getElementById('gallery-count').textContent = count;
-        var uploadSection = document.getElementById('gallery-upload-section');
-        if (count >= MAX_GALLERY) {
-            uploadSection.classList.add('d-none');
-        } else {
-            uploadSection.classList.remove('d-none');
-        }
+        document.getElementById('gallery-upload-section').classList.toggle('d-none', count >= MAX_GALLERY);
     }
 
     // Delete extra image
     document.getElementById('gallery-grid').addEventListener('click', function (e) {
         var btn = e.target.closest('.gallery-delete-btn');
         if (!btn) return;
-        if (!confirm('Eliminare questa immagine?')) return;
 
         var card = btn.closest('.gallery-card');
         var id   = btn.dataset.id;
 
-        btn.disabled = true;
+        confirmAction('Eliminare questa immagine?', function () {
+            btn.disabled = true;
 
-        fetch('{{ route("dashboard.opere.immagini.delete", [$opera->id, "__ID__"]) }}'.replace('__ID__', id), {
-            method: 'DELETE',
-            headers: { 'X-CSRF-TOKEN': csrf, 'Accept': 'application/json' }
-        })
-        .then(function (r) { return r.json(); })
-        .then(function (res) {
-            if (res.ok) {
-                card.remove();
-                updateGallery();
-            } else {
+            fetch('{{ route("dashboard.opere.immagini.delete", [$opera->id, "__ID__"]) }}'.replace('__ID__', id), {
+                method: 'DELETE',
+                headers: { 'X-CSRF-TOKEN': csrf, 'Accept': 'application/json' }
+            })
+            .then(function (r) { return r.json(); })
+            .then(function (res) {
+                if (res.ok) {
+                    card.remove();
+                    updateGallery();
+                    showToast('Immagine eliminata.', 'success');
+                } else {
+                    btn.disabled = false;
+                    showToast('Errore durante l\'eliminazione.', 'error');
+                }
+            })
+            .catch(function () {
                 btn.disabled = false;
-                alert('Errore durante l\'eliminazione.');
-            }
-        })
-        .catch(function () {
-            btn.disabled = false;
-            alert('Errore durante l\'eliminazione.');
+                showToast('Errore durante l\'eliminazione.', 'error');
+            });
         });
     });
 
     // Upload extra image
     document.getElementById('gallery-upload-btn').addEventListener('click', function () {
         var file = document.getElementById('gallery-input').files[0];
-        if (!file) { alert('Seleziona un file.'); return; }
+        if (!file) { showToast('Seleziona un file prima di caricare.', 'error'); return; }
 
         var btn     = this;
         var spinner = document.getElementById('gallery-spinner');
@@ -347,11 +396,12 @@
                 grid.appendChild(card);
                 document.getElementById('gallery-input').value = '';
                 updateGallery();
+                showToast('Immagine caricata con successo.', 'success');
             } else {
-                alert(res.error || 'Errore durante l\'upload.');
+                showToast(res.error || 'Errore durante l\'upload.', 'error');
             }
         })
-        .catch(function () { alert('Errore durante l\'upload.'); })
+        .catch(function () { showToast('Errore durante l\'upload.', 'error'); })
         .finally(function () {
             btn.disabled = false;
             spinner.classList.add('d-none');
