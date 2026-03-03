@@ -84,10 +84,6 @@
         }
 
         /* ── Mobile ── */
-        @media (max-width: 991px) {
-            /* Hero image più bassa su tablet/mobile */
-            .collezioni-hero-img { height: 320px !important; }
-        }
         @media (max-width: 767px) {
             /* Riduci padding della sezione */
             section#collezioni { padding-top: 50px !important; padding-bottom: 50px !important; }
@@ -107,61 +103,9 @@
 <body data-mobile-nav-trigger-alignment="right" data-mobile-nav-style="modern" data-mobile-nav-bg-color="#1d1d1d">
 @include('inc.front.header')
 
-{{-- ── HERO ── --}}
-<section class="p-0 full-screen ipad-top-space-margin position-relative overflow-hidden md-h-auto">
-    <div class="container-fluid p-0 h-100 position-relative">
-        <div class="row h-100 g-0">
-            {{-- Left: title --}}
-            <div class="col-xl-5 col-lg-6 d-flex justify-content-center flex-column ps-10 xxl-ps-5 xl-ps-2 md-ps-0 position-relative order-2 order-lg-1">
-                <div class="border-start border-color-extra-medium-gray ps-60px ms-100px lg-ps-30px lg-ms-70px position-relative z-index-9 sm-ps-30px sm-pe-30px sm-ms-0 border-0"
-                     data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                    <h1 class="text-dark-gray fw-600 alt-font outside-box-right-10 xl-outside-box-right-15 md-me-0">
-                        Ogni opera racconta<br>una storia.
-                    </h1>
-                    <p class="w-75 mb-35px lg-w-90 sm-w-100">
-                        Esplora le collezioni di Laura Valli — dipinti ad olio che danno forma
-                        alle emozioni più profonde e danno voce a ciò che le parole non riescono
-                        a dire.
-                    </p>
-                    <a href="#collezioni"
-                       class="btn btn-extra-large border-1 btn-transparent-light-gray btn-medium left-icon btn-switch-text">
-                        <span>
-                            <span><i class="feather icon-feather-arrow-down"></i></span>
-                            <span class="btn-double-text" data-text="Sfoglia le opere">Sfoglia le opere</span>
-                        </span>
-                    </a>
-                </div>
-            </div>
-
-            {{-- Right: cover image --}}
-            <div class="col-xl-7 col-lg-6 position-relative swiper-number-pagination-progress md-h-500px collezioni-hero-img order-1 order-lg-2 md-mb-30px">
-                <div class="swiper h-100 banner-slider"
-                     data-slider-options='{ "slidesPerView": 1, "loop": true, "autoplay": { "delay": 7000, "disableOnInteraction": false }, "effect": "fade" }'
-                     data-swiper-number-pagination-progress="true">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="position-absolute left-0px top-0px w-100 h-100 cover-background background-position-center-top"
-                                 style="background-image:url('/images/opera4.jpg');"></div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="position-absolute left-0px top-0px w-100 h-100 cover-background background-position-center-top"
-                                 style="background-image:url('/images/opera6.jpg');"></div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="position-absolute left-0px top-0px w-100 h-100 cover-background background-position-center-top"
-                                 style="background-image:url('/images/opera7.jpg');"></div>
-                        </div>
-                    </div>
-                    <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets d-block d-sm-none"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-{{-- ── END HERO ── --}}
 
 {{-- ── COLLECTIONS SECTION ── --}}
-<section class="big-section" id="collezioni">
+<section class="big-section ipad-top-space-margin" id="collezioni">
     <div class="container">
 
         {{-- Section label + heading --}}
@@ -212,8 +156,8 @@
                     {{-- Collection description --}}
                     @if($col->descrizione)
                         <div class="row mb-40px">
-                            <div class="col-12 text-center">
-                                <div class="mx-auto text-muted" style="max-width: 620px;">
+                            <div class="col-12">
+                                <div class="text-muted">
                                     {!! $col->descrizione !!}
                                 </div>
                             </div>
