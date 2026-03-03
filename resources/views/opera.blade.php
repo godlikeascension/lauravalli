@@ -377,6 +377,82 @@
     </div>
 </section>
 
+{{-- ── Other opere from same collection ── --}}
+@if($altreOpere->isNotEmpty())
+<section style="padding-top: 70px; padding-bottom: 90px; background: #f8f7f5;">
+    <div class="container">
+
+        {{-- Heading --}}
+        <div class="row" style="margin-bottom: 40px;">
+            <div class="col-12 text-center">
+                <div class="mb-10px">
+                    <span class="w-25px h-1px d-inline-block bg-base-color me-5px align-middle"></span>
+                    <span class="text-gradient-base-color fs-13 alt-font fw-700 ls-05px text-uppercase align-middle">
+                        {{ $opera->collezione->nome }}
+                    </span>
+                </div>
+                <h3 class="alt-font fw-600 text-dark-gray ls-minus-2px mb-0">Altre opere della collezione</h3>
+            </div>
+        </div>
+
+        {{-- Grid --}}
+        @php
+            $n    = $altreOpere->count();
+            $rem3 = $n % 3 === 0 ? 0 : (3 - $n % 3);
+            $rem4 = $n % 4 === 0 ? 0 : (4 - $n % 4);
+            $xlCol = $rem4 <= $rem3 ? 'col-xl-3' : 'col-xl-4';
+        @endphp
+        <div class="row g-3 g-md-4 justify-content-center">
+            @foreach($altreOpere as $altraOpera)
+                <div class="col-6 col-md-6 col-lg-4 {{ $xlCol }}">
+                    <div class="opera-card h-100"
+                         style="box-shadow: rgba(0,0,0,.10) 0 6px 24px 0, rgba(0,0,0,.04) 0 0 0 1px; border-radius: 6px; overflow: hidden; background:#fff;">
+
+                        {{-- Image --}}
+                        <a href="{{ route('opera.show', $altraOpera->slug) }}" style="display:block; overflow:hidden;">
+                            <img src="{{ $altraOpera->immagine ? asset('storage/' . $altraOpera->immagine) : '/images/placeholder.jpg' }}"
+                                 alt="{{ $altraOpera->titolo }}"
+                                 loading="lazy"
+                                 style="aspect-ratio:4/5; object-fit:cover; width:100%; display:block; transition: transform .4s ease;"
+                                 onmouseenter="this.style.transform='scale(1.04)'"
+                                 onmouseleave="this.style.transform='scale(1)'" />
+                        </a>
+
+                        {{-- Info --}}
+                        <div class="p-20px opera-card-info text-center">
+                            <p class="text-dark-gray alt-font fs-16 mb-5px fw-600">{{ $altraOpera->titolo }}</p>
+
+                            @if($altraOpera->dimensioni)
+                                <p class="alt-font fs-12 text-muted mb-5px">{{ $altraOpera->dimensioni }}</p>
+                            @endif
+
+                            @if($altraOpera->venduto)
+                                <p class="mb-0 text-gradient-base-color alt-font fw-700 fs-14">SOLD</p>
+                            @elseif(!is_null($altraOpera->prezzo))
+                                <p class="mb-0 text-dark-gray alt-font fw-500 fs-14">
+                                    {{ number_format($altraOpera->prezzo, 2, ',', '.') }} €
+                                </p>
+                            @else
+                                <p class="mb-0 text-muted fs-13">Su richiesta</p>
+                            @endif
+
+                            <div class="d-grid" style="margin-top: 16px;">
+                                <a href="{{ route('opera.show', $altraOpera->slug) }}"
+                                   class="btn btn-very-small btn-transparent-light-gray border-1 btn-rounded d-flex justify-content-center align-items-center">
+                                    <i class="feather icon-feather-arrow-right" style="margin-right: 6px;"></i>
+                                    Scopri l'opera
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+
+    </div>
+</section>
+@endif
+
 @include('inc.front.footer')
 
 {{-- ── Lightbox ── --}}

@@ -52,7 +52,14 @@ Route::get('/opera/{slug}', function (string $slug) {
     $opera = Opera::where('slug', $slug)
         ->with(['immagini', 'collezione'])
         ->firstOrFail();
-    return view('opera', compact('opera'));
+
+    $altreOpere = $opera->collezione_id
+        ? Opera::where('collezione_id', $opera->collezione_id)
+            ->where('id', '!=', $opera->id)
+            ->get()
+        : collect();
+
+    return view('opera', compact('opera', 'altreOpere'));
 })->name('opera.show');
 
 // -----------------------------
