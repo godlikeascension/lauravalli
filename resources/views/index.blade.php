@@ -191,7 +191,7 @@
                                          onmouseenter="this.style.background='rgba(0,0,0,0.35)'; this.querySelector('button').style.opacity='1';"
                                          onmouseleave="this.style.background='rgba(0,0,0,0)'; this.querySelector('button').style.opacity='0';">
                                         <button type="button"
-                                                class="btn btn-medium btn-dark-gray"
+                                                class="btn btn-medium btn-white btn-rounded"
                                                 style="opacity:0; transition:opacity .3s;"
                                                 data-image="{{ asset('storage/' . $opera->immagine) }}"
                                                 onclick="openOperaLightbox(this)">
