@@ -190,7 +190,7 @@
                                                  onmouseenter="this.style.background='rgba(0,0,0,0.35)'; this.querySelector('button').style.opacity='1';"
                                                  onmouseleave="this.style.background='rgba(0,0,0,0)'; this.querySelector('button').style.opacity='0';">
                                                 <button type="button"
-                                                        class="btn btn-medium btn-white"
+                                                        class="btn btn-medium btn-dark-gray"
                                                         style="opacity:0; transition:opacity .3s;"
                                                         data-image="{{ asset('storage/' . $opera->immagine) }}"
                                                         onclick="openOperaLightbox(this)">
@@ -230,7 +230,7 @@
                                             @if($opera->immagine)
                                                 <div class="d-md-none d-grid mb-15px">
                                                     <button type="button"
-                                                            class="btn btn-very-small btn-dark-gray d-flex justify-content-center align-items-center"
+                                                            class="btn btn-large btn-dark-gray d-flex justify-content-center align-items-center"
                                                             data-image="{{ asset('storage/' . $opera->immagine) }}"
                                                             onclick="openOperaLightbox(this)">
                                                         <span>Ingrandisci</span>
@@ -240,9 +240,8 @@
                                             @endif
                                             <div class="d-grid d-md-block">
                                                 <a href="{{ route('opera.show', $opera->slug) }}"
-                                                   class="btn btn-very-small btn-transparent-light-gray border-1 d-flex justify-content-center align-items-center">
-                                                    <span>Scopri l'opera</span>
-                                                    <i class="feather icon-feather-arrow-right ms-5px"></i>
+                                                   class="btn btn-large btn-dark-gray d-flex justify-content-center align-items-center">
+                                                    Scopri l'opera <i class="feather icon-feather-arrow-right ms-10px"></i>
                                                 </a>
                                             </div>
                                         </div>

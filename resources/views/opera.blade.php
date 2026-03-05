@@ -368,14 +368,14 @@
                     {{-- CTA --}}
                     @if(!$opera->venduto)
                         <a href="/#contatti"
-                           class="btn btn-medium btn-dark-gray d-flex align-items-center justify-content-center w-100"
+                           class="btn btn-large btn-dark-gray d-flex align-items-center justify-content-center w-100"
                            style="margin-bottom: 12px;">
                             Invia una richiesta
                             <i class="fa-regular fa-envelope ms-10px"></i>
                         </a>
                     @endif
                     <a href="/opere"
-                       class="btn btn-medium btn-transparent-light-gray border-1 d-flex align-items-center justify-content-center w-100">
+                       class="btn btn-large btn-dark-gray d-flex align-items-center justify-content-center w-100">
                         Torna alle opere
                         <i class="feather icon-feather-arrow-left ms-10px"></i>
                     </a>
@@ -448,9 +448,8 @@
 
                             <div class="d-grid" style="margin-top: 16px;">
                                 <a href="{{ route('opera.show', $altraOpera->slug) }}"
-                                   class="btn btn-very-small btn-transparent-light-gray border-1 d-flex justify-content-center align-items-center">
-                                    Scopri l'opera
-                                    <i class="feather icon-feather-arrow-right ms-5px"></i>
+                                   class="btn btn-large btn-dark-gray d-flex justify-content-center align-items-center">
+                                    Scopri l'opera <i class="feather icon-feather-arrow-right ms-10px"></i>
                                 </a>
                             </div>
                         </div>

@@ -45,12 +45,6 @@
                     <h1 class="text-dark-gray fw-600 alt-font outside-box-right-10 xl-outside-box-right-15 md-me-0">Sono le imperfezioni a renderti unico</h1>
                     <p class="w-75 mb-35px lg-w-90 sm-w-100">Dipingo per dare voce a ciò che non sempre sappiamo comunicare a parole. Ogni quadro
                         è un invito a guardarti dentro, a riconoscere le tue imperfezioni come la vera radice della tua unicità.</p>
-                    <a href="#contatti" class="btn btn-large border-1 btn-transparent-light-gray btn-switch-text">
-                            <span>
-                                <span class="btn-double-text" data-text="Invia un messaggio">Invia un messaggio</span>
-                                <span><i class="fa-regular fa-envelope"></i></span>
-                            </span>
-                    </a>
                 </div>
             </div>
             <div class="col-xl-7 col-lg-6 position-relative swiper-number-pagination-progress md-h-500px order-1 order-lg-2 md-mb-50px">
@@ -151,11 +145,8 @@
                 <p class="text-dark-gray alt-font w-90 md-w-100 mb-35px sm-mb-20px font-style-italic fw-semibold">
                     “Il coraggio sta in ciò che ti permetti di manifestare con autenticità.”
                 </p>
-                <a href="#contatti" class="btn btn-large btn-dark-gray btn-switch-text btn-box-shadow fw-400">
-                                        <span>
-                                            <span class="btn-double-text" data-text="Invia un messaggio">Invia un messaggio</span>
-                                            <span><i class="fa-regular fa-envelope"></i></span>
-                                        </span>
+                <a href="#contatti" class="btn btn-large btn-dark-gray btn-box-shadow">
+                    Invia un messaggio <i class="fa-regular fa-envelope ms-10px"></i>
                 </a>
             </div>
         </div>
@@ -197,7 +188,7 @@
                                          onmouseenter="this.style.background='rgba(0,0,0,0.35)'; this.querySelector('button').style.opacity='1';"
                                          onmouseleave="this.style.background='rgba(0,0,0,0)'; this.querySelector('button').style.opacity='0';">
                                         <button type="button"
-                                                class="btn btn-medium btn-white"
+                                                class="btn btn-medium btn-dark-gray"
                                                 style="opacity:0; transition:opacity .3s;"
                                                 data-image="{{ asset('storage/' . $opera->immagine) }}"
                                                 onclick="openOperaLightbox(this)">
@@ -235,7 +226,7 @@
                                     @if($opera->immagine)
                                         <div class="d-md-none d-grid mb-15px">
                                             <button type="button"
-                                                    class="btn btn-very-small btn-dark-gray d-flex justify-content-center align-items-center"
+                                                    class="btn btn-large btn-dark-gray d-flex justify-content-center align-items-center"
                                                     data-image="{{ asset('storage/' . $opera->immagine) }}"
                                                     onclick="openOperaLightbox(this)">
                                                 <span>Ingrandisci</span>
@@ -245,9 +236,8 @@
                                     @endif
                                     <div class="d-grid d-md-block">
                                         <a href="{{ route('opera.show', $opera->slug) }}"
-                                           class="btn btn-very-small btn-transparent-light-gray border-1 d-flex justify-content-center align-items-center">
-                                            <span>Scopri l'opera</span>
-                                            <i class="feather icon-feather-arrow-right ms-5px"></i>
+                                           class="btn btn-large btn-dark-gray d-flex justify-content-center align-items-center">
+                                            Scopri l'opera <i class="feather icon-feather-arrow-right ms-10px"></i>
                                         </a>
                                     </div>
                                 </div>
@@ -288,11 +278,8 @@
                                 Non importa se parti da un’immagine precisa o da un’emozione confusa: insieme possiamo
                                 trasformarla in un’opera autentica, fatta solo per te.
                                 Uno spazio che parla di chi sei, delle tue visioni, dei tuoi desideri.</p>
-                            <a href="#contatti" class="btn btn-large btn-dark-gray btn-switch-text btn-box-shadow fw-400">
-                                        <span>
-                                            <span class="btn-double-text" data-text="Invia un messaggio">Invia un messaggio</span>
-                                            <span><i class="fa-regular fa-envelope"></i></span>
-                                        </span>
+                            <a href="#contatti" class="btn btn-large btn-dark-gray btn-box-shadow">
+                                Invia un messaggio <i class="fa-regular fa-envelope ms-10px"></i>
                             </a>
                         </div>
                     </div>
@@ -319,11 +306,8 @@
                                 È la possibilità di trasformare un ricordo, un’emozione, un frammento di vita in un’opera
                                 unica.
                                 Un’esperienza da vivere, un riflesso autentico dell’anima… da custodire per sempre.</p>
-                            <a href="#contatti" class="btn btn-large btn-dark-gray btn-switch-text btn-box-shadow fw-400">
-                                        <span>
-                                            <span class="btn-double-text" data-text="Invia un messaggio">Invia un messaggio</span>
-                                            <span><i class="fa-regular fa-envelope"></i></span>
-                                        </span>
+                            <a href="#contatti" class="btn btn-large btn-dark-gray btn-box-shadow">
+                                Invia un messaggio <i class="fa-regular fa-envelope ms-10px"></i>
                             </a>
                         </div>
                     </div>
@@ -345,11 +329,8 @@
                             </div>
                             <h2 class="text-dark-gray alt-font fw-600 ls-minus-4px mb-25px">Ogni dipinto racconta una storia che aspetta di incontrare la tua</h2>
                             <p class="w-95 md-w-100 mb-35px">Esplora le collezioni e lasciati guidare dalle emozioni. Ogni opera nasce da un momento vissuto, da un'emozione autentica, da un desiderio di lasciare un segno. Forse una di esse parla già di te.</p>
-                            <a href="/opere" class="btn btn-large btn-dark-gray btn-switch-text btn-box-shadow fw-400">
-                                        <span>
-                                            <span class="btn-double-text" data-text="Esplora le opere">Esplora le opere</span>
-                                            <span><i class="feather icon-feather-arrow-right"></i></span>
-                                        </span>
+                            <a href="/opere" class="btn btn-large btn-dark-gray btn-box-shadow">
+                                Esplora le opere <i class="feather icon-feather-arrow-right ms-10px"></i>
                             </a>
                         </div>
                     </div>
@@ -384,7 +365,7 @@
                         <div class="position-relative form-group form-textarea mt-15px mb-0">
                             <textarea class="ps-0 border-radius-0px border-bottom border-color-extra-medium-gray form-control" name="comment" placeholder="Il tuo messaggio" rows="3" required></textarea>
                             <span class="form-icon"><i class="bi bi-chat-square-dots icon-extra-medium text-dark-gray"></i></span>
-                            <button class="btn btn-medium btn-dark-gray btn-box-shadow mb-20px mt-25px submit w-100" type="submit">
+                            <button class="btn btn-large btn-dark-gray btn-box-shadow mb-20px mt-25px submit w-100" type="submit">
                                 Invia il tuo messaggio <i class="fa-regular fa-envelope ms-10px"></i>
                             </button>
                         </div>
