@@ -57,7 +57,7 @@
 @include('inc.front.header')
 
 <!-- start section -->
-<section>
+<section class="big-section">
     <div class="container">
         <div class="row justify-content-center artist-statement-content">
             {!! $contenuto !!}
