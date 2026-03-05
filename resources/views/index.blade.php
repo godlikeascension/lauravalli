@@ -45,10 +45,10 @@
                     <h1 class="text-dark-gray fw-600 alt-font outside-box-right-10 xl-outside-box-right-15 md-me-0">Sono le imperfezioni a renderti unico</h1>
                     <p class="w-75 mb-35px lg-w-90 sm-w-100">Dipingo per dare voce a ciò che non sempre sappiamo comunicare a parole. Ogni quadro
                         è un invito a guardarti dentro, a riconoscere le tue imperfezioni come la vera radice della tua unicità.</p>
-                    <a href="#contatti" class="btn btn-extra-large border-1 btn-transparent-light-gray btn-medium left-icon btn-switch-text">
+                    <a href="#contatti" class="btn btn-large border-1 btn-transparent-light-gray btn-switch-text">
                             <span>
-                                <span><i class="fa-regular fa-envelope"></i></span>
                                 <span class="btn-double-text" data-text="Invia un messaggio">Invia un messaggio</span>
+                                <span><i class="fa-regular fa-envelope"></i></span>
                             </span>
                     </a>
                 </div>
@@ -197,12 +197,12 @@
                                          onmouseenter="this.style.background='rgba(0,0,0,0.35)'; this.querySelector('button').style.opacity='1';"
                                          onmouseleave="this.style.background='rgba(0,0,0,0)'; this.querySelector('button').style.opacity='0';">
                                         <button type="button"
-                                                class="btn btn-medium btn-white btn-rounded"
+                                                class="btn btn-medium btn-white"
                                                 style="opacity:0; transition:opacity .3s;"
                                                 data-image="{{ asset('storage/' . $opera->immagine) }}"
                                                 onclick="openOperaLightbox(this)">
-                                            <i class="feather icon-feather-search me-5px"></i>
                                             <span>Ingrandisci</span>
+                                            <i class="feather icon-feather-search ms-5px"></i>
                                         </button>
                                     </div>
                                 @endif
@@ -235,19 +235,19 @@
                                     @if($opera->immagine)
                                         <div class="d-md-none d-grid mb-15px">
                                             <button type="button"
-                                                    class="btn btn-very-small btn-dark-gray btn-rounded d-flex justify-content-center align-items-center"
+                                                    class="btn btn-very-small btn-dark-gray d-flex justify-content-center align-items-center"
                                                     data-image="{{ asset('storage/' . $opera->immagine) }}"
                                                     onclick="openOperaLightbox(this)">
-                                                <i class="feather icon-feather-search me-5px"></i>
                                                 <span>Ingrandisci</span>
+                                                <i class="feather icon-feather-search ms-5px"></i>
                                             </button>
                                         </div>
                                     @endif
                                     <div class="d-grid d-md-block">
                                         <a href="{{ route('opera.show', $opera->slug) }}"
-                                           class="btn btn-very-small btn-transparent-light-gray border-1 btn-rounded d-flex justify-content-center align-items-center">
-                                            <i class="feather icon-feather-arrow-right me-5px"></i>
+                                           class="btn btn-very-small btn-transparent-light-gray border-1 d-flex justify-content-center align-items-center">
                                             <span>Scopri l'opera</span>
+                                            <i class="feather icon-feather-arrow-right ms-5px"></i>
                                         </a>
                                     </div>
                                 </div>
@@ -384,8 +384,8 @@
                         <div class="position-relative form-group form-textarea mt-15px mb-0">
                             <textarea class="ps-0 border-radius-0px border-bottom border-color-extra-medium-gray form-control" name="comment" placeholder="Il tuo messaggio" rows="3" required></textarea>
                             <span class="form-icon"><i class="bi bi-chat-square-dots icon-extra-medium text-dark-gray"></i></span>
-                            <button class="btn btn-medium btn-dark-gray btn-round-edge btn-box-shadow mb-20px mt-25px submit w-100 left-icon" type="submit">
-                                <i class="fa-regular fa-envelope"></i> Invia il tuo messaggio
+                            <button class="btn btn-medium btn-dark-gray btn-box-shadow mb-20px mt-25px submit w-100" type="submit">
+                                Invia il tuo messaggio <i class="fa-regular fa-envelope ms-10px"></i>
                             </button>
                         </div>
                     </form>

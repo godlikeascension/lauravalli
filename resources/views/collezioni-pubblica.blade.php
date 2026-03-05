@@ -190,12 +190,12 @@
                                                  onmouseenter="this.style.background='rgba(0,0,0,0.35)'; this.querySelector('button').style.opacity='1';"
                                                  onmouseleave="this.style.background='rgba(0,0,0,0)'; this.querySelector('button').style.opacity='0';">
                                                 <button type="button"
-                                                        class="btn btn-medium btn-white btn-rounded"
+                                                        class="btn btn-medium btn-white"
                                                         style="opacity:0; transition:opacity .3s;"
                                                         data-image="{{ asset('storage/' . $opera->immagine) }}"
                                                         onclick="openOperaLightbox(this)">
-                                                    <i class="feather icon-feather-search me-5px"></i>
                                                     <span>Ingrandisci</span>
+                                                    <i class="feather icon-feather-search ms-5px"></i>
                                                 </button>
                                             </div>
                                         @endif
@@ -230,19 +230,19 @@
                                             @if($opera->immagine)
                                                 <div class="d-md-none d-grid mb-15px">
                                                     <button type="button"
-                                                            class="btn btn-very-small btn-dark-gray btn-rounded d-flex justify-content-center align-items-center"
+                                                            class="btn btn-very-small btn-dark-gray d-flex justify-content-center align-items-center"
                                                             data-image="{{ asset('storage/' . $opera->immagine) }}"
                                                             onclick="openOperaLightbox(this)">
-                                                        <i class="feather icon-feather-search me-5px"></i>
                                                         <span>Ingrandisci</span>
+                                                        <i class="feather icon-feather-search ms-5px"></i>
                                                     </button>
                                                 </div>
                                             @endif
                                             <div class="d-grid d-md-block">
                                                 <a href="{{ route('opera.show', $opera->slug) }}"
-                                                   class="btn btn-very-small btn-transparent-light-gray border-1 btn-rounded d-flex justify-content-center align-items-center">
-                                                    <i class="feather icon-feather-arrow-right me-5px"></i>
+                                                   class="btn btn-very-small btn-transparent-light-gray border-1 d-flex justify-content-center align-items-center">
                                                     <span>Scopri l'opera</span>
+                                                    <i class="feather icon-feather-arrow-right ms-5px"></i>
                                                 </a>
                                             </div>
                                         </div>

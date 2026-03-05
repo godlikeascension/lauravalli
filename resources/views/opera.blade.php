@@ -368,16 +368,16 @@
                     {{-- CTA --}}
                     @if(!$opera->venduto)
                         <a href="/#contatti"
-                           class="btn btn-medium btn-dark-gray btn-rounded d-flex align-items-center justify-content-center w-100"
+                           class="btn btn-medium btn-dark-gray d-flex align-items-center justify-content-center w-100"
                            style="margin-bottom: 12px;">
-                            <i class="fa-regular fa-envelope" style="margin-right: 8px;"></i>
                             Invia una richiesta
+                            <i class="fa-regular fa-envelope ms-10px"></i>
                         </a>
                     @endif
                     <a href="/opere"
-                       class="btn btn-medium btn-transparent-light-gray border-1 btn-rounded d-flex align-items-center justify-content-center w-100">
-                        <i class="feather icon-feather-arrow-left" style="margin-right: 8px;"></i>
+                       class="btn btn-medium btn-transparent-light-gray border-1 d-flex align-items-center justify-content-center w-100">
                         Torna alle opere
+                        <i class="feather icon-feather-arrow-left ms-10px"></i>
                     </a>
 
                 </div>
@@ -448,9 +448,9 @@
 
                             <div class="d-grid" style="margin-top: 16px;">
                                 <a href="{{ route('opera.show', $altraOpera->slug) }}"
-                                   class="btn btn-very-small btn-transparent-light-gray border-1 btn-rounded d-flex justify-content-center align-items-center">
-                                    <i class="feather icon-feather-arrow-right" style="margin-right: 6px;"></i>
+                                   class="btn btn-very-small btn-transparent-light-gray border-1 d-flex justify-content-center align-items-center">
                                     Scopri l'opera
+                                    <i class="feather icon-feather-arrow-right ms-5px"></i>
                                 </a>
                             </div>
                         </div>

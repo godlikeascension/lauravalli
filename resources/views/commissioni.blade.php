@@ -415,11 +415,8 @@
 
                             {{-- SUBMIT --}}
                             <div class="col-md-3 mt-40px">
-                                <button class="btn btn-large btn-round-edge btn-box-shadow btn-switch-text btn-dark-gray left-icon w-100"
-                                        type="submit">
-                                    <span>
-                                        <span class="btn-double-text" data-text="Crea la tua arte">Crea la tua arte</span>
-                                    </span>
+                                <button class="btn btn-large btn-box-shadow btn-dark-gray w-100" type="submit">
+                                    Crea la tua arte <i class="feather icon-feather-arrow-right ms-10px"></i>
                                 </button>
                             </div>
 

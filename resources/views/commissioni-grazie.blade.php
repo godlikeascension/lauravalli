@@ -38,8 +38,8 @@
             Ti contatterò al più presto per iniziare il percorso creativo insieme.
         </p>
 
-        <a href="/" class="btn btn-dark-gray btn-large btn-round-edge">
-            Torna alla Home
+        <a href="/" class="btn btn-dark-gray btn-large">
+            Torna alla Home <i class="feather icon-feather-arrow-right ms-10px"></i>
         </a>
     </div>
 </section>
