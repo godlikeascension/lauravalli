@@ -45,6 +45,9 @@
                     <h1 class="text-dark-gray fw-600 alt-font outside-box-right-10 xl-outside-box-right-15 md-me-0">Sono le imperfezioni a renderti unico</h1>
                     <p class="w-75 mb-35px lg-w-90 sm-w-100">Dipingo per dare voce a ciò che non sempre sappiamo comunicare a parole. Ogni quadro
                         è un invito a guardarti dentro, a riconoscere le tue imperfezioni come la vera radice della tua unicità.</p>
+                    <a href="#contatti" class="btn btn-large btn-dark-gray">
+                        Invia un messaggio <i class="fa-regular fa-envelope ms-10px"></i>
+                    </a>
                 </div>
             </div>
             <div class="col-xl-7 col-lg-6 position-relative swiper-number-pagination-progress md-h-500px order-1 order-lg-2 md-mb-50px">

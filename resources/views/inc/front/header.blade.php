@@ -27,18 +27,6 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-auto text-end d-none d-sm-flex">
-                <div class="header-icon">
-                    <div class="header-button">
-                        <a href="mailto:info@domain.com" class="btn border-1 btn-transparent-light-gray btn-medium left-icon btn-switch-text">
-                            <span>
-                                <span><i class="fa-regular fa-envelope"></i></span>
-                                <span class="btn-double-text" data-text="Send a message">Send a message</span>
-                            </span>
-                        </a>
-                    </div>
-                </div>
-            </div>
         </div>
     </nav>
     <!-- end navigation -->
