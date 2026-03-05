@@ -325,7 +325,7 @@
                     <div class="row align-items-center full-screen md-h-auto">
                         <div class="col-lg-6 cover-background overflow-visible h-100 md-h-500px" style="background-image: url(/images/opera2.jpg)">
                         </div>
-                        <div class="col-lg-6 ps-12 pe-14 xxl-ps-10 xxl-pe-10 xl-pe-8 lg-ps-6 lg-pe-4 md-p-50px sm-ps-30px sm-pe-30px sm-pb-0 position-relative align-self-center text-md-start text-center">
+                        <div class="col-lg-6 ps-12 pe-14 xxl-ps-10 xxl-pe-10 xl-pe-8 lg-ps-6 lg-pe-4 md-p-50px sm-ps-30px sm-pe-30px sm-pb-60px position-relative align-self-center text-md-start text-center">
                             <div class="mb-15px">
                                 <span class="w-25px h-1px d-inline-block bg-base-color me-5px align-middle"></span>
                                 <span class="text-gradient-base-color fs-15 alt-font fw-700 ls-05px text-uppercase d-inline-block align-middle">Le Opere</span>
