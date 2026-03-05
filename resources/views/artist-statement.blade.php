@@ -51,18 +51,13 @@
             height: auto;
             display: block;
         }
-        @media (max-width: 991px) {
-            .artist-statement-section {
-                padding-top: 90px !important;
-            }
-        }
     </style>
 </head>
 <body data-mobile-nav-trigger-alignment="right" data-mobile-nav-style="modern" data-mobile-nav-bg-color="#1d1d1d">
 @include('inc.front.header')
 
 <!-- start section -->
-<section class="big-section artist-statement-section">
+<section style="padding-top: 160px; padding-bottom: 130px;">
     <div class="container">
         <div class="row justify-content-center artist-statement-content">
             {!! $contenuto !!}
