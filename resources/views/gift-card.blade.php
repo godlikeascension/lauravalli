@@ -132,7 +132,7 @@
                         <span class="w-25px h-1px d-inline-block bg-base-color me-5px align-middle"></span>
                         <span class="text-gradient-base-color fs-15 alt-font fw-700 ls-05px text-uppercase d-inline-block align-middle">Gift Card</span>
                     </div>
-                    <h1 style="font-size: 3rem !important;" class="text-dark-gray fw-600 alt-font ls-minus-2px">Perché il regalo perfetto è quello che si sceglie col cuore.</h1>
+                    <h1 style="font-size: 3rem !important;" class="text-dark-gray fw-600 alt-font ls-minus-2px">Il regalo perfetto è quello che si sceglie col cuore.</h1>
                     <p class="fw-500 text-dark-gray fst-italic mb-25px fs-18">"Sorprendi chi ami con un dono che sceglierà da sé."</p>
                     <p class="w-85 mb-35px lg-w-100 sm-w-100">
                         Con una gift card puoi donare a chi ami l'esperienza di avere un'opera d'arte creata su misura, oppure permettergli di scegliere tra le opere già disponibili nella mia galleria o sul sito web.
