@@ -75,6 +75,26 @@
             to   { opacity: 1; transform: translateY(0); }
         }
 
+        /* ── "In arrivo" badge on empty tabs ── */
+        .tab-badge-arrivo {
+            display: inline-block;
+            margin-left: 7px;
+            padding: 2px 8px;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            border-radius: 20px;
+            background: #f0ece6;
+            color: #8a7560;
+            vertical-align: middle;
+            line-height: 1.5;
+        }
+        .collezione-tab-btn.active .tab-badge-arrivo {
+            background: rgba(255,255,255,.18);
+            color: rgba(255,255,255,.85);
+        }
+
         /* ── Empty state ── */
         .empty-collection {
             padding: 60px 20px;
@@ -140,6 +160,9 @@
                                         role="tab"
                                         aria-selected="{{ $i === 0 ? 'true' : 'false' }}">
                                     {{ $col->nome }}
+                                    @if($col->opere->isEmpty())
+                                        <span class="tab-badge-arrivo">In arrivo</span>
+                                    @endif
                                 </button>
                             </li>
                         @endforeach
