@@ -114,7 +114,7 @@
         }
         @media (max-width: 600px) {
             #rec-lightbox-inner { flex-direction: column; overflow-y: auto; }
-            #rec-lightbox-img { width: 100%; height: 260px; flex-shrink: 0; }
+            #rec-lightbox-img { width: 100%; height: auto; object-fit: contain; flex-shrink: 0; }
             #rec-lightbox-body { padding: 28px 24px; }
         }
     </style>
