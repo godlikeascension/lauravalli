@@ -30,54 +30,53 @@
         }
 
         /* ── Recensioni carousel ── */
-        .recensione-card {
-            display: flex;
-            border-radius: 6px;
-            overflow: hidden;
-            box-shadow: 0 4px 30px rgba(0,0,0,0.09);
-            background: white;
-        }
-        .recensione-card-img {
-            width: 42%;
-            flex-shrink: 0;
-            background: #f5f2ee;
+        .rec-card {
             position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            height: 520px;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
         }
-        .recensione-card-img img {
+        .rec-card-img {
             width: 100%;
-            height: auto;
+            height: 100%;
+            object-fit: cover;
             display: block;
         }
-        .recensione-ingrandisci {
+        .rec-card-gradient {
             position: absolute;
-            bottom: 16px;
-            right: 16px;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.15) 55%, transparent 100%);
         }
-        .recensione-card-body {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 48px;
+        .rec-card-body {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 32px;
         }
-        .recensione-card-body p {
+        .rec-card-text {
+            color: white;
             font-style: italic;
-            line-height: 1.8;
-            margin-bottom: 24px;
-            color: var(--medium-gray);
+            line-height: 1.65;
+            margin-bottom: 12px;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
-        .recensione-card-nome {
+        .rec-card-nome {
+            color: rgba(255,255,255,0.75);
             font-weight: 600;
-            font-size: 17px;
-            color: var(--dark-gray);
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
-        @media (max-width: 767px) {
-            .recensione-card { flex-direction: column; }
-            .recensione-card-img { width: 100%; }
-            .recensione-card-body { padding: 32px 24px; }
+        .rec-zoom {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            z-index: 2;
         }
 
         /* ── Lightbox ── */
@@ -218,64 +217,54 @@
         </div>
     </div>
 </section>
-<section class="position-relative bg-linen overflow-hidden background-position-center-top sm-background-image-none text-dark-gray">
+<section class="big-section bg-linen">
     <div class="container">
-        <div class="row">
+        <div class="row mb-50px">
             <div class="col-12 text-center">
-                <span class="text-gradient-base-color fs-15 alt-font fw-700 ls-05px text-uppercase d-inline-block align-middle">Come funziona il lavoro su commissione</span>
-                <h3 class="alt-font fw-700 text-dark-gray ls-minus-1px">Diamo vita a un'opera che nasce dal tuo sentire più autentico </h3>
+                <span class="w-25px h-1px d-inline-block bg-base-color me-5px align-middle"></span>
+                <span class="text-gradient-base-color fs-15 alt-font fw-700 ls-05px text-uppercase d-inline-block align-middle">Recensioni</span>
+                <h3 class="alt-font fw-600 text-dark-gray ls-minus-1px mt-10px mb-0">Cosa dicono di me</h3>
             </div>
         </div>
-        <div class="row justify-content-center align-items-center"
-             data-anime='{ "el": "childs", "opacity": [0, 1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-            <div class="col-12 position-relative testimonials-style-12">
+        <div class="row">
+            <div class="col-12 position-relative">
 
                 @if(isset($recensioni) && $recensioni->count())
                     <div class="swiper"
-                         data-slider-options='{ "slidesPerView": 1, "spaceBetween": 30, "loop": true, "autoplay": { "delay": 10000, "disableOnInteraction": false }, "keyboard": { "enabled": true, "onlyInViewport": true }, "navigation": { "nextEl": ".swiper-button-next-nav", "prevEl": ".swiper-button-previous-nav" } }'>
-                        <div class="swiper-wrapper pt-20px pb-20px">
-
+                         data-slider-options='{ "slidesPerView": 1, "spaceBetween": 24, "loop": true, "autoplay": { "delay": 8000, "disableOnInteraction": false }, "keyboard": { "enabled": true, "onlyInViewport": true }, "breakpoints": { "768": { "slidesPerView": 2 }, "1200": { "slidesPerView": 3 } }, "navigation": { "nextEl": ".rec-next", "prevEl": ".rec-prev" } }'>
+                        <div class="swiper-wrapper py-10px">
                             @foreach($recensioni as $recensione)
                                 @php $imgUrl = $recensione->immagine ? asset('storage/' . $recensione->immagine) : null; @endphp
                                 <div class="swiper-slide">
-                                    <div class="recensione-card">
-
+                                    <div class="rec-card">
                                         @if($imgUrl)
-                                        <div class="recensione-card-img">
-                                            <img src="{{ $imgUrl }}" alt="{{ $recensione->nome }}">
+                                            <img src="{{ $imgUrl }}" alt="{{ $recensione->nome }}" class="rec-card-img">
                                             <button type="button"
-                                                    class="btn btn-medium btn-white btn-rounded recensione-ingrandisci"
+                                                    class="btn btn-medium btn-white btn-rounded rec-zoom"
                                                     onclick="openRecLightbox('{{ $imgUrl }}')">
                                                 Ingrandisci <i class="feather icon-feather-search ms-5px"></i>
                                             </button>
-                                        </div>
+                                        @else
+                                            <div class="rec-card-img" style="background:#d8d3cc; width:100%; height:100%;"></div>
                                         @endif
-
-                                        <div class="recensione-card-body">
-                                            <p>"{{ $recensione->testo }}"</p>
-                                            <div class="recensione-card-nome">— {{ $recensione->nome }}</div>
+                                        <div class="rec-card-gradient"></div>
+                                        <div class="rec-card-body">
+                                            <p class="rec-card-text">"{{ $recensione->testo }}"</p>
+                                            <div class="rec-card-nome">— {{ $recensione->nome }}</div>
                                         </div>
-
                                     </div>
                                 </div>
                             @endforeach
-
                         </div>
                     </div>
-
-                    <!-- start slider navigation -->
-                    <div class="swiper-button-next-nav border-radius-100px swiper-button-next bg-white box-shadow-small">
-                        <i class="feather icon-feather-chevron-right icon-extra-medium"></i>
-                    </div>
-                    <div class="swiper-button-previous-nav border-radius-100px swiper-button-prev bg-white box-shadow-small">
+                    <div class="rec-prev border-radius-100px swiper-button-prev bg-white box-shadow-small">
                         <i class="feather icon-feather-chevron-left icon-extra-medium"></i>
                     </div>
-                    <!-- end slider navigation -->
+                    <div class="rec-next border-radius-100px swiper-button-next bg-white box-shadow-small">
+                        <i class="feather icon-feather-chevron-right icon-extra-medium"></i>
+                    </div>
                 @else
-                    {{-- Se non ci sono recensioni, puoi lasciare vuoto o mettere un messaggio --}}
-                    <p class="text-center text-muted mt-3 mb-0">
-                        Al momento non ci sono ancora recensioni visibili.
-                    </p>
+                    <p class="text-center text-muted">Al momento non ci sono ancora recensioni visibili.</p>
                 @endif
 
             </div>
