@@ -304,8 +304,8 @@
                     @endforelse
                 </div>
             </div>
-            <div class="col-lg-5 md-mt-50px">
-                <img src="/images/opera5.jpg" class="border-radius-6px" alt="">
+            <div class="col-lg-4 offset-lg-1 md-mt-50px text-end">
+                <img src="/images/opera5.jpg" class="border-radius-6px w-100" alt="">
             </div>
         </div>
     </div>
