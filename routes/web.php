@@ -43,7 +43,7 @@ Route::get('/artist-statement', function () {
 });
 Route::get('/opere', function () {
     $collezioni = Collezione::with('opere')
-        ->orderByRaw("CASE WHEN nome = 'Commissioni' THEN 1 ELSE 0 END ASC, is_default DESC, nome ASC")
+        ->orderBy('ordine')
         ->get();
     return view('collezioni-pubblica', compact('collezioni'));
 })->name('collezioni.pubblica');
@@ -151,6 +151,12 @@ Route::middleware(['auth'])->group(function () {
 
     Route::delete('/dashboard/collezioni/{collezione}', [AdminController::class, 'collezioniDestroy'])
         ->name('dashboard.collezioni.destroy');
+
+    Route::get('/dashboard/collezioni/ordina', [AdminController::class, 'collezioniOrdina'])
+        ->name('dashboard.collezioni.ordina');
+
+    Route::post('/dashboard/collezioni/salva-ordine', [AdminController::class, 'collezioniSalvaOrdine'])
+        ->name('dashboard.collezioni.salva-ordine');
 
     Route::post('/dashboard/collezioni/{collezione}/opere', [AdminController::class, 'collezioniAggiungiOpera'])
         ->name('dashboard.collezioni.opere.add');

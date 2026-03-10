@@ -245,9 +245,32 @@ class AdminController extends Controller
 
     public function collezioniIndex()
     {
-        $collezioni = Collezione::orderBy('created_at', 'desc')->get();
+        $collezioni = Collezione::orderBy('ordine')->get();
 
         return view('dashboard.collezioni', compact('collezioni'));
+    }
+
+    public function collezioniOrdina()
+    {
+        $collezioni = Collezione::orderBy('ordine')->get();
+
+        return view('dashboard.collezioni-ordina', compact('collezioni'));
+    }
+
+    public function collezioniSalvaOrdine(Request $request)
+    {
+        $data = $request->validate([
+            'ordine'   => 'required|array',
+            'ordine.*' => 'integer|exists:collezioni,id',
+        ]);
+
+        foreach ($data['ordine'] as $position => $id) {
+            \Illuminate\Support\Facades\DB::table('collezioni')
+                ->where('id', $id)
+                ->update(['ordine' => $position + 1]);
+        }
+
+        return response()->json(['success' => true]);
     }
 
     public function collezioniCreate()
@@ -260,20 +283,17 @@ class AdminController extends Controller
         $data = $request->validate([
             'nome'        => 'required|string|max:255',
             'descrizione' => 'nullable|string',
-            'is_default'  => 'nullable|boolean',
             'is_featured' => 'nullable|boolean',
         ]);
+
+        $maxOrdine = \Illuminate\Support\Facades\DB::table('collezioni')->max('ordine') ?? 0;
 
         $collezione = Collezione::create([
             'nome'        => $data['nome'],
             'descrizione' => $data['descrizione'] ?? null,
-            'is_default'  => false,
             'is_featured' => false,
+            'ordine'      => $maxOrdine + 1,
         ]);
-
-        if ($request->boolean('is_default')) {
-            Collezione::setDefault($collezione->id);
-        }
 
         if ($request->boolean('is_featured')) {
             Collezione::setFeatured($collezione->id);
@@ -323,22 +343,12 @@ class AdminController extends Controller
         $data = $request->validate([
             'nome'        => 'required|string|max:255',
             'descrizione' => 'nullable|string',
-            'is_default'  => 'nullable|boolean',
             'is_featured' => 'nullable|boolean',
         ]);
 
         $collezione->nome        = $data['nome'];
         $collezione->descrizione = $data['descrizione'] ?? null;
         $collezione->save();
-
-        if ($request->boolean('is_default')) {
-            // Imposta questa come default e rimuove il flag da tutte le altre
-            Collezione::setDefault($collezione->id);
-        } else {
-            \Illuminate\Support\Facades\DB::table('collezioni')
-                ->where('id', $collezione->id)
-                ->update(['is_default' => false]);
-        }
 
         if ($request->boolean('is_featured')) {
             // Imposta questa come featured e rimuove il flag da tutte le altre

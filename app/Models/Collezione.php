@@ -14,12 +14,11 @@ class Collezione extends Model
         'nome',
         'slug',
         'descrizione',
-        'is_default',
         'is_featured',
+        'ordine',
     ];
 
     protected $casts = [
-        'is_default'  => 'boolean',
         'is_featured' => 'boolean',
     ];
 
@@ -55,13 +54,6 @@ class Collezione extends Model
         }
 
         return $slug;
-    }
-
-    // Imposta questa collezione come "default" e rimuove il flag dalle altre
-    public static function setDefault(int $id): void
-    {
-        DB::table('collezioni')->update(['is_default' => false]);
-        DB::table('collezioni')->where('id', $id)->update(['is_default' => true]);
     }
 
     // Imposta questa collezione come "featured" e rimuove il flag dalle altre

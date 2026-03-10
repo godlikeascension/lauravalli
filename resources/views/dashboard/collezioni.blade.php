@@ -46,14 +46,19 @@
 
                         <div class="card">
                             <div class="card-body">
-                                <div class="row mb-4">
-                                    <div class="col-12">
+                                <div class="d-flex justify-content-between align-items-center mb-4">
+                                    <h4 class="header-title mb-0">Tutte le collezioni</h4>
+                                    <div class="d-flex gap-2">
+                                        <a href="{{ route('dashboard.collezioni.ordina') }}"
+                                           class="btn btn-sm btn-secondary waves-effect waves-light">
+                                            <i class="mdi mdi-drag-vertical" style="margin-right: 6px;"></i>
+                                            Ordina
+                                        </a>
                                         <a href="{{ route('dashboard.collezioni.create') }}"
-                                           class="btn btn-sm btn-blue waves-effect waves-light float-end">
-                                            <i class="mdi mdi-plus-circle" style="margin-right: 10px;"></i>
+                                           class="btn btn-sm btn-blue waves-effect waves-light">
+                                            <i class="mdi mdi-plus-circle" style="margin-right: 6px;"></i>
                                             Aggiungi collezione
                                         </a>
-                                        <h4 class="header-title">Tutte le collezioni</h4>
                                     </div>
                                 </div>
 
@@ -61,27 +66,19 @@
                                     <table class="table table-hover m-0 table-centered nowrap w-100">
                                         <thead>
                                         <tr>
-                                            <th>ID</th>
+                                            <th style="width:50px">Ordine</th>
                                             <th>Nome</th>
-                                            <th>Opere</th>
-                                            <th>Default</th>
-                                            <th>Featured</th>
-                                            <th>Azioni</th>
+                                            <th style="width:80px">Opere</th>
+                                            <th style="width:100px">Featured</th>
+                                            <th style="width:160px">Azioni</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         @forelse($collezioni as $collezione)
                                             <tr>
-                                                <td>{{ $collezione->id }}</td>
+                                                <td class="text-muted text-center">{{ $collezione->ordine }}</td>
                                                 <td>{{ $collezione->nome }}</td>
-                                                <td>{{ $collezione->opere()->count() }}</td>
-                                                <td>
-                                                    @if($collezione->is_default)
-                                                        <span class="badge bg-success">Default</span>
-                                                    @else
-                                                        <span class="text-muted">—</span>
-                                                    @endif
-                                                </td>
+                                                <td class="text-center">{{ $collezione->opere()->count() }}</td>
                                                 <td>
                                                     @if($collezione->is_featured)
                                                         <span class="badge bg-primary">Featured</span>
@@ -109,7 +106,7 @@
                                             </tr>
                                         @empty
                                             <tr>
-                                                <td colspan="6" class="text-center text-muted">
+                                                <td colspan="5" class="text-center text-muted">
                                                     Nessuna collezione presente.
                                                 </td>
                                             </tr>

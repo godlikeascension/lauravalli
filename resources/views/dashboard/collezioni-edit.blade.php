@@ -79,19 +79,6 @@
 
                                     <div class="mb-3 form-check form-switch">
                                         <input type="checkbox"
-                                               name="is_default"
-                                               id="is_default"
-                                               value="1"
-                                               class="form-check-input"
-                                            {{ old('is_default', $collezione->is_default) ? 'checked' : '' }}>
-                                        <label class="form-check-label" for="is_default">
-                                            Collezione <strong>default</strong>
-                                            <small class="text-muted">(mostrata nella pagina /collezione)</small>
-                                        </label>
-                                    </div>
-
-                                    <div class="mb-3 form-check form-switch">
-                                        <input type="checkbox"
                                                name="is_featured"
                                                id="is_featured"
                                                value="1"
