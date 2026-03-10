@@ -28,6 +28,69 @@
         .select:after {
             top: 70% !important;
         }
+
+        /* ── Recensioni carousel ── */
+        .recensione-slide-row {
+            min-height: 440px;
+        }
+        .recensione-img-col {
+            min-height: 440px;
+            position: relative;
+        }
+        @media (max-width: 575px) {
+            .recensione-slide-row { min-height: unset; }
+            .recensione-img-col  { min-height: 280px; }
+        }
+        .recensione-overlay {
+            position: absolute; inset: 0;
+            background: rgba(0,0,0,0);
+            transition: background .3s;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .recensione-overlay:hover {
+            background: rgba(0,0,0,0.38);
+        }
+        .recensione-zoom-btn {
+            opacity: 0;
+            transition: opacity .3s;
+            pointer-events: none;
+        }
+        .recensione-overlay:hover .recensione-zoom-btn {
+            opacity: 1;
+        }
+        /* always show on touch devices */
+        @media (hover: none) {
+            .recensione-zoom-btn { opacity: 1; pointer-events: auto; }
+        }
+        .recensione-text-body {
+            max-height: 220px;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+        .recensione-text-body::-webkit-scrollbar { width: 4px; }
+        .recensione-text-body::-webkit-scrollbar-track { background: #f0f0f0; }
+        .recensione-text-body::-webkit-scrollbar-thumb { background: #ccc; border-radius: 2px; }
+
+        /* ── Lightbox ── */
+        #rec-lightbox {
+            display: none; position: fixed; inset: 0; z-index: 99999;
+            background: rgba(0,0,0,0.88);
+            align-items: center; justify-content: center;
+            cursor: zoom-out;
+        }
+        #rec-lightbox.open { display: flex; }
+        #rec-lightbox img {
+            max-width: 90vw; max-height: 90vh;
+            object-fit: contain;
+            box-shadow: 0 8px 48px rgba(0,0,0,0.6);
+            cursor: default;
+        }
+        #rec-lightbox-close {
+            position: absolute; top: 20px; right: 24px;
+            background: white; border: none; border-radius: 50%;
+            width: 40px; height: 40px; font-size: 22px; line-height: 1;
+            cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
     </style>
 
 </head>
@@ -160,36 +223,36 @@
 
                 @if(isset($recensioni) && $recensioni->count())
                     <div class="swiper"
-                         data-slider-options='{ "slidesPerView": 2, "spaceBetween": 50, "loop": true, "autoplay": { "delay": 10000, "disableOnInteraction": false },  "keyboard": { "enabled": true, "onlyInViewport": true }, "breakpoints": { "1200": { "slidesPerView": 1 },  "768": { "slidesPerView": 1 }, "768": { "slidesPerView": 1 }, "320": { "slidesPerView": 1 }, "effect": "slide" }, "navigation": { "nextEl": ".swiper-button-next-nav", "prevEl": ".swiper-button-previous-nav", "effect": "fade" } }'>
+                         data-slider-options='{ "slidesPerView": 1, "spaceBetween": 30, "loop": true, "autoplay": { "delay": 10000, "disableOnInteraction": false }, "keyboard": { "enabled": true, "onlyInViewport": true }, "navigation": { "nextEl": ".swiper-button-next-nav", "prevEl": ".swiper-button-previous-nav" } }'>
                         <div class="swiper-wrapper pt-20px pb-20px">
 
                             @foreach($recensioni as $recensione)
                                 <div class="swiper-slide">
-                                    <div class="row g-0 border-radius-6px overflow-hidden">
-                                        <div class="col-sm-5 services-box-img xs-h-350px">
-                                            @if($recensione->immagine)
-                                                <div class="h-100 cover-background"
-                                                     style="background-image: url('{{ asset('storage/' . $recensione->immagine) }}')">
-                                                </div>
-                                            @else
-                                                {{-- fallback se non c'è immagine --}}
-                                                <div class="h-100 cover-background"
-                                                     style="background-image: url('https://placehold.co/305x380')">
-                                                </div>
-                                            @endif
-                                        </div>
-                                        <div class="col-sm-7 testimonials-box bg-white p-9 sm-p-7 box-shadow-extra-large">
-                                            <div class="testimonials-box-content">
-                                                <p class="mb-20px">
-                                                    {{ \Illuminate\Support\Str::limit($recensione->testo, 260) }}
-                                                </p>
-                                                <div class="fs-18 lh-20 fw-600 text-dark-gray">
-                                                    {{ $recensione->nome }}
-                                                </div>
-                                                {{-- se in futuro aggiungi un campo "ruolo" o "descrizione", puoi metterlo qui --}}
-                                                {{-- <span class="fs-16 lh-20">{{ $recensione->ruolo }}</span> --}}
+                                    <div class="row g-0 border-radius-6px overflow-hidden recensione-slide-row">
+
+                                        {{-- Immagine --}}
+                                        <div class="col-sm-5 recensione-img-col">
+                                            @php $imgUrl = $recensione->immagine ? asset('storage/' . $recensione->immagine) : 'https://placehold.co/400x440'; @endphp
+                                            <div class="h-100 w-100 cover-background" style="background-image: url('{{ $imgUrl }}'); min-height: inherit;"></div>
+                                            <div class="recensione-overlay"
+                                                 onclick="openRecLightbox('{{ $imgUrl }}')">
+                                                <button type="button" class="btn btn-medium btn-white btn-rounded recensione-zoom-btn">
+                                                    Ingrandisci <i class="feather icon-feather-search ms-5px"></i>
+                                                </button>
                                             </div>
                                         </div>
+
+                                        {{-- Testo --}}
+                                        <div class="col-sm-7 bg-white p-9 sm-p-7 box-shadow-extra-large d-flex flex-column justify-content-center">
+                                            <div>
+                                                <i class="feather icon-feather-message-circle fs-40 mb-15px d-block" style="color: var(--base-color);"></i>
+                                                <div class="recensione-text-body mb-20px">
+                                                    <p class="mb-0">{{ $recensione->testo }}</p>
+                                                </div>
+                                                <div class="fs-18 fw-600 text-dark-gray">{{ $recensione->nome }}</div>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                             @endforeach
@@ -509,5 +572,24 @@
 </script>
 
 
+<!-- Lightbox recensioni -->
+<div id="rec-lightbox" onclick="closeRecLightbox()">
+    <button id="rec-lightbox-close" onclick="closeRecLightbox()">&#215;</button>
+    <img id="rec-lightbox-img" src="" alt="Opera" onclick="event.stopPropagation()">
+</div>
+<script>
+    function openRecLightbox(url) {
+        document.getElementById('rec-lightbox-img').src = url;
+        document.getElementById('rec-lightbox').classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeRecLightbox() {
+        document.getElementById('rec-lightbox').classList.remove('open');
+        document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeRecLightbox();
+    });
+</script>
 </body>
 </html>
