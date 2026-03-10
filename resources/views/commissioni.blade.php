@@ -79,25 +79,43 @@
             z-index: 2;
         }
 
-        /* ── Lightbox ── */
+        /* ── Review modal ── */
         #rec-lightbox {
             display: none; position: fixed; inset: 0; z-index: 99999;
-            background: rgba(0,0,0,0.88);
+            background: rgba(0,0,0,0.82);
             align-items: center; justify-content: center;
-            cursor: zoom-out;
+            padding: 20px; cursor: zoom-out;
         }
         #rec-lightbox.open { display: flex; }
-        #rec-lightbox img {
-            max-width: 90vw; max-height: 90vh;
-            object-fit: contain;
-            box-shadow: 0 8px 48px rgba(0,0,0,0.6);
-            cursor: default;
+        #rec-lightbox-inner {
+            display: flex; background: white; border-radius: 10px;
+            overflow: hidden; cursor: default;
+            width: 100%; max-width: 860px; max-height: 88vh;
+        }
+        #rec-lightbox-img {
+            width: 42%; flex-shrink: 0; object-fit: cover; display: block;
+        }
+        #rec-lightbox-body {
+            flex: 1; padding: 48px; overflow-y: auto;
+            display: flex; flex-direction: column; justify-content: center;
+        }
+        #rec-lightbox-text {
+            font-style: italic; line-height: 1.8;
+            color: var(--medium-gray); margin-bottom: 24px; font-size: 16px;
+        }
+        #rec-lightbox-nome {
+            font-weight: 600; font-size: 16px; color: var(--dark-gray);
         }
         #rec-lightbox-close {
-            position: absolute; top: 20px; right: 24px;
+            position: absolute; top: 16px; right: 20px;
             background: white; border: none; border-radius: 50%;
-            width: 40px; height: 40px; font-size: 22px; line-height: 1;
+            width: 38px; height: 38px; font-size: 20px; line-height: 1;
             cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        @media (max-width: 600px) {
+            #rec-lightbox-inner { flex-direction: column; overflow-y: auto; }
+            #rec-lightbox-img { width: 100%; height: 260px; flex-shrink: 0; }
+            #rec-lightbox-body { padding: 28px 24px; }
         }
     </style>
 
@@ -236,22 +254,23 @@
                             @foreach($recensioni as $recensione)
                                 @php $imgUrl = $recensione->immagine ? asset('storage/' . $recensione->immagine) : null; @endphp
                                 <div class="swiper-slide">
-                                    <div class="rec-card">
+                                    <div class="rec-card"
+                                         data-img="{{ $imgUrl }}"
+                                         data-text="{{ $recensione->testo }}"
+                                         data-nome="{{ $recensione->nome }}">
                                         @if($imgUrl)
                                             <img src="{{ $imgUrl }}" alt="{{ $recensione->nome }}" class="rec-card-img">
-                                            <button type="button"
-                                                    class="btn btn-medium btn-white btn-rounded rec-zoom"
-                                                    onclick="openRecLightbox('{{ $imgUrl }}')">
-                                                Ingrandisci <i class="feather icon-feather-search ms-5px"></i>
-                                            </button>
                                         @else
-                                            <div class="rec-card-img" style="background:#d8d3cc; width:100%; height:100%;"></div>
+                                            <div style="background:#d8d3cc; width:100%; height:100%;"></div>
                                         @endif
                                         <div class="rec-card-gradient"></div>
                                         <div class="rec-card-body">
                                             <p class="rec-card-text">"{{ $recensione->testo }}"</p>
                                             <div class="rec-card-nome">— {{ $recensione->nome }}</div>
                                         </div>
+                                        <button type="button" class="btn btn-medium btn-white btn-rounded rec-zoom">
+                                            Ingrandisci <i class="feather icon-feather-search ms-5px"></i>
+                                        </button>
                                     </div>
                                 </div>
                             @endforeach
@@ -564,14 +583,24 @@
 </script>
 
 
-<!-- Lightbox recensioni -->
+<!-- Review modal -->
 <div id="rec-lightbox" onclick="closeRecLightbox()">
     <button id="rec-lightbox-close" onclick="closeRecLightbox()">&#215;</button>
-    <img id="rec-lightbox-img" src="" alt="Opera" onclick="event.stopPropagation()">
+    <div id="rec-lightbox-inner" onclick="event.stopPropagation()">
+        <img id="rec-lightbox-img" src="" alt="">
+        <div id="rec-lightbox-body">
+            <p id="rec-lightbox-text"></p>
+            <div id="rec-lightbox-nome"></div>
+        </div>
+    </div>
 </div>
 <script>
-    function openRecLightbox(url) {
-        document.getElementById('rec-lightbox-img').src = url;
+    function openRecModal(imgUrl, text, nome) {
+        var img = document.getElementById('rec-lightbox-img');
+        img.src = imgUrl || '';
+        img.style.display = imgUrl ? 'block' : 'none';
+        document.getElementById('rec-lightbox-text').textContent = '\u201C' + text + '\u201D';
+        document.getElementById('rec-lightbox-nome').textContent = '\u2014 ' + nome;
         document.getElementById('rec-lightbox').classList.add('open');
         document.body.style.overflow = 'hidden';
     }
@@ -581,6 +610,11 @@
     }
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') closeRecLightbox();
+    });
+    document.querySelectorAll('.rec-card').forEach(function(card) {
+        card.addEventListener('click', function() {
+            openRecModal(this.dataset.img, this.dataset.text, this.dataset.nome);
+        });
     });
 </script>
 </body>
