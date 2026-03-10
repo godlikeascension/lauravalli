@@ -141,10 +141,10 @@
 {{-- ══════════════════════════════════════════════════════════
      COME FUNZIONA
 ══════════════════════════════════════════════════════════ --}}
-<section class="p-0 overflow-hidden">
-    <div class="container-fluid p-0">
-        <div class="row g-0 align-items-stretch">
-            <div class="col-xxl-7 col-lg-7 py-8 px-6 lg-py-6 lg-px-4 md-p-50px sm-p-30px text-center text-lg-start" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }' style="padding: 80px 8%;">
+<section class="big-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-xxl-7 col-lg-7 md-mb-15 sm-mb-20 text-center text-lg-start" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
                 <span class="text-gradient-base-color fs-15 alt-font fw-700 ls-05px text-uppercase d-inline-block align-middle">Come funziona</span>
                 <h3 class="alt-font fw-700 text-dark-gray ls-minus-1px">Tre semplici passi per regalare un'opera d'arte</h3>
 
@@ -195,8 +195,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-5 position-relative md-h-500px sm-h-350px">
-                <div class="position-absolute top-0 start-0 w-100 h-100" style="background-image:url('/images/giftcardsection2.jpg'); background-size:cover; background-position:center;"></div>
+            <div class="col-lg-5 md-mt-50px">
+                <img src="/images/giftcardsection2.jpg" class="border-radius-6px w-100" style="object-fit:cover;" alt="">
             </div>
         </div>
     </div>
