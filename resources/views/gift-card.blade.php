@@ -112,7 +112,7 @@
 {{-- ══════════════════════════════════════════════════════════
      HERO
 ══════════════════════════════════════════════════════════ --}}
-<section class="p-0 full-screen ipad-top-space-margin position-relative overflow-hidden md-h-auto">
+<section class="p-0 full-screen ipad-top-space-margin position-relative overflow-hidden md-h-auto sm-h-auto">
     <div class="container-fluid p-0 h-100 position-relative">
         <div class="row h-100 g-0">
             <div class="col-xl-5 col-lg-6 d-flex justify-content-center flex-column ps-10 xxl-ps-5 xl-ps-2 md-ps-0 position-relative order-2 order-lg-1">
@@ -132,7 +132,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col-xl-7 col-lg-6 position-relative md-h-500px order-1 order-lg-2 md-mb-50px">
+            <div class="col-xl-7 col-lg-6 position-relative md-h-400px sm-h-300px order-1 order-lg-2">
                 <div class="position-absolute left-0px top-0px w-100 h-100" style="background-image:url('/images/giftcard.png'); background-size:contain; background-repeat:no-repeat; background-position:center center;"></div>
             </div>
         </div>
