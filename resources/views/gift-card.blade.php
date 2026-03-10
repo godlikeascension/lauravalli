@@ -72,19 +72,24 @@
         .valore-options {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 24px;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        @media (min-width: 992px) {
+            .valore-options { flex-wrap: nowrap; }
         }
         .valore-btn {
-            padding: 12px 24px;
+            flex: 1 1 auto;
+            padding: 10px 14px;
             border: 1.5px solid #c8c8c8;
             border-radius: 6px;
             background: transparent;
             color: #1d1d1d;
-            font-size: 15px;
+            font-size: 14px;
             cursor: pointer;
             transition: all .2s;
             font-family: inherit;
+            white-space: nowrap;
         }
         .valore-btn:hover, .valore-btn.selected {
             border-color: #1d1d1d;
@@ -325,69 +330,77 @@
             </div>
         </div>
 
-        <div class="row justify-content-center">
-            <div class="col-lg-8 col-xl-7">
+        <div class="row">
+            <div class="col-12">
+                <div class="contact-form-style-05">
 
-                @if(session('gift_card_success'))
-                    <div class="alert alert-success alert-dismissible fade show mb-4 text-center" role="alert">
-                        <i class="feather icon-feather-check-circle me-2"></i>
-                        {{ session('gift_card_success') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                    </div>
-                @endif
-
-                <form id="gift-card-form" action="{{ route('gift-card.send') }}" method="POST">
-                    @csrf
-
-                    {{-- VALORE --}}
-                    <div class="mb-30px">
-                        <label class="form-label alt-font fs-14 text-dark-gray fw-600 d-block mb-15px">Scegli il valore della gift card</label>
-                        <div class="valore-options" id="valoreOptions">
-                            <button type="button" class="valore-btn" data-value="200€ (valore minimo)">200€</button>
-                            <button type="button" class="valore-btn" data-value="500€">500€</button>
-                            <button type="button" class="valore-btn" data-value="1000€">1.000€</button>
-                            <button type="button" class="valore-btn" data-value="1500€">1.500€</button>
-                            <button type="button" class="valore-btn" data-value="2000€">2.000€</button>
-                            <button type="button" class="valore-btn" data-value="Altro importo">Altro importo</button>
+                    @if(session('gift_card_success'))
+                        <div class="alert alert-success alert-dismissible fade show mb-3" role="alert">
+                            {{ session('gift_card_success') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                         </div>
-                        <input type="hidden" name="valore" id="valoreInput" value="{{ old('valore') }}" required>
-                        @error('valore')
-                            <small class="text-danger d-block mt-5px">{{ $message }}</small>
-                        @enderror
-                    </div>
+                    @endif
 
-                    {{-- NOME --}}
-                    <div class="position-relative form-group mb-20px">
-                        <span class="form-icon"><i class="bi bi-person icon-extra-medium text-dark-gray"></i></span>
-                        <input class="ps-0 border-radius-0px border-color-extra-medium-gray form-control required @error('nome') is-invalid @enderror"
-                               type="text" name="nome" placeholder="Il tuo nome*"
-                               value="{{ old('nome') }}" required />
-                        @error('nome')<small class="text-danger">{{ $message }}</small>@enderror
-                    </div>
+                    <form id="gift-card-form" action="{{ route('gift-card.send') }}" method="POST">
+                        @csrf
 
-                    {{-- EMAIL --}}
-                    <div class="position-relative form-group mb-20px">
-                        <span class="form-icon"><i class="bi bi-envelope icon-extra-medium text-dark-gray"></i></span>
-                        <input class="ps-0 border-radius-0px border-bottom border-color-extra-medium-gray form-control required @error('email') is-invalid @enderror"
-                               type="email" name="email" placeholder="Il tuo indirizzo email*"
-                               value="{{ old('email') }}" required />
-                        @error('email')<small class="text-danger">{{ $message }}</small>@enderror
-                    </div>
+                        <div class="row justify-content-center">
 
-                    {{-- MESSAGGIO --}}
-                    <div class="position-relative form-group form-textarea mt-15px mb-0">
-                        <textarea class="ps-0 border-radius-0px border-bottom border-color-extra-medium-gray form-control @error('messaggio') is-invalid @enderror"
-                                  name="messaggio"
-                                  placeholder="Vuoi aggiungere qualcosa? (opzionale)"
-                                  rows="3">{{ old('messaggio') }}</textarea>
-                        <span class="form-icon"><i class="bi bi-chat-square-dots icon-extra-medium text-dark-gray"></i></span>
-                        <button id="gift-card-submit" class="btn btn-large btn-dark-gray btn-box-shadow mb-20px mt-25px submit w-100" type="submit">
-                            Invia la richiesta <i class="feather icon-feather-arrow-right ms-10px"></i>
-                        </button>
-                    </div>
+                            {{-- VALORE --}}
+                            <div class="col-12 mb-20px">
+                                <label class="form-label alt-font fs-14 text-dark-gray">Scegli il valore della gift card</label>
+                                <div class="valore-options" id="valoreOptions">
+                                    <button type="button" class="valore-btn" data-value="200€ (valore minimo)">200€</button>
+                                    <button type="button" class="valore-btn" data-value="500€">500€</button>
+                                    <button type="button" class="valore-btn" data-value="1.000€">1.000€</button>
+                                    <button type="button" class="valore-btn" data-value="1.500€">1.500€</button>
+                                    <button type="button" class="valore-btn" data-value="2.000€">2.000€</button>
+                                    <button type="button" class="valore-btn" data-value="Altro importo">Altro importo</button>
+                                </div>
+                                <input type="hidden" name="valore" id="valoreInput" value="{{ old('valore') }}" required>
+                                @error('valore')
+                                    <small class="text-danger d-block mt-5px">{{ $message }}</small>
+                                @enderror
+                            </div>
 
-                </form>
+                            {{-- NOME --}}
+                            <div class="col-md-6 sm-mb-20px">
+                                <label class="form-label alt-font fs-14 text-dark-gray">Il tuo nome</label>
+                                <input class="mb-20px border-color-transparent-dark-very-light form-control bg-transparent required @error('nome') is-invalid @enderror"
+                                       type="text" name="nome"
+                                       value="{{ old('nome') }}" required />
+                                @error('nome')<small class="text-danger">{{ $message }}</small>@enderror
+                            </div>
 
+                            {{-- EMAIL --}}
+                            <div class="col-md-6 sm-mb-20px">
+                                <label class="form-label alt-font fs-14 text-dark-gray">Il tuo indirizzo email</label>
+                                <input class="mb-20px border-color-transparent-dark-very-light form-control bg-transparent required @error('email') is-invalid @enderror"
+                                       type="email" name="email"
+                                       value="{{ old('email') }}" required />
+                                @error('email')<small class="text-danger">{{ $message }}</small>@enderror
+                            </div>
+
+                            {{-- MESSAGGIO --}}
+                            <div class="col-12">
+                                <div class="mb-20px">
+                                    <label class="form-label alt-font fs-14 text-dark-gray">Vuoi aggiungere qualcosa? (opzionale)</label>
+                                    <textarea class="border-color-transparent-dark-very-light form-control bg-transparent @error('messaggio') is-invalid @enderror"
+                                              name="messaggio" rows="4">{{ old('messaggio') }}</textarea>
+                                    @error('messaggio')<small class="text-danger">{{ $message }}</small>@enderror
+                                </div>
+                            </div>
+
+                            <div class="col-12 text-center">
+                                <button id="gift-card-submit" class="btn btn-large btn-dark-gray btn-box-shadow submit" type="submit">
+                                    Invia la richiesta <i class="feather icon-feather-arrow-right ms-10px"></i>
+                                </button>
+                            </div>
+
+                        </div>
+                    </form>
+
+                </div>
             </div>
         </div>
     </div>
