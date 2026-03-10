@@ -177,9 +177,9 @@
                      class="collezione-panel {{ $i !== 0 ? 'd-none' : '' }}"
                      role="tabpanel">
 
-                    {{-- Collection description --}}
+                    {{-- Collection description (desktop only) --}}
                     @if($col->descrizione)
-                        <div class="row mb-40px">
+                        <div class="row mb-40px d-none d-md-flex">
                             <div class="col-12">
                                 <div class="text-muted">
                                     {!! $col->descrizione !!}
