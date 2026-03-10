@@ -21,8 +21,8 @@
                         <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
                         <li class="nav-item"><a href="/opere" class="nav-link">Opere</a></li>
                         <li class="nav-item"><a href="/commissioni" class="nav-link">Commissioni</a></li>
+                        <li class="nav-item"><a href="/gift-card" class="nav-link">Regala un'opera</a></li>
                         <li class="nav-item"><a href="/artist-statement" class="nav-link">Chi Sono</a></li>
-                        <li class="nav-item"><a href="/gift-card" class="nav-link">Gift Card</a></li>
 {{--                        <li class="nav-item"><a href="/about" class="nav-link">About</a></li>--}}
 {{--                        <li class="nav-item"><a href="/contatti" class="nav-link">Contatti</a></li>--}}
                     </ul>
