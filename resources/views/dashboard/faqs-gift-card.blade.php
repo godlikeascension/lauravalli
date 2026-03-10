@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
     <meta charset="utf-8" />
-    <title>FAQ Commissioni</title>
+    <title>FAQ Gift Card</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="shortcut icon" href="/img/favicon.png">
@@ -36,17 +36,17 @@
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center mb-3">
                                     <div>
-                                        <h4 class="header-title mb-0">FAQ Commissioni</h4>
-                                        <a href="{{ route('dashboard.faqs-gift-card.index') }}" class="text-muted small">
-                                            Vai a FAQ Gift Card →
+                                        <h4 class="header-title mb-0">FAQ Gift Card</h4>
+                                        <a href="{{ route('dashboard.faqs.index') }}" class="text-muted small">
+                                            Vai a FAQ Commissioni →
                                         </a>
                                     </div>
-                                    <a href="{{ route('dashboard.faqs.create') }}" class="btn btn-sm btn-primary">
+                                    <a href="{{ route('dashboard.faqs-gift-card.create') }}" class="btn btn-sm btn-primary">
                                         <i class="mdi mdi-plus"></i> Nuova FAQ
                                     </a>
                                 </div>
 
-                                <p class="text-muted small mb-3">L'ordine determina la sequenza di visualizzazione nella pagina commissioni.</p>
+                                <p class="text-muted small mb-3">L'ordine determina la sequenza di visualizzazione nella pagina Gift Card.</p>
 
                                 <table class="table table-hover align-middle" style="table-layout:fixed">
                                     <thead>
@@ -62,11 +62,11 @@
                                                 <td class="text-muted text-center">{{ $faq->ordine }}</td>
                                                 <td style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ $faq->domanda }}</td>
                                                 <td style="white-space:nowrap">
-                                                    <a href="{{ route('dashboard.faqs.edit', $faq->id) }}"
+                                                    <a href="{{ route('dashboard.faqs-gift-card.edit', $faq->id) }}"
                                                        class="btn btn-sm btn-light me-1">
                                                         <i class="mdi mdi-pencil"></i> Modifica
                                                     </a>
-                                                    <form action="{{ route('dashboard.faqs.destroy', $faq->id) }}"
+                                                    <form action="{{ route('dashboard.faqs-gift-card.destroy', $faq->id) }}"
                                                           method="POST" class="d-inline"
                                                           onsubmit="return confirm('Eliminare questa FAQ?')">
                                                         @csrf

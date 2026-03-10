@@ -16,6 +16,8 @@ use App\Models\Impostazione;
 Route::post('/contatti', [ContactController::class, 'send'])->name('contatti.send');
 Route::post('/commissioni-form', [ContactController::class, 'sendCommissione'])
     ->name('commissioni.send');
+Route::post('/gift-card-form', [ContactController::class, 'sendGiftCard'])
+    ->name('gift-card.send');
 Route::get('/commissioni/grazie', function () {
     return view('commissioni-grazie');
 })->name('commissioni.grazie');
@@ -34,9 +36,13 @@ Route::get('/', function () {
 
 Route::get('/commissioni', function () {
     $recensioni = Recensione::orderBy('created_at', 'desc')->get();
-    $faqs       = Faq::orderBy('ordine')->orderBy('id')->get();
+    $faqs       = Faq::where('tipo', 'commissioni')->orderBy('ordine')->orderBy('id')->get();
     return view('commissioni', compact('recensioni', 'faqs'));
 });
+Route::get('/gift-card', function () {
+    $faqs = Faq::where('tipo', 'gift-card')->orderBy('ordine')->orderBy('id')->get();
+    return view('gift-card', compact('faqs'));
+})->name('gift-card');
 Route::get('/artist-statement', function () {
     $contenuto = Impostazione::get('artist_statement');
     return view('artist-statement', compact('contenuto'));
@@ -191,5 +197,19 @@ Route::middleware(['auth'])->group(function () {
         ->name('dashboard.faqs.update');
     Route::delete('/dashboard/faqs/{faq}', [AdminController::class, 'faqsDestroy'])
         ->name('dashboard.faqs.destroy');
+
+    // FAQ Gift Card
+    Route::get('/dashboard/faqs-gift-card', [AdminController::class, 'faqsGiftCardIndex'])
+        ->name('dashboard.faqs-gift-card.index');
+    Route::get('/dashboard/faqs-gift-card/crea', [AdminController::class, 'faqsGiftCardCreate'])
+        ->name('dashboard.faqs-gift-card.create');
+    Route::post('/dashboard/faqs-gift-card', [AdminController::class, 'faqsGiftCardStore'])
+        ->name('dashboard.faqs-gift-card.store');
+    Route::get('/dashboard/faqs-gift-card/{faq}/edit', [AdminController::class, 'faqsGiftCardEdit'])
+        ->name('dashboard.faqs-gift-card.edit');
+    Route::put('/dashboard/faqs-gift-card/{faq}', [AdminController::class, 'faqsGiftCardUpdate'])
+        ->name('dashboard.faqs-gift-card.update');
+    Route::delete('/dashboard/faqs-gift-card/{faq}', [AdminController::class, 'faqsGiftCardDestroy'])
+        ->name('dashboard.faqs-gift-card.destroy');
 });
 

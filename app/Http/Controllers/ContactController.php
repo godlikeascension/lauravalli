@@ -54,8 +54,24 @@ class ContactController extends Controller
         });
 
         return redirect()->route('commissioni.grazie');
+    }
 
+    public function sendGiftCard(Request $request)
+    {
+        $data = $request->validate([
+            'nome'     => 'required|string|max:255',
+            'email'    => 'required|email',
+            'valore'   => 'required|string',
+            'messaggio' => 'nullable|string',
+        ]);
 
+        Mail::send('emails.gift-card', ['data' => $data], function ($message) use ($data) {
+            $message->to('lauravalliart@gmail.com')
+                ->replyTo($data['email'], $data['nome'])
+                ->subject('Nuova richiesta Gift Card');
+        });
+
+        return back()->with('gift_card_success', 'Richiesta inviata con successo! Ti contatterò presto.');
     }
 
 }

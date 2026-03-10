@@ -403,7 +403,7 @@ class AdminController extends Controller
     // -----------------------------
     public function faqsIndex()
     {
-        $faqs = Faq::orderBy('ordine')->orderBy('id')->get();
+        $faqs = Faq::where('tipo', 'commissioni')->orderBy('ordine')->orderBy('id')->get();
         return view('dashboard.faqs', compact('faqs'));
     }
 
@@ -415,15 +415,16 @@ class AdminController extends Controller
     public function faqsStore(Request $request)
     {
         $data = $request->validate([
-            'domanda'      => 'required|string|max:255',
+            'domanda'       => 'required|string|max:255',
             'risposta_html' => 'required|string',
-            'ordine'       => 'nullable|integer|min:0',
+            'ordine'        => 'nullable|integer|min:0',
         ]);
 
         Faq::create([
-            'domanda'      => $data['domanda'],
+            'domanda'       => $data['domanda'],
             'risposta_html' => $data['risposta_html'],
-            'ordine'       => $data['ordine'] ?? 0,
+            'ordine'        => $data['ordine'] ?? 0,
+            'tipo'          => 'commissioni',
         ]);
 
         return redirect()->route('dashboard.faqs.index')
@@ -438,9 +439,9 @@ class AdminController extends Controller
     public function faqsUpdate(Request $request, Faq $faq)
     {
         $data = $request->validate([
-            'domanda'      => 'required|string|max:255',
+            'domanda'       => 'required|string|max:255',
             'risposta_html' => 'required|string',
-            'ordine'       => 'nullable|integer|min:0',
+            'ordine'        => 'nullable|integer|min:0',
         ]);
 
         $faq->domanda       = $data['domanda'];
@@ -456,6 +457,68 @@ class AdminController extends Controller
     {
         $faq->delete();
         return redirect()->route('dashboard.faqs.index')
+            ->with('success', 'FAQ eliminata.');
+    }
+
+    // -----------------------------
+    // FAQ Gift Card CRUD
+    // -----------------------------
+    public function faqsGiftCardIndex()
+    {
+        $faqs = Faq::where('tipo', 'gift-card')->orderBy('ordine')->orderBy('id')->get();
+        return view('dashboard.faqs-gift-card', compact('faqs'));
+    }
+
+    public function faqsGiftCardCreate()
+    {
+        return view('dashboard.faqs-gift-card-create');
+    }
+
+    public function faqsGiftCardStore(Request $request)
+    {
+        $data = $request->validate([
+            'domanda'       => 'required|string|max:255',
+            'risposta_html' => 'required|string',
+            'ordine'        => 'nullable|integer|min:0',
+        ]);
+
+        Faq::create([
+            'domanda'       => $data['domanda'],
+            'risposta_html' => $data['risposta_html'],
+            'ordine'        => $data['ordine'] ?? 0,
+            'tipo'          => 'gift-card',
+        ]);
+
+        return redirect()->route('dashboard.faqs-gift-card.index')
+            ->with('success', 'FAQ creata con successo.');
+    }
+
+    public function faqsGiftCardEdit(Faq $faq)
+    {
+        return view('dashboard.faqs-gift-card-edit', compact('faq'));
+    }
+
+    public function faqsGiftCardUpdate(Request $request, Faq $faq)
+    {
+        $data = $request->validate([
+            'domanda'       => 'required|string|max:255',
+            'risposta_html' => 'required|string',
+            'ordine'        => 'nullable|integer|min:0',
+        ]);
+
+        $faq->domanda       = $data['domanda'];
+        $faq->risposta_html = $data['risposta_html'];
+        $faq->ordine        = $data['ordine'] ?? 0;
+        $faq->save();
+
+        return redirect()->route('dashboard.faqs-gift-card.index')
+            ->with('success', 'FAQ aggiornata con successo.');
+    }
+
+    public function faqsGiftCardDestroy(Faq $faq)
+    {
+        $faq->delete();
+        return redirect()->route('dashboard.faqs-gift-card.index')
             ->with('success', 'FAQ eliminata.');
     }
 
