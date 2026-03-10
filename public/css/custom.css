@@ -3229,3 +3229,9 @@
 .mr-500 {
     margin-right: 500px !important;
 }
+
+/* ── Global h1 size reduction ── */
+h1, .h1 {
+    font-size: 3.5rem !important;
+    line-height: 3.6rem !important;
+}
