@@ -13,6 +13,7 @@ class ContactController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email',
+            'phone' => 'nullable|string|max:30',
             'comment' => 'required|string',
         ]);
 
@@ -21,6 +22,7 @@ class ContactController extends Controller
             "Hai ricevuto un nuovo messaggio dal sito.\n\n".
             "Nome: {$validated['name']}\n".
             "Email: {$validated['email']}\n".
+            "Telefono: ".($validated['phone'] ?? '—')."\n".
             "Messaggio:\n{$validated['comment']}",
             function($message) {
                 $message->to('lauravalliart@gmail.com')
@@ -59,9 +61,10 @@ class ContactController extends Controller
     public function sendGiftCard(Request $request)
     {
         $data = $request->validate([
-            'nome'     => 'required|string|max:255',
-            'email'    => 'required|email',
-            'valore'   => 'required|string',
+            'nome'      => 'required|string|max:255',
+            'email'     => 'required|email',
+            'telefono'  => 'nullable|string|max:30',
+            'valore'    => 'required|string',
             'messaggio' => 'nullable|string',
         ]);
 

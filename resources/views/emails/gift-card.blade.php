@@ -9,6 +9,7 @@
 
 <p><strong>Nome:</strong> {{ $data['nome'] }}</p>
 <p><strong>Email:</strong> {{ $data['email'] }}</p>
+<p><strong>Telefono:</strong> {{ $data['telefono'] ?? '—' }}</p>
 <p><strong>Valore scelto:</strong> {{ $data['valore'] }}</p>
 
 @if(!empty($data['messaggio']))
