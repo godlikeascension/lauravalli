@@ -66,11 +66,11 @@
                                     <table class="table table-hover m-0 table-centered nowrap w-100">
                                         <thead>
                                         <tr>
-                                            <th style="width:50px">Ordine</th>
+                                            <th>Ordine</th>
                                             <th>Nome</th>
-                                            <th style="width:80px">Opere</th>
-                                            <th style="width:100px">Featured</th>
-                                            <th style="width:160px">Azioni</th>
+                                            <th>Opere</th>
+                                            <th>Featured</th>
+                                            <th>Azioni</th>
                                         </tr>
                                         </thead>
                                         <tbody>
