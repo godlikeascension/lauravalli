@@ -132,8 +132,8 @@
                     </a>
                 </div>
             </div>
-            <div class="col-xl-7 col-lg-6 position-relative md-h-400px sm-h-300px order-1 order-lg-2">
-                <div class="position-absolute left-0px top-0px w-100 h-100" style="background-image:url('/images/giftcard.png'); background-size:contain; background-repeat:no-repeat; background-position:center center;"></div>
+            <div class="col-xl-7 col-lg-6 position-relative order-1 order-lg-2 d-flex align-items-center justify-content-center">
+                <img src="/images/giftcard.png" alt="" class="w-100 h-auto d-block" style="object-fit:contain; max-height:100%;">
             </div>
         </div>
     </div>
