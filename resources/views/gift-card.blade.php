@@ -105,6 +105,9 @@
 
         @media (max-width: 991px) {
             #hero-img-col { padding-bottom: 40px; }
+            #s2-img-col { margin-top: 20px; }
+            #gift-card-form .mb-20px { margin-bottom: 10px !important; }
+            #gift-card-form .col-md-6 { margin-bottom: 0; }
         }
 
         /* ── Loading spinner on submit ── */
@@ -133,7 +136,7 @@
                         Con una gift card puoi donare a chi ami l'esperienza di avere un'opera d'arte creata su misura, oppure permettergli di scegliere tra le opere già disponibili nella mia galleria o sul sito web.<br><br>
                         Un regalo unico, che parla all'anima, un'esperienza da vivere, un ricordo da custodire.
                     </p>
-                    <a href="#come-funziona" class="btn btn-large btn-dark-gray" style="scroll-behavior:smooth;">
+                    <a href="#" onclick="event.preventDefault(); document.getElementById('come-funziona').scrollIntoView({behavior:'smooth'});" class="btn btn-large btn-dark-gray">
                         Scopri come funziona <i class="feather icon-feather-arrow-down ms-10px"></i>
                     </a>
                 </div>
@@ -202,7 +205,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-5 md-mt-25px">
+            <div class="col-lg-5" id="s2-img-col">
                 <img src="/images/giftcardsection2.jpg" class="border-radius-6px w-100" style="object-fit:cover;" alt="">
             </div>
         </div>
