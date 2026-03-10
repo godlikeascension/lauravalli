@@ -109,9 +109,10 @@
             section#collezioni { padding-top: 50px !important; padding-bottom: 50px !important; }
             /* Titolo sezione meno spazio sotto */
             .collezioni-heading { margin-bottom: 24px !important; }
-            /* Tab pills più compatti */
+            /* Tab pills più compatti e giustificati */
             .collezione-tabs { gap: 7px; margin-bottom: 28px !important; }
-            .collezione-tab-btn { padding: 8px 16px; font-size: 13px; }
+            .collezione-tabs li { flex: 1 1 calc(50% - 5px); }
+            .collezione-tab-btn { padding: 8px 16px; font-size: 13px; width: 100%; text-align: center; }
             /* Meno spazio sotto ogni card */
             .opera-col { margin-bottom: 20px !important; }
             /* Info card più compatta */
