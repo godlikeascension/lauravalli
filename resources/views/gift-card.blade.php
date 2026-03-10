@@ -19,32 +19,55 @@
     <link rel="stylesheet" href="/css/branding-agency.css" />
     <link rel="stylesheet" href="/css/custom.css" />
     <style>
-        /* ── Perché sceglierla cards ── */
+        /* ── Perché sceglierla — dark photo section ── */
+        .benefits-section {
+            position: relative;
+            overflow: hidden;
+        }
+        .benefits-section .bg-photo {
+            position: absolute;
+            inset: 0;
+            background-image: url('/images/lauatf.jpg');
+            background-size: cover;
+            background-position: center top;
+            z-index: 0;
+        }
+        .benefits-section .bg-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(18, 14, 10, 0.72);
+            z-index: 1;
+        }
+        .benefits-section .container {
+            position: relative;
+            z-index: 2;
+        }
         .benefit-card {
-            padding: 36px 32px;
+            padding: 32px 28px;
             border-radius: 10px;
-            background: white;
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.14);
+            backdrop-filter: blur(6px);
             height: 100%;
-            box-shadow: 0 4px 24px rgba(0,0,0,.06);
-            transition: transform .3s ease, box-shadow .3s ease;
+            transition: transform .3s ease, background .3s ease;
         }
         .benefit-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 10px 36px rgba(0,0,0,.10);
+            background: rgba(255,255,255,0.12);
         }
         .benefit-icon {
-            width: 52px;
-            height: 52px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
-            background: #f5f0ea;
+            background: rgba(255,255,255,0.12);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
         .benefit-icon i {
-            font-size: 22px;
-            color: #8a7560;
+            font-size: 20px;
+            color: rgba(255,255,255,0.85);
         }
 
         /* ── Value selector buttons ── */
@@ -179,13 +202,15 @@
 {{-- ══════════════════════════════════════════════════════════
      PERCHÉ SCEGLIERLA
 ══════════════════════════════════════════════════════════ --}}
-<section class="big-section bg-linen">
+<section class="big-section benefits-section">
+    <div class="bg-photo"></div>
+    <div class="bg-overlay"></div>
     <div class="container">
         <div class="row mb-60px text-center" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
             <div class="col-12">
                 <span class="w-25px h-1px d-inline-block bg-base-color me-5px align-middle"></span>
                 <span class="text-gradient-base-color fs-15 alt-font fw-700 ls-05px text-uppercase d-inline-block align-middle">Perché sceglierla</span>
-                <h3 class="alt-font fw-600 text-dark-gray ls-minus-1px mt-10px mb-0">Un regalo che va oltre l'oggetto</h3>
+                <h3 class="alt-font fw-600 text-white ls-minus-1px mt-10px mb-0">Un regalo che va oltre l'oggetto</h3>
             </div>
         </div>
         <div class="row row-cols-1 row-cols-md-2 g-4" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 150, "easing": "easeOutQuad" }'>
@@ -194,8 +219,8 @@
                     <div class="benefit-icon">
                         <i class="feather icon-feather-heart"></i>
                     </div>
-                    <h5 class="alt-font fw-600 text-dark-gray mb-10px">Un dono irripetibile</h5>
-                    <p class="text-medium-gray mb-0">Ogni opera è creata esclusivamente per chi la riceve. Non esiste in nessun altro posto al mondo.</p>
+                    <h5 class="alt-font fw-600 text-white mb-10px">Un dono irripetibile</h5>
+                    <p style="color:rgba(255,255,255,0.72)" class="mb-0">Ogni opera è creata esclusivamente per chi la riceve. Non esiste in nessun altro posto al mondo.</p>
                 </div>
             </div>
             <div class="col">
@@ -203,8 +228,8 @@
                     <div class="benefit-icon">
                         <i class="feather icon-feather-clock"></i>
                     </div>
-                    <h5 class="alt-font fw-600 text-dark-gray mb-10px">Nessuna scadenza</h5>
-                    <p class="text-medium-gray mb-0">La gift card è valida per sempre. Il destinatario potrà riscattarla quando lo desidera, senza fretta.</p>
+                    <h5 class="alt-font fw-600 text-white mb-10px">Nessuna scadenza</h5>
+                    <p style="color:rgba(255,255,255,0.72)" class="mb-0">La gift card è valida per sempre. Il destinatario potrà riscattarla quando lo desidera, senza fretta.</p>
                 </div>
             </div>
             <div class="col">
@@ -212,8 +237,8 @@
                     <div class="benefit-icon">
                         <i class="feather icon-feather-star"></i>
                     </div>
-                    <h5 class="alt-font fw-600 text-dark-gray mb-10px">Esperienza unica</h5>
-                    <p class="text-medium-gray mb-0">Non un semplice regalo, ma un percorso creativo condiviso. Un'emozione che dura nel tempo.</p>
+                    <h5 class="alt-font fw-600 text-white mb-10px">Esperienza unica</h5>
+                    <p style="color:rgba(255,255,255,0.72)" class="mb-0">Non un semplice regalo, ma un percorso creativo condiviso. Un'emozione che dura nel tempo.</p>
                 </div>
             </div>
             <div class="col">
@@ -221,8 +246,8 @@
                     <div class="benefit-icon">
                         <i class="feather icon-feather-gift"></i>
                     </div>
-                    <h5 class="alt-font fw-600 text-dark-gray mb-10px">Perfetta per ogni occasione</h5>
-                    <p class="text-medium-gray mb-0">Compleanni, anniversari, matrimoni, nuove nascite — ogni momento speciale merita un ricordo eterno.</p>
+                    <h5 class="alt-font fw-600 text-white mb-10px">Perfetta per ogni occasione</h5>
+                    <p style="color:rgba(255,255,255,0.72)" class="mb-0">Compleanni, anniversari, matrimoni, nuove nascite — ogni momento speciale merita un ricordo eterno.</p>
                 </div>
             </div>
         </div>
