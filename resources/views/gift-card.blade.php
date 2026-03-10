@@ -392,7 +392,7 @@
                             </div>
 
                             <div class="col-12 text-center">
-                                <button id="gift-card-submit" class="btn btn-large btn-dark-gray btn-box-shadow" type="submit">
+                                <button id="gift-card-submit" class="btn btn-large btn-dark-gray btn-box-shadow" type="button">
                                     Invia la richiesta <i class="feather icon-feather-arrow-right ms-10px"></i>
                                 </button>
                             </div>
@@ -425,9 +425,7 @@
     });
 
     // AJAX submit
-    document.getElementById('gift-card-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-
+    document.getElementById('gift-card-submit').addEventListener('click', function() {
         if (!valoreInput.value) {
             alert('Seleziona un valore per la gift card.');
             return;
