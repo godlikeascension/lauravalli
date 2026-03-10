@@ -196,7 +196,7 @@
                 </div>
             </div>
             <div class="col-lg-5 position-relative md-mb-30px sm-mb-15">
-                <img src="/images/falborsmock.jpg" class="position-relative z-index-9 top-40px border-radius-6px" alt="">
+                <img src="/images/giftcardsection2.jpg" class="position-relative z-index-9 top-40px border-radius-6px w-100" alt="">
             </div>
         </div>
     </div>
@@ -332,7 +332,7 @@
 
         <div class="row">
             <div class="col-12">
-                <div class="contact-form-style-05">
+                <div>
 
                     @if(session('gift_card_success'))
                         <div class="alert alert-success alert-dismissible fade show mb-3" role="alert">
