@@ -45,21 +45,19 @@
         .benefit-card {
             padding: 32px 28px;
             border-radius: 10px;
-            background: rgba(255,255,255,0.07);
-            border: 1px solid rgba(255,255,255,0.14);
-            backdrop-filter: blur(6px);
+            background: #fff;
             height: 100%;
-            transition: transform .3s ease, background .3s ease;
+            transition: transform .3s ease, box-shadow .3s ease;
         }
         .benefit-card:hover {
             transform: translateY(-4px);
-            background: rgba(255,255,255,0.12);
+            box-shadow: 0 12px 36px rgba(0,0,0,.18);
         }
         .benefit-icon {
             width: 48px;
             height: 48px;
             border-radius: 50%;
-            background: rgba(255,255,255,0.12);
+            background: #f5f0ea;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -67,7 +65,7 @@
         }
         .benefit-icon i {
             font-size: 20px;
-            color: rgba(255,255,255,0.85);
+            color: #8a7560;
         }
 
         /* ── Value selector buttons ── */
@@ -219,8 +217,8 @@
                     <div class="benefit-icon">
                         <i class="feather icon-feather-heart"></i>
                     </div>
-                    <h5 class="alt-font fw-600 text-white mb-10px">Un dono irripetibile</h5>
-                    <p style="color:rgba(255,255,255,0.72)" class="mb-0">Ogni opera è creata esclusivamente per chi la riceve. Non esiste in nessun altro posto al mondo.</p>
+                    <h5 class="alt-font fw-600 text-dark-gray mb-10px">Un dono irripetibile</h5>
+                    <p class="text-medium-gray mb-0">Ogni opera è creata esclusivamente per chi la riceve. Non esiste in nessun altro posto al mondo.</p>
                 </div>
             </div>
             <div class="col">
@@ -228,8 +226,8 @@
                     <div class="benefit-icon">
                         <i class="feather icon-feather-clock"></i>
                     </div>
-                    <h5 class="alt-font fw-600 text-white mb-10px">Nessuna scadenza</h5>
-                    <p style="color:rgba(255,255,255,0.72)" class="mb-0">La gift card è valida per sempre. Il destinatario potrà riscattarla quando lo desidera, senza fretta.</p>
+                    <h5 class="alt-font fw-600 text-dark-gray mb-10px">Nessuna scadenza</h5>
+                    <p class="text-medium-gray mb-0">La gift card è valida per sempre. Il destinatario potrà riscattarla quando lo desidera, senza fretta.</p>
                 </div>
             </div>
             <div class="col">
@@ -237,8 +235,8 @@
                     <div class="benefit-icon">
                         <i class="feather icon-feather-star"></i>
                     </div>
-                    <h5 class="alt-font fw-600 text-white mb-10px">Esperienza unica</h5>
-                    <p style="color:rgba(255,255,255,0.72)" class="mb-0">Non un semplice regalo, ma un percorso creativo condiviso. Un'emozione che dura nel tempo.</p>
+                    <h5 class="alt-font fw-600 text-dark-gray mb-10px">Esperienza unica</h5>
+                    <p class="text-medium-gray mb-0">Non un semplice regalo, ma un percorso creativo condiviso. Un'emozione che dura nel tempo.</p>
                 </div>
             </div>
             <div class="col">
@@ -246,8 +244,8 @@
                     <div class="benefit-icon">
                         <i class="feather icon-feather-gift"></i>
                     </div>
-                    <h5 class="alt-font fw-600 text-white mb-10px">Perfetta per ogni occasione</h5>
-                    <p style="color:rgba(255,255,255,0.72)" class="mb-0">Compleanni, anniversari, matrimoni, nuove nascite — ogni momento speciale merita un ricordo eterno.</p>
+                    <h5 class="alt-font fw-600 text-dark-gray mb-10px">Perfetta per ogni occasione</h5>
+                    <p class="text-medium-gray mb-0">Compleanni, anniversari, matrimoni, nuove nascite — ogni momento speciale merita un ricordo eterno.</p>
                 </div>
             </div>
         </div>
