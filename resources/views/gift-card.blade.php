@@ -105,7 +105,9 @@
 
         @media (max-width: 991px) {
             #hero-img-col { padding-bottom: 40px; }
-            #s2-img-col { margin-top: 20px; }
+            #come-funziona { padding-top: 40px !important; padding-bottom: 40px !important; }
+            #come-funziona .col-xxl-7 { margin-bottom: 0 !important; }
+            #s2-img-col { margin-top: 15px !important; }
             #gift-card-form .mb-20px { margin-bottom: 10px !important; }
             #gift-card-form .col-md-6 { margin-bottom: 0; }
         }
