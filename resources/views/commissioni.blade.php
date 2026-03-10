@@ -30,46 +30,55 @@
         }
 
         /* ── Recensioni carousel ── */
-        .recensione-slide-row {
-            min-height: 440px;
+        .recensione-card {
+            display: flex;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.09);
+            background: white;
         }
-        .recensione-img-col {
-            min-height: 440px;
+        .recensione-card-img {
+            width: 42%;
+            flex-shrink: 0;
+            background: #f5f2ee;
             position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        @media (max-width: 575px) {
-            .recensione-slide-row { min-height: unset; }
-            .recensione-img-col  { min-height: 280px; }
+        .recensione-card-img img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
-        .recensione-overlay {
-            position: absolute; inset: 0;
-            background: rgba(0,0,0,0);
-            transition: background .3s;
-            display: flex; align-items: center; justify-content: center;
+        .recensione-ingrandisci {
+            position: absolute;
+            bottom: 16px;
+            right: 16px;
         }
-        .recensione-overlay:hover {
-            background: rgba(0,0,0,0.38);
+        .recensione-card-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 48px;
         }
-        .recensione-zoom-btn {
-            opacity: 0;
-            transition: opacity .3s;
-            pointer-events: none;
+        .recensione-card-body p {
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 24px;
+            color: var(--medium-gray);
         }
-        .recensione-overlay:hover .recensione-zoom-btn {
-            opacity: 1;
+        .recensione-card-nome {
+            font-weight: 600;
+            font-size: 17px;
+            color: var(--dark-gray);
         }
-        /* always show on touch devices */
-        @media (hover: none) {
-            .recensione-zoom-btn { opacity: 1; pointer-events: auto; }
+        @media (max-width: 767px) {
+            .recensione-card { flex-direction: column; }
+            .recensione-card-img { width: 100%; }
+            .recensione-card-body { padding: 32px 24px; }
         }
-        .recensione-text-body {
-            max-height: 220px;
-            overflow-y: auto;
-            padding-right: 4px;
-        }
-        .recensione-text-body::-webkit-scrollbar { width: 4px; }
-        .recensione-text-body::-webkit-scrollbar-track { background: #f0f0f0; }
-        .recensione-text-body::-webkit-scrollbar-thumb { background: #ccc; border-radius: 2px; }
 
         /* ── Lightbox ── */
         #rec-lightbox {
@@ -227,30 +236,24 @@
                         <div class="swiper-wrapper pt-20px pb-20px">
 
                             @foreach($recensioni as $recensione)
+                                @php $imgUrl = $recensione->immagine ? asset('storage/' . $recensione->immagine) : null; @endphp
                                 <div class="swiper-slide">
-                                    <div class="row g-0 border-radius-6px overflow-hidden recensione-slide-row">
+                                    <div class="recensione-card">
 
-                                        {{-- Immagine --}}
-                                        <div class="col-sm-5 recensione-img-col">
-                                            @php $imgUrl = $recensione->immagine ? asset('storage/' . $recensione->immagine) : 'https://placehold.co/400x440'; @endphp
-                                            <div class="h-100 w-100 cover-background" style="background-image: url('{{ $imgUrl }}'); min-height: inherit;"></div>
-                                            <div class="recensione-overlay"
-                                                 onclick="openRecLightbox('{{ $imgUrl }}')">
-                                                <button type="button" class="btn btn-medium btn-white btn-rounded recensione-zoom-btn">
-                                                    Ingrandisci <i class="feather icon-feather-search ms-5px"></i>
-                                                </button>
-                                            </div>
+                                        @if($imgUrl)
+                                        <div class="recensione-card-img">
+                                            <img src="{{ $imgUrl }}" alt="{{ $recensione->nome }}">
+                                            <button type="button"
+                                                    class="btn btn-medium btn-white btn-rounded recensione-ingrandisci"
+                                                    onclick="openRecLightbox('{{ $imgUrl }}')">
+                                                Ingrandisci <i class="feather icon-feather-search ms-5px"></i>
+                                            </button>
                                         </div>
+                                        @endif
 
-                                        {{-- Testo --}}
-                                        <div class="col-sm-7 bg-white p-9 sm-p-7 box-shadow-extra-large d-flex flex-column justify-content-center">
-                                            <div>
-                                                <i class="feather icon-feather-message-circle fs-40 mb-15px d-block" style="color: var(--base-color);"></i>
-                                                <div class="recensione-text-body mb-20px">
-                                                    <p class="mb-0">{{ $recensione->testo }}</p>
-                                                </div>
-                                                <div class="fs-18 fw-600 text-dark-gray">{{ $recensione->nome }}</div>
-                                            </div>
+                                        <div class="recensione-card-body">
+                                            <p>"{{ $recensione->testo }}"</p>
+                                            <div class="recensione-card-nome">— {{ $recensione->nome }}</div>
                                         </div>
 
                                     </div>
