@@ -78,7 +78,12 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/dashboard/faqs">
-                            <i class="mdi mdi-help-circle-outline me-1"></i> FAQ
+                            <i class="mdi mdi-help-circle-outline me-1"></i> FAQ Commissioni
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dashboard/faqs-gift-card">
+                            <i class="mdi mdi-gift-outline me-1"></i> FAQ Gift Card
                         </a>
                     </li>
                     <li class="nav-item">
