@@ -392,7 +392,7 @@
                             </div>
 
                             <div class="col-12 text-center">
-                                <button id="gift-card-submit" class="btn btn-large btn-dark-gray btn-box-shadow submit" type="submit">
+                                <button id="gift-card-submit" class="btn btn-large btn-dark-gray btn-box-shadow" type="submit">
                                     Invia la richiesta <i class="feather icon-feather-arrow-right ms-10px"></i>
                                 </button>
                             </div>
