@@ -113,7 +113,8 @@
             cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.3);
         }
         @media (max-width: 600px) {
-            #rec-lightbox-inner { flex-direction: column; overflow-y: auto; }
+            #rec-lightbox { align-items: flex-start; overflow-y: auto; padding: 16px; }
+            #rec-lightbox-inner { flex-direction: column; max-height: none; overflow: visible; }
             #rec-lightbox-img { width: 100%; height: auto; object-fit: contain; flex-shrink: 0; }
             #rec-lightbox-body { padding: 28px 24px; }
         }
