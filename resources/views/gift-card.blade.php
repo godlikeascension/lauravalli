@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="/css/responsive.css"/>
     <link rel="stylesheet" href="/css/branding-agency.css" />
     <link rel="stylesheet" href="/css/custom.css" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <style>
         /* ── Perché sceglierla — dark photo section ── */
         .benefits-section {
@@ -334,12 +335,11 @@
             <div class="col-12">
                 <div>
 
-                    @if(session('gift_card_success'))
-                        <div class="alert alert-success alert-dismissible fade show mb-3" role="alert">
-                            {{ session('gift_card_success') }}
-                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                        </div>
-                    @endif
+                    <div id="gc-success" class="text-center py-50px" style="display:none;">
+                        <i class="feather icon-feather-check-circle text-dark-gray" style="font-size:48px;"></i>
+                        <h4 class="alt-font fw-600 text-dark-gray mt-20px mb-10px">Richiesta inviata!</h4>
+                        <p class="text-medium-gray">Ti contatterò presto per tutti i dettagli.</p>
+                    </div>
 
                     <form id="gift-card-form" action="{{ route('gift-card.send') }}" method="POST">
                         @csrf
@@ -413,8 +413,9 @@
 <script type="text/javascript" src="/js/vendors.min.js"></script>
 <script type="text/javascript" src="/js/main.js"></script>
 <script>
-    // Value selector buttons
     var valoreInput = document.getElementById('valoreInput');
+
+    // Value selector buttons
     document.querySelectorAll('.valore-btn').forEach(function(btn) {
         btn.addEventListener('click', function() {
             document.querySelectorAll('.valore-btn').forEach(function(b) { b.classList.remove('selected'); });
@@ -423,25 +424,44 @@
         });
     });
 
-    // Pre-select if old value present
-    var oldValore = valoreInput.value;
-    if (oldValore) {
-        document.querySelectorAll('.valore-btn').forEach(function(btn) {
-            if (btn.getAttribute('data-value') === oldValore) btn.classList.add('selected');
-        });
-    }
-
-    // Loading animation on submit
+    // AJAX submit
     document.getElementById('gift-card-form').addEventListener('submit', function(e) {
-        var btn = document.getElementById('gift-card-submit');
+        e.preventDefault();
+
         if (!valoreInput.value) {
-            e.preventDefault();
             alert('Seleziona un valore per la gift card.');
             return;
         }
-        btn.disabled = true;
-        btn.classList.add('btn-loading');
-        btn.innerHTML = '<span class="spinner-border spinner-border-sm me-10px" role="status" aria-hidden="true"></span>Invio in corso...';
+
+        var submitBtn = document.getElementById('gift-card-submit');
+        var originalHtml = submitBtn.innerHTML;
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-10px" role="status" aria-hidden="true"></span>Invio in corso...';
+
+        var form = document.getElementById('gift-card-form');
+        var data = new FormData(form);
+
+        fetch(form.action, {
+            method: 'POST',
+            headers: { 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content, 'Accept': 'application/json' },
+            body: data
+        })
+        .then(function(res) { return res.json(); })
+        .then(function(json) {
+            if (json.success) {
+                form.style.display = 'none';
+                document.getElementById('gc-success').style.display = 'block';
+            } else {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalHtml;
+                alert('Si è verificato un errore. Riprova.');
+            }
+        })
+        .catch(function() {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalHtml;
+            alert('Si è verificato un errore. Riprova.');
+        });
     });
 </script>
 </body>

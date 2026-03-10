@@ -71,7 +71,7 @@ class ContactController extends Controller
                 ->subject('Nuova richiesta Gift Card');
         });
 
-        return back()->with('gift_card_success', 'Richiesta inviata con successo! Ti contatterò presto.');
+        return response()->json(['success' => true]);
     }
 
 }
