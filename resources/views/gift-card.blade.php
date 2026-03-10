@@ -127,7 +127,7 @@
                 </div>
             </div>
             <div class="col-xl-7 col-lg-6 position-relative md-h-500px order-1 order-lg-2 md-mb-50px">
-                <div class="position-absolute left-0px top-0px w-100 h-100 cover-background" style="background-image:url('/images/opera1.jpg');"></div>
+                <div class="position-absolute left-0px top-0px w-100 h-100" style="background-image:url('/images/giftcard.png'); background-size:contain; background-repeat:no-repeat; background-position:center center;"></div>
             </div>
         </div>
     </div>
