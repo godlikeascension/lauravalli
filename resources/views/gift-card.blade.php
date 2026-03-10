@@ -382,21 +382,22 @@
                                 @error('nome')<small class="text-danger">{{ $message }}</small>@enderror
                             </div>
 
-                            {{-- EMAIL --}}
+                            {{-- TELEFONO --}}
                             <div class="col-md-6 sm-mb-20px">
+                                <label class="form-label alt-font fs-14 text-dark-gray">Il tuo numero di telefono</label>
+                                <input class="mb-20px border-color-transparent-dark-very-light form-control bg-transparent required @error('telefono') is-invalid @enderror"
+                                       type="tel" name="telefono"
+                                       value="{{ old('telefono') }}" required />
+                                @error('telefono')<small class="text-danger">{{ $message }}</small>@enderror
+                            </div>
+
+                            {{-- EMAIL --}}
+                            <div class="col-12 sm-mb-20px">
                                 <label class="form-label alt-font fs-14 text-dark-gray">Il tuo indirizzo email</label>
                                 <input class="mb-20px border-color-transparent-dark-very-light form-control bg-transparent required @error('email') is-invalid @enderror"
                                        type="email" name="email"
                                        value="{{ old('email') }}" required />
                                 @error('email')<small class="text-danger">{{ $message }}</small>@enderror
-                            </div>
-
-                            {{-- TELEFONO --}}
-                            <div class="col-md-6 sm-mb-20px">
-                                <label class="form-label alt-font fs-14 text-dark-gray">Il tuo numero di telefono (opzionale)</label>
-                                <input class="mb-20px border-color-transparent-dark-very-light form-control bg-transparent"
-                                       type="tel" name="telefono"
-                                       value="{{ old('telefono') }}" />
                             </div>
 
                             {{-- MESSAGGIO --}}

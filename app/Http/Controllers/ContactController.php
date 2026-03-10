@@ -13,7 +13,7 @@ class ContactController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email',
-            'phone' => 'nullable|string|max:30',
+            'phone' => 'required|string|max:30',
             'comment' => 'required|string',
         ]);
 
@@ -63,7 +63,7 @@ class ContactController extends Controller
         $data = $request->validate([
             'nome'      => 'required|string|max:255',
             'email'     => 'required|email',
-            'telefono'  => 'nullable|string|max:30',
+            'telefono'  => 'required|string|max:30',
             'valore'    => 'required|string',
             'messaggio' => 'nullable|string',
         ]);

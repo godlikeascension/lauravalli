@@ -362,12 +362,12 @@
                             <input class="ps-0 border-radius-0px border-color-extra-medium-gray form-control required" type="text" name="name" placeholder="Il tuo nome*" required />
                         </div>
                         <div class="position-relative form-group mb-20px">
-                            <span class="form-icon"><i class="bi bi-envelope icon-extra-medium text-dark-gray"></i></span>
-                            <input class="ps-0 border-radius-0px border-bottom border-color-extra-medium-gray form-control required" type="email" name="email" placeholder="Il tuo indirizzo email*" required />
+                            <span class="form-icon"><i class="bi bi-telephone icon-extra-medium text-dark-gray"></i></span>
+                            <input class="ps-0 border-radius-0px border-bottom border-color-extra-medium-gray form-control required" type="tel" name="phone" placeholder="Il tuo numero di telefono*" required />
                         </div>
                         <div class="position-relative form-group mb-20px">
-                            <span class="form-icon"><i class="bi bi-telephone icon-extra-medium text-dark-gray"></i></span>
-                            <input class="ps-0 border-radius-0px border-bottom border-color-extra-medium-gray form-control" type="tel" name="phone" placeholder="Il tuo numero di telefono (opzionale)" />
+                            <span class="form-icon"><i class="bi bi-envelope icon-extra-medium text-dark-gray"></i></span>
+                            <input class="ps-0 border-radius-0px border-bottom border-color-extra-medium-gray form-control required" type="email" name="email" placeholder="Il tuo indirizzo email*" required />
                         </div>
                         <div class="position-relative form-group form-textarea mt-15px mb-0">
                             <textarea class="ps-0 border-radius-0px border-bottom border-color-extra-medium-gray form-control" name="comment" placeholder="Il tuo messaggio" rows="3" required></textarea>
