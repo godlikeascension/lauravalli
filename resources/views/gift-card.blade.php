@@ -135,8 +135,7 @@
                     <h1 style="font-size: 3rem !important;" class="text-dark-gray fw-600 alt-font ls-minus-2px">Perché il regalo perfetto è quello che si sceglie col cuore.</h1>
                     <p class="fw-500 text-dark-gray fst-italic mb-25px fs-18">"Sorprendi chi ami con un dono che sceglierà da sé."</p>
                     <p class="w-85 mb-35px lg-w-100 sm-w-100">
-                        Con una gift card puoi donare a chi ami l'esperienza di avere un'opera d'arte creata su misura, oppure permettergli di scegliere tra le opere già disponibili nella mia galleria o sul sito web.<br><br>
-                        Un regalo unico, che parla all'anima, un'esperienza da vivere, un ricordo da custodire.
+                        Con una gift card puoi donare a chi ami l'esperienza di avere un'opera d'arte creata su misura, oppure permettergli di scegliere tra le opere già disponibili nella mia galleria o sul sito web.
                     </p>
                     <a href="#" onclick="event.preventDefault(); document.getElementById('come-funziona').scrollIntoView({behavior:'smooth'});" class="btn btn-large btn-dark-gray">
                         Scopri come funziona <i class="feather icon-feather-arrow-down ms-10px"></i>
