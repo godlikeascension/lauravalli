@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="/css/custom.css" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <style>
+        html { scroll-behavior: smooth; }
+
         /* ── Perché sceglierla — dark photo section ── */
         .benefits-section {
             position: relative;
@@ -131,7 +133,7 @@
                         Con una gift card puoi donare a chi ami l'esperienza di avere un'opera d'arte creata su misura, oppure permettergli di scegliere tra le opere già disponibili nella mia galleria o sul sito web.<br><br>
                         Un regalo unico, che parla all'anima, un'esperienza da vivere, un ricordo da custodire.
                     </p>
-                    <a href="#acquista" class="btn btn-large btn-dark-gray">
+                    <a href="#come-funziona" class="btn btn-large btn-dark-gray" style="scroll-behavior:smooth;">
                         Scopri come funziona <i class="feather icon-feather-arrow-down ms-10px"></i>
                     </a>
                 </div>
@@ -146,7 +148,7 @@
 {{-- ══════════════════════════════════════════════════════════
      COME FUNZIONA
 ══════════════════════════════════════════════════════════ --}}
-<section class="big-section">
+<section class="big-section" id="come-funziona">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-xxl-7 col-lg-7 md-mb-15 sm-mb-20 text-center text-lg-start" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
@@ -200,7 +202,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-5 md-mt-50px">
+            <div class="col-lg-5 md-mt-25px">
                 <img src="/images/giftcardsection2.jpg" class="border-radius-6px w-100" style="object-fit:cover;" alt="">
             </div>
         </div>
