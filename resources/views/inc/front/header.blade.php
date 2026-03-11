@@ -4,8 +4,9 @@
     $hasTranslations = count($activeLocales) > 0;
     $localeUrls      = currentPageLocaleUrls($currentOpera ?? null);
 
-    $flagMap  = ['it' => '🇮🇹', 'en' => '🇬🇧', 'es' => '🇪🇸'];
-    $labelMap = ['it' => 'IT',  'en' => 'EN',  'es' => 'ES'];
+    $flagSrc  = ['it' => '/images/italia.png', 'en' => '/images/uk.png', 'es' => '/images/spagna.webp'];
+    $codeMap  = ['it' => 'IT', 'en' => 'EN', 'es' => 'ES'];
+    $labelMap = ['it' => 'Italiano', 'en' => 'English', 'es' => 'Español'];
 @endphp
 <header>
     <!-- start navigation -->
@@ -34,15 +35,28 @@
                         <li class="nav-item"><a href="{{ localeUrl('artist_statement') }}" class="nav-link">{{ trad('navbar','chi_sono','Chi Sono') }}</a></li>
 
                         @if($hasTranslations)
-                        <li class="nav-item ms-lg-3 d-flex align-items-center lang-switcher-wrap" style="gap:5px;">
-                            @foreach(array_merge(['it'], $activeLocales) as $loc)
-                                @php $url = $localeUrls[$loc] ?? localeUrl('home', $loc); @endphp
-                                <a href="{{ $url }}"
-                                   class="lang-pill{{ $loc === $currentLocale ? ' active' : '' }}"
-                                   title="{{ strtoupper($loc) }}">
-                                    {{ $flagMap[$loc] }} {{ $labelMap[$loc] }}
-                                </a>
-                            @endforeach
+                        <li class="nav-item ms-lg-3 lang-switcher-wrap">
+                            <div class="dropdown lang-dropdown">
+                                <button class="lang-dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img src="{{ $flagSrc[$currentLocale] }}" width="16" height="12" alt="{{ $codeMap[$currentLocale] }}" class="lang-flag">
+                                    <span class="lang-code">{{ $codeMap[$currentLocale] }}</span>
+                                    <svg class="lang-chevron" xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                                </button>
+                                <ul class="dropdown-menu lang-dropdown-menu">
+                                    @foreach(array_merge(['it'], $activeLocales) as $loc)
+                                        @php $url = $localeUrls[$loc] ?? localeUrl('home', $loc); @endphp
+                                        <li>
+                                            <a href="{{ $url }}" class="lang-dropdown-item{{ $loc === $currentLocale ? ' active' : '' }}">
+                                                <img src="{{ $flagSrc[$loc] }}" width="16" height="12" alt="{{ $codeMap[$loc] }}" class="lang-flag">
+                                                <span>{{ $labelMap[$loc] }}</span>
+                                                @if($loc === $currentLocale)
+                                                    <svg class="ms-auto" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                                @endif
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
                         </li>
                         @endif
                     </ul>
@@ -53,33 +67,77 @@
     <!-- end navigation -->
 </header>
 <style>
-.lang-pill {
+/* ── Language dropdown ─────────────────────────────────────── */
+.lang-switcher-wrap { display: flex; align-items: center; }
+
+.lang-dropdown-toggle {
     display: inline-flex;
     align-items: center;
-    gap: 4px;
-    padding: 4px 10px;
-    border-radius: 20px;
-    border: 1.5px solid #d0d0d0;
-    font-size: 12px;
+    gap: 5px;
+    background: transparent;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 5px;
+    padding: 4px 9px;
+    font-size: 11px;
     font-weight: 600;
-    letter-spacing: .04em;
-    color: #444;
-    text-decoration: none;
-    transition: border-color .2s, color .2s, background .2s;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: #555;
+    cursor: pointer;
     white-space: nowrap;
-    line-height: 1.4;
+    transition: border-color .15s, color .15s;
+    font-family: var(--primary-font, sans-serif);
+    line-height: 1;
 }
-.lang-pill:hover {
+.lang-dropdown-toggle:hover,
+.lang-dropdown-toggle:focus {
     border-color: #1d1d1d;
     color: #1d1d1d;
+    outline: none;
 }
-.lang-pill.active {
-    background: #1d1d1d;
-    border-color: #1d1d1d;
-    color: #fff !important;
+
+.lang-flag { border-radius: 2px; display: block; flex-shrink: 0; }
+.lang-code { line-height: 1; }
+
+.lang-chevron {
+    opacity: .5;
+    transition: transform .18s;
+    flex-shrink: 0;
 }
+.lang-dropdown-toggle[aria-expanded="true"] .lang-chevron {
+    transform: rotate(180deg);
+    opacity: .8;
+}
+
+.lang-dropdown-menu {
+    min-width: 140px;
+    border: 1px solid rgba(0,0,0,.09);
+    border-radius: 7px;
+    box-shadow: 0 8px 28px rgba(0,0,0,.09);
+    padding: 4px 0;
+    background: #fff;
+    margin-top: 6px !important;
+}
+
+.lang-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 7px 14px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .02em;
+    color: #444;
+    text-decoration: none;
+    transition: background .12s;
+    white-space: nowrap;
+    font-family: var(--primary-font, sans-serif);
+}
+.lang-dropdown-item:hover { background: #f7f7f7; color: #1d1d1d; }
+.lang-dropdown-item.active { color: #1d1d1d; font-weight: 700; }
+
 @media (max-width: 991px) {
-    .lang-pill { font-size: 13px; padding: 6px 12px; }
-    .lang-switcher-wrap { margin-top: 10px !important; padding-left: 4px; }
+    .lang-switcher-wrap { margin-top: 8px; }
+    .lang-dropdown-toggle { font-size: 12px; padding: 6px 11px; }
 }
 </style>
