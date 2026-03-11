@@ -82,7 +82,7 @@
                                         <div class="tab-pane fade show active" id="rec-tab-it" role="tabpanel">
                                             <div class="mb-3">
                                                 <label class="form-label">Testo della recensione <span class="text-danger">*</span></label>
-                                                <textarea name="testo" rows="4" class="form-control" required>{{ old('testo') }}</textarea>
+                                                <textarea name="testo" id="rec-testo" rows="4" class="form-control" required>{{ old('testo') }}</textarea>
                                             </div>
                                             <div class="mb-3">
                                                 <label class="form-label">Nome di chi lascia la recensione <span class="text-danger">*</span></label>
@@ -92,21 +92,13 @@
                                         <div class="tab-pane fade" id="rec-tab-en" role="tabpanel">
                                             <div class="mb-3">
                                                 <label class="form-label">Review text (EN)</label>
-                                                <textarea name="testo_en" rows="4" class="form-control">{{ old('testo_en') }}</textarea>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label">Reviewer name (EN)</label>
-                                                <input type="text" name="nome_en" class="form-control" value="{{ old('nome_en') }}">
+                                                <textarea name="testo_en" id="rec-testo-en" rows="4" class="form-control">{{ old('testo_en') }}</textarea>
                                             </div>
                                         </div>
                                         <div class="tab-pane fade" id="rec-tab-es" role="tabpanel">
                                             <div class="mb-3">
                                                 <label class="form-label">Texto de la reseña (ES)</label>
-                                                <textarea name="testo_es" rows="4" class="form-control">{{ old('testo_es') }}</textarea>
-                                            </div>
-                                            <div class="mb-3">
-                                                <label class="form-label">Nombre del autor (ES)</label>
-                                                <input type="text" name="nome_es" class="form-control" value="{{ old('nome_es') }}">
+                                                <textarea name="testo_es" id="rec-testo-es" rows="4" class="form-control">{{ old('testo_es') }}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -136,16 +128,14 @@
 
 <!-- Vendor js -->
 <script src="/dashboard-backend/js/vendor.min.js"></script>
-<!-- App js -->
 <script src="/dashboard-backend/js/app.min.js"></script>
-
+<!-- CKEditor 5 -->
+<script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
 <script>
-    (function () {
-        // se vuoi evidenziare voce di menu, fallo qui
-        document.querySelectorAll('.nav-item').forEach(function (el) {
-            el.classList.remove('active');
-        });
-    })();
+    var ckToolbar = ['undo', 'redo', '|', 'bold', 'italic', 'underline', 'link', '|', 'bulletedList', 'numberedList', '|', 'removeFormat'];
+    ['#rec-testo', '#rec-testo-en', '#rec-testo-es'].forEach(function (sel) {
+        ClassicEditor.create(document.querySelector(sel), { toolbar: ckToolbar }).catch(function (e) { console.error(e); });
+    });
 </script>
 
 </body>

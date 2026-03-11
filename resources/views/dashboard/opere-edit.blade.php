@@ -197,23 +197,21 @@
                                         <label class="form-check-label" for="commissione">Opera su commissione</label>
                                     </div>
 
-                                    <div class="mb-3">
-                                        <label for="descrizione_html" class="form-label">
-                                            Descrizione lunga (HTML) (IT)
-                                        </label>
-                                        <textarea name="descrizione_html"
-                                                  id="descrizione_html"
-                                                  rows="6"
-                                                  class="form-control">{{ old('descrizione_html', $opera->descrizione_html) }}</textarea>
-                                    </div>
-                                    <div class="row g-3 mb-3">
-                                        <div class="col-md-6">
-                                            <label class="form-label">🇬🇧 Descrizione EN</label>
-                                            <textarea name="descrizione_html_en" rows="5" class="form-control">{{ old('descrizione_html_en', $opera->descrizione_html_en) }}</textarea>
+                                    <div class="mb-1"><label class="form-label">Descrizione</label></div>
+                                    <ul class="nav nav-tabs mb-3" role="tablist">
+                                        <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#desc-tab-it" role="tab">🇮🇹 Italiano</a></li>
+                                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#desc-tab-en" role="tab">🇬🇧 English</a></li>
+                                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#desc-tab-es" role="tab">🇪🇸 Español</a></li>
+                                    </ul>
+                                    <div class="tab-content mb-3">
+                                        <div class="tab-pane fade show active" id="desc-tab-it" role="tabpanel">
+                                            <textarea name="descrizione_html" id="descrizione_html" rows="6" class="form-control">{{ old('descrizione_html', $opera->descrizione_html) }}</textarea>
                                         </div>
-                                        <div class="col-md-6">
-                                            <label class="form-label">🇪🇸 Descrizione ES</label>
-                                            <textarea name="descrizione_html_es" rows="5" class="form-control">{{ old('descrizione_html_es', $opera->descrizione_html_es) }}</textarea>
+                                        <div class="tab-pane fade" id="desc-tab-en" role="tabpanel">
+                                            <textarea name="descrizione_html_en" id="descrizione_html_en" rows="6" class="form-control">{{ old('descrizione_html_en', $opera->descrizione_html_en) }}</textarea>
+                                        </div>
+                                        <div class="tab-pane fade" id="desc-tab-es" role="tabpanel">
+                                            <textarea name="descrizione_html_es" id="descrizione_html_es" rows="6" class="form-control">{{ old('descrizione_html_es', $opera->descrizione_html_es) }}</textarea>
                                         </div>
                                     </div>
 
@@ -307,16 +305,10 @@
 <!-- CKEditor 5 -->
 <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
 <script>
-    ClassicEditor
-        .create(document.querySelector('#descrizione_html'), {
-            toolbar: [
-                'undo', 'redo', '|',
-                'bold', 'italic', 'underline', 'link', '|',
-                'bulletedList', 'numberedList', '|',
-                'removeFormat'
-            ]
-        })
-        .catch(error => { console.error(error); });
+    var ckToolbar = ['undo', 'redo', '|', 'bold', 'italic', 'underline', 'link', '|', 'bulletedList', 'numberedList', '|', 'removeFormat'];
+    ['#descrizione_html', '#descrizione_html_en', '#descrizione_html_es'].forEach(function (sel) {
+        ClassicEditor.create(document.querySelector(sel), { toolbar: ckToolbar }).catch(function (e) { console.error(e); });
+    });
 
     // ── UI helpers ────────────────────────────────────────────────────────────
     function showToast(message, type) {

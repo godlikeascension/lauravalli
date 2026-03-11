@@ -14,7 +14,5 @@ class Recensione extends Model
         'testo_en',
         'testo_es',
         'nome',
-        'nome_en',
-        'nome_es',
     ];
 }

@@ -39,8 +39,6 @@ class AdminController extends Controller
             'testo_en'  => 'nullable|string',
             'testo_es'  => 'nullable|string',
             'nome'      => 'required|string|max:255',
-            'nome_en'   => 'nullable|string|max:255',
-            'nome_es'   => 'nullable|string|max:255',
         ]);
 
         $pathImmagine = null;
@@ -55,8 +53,6 @@ class AdminController extends Controller
             'testo_en'  => $data['testo_en'] ?? null,
             'testo_es'  => $data['testo_es'] ?? null,
             'nome'      => $data['nome'],
-            'nome_en'   => $data['nome_en'] ?? null,
-            'nome_es'   => $data['nome_es'] ?? null,
         ]);
 
         return redirect()
@@ -80,8 +76,6 @@ class AdminController extends Controller
             'testo_en'  => 'nullable|string',
             'testo_es'  => 'nullable|string',
             'nome'      => 'required|string|max:255',
-            'nome_en'   => 'nullable|string|max:255',
-            'nome_es'   => 'nullable|string|max:255',
         ]);
 
         if ($request->hasFile('immagine')) {
@@ -93,8 +87,6 @@ class AdminController extends Controller
         $recensione->testo_en = $data['testo_en'] ?? null;
         $recensione->testo_es = $data['testo_es'] ?? null;
         $recensione->nome     = $data['nome'];
-        $recensione->nome_en  = $data['nome_en'] ?? null;
-        $recensione->nome_es  = $data['nome_es'] ?? null;
         $recensione->save();
 
         return redirect()

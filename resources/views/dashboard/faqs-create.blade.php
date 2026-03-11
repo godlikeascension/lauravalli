@@ -48,47 +48,43 @@
                                 <form action="{{ route('dashboard.faqs.store') }}" method="POST">
                                     @csrf
 
-                                    <div class="mb-3">
-                                        <label for="domanda" class="form-label fw-semibold">Domanda</label>
-                                        <input type="text"
-                                               name="domanda"
-                                               id="domanda"
-                                               class="form-control"
-                                               value="{{ old('domanda') }}"
-                                               required>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="risposta_html" class="form-label fw-semibold">Risposta (IT)</label>
-                                        <textarea name="risposta_html"
-                                                  id="risposta_html"
-                                                  rows="8"
-                                                  class="form-control">{{ old('risposta_html') }}</textarea>
-                                    </div>
-
-                                    <hr>
-                                    <p class="text-muted small mb-3"><i class="mdi mdi-translate me-1"></i> Traduzioni (opzionali)</p>
-                                    <div class="row g-3 mb-3">
-                                        <div class="col-md-6">
-                                            <label class="form-label">🇬🇧 Domanda EN</label>
-                                            <input type="text" name="domanda_en" class="form-control" value="{{ old('domanda_en') }}">
+                                    <ul class="nav nav-tabs mb-3" role="tablist">
+                                        <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#faq-tab-it" role="tab">🇮🇹 Italiano</a></li>
+                                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#faq-tab-en" role="tab">🇬🇧 English</a></li>
+                                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#faq-tab-es" role="tab">🇪🇸 Español</a></li>
+                                    </ul>
+                                    <div class="tab-content mb-3">
+                                        <div class="tab-pane fade show active" id="faq-tab-it" role="tabpanel">
+                                            <div class="mb-3">
+                                                <label class="form-label fw-semibold">Domanda <span class="text-danger">*</span></label>
+                                                <input type="text" name="domanda" class="form-control" value="{{ old('domanda') }}" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label fw-semibold">Risposta</label>
+                                                <textarea name="risposta_html" id="risposta_html" rows="8" class="form-control">{{ old('risposta_html') }}</textarea>
+                                            </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <label class="form-label">🇪🇸 Domanda ES</label>
-                                            <input type="text" name="domanda_es" class="form-control" value="{{ old('domanda_es') }}">
+                                        <div class="tab-pane fade" id="faq-tab-en" role="tabpanel">
+                                            <div class="mb-3">
+                                                <label class="form-label fw-semibold">Question (EN)</label>
+                                                <input type="text" name="domanda_en" class="form-control" value="{{ old('domanda_en') }}">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label fw-semibold">Answer (EN)</label>
+                                                <textarea name="risposta_html_en" id="risposta_html_en" rows="8" class="form-control">{{ old('risposta_html_en') }}</textarea>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="row g-3 mb-3">
-                                        <div class="col-md-6">
-                                            <label class="form-label">🇬🇧 Risposta EN</label>
-                                            <textarea name="risposta_html_en" rows="5" class="form-control">{{ old('risposta_html_en') }}</textarea>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label class="form-label">🇪🇸 Risposta ES</label>
-                                            <textarea name="risposta_html_es" rows="5" class="form-control">{{ old('risposta_html_es') }}</textarea>
+                                        <div class="tab-pane fade" id="faq-tab-es" role="tabpanel">
+                                            <div class="mb-3">
+                                                <label class="form-label fw-semibold">Pregunta (ES)</label>
+                                                <input type="text" name="domanda_es" class="form-control" value="{{ old('domanda_es') }}">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label fw-semibold">Respuesta (ES)</label>
+                                                <textarea name="risposta_html_es" id="risposta_html_es" rows="8" class="form-control">{{ old('risposta_html_es') }}</textarea>
+                                            </div>
                                         </div>
                                     </div>
-                                    <hr>
 
                                     <div class="mb-3" style="max-width:160px;">
                                         <label for="ordine" class="form-label fw-semibold">Ordine</label>
@@ -125,16 +121,10 @@
 <!-- CKEditor 5 -->
 <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
 <script>
-    ClassicEditor
-        .create(document.querySelector('#risposta_html'), {
-            toolbar: [
-                'undo', 'redo', '|',
-                'bold', 'italic', 'underline', 'link', '|',
-                'bulletedList', 'numberedList', '|',
-                'removeFormat'
-            ]
-        })
-        .catch(error => { console.error(error); });
+    var ckToolbar = ['undo', 'redo', '|', 'bold', 'italic', 'underline', 'link', '|', 'bulletedList', 'numberedList', '|', 'removeFormat'];
+    ['#risposta_html', '#risposta_html_en', '#risposta_html_es'].forEach(function (sel) {
+        ClassicEditor.create(document.querySelector(sel), { toolbar: ckToolbar }).catch(function (e) { console.error(e); });
+    });
 </script>
 </body>
 </html>

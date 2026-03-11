@@ -47,7 +47,7 @@
                                     </a>
                                 </div>
 
-                                <p class="text-muted mb-4">Per ogni riga, il testo italiano è mostrato come riferimento (non modificabile qui). Compila EN e/o ES per tradurlo.</p>
+                                <p class="text-muted mb-4">Per ogni riga puoi modificare il testo in tutte e tre le lingue.</p>
 
                                 @if($righe->isEmpty())
                                     <div class="alert alert-warning">Nessuna chiave trovata per questa pagina. Assicurati di aver eseguito le migrazioni.</div>
@@ -58,17 +58,21 @@
                                     @foreach($righe as $riga)
                                         <div class="trad-row">
                                             <div class="trad-chiave">{{ $riga->chiave }}</div>
-                                            <div class="trad-it">{{ $riga->it }}</div>
                                             <div class="row g-2">
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
+                                                    <label class="form-label fw-semibold" style="font-size:13px; color:#1a7f3c;">🇮🇹 IT</label>
+                                                    <textarea name="traduzioni[{{ $riga->chiave }}][it]"
+                                                              rows="2"
+                                                              class="form-control">{{ $riga->it }}</textarea>
+                                                </div>
+                                                <div class="col-md-4">
                                                     <label class="form-label fw-semibold text-primary" style="font-size:13px;">🇬🇧 EN</label>
-                                                    <textarea name="traduzioni[{{ $riga->chiave }}][it]" class="d-none">{{ $riga->it }}</textarea>
                                                     <textarea name="traduzioni[{{ $riga->chiave }}][en]"
                                                               rows="2"
                                                               class="form-control"
                                                               placeholder="English translation…">{{ $riga->en }}</textarea>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
                                                     <label class="form-label fw-semibold" style="font-size:13px; color:#c0392b;">🇪🇸 ES</label>
                                                     <textarea name="traduzioni[{{ $riga->chiave }}][es]"
                                                               rows="2"
