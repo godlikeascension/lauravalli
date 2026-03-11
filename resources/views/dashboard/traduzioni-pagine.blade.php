@@ -62,21 +62,21 @@
                                                 <div class="col-md-4">
                                                     <label class="form-label fw-semibold" style="font-size:13px; color:#1a7f3c;">🇮🇹 IT</label>
                                                     <textarea name="traduzioni[{{ $riga->chiave }}][it]"
-                                                              rows="2"
-                                                              class="form-control">{{ $riga->it }}</textarea>
+                                                              rows="3"
+                                                              class="form-control ck-trad">{{ $riga->it }}</textarea>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="form-label fw-semibold text-primary" style="font-size:13px;">🇬🇧 EN</label>
                                                     <textarea name="traduzioni[{{ $riga->chiave }}][en]"
-                                                              rows="2"
-                                                              class="form-control"
+                                                              rows="3"
+                                                              class="form-control ck-trad"
                                                               placeholder="English translation…">{{ $riga->en }}</textarea>
                                                 </div>
                                                 <div class="col-md-4">
                                                     <label class="form-label fw-semibold" style="font-size:13px; color:#c0392b;">🇪🇸 ES</label>
                                                     <textarea name="traduzioni[{{ $riga->chiave }}][es]"
-                                                              rows="2"
-                                                              class="form-control"
+                                                              rows="3"
+                                                              class="form-control ck-trad"
                                                               placeholder="Traducción al español…">{{ $riga->es }}</textarea>
                                                 </div>
                                             </div>
@@ -104,5 +104,15 @@
 
 <script src="/dashboard-backend/js/vendor.min.js"></script>
 <script src="/dashboard-backend/js/app.min.js"></script>
+@if($pagina !== 'navbar')
+<!-- CKEditor 5 -->
+<script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
+<script>
+    var ckToolbar = ['undo', 'redo', '|', 'bold', 'italic', 'underline', 'link', '|', 'bulletedList', 'numberedList', '|', 'removeFormat'];
+    document.querySelectorAll('.ck-trad').forEach(function (el) {
+        ClassicEditor.create(el, { toolbar: ckToolbar }).catch(function (e) { console.error(e); });
+    });
+</script>
+@endif
 </body>
 </html>
