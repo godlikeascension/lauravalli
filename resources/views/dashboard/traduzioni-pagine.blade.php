@@ -112,13 +112,44 @@
 <script>
 (function () {
     // Sync contenteditable → hidden input on every input event
+    // Strip block-level wrappers (<p>, <div>) so content stays inline
     function syncHidden(content) {
         var wrap = content.closest('.rie-wrap').parentElement;
         var hidden = wrap.querySelector('.rie-hidden');
-        hidden.value = content.innerHTML;
+        var tmp = document.createElement('div');
+        tmp.innerHTML = content.innerHTML;
+        tmp.querySelectorAll('p, div').forEach(function (el) {
+            var frag = document.createDocumentFragment();
+            while (el.firstChild) frag.appendChild(el.firstChild);
+            frag.appendChild(document.createElement('br'));
+            el.replaceWith(frag);
+        });
+        // Remove trailing <br> elements
+        while (tmp.lastChild && tmp.lastChild.nodeName === 'BR') {
+            tmp.removeChild(tmp.lastChild);
+        }
+        hidden.value = tmp.innerHTML;
+    }
+
+    // On load: unwrap any <p>/<div> in existing content so stored HTML is normalised
+    function unwrapBlocks(content) {
+        var tmp = document.createElement('div');
+        tmp.innerHTML = content.innerHTML;
+        tmp.querySelectorAll('p, div').forEach(function (el) {
+            var frag = document.createDocumentFragment();
+            while (el.firstChild) frag.appendChild(el.firstChild);
+            frag.appendChild(document.createElement('br'));
+            el.replaceWith(frag);
+        });
+        while (tmp.lastChild && tmp.lastChild.nodeName === 'BR') {
+            tmp.removeChild(tmp.lastChild);
+        }
+        content.innerHTML = tmp.innerHTML;
+        syncHidden(content);
     }
 
     document.querySelectorAll('.rie-content').forEach(function (content) {
+        unwrapBlocks(content);
         // Prevent Enter from inserting <div> / <p> — insert <br> instead
         content.addEventListener('keydown', function (e) {
             if (e.key === 'Enter') {
