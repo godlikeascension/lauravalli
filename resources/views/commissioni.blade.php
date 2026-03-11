@@ -237,21 +237,26 @@
                          data-slider-options='{ "slidesPerView": 1, "spaceBetween": 24, "loop": true, "autoplay": { "delay": 8000, "disableOnInteraction": false }, "keyboard": { "enabled": true, "onlyInViewport": true }, "breakpoints": { "768": { "slidesPerView": 2 }, "1200": { "slidesPerView": 3 } }, "navigation": { "nextEl": ".rec-next", "prevEl": ".rec-prev" } }'>
                         <div class="swiper-wrapper py-10px">
                             @foreach($recensioni as $recensione)
-                                @php $imgUrl = $recensione->immagine ? asset('storage/' . $recensione->immagine) : null; @endphp
+                                @php
+                                    $locale  = app()->getLocale();
+                                    $imgUrl  = $recensione->immagine ? asset('storage/' . $recensione->immagine) : null;
+                                    $testo   = ($locale !== 'it' && $recensione->{"testo_{$locale}"}) ? $recensione->{"testo_{$locale}"} : $recensione->testo;
+                                    $nome    = ($locale !== 'it' && $recensione->{"nome_{$locale}"})  ? $recensione->{"nome_{$locale}"}  : $recensione->nome;
+                                @endphp
                                 <div class="swiper-slide">
                                     <div class="rec-card"
                                          data-img="{{ $imgUrl }}"
-                                         data-text="{{ $recensione->testo }}"
-                                         data-nome="{{ $recensione->nome }}">
+                                         data-text="{{ $testo }}"
+                                         data-nome="{{ $nome }}">
                                         @if($imgUrl)
-                                            <img src="{{ $imgUrl }}" alt="{{ $recensione->nome }}" class="rec-card-img">
+                                            <img src="{{ $imgUrl }}" alt="{{ $nome }}" class="rec-card-img">
                                         @else
                                             <div style="background:#d8d3cc; width:100%; height:100%;"></div>
                                         @endif
                                         <div class="rec-card-gradient"></div>
                                         <div class="rec-card-body">
-                                            <p class="rec-card-text">"{{ $recensione->testo }}"</p>
-                                            <div class="rec-card-nome">— {{ $recensione->nome }}</div>
+                                            <p class="rec-card-text">"{{ $testo }}"</p>
+                                            <div class="rec-card-nome">— {{ $nome }}</div>
                                         </div>
                                         <button type="button" class="btn btn-medium btn-white btn-rounded rec-zoom">
                                             {{ __('ui.ingrandisci') }} <i class="feather icon-feather-search ms-5px"></i>

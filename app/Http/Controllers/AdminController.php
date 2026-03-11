@@ -34,9 +34,13 @@ class AdminController extends Controller
     public function recensioniStore(Request $request)
     {
         $data = $request->validate([
-            'immagine' => 'nullable|image|max:2048',
-            'testo'    => 'required|string',
-            'nome'     => 'required|string|max:255',
+            'immagine'  => 'nullable|image|max:2048',
+            'testo'     => 'required|string',
+            'testo_en'  => 'nullable|string',
+            'testo_es'  => 'nullable|string',
+            'nome'      => 'required|string|max:255',
+            'nome_en'   => 'nullable|string|max:255',
+            'nome_es'   => 'nullable|string|max:255',
         ]);
 
         $pathImmagine = null;
@@ -46,9 +50,13 @@ class AdminController extends Controller
         }
 
         Recensione::create([
-            'immagine' => $pathImmagine,
-            'testo'    => $data['testo'],
-            'nome'     => $data['nome'],
+            'immagine'  => $pathImmagine,
+            'testo'     => $data['testo'],
+            'testo_en'  => $data['testo_en'] ?? null,
+            'testo_es'  => $data['testo_es'] ?? null,
+            'nome'      => $data['nome'],
+            'nome_en'   => $data['nome_en'] ?? null,
+            'nome_es'   => $data['nome_es'] ?? null,
         ]);
 
         return redirect()
@@ -67,9 +75,13 @@ class AdminController extends Controller
     public function recensioniUpdate(Request $request, Recensione $recensione)
     {
         $data = $request->validate([
-            'immagine' => 'nullable|image|max:2048',
-            'testo'    => 'required|string',
-            'nome'     => 'required|string|max:255',
+            'immagine'  => 'nullable|image|max:2048',
+            'testo'     => 'required|string',
+            'testo_en'  => 'nullable|string',
+            'testo_es'  => 'nullable|string',
+            'nome'      => 'required|string|max:255',
+            'nome_en'   => 'nullable|string|max:255',
+            'nome_es'   => 'nullable|string|max:255',
         ]);
 
         if ($request->hasFile('immagine')) {
@@ -77,8 +89,12 @@ class AdminController extends Controller
             $recensione->immagine = $pathImmagine;
         }
 
-        $recensione->testo = $data['testo'];
-        $recensione->nome  = $data['nome'];
+        $recensione->testo    = $data['testo'];
+        $recensione->testo_en = $data['testo_en'] ?? null;
+        $recensione->testo_es = $data['testo_es'] ?? null;
+        $recensione->nome     = $data['nome'];
+        $recensione->nome_en  = $data['nome_en'] ?? null;
+        $recensione->nome_es  = $data['nome_es'] ?? null;
         $recensione->save();
 
         return redirect()

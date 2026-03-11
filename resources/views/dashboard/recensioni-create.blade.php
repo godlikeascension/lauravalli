@@ -73,23 +73,42 @@
                                         </small>
                                     </div>
 
-                                    <div class="mb-3">
-                                        <label for="testo" class="form-label">Testo della recensione</label>
-                                        <textarea name="testo"
-                                                  id="testo"
-                                                  rows="4"
-                                                  class="form-control"
-                                                  required>{{ old('testo') }}</textarea>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="nome" class="form-label">Nome di chi lascia la recensione</label>
-                                        <input type="text"
-                                               name="nome"
-                                               id="nome"
-                                               class="form-control"
-                                               value="{{ old('nome') }}"
-                                               required>
+                                    <ul class="nav nav-tabs mb-3" role="tablist">
+                                        <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#rec-tab-it" role="tab">🇮🇹 Italiano</a></li>
+                                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#rec-tab-en" role="tab">🇬🇧 English</a></li>
+                                        <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#rec-tab-es" role="tab">🇪🇸 Español</a></li>
+                                    </ul>
+                                    <div class="tab-content mb-3">
+                                        <div class="tab-pane fade show active" id="rec-tab-it" role="tabpanel">
+                                            <div class="mb-3">
+                                                <label class="form-label">Testo della recensione <span class="text-danger">*</span></label>
+                                                <textarea name="testo" rows="4" class="form-control" required>{{ old('testo') }}</textarea>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Nome di chi lascia la recensione <span class="text-danger">*</span></label>
+                                                <input type="text" name="nome" class="form-control" value="{{ old('nome') }}" required>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="rec-tab-en" role="tabpanel">
+                                            <div class="mb-3">
+                                                <label class="form-label">Review text (EN)</label>
+                                                <textarea name="testo_en" rows="4" class="form-control">{{ old('testo_en') }}</textarea>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Reviewer name (EN)</label>
+                                                <input type="text" name="nome_en" class="form-control" value="{{ old('nome_en') }}">
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="rec-tab-es" role="tabpanel">
+                                            <div class="mb-3">
+                                                <label class="form-label">Texto de la reseña (ES)</label>
+                                                <textarea name="testo_es" rows="4" class="form-control">{{ old('testo_es') }}</textarea>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Nombre del autor (ES)</label>
+                                                <input type="text" name="nome_es" class="form-control" value="{{ old('nome_es') }}">
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <div class="text-end">

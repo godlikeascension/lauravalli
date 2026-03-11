@@ -11,6 +11,10 @@ class Recensione extends Model
     protected $fillable = [
         'immagine',
         'testo',
+        'testo_en',
+        'testo_es',
         'nome',
+        'nome_en',
+        'nome_es',
     ];
 }
