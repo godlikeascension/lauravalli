@@ -13,8 +13,14 @@
         .trad-row { border-bottom: 1px solid #eee; padding: 16px 0; }
         .trad-row:last-child { border-bottom: none; }
         .trad-chiave { font-family: monospace; font-size: 13px; color: #888; margin-bottom: 6px; }
-        .trad-it { background: #f8f9fa; border-radius: 4px; padding: 8px 12px; font-size: 14px; color: #555; margin-bottom: 8px; white-space: pre-wrap; }
-        textarea.form-control { font-size: 14px; resize: vertical; }
+        /* Inline rich-text mini-editor */
+        .rie-wrap { border: 1px solid #ced4da; border-radius: 4px; overflow: hidden; }
+        .rie-toolbar { display: flex; gap: 2px; padding: 4px 6px; background: #f8f9fa; border-bottom: 1px solid #dee2e6; }
+        .rie-toolbar button { background: none; border: 1px solid transparent; border-radius: 3px; padding: 1px 7px; font-size: 13px; cursor: pointer; line-height: 1.6; color: #333; }
+        .rie-toolbar button:hover { background: #e9ecef; border-color: #ced4da; }
+        .rie-toolbar button.rie-active { background: #d0e7ff; border-color: #86b7fe; }
+        .rie-content { min-height: 38px; padding: 6px 10px; font-size: 14px; outline: none; line-height: 1.5; white-space: pre-wrap; word-break: break-word; }
+        .rie-content:focus { background: #fff; }
     </style>
 </head>
 
@@ -59,26 +65,25 @@
                                         <div class="trad-row">
                                             <div class="trad-chiave">{{ $riga->chiave }}</div>
                                             <div class="row g-2">
+                                                @foreach(['it' => ['🇮🇹 IT','#1a7f3c'], 'en' => ['🇬🇧 EN','#0d6efd'], 'es' => ['🇪🇸 ES','#c0392b']] as $loc => [$label, $color])
                                                 <div class="col-md-4">
-                                                    <label class="form-label fw-semibold" style="font-size:13px; color:#1a7f3c;">🇮🇹 IT</label>
-                                                    <textarea name="traduzioni[{{ $riga->chiave }}][it]"
-                                                              rows="3"
-                                                              class="form-control ck-trad">{{ $riga->it }}</textarea>
+                                                    <label class="form-label fw-semibold" style="font-size:13px; color:{{ $color }};">{{ $label }}</label>
+                                                    <input type="hidden"
+                                                           name="traduzioni[{{ $riga->chiave }}][{{ $loc }}]"
+                                                           class="rie-hidden"
+                                                           value="{{ $riga->{$loc} }}">
+                                                    <div class="rie-wrap">
+                                                        <div class="rie-toolbar">
+                                                            <button type="button" data-cmd="bold"><b>B</b></button>
+                                                            <button type="button" data-cmd="italic"><i>I</i></button>
+                                                            <button type="button" data-cmd="underline"><u>U</u></button>
+                                                            <button type="button" data-cmd="removeFormat" title="Rimuovi formattazione">✕</button>
+                                                        </div>
+                                                        <div class="rie-content"
+                                                             contenteditable="true">{!! $riga->{$loc} !!}</div>
+                                                    </div>
                                                 </div>
-                                                <div class="col-md-4">
-                                                    <label class="form-label fw-semibold text-primary" style="font-size:13px;">🇬🇧 EN</label>
-                                                    <textarea name="traduzioni[{{ $riga->chiave }}][en]"
-                                                              rows="3"
-                                                              class="form-control ck-trad"
-                                                              placeholder="English translation…">{{ $riga->en }}</textarea>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <label class="form-label fw-semibold" style="font-size:13px; color:#c0392b;">🇪🇸 ES</label>
-                                                    <textarea name="traduzioni[{{ $riga->chiave }}][es]"
-                                                              rows="3"
-                                                              class="form-control ck-trad"
-                                                              placeholder="Traducción al español…">{{ $riga->es }}</textarea>
-                                                </div>
+                                                @endforeach
                                             </div>
                                         </div>
                                     @endforeach
@@ -104,15 +109,46 @@
 
 <script src="/dashboard-backend/js/vendor.min.js"></script>
 <script src="/dashboard-backend/js/app.min.js"></script>
-@if($pagina !== 'navbar')
-<!-- CKEditor 5 -->
-<script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
 <script>
-    var ckToolbar = ['undo', 'redo', '|', 'bold', 'italic', 'underline', 'link', '|', 'bulletedList', 'numberedList', '|', 'removeFormat'];
-    document.querySelectorAll('.ck-trad').forEach(function (el) {
-        ClassicEditor.create(el, { toolbar: ckToolbar }).catch(function (e) { console.error(e); });
+(function () {
+    // Sync contenteditable → hidden input on every input event
+    function syncHidden(content) {
+        var wrap = content.closest('.rie-wrap').parentElement;
+        var hidden = wrap.querySelector('.rie-hidden');
+        hidden.value = content.innerHTML;
+    }
+
+    document.querySelectorAll('.rie-content').forEach(function (content) {
+        // Prevent Enter from inserting <div> / <p> — insert <br> instead
+        content.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                document.execCommand('insertLineBreak');
+            }
+        });
+        content.addEventListener('input', function () { syncHidden(content); });
     });
+
+    document.querySelectorAll('.rie-toolbar button').forEach(function (btn) {
+        btn.addEventListener('mousedown', function (e) {
+            e.preventDefault(); // keep focus in the editor
+            document.execCommand(btn.dataset.cmd, false, null);
+            // highlight active state
+            var content = btn.closest('.rie-wrap').querySelector('.rie-content');
+            syncHidden(content);
+        });
+    });
+
+    // Sync all before form submit (belt & suspenders)
+    var form = document.querySelector('form');
+    if (form) {
+        form.addEventListener('submit', function () {
+            document.querySelectorAll('.rie-content').forEach(function (content) {
+                syncHidden(content);
+            });
+        });
+    }
+})();
 </script>
-@endif
 </body>
 </html>
