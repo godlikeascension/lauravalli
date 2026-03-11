@@ -55,7 +55,9 @@ class ContactController extends Controller
                 ->subject('Nuova richiesta opera su commissione');
         });
 
-        return redirect()->route('commissioni.grazie');
+        $locale = $request->input('_locale', 'it');
+        $routeName = in_array($locale, ['en', 'es']) ? "{$locale}.commissioni.grazie" : 'commissioni.grazie';
+        return redirect()->route($routeName);
     }
 
     public function sendGiftCard(Request $request)

@@ -12,7 +12,11 @@ class Opera extends Model
     protected $fillable = [
         'immagine',
         'titolo',
+        'titolo_en',
+        'titolo_es',
         'slug',
+        'slug_en',
+        'slug_es',
         'prezzo',
         'venduto',
         'larghezza_cm',
@@ -20,6 +24,8 @@ class Opera extends Model
         'opera_type',
         'year',
         'descrizione_html',
+        'descrizione_html_en',
+        'descrizione_html_es',
         'commissione',
         'collezione_id',
     ];
@@ -77,6 +83,33 @@ class Opera extends Model
     public function immagini()
     {
         return $this->hasMany(OperaImmagine::class);
+    }
+
+    // Titolo localizzato per la lingua corrente
+    public function getTitoloLocaleAttribute(): string
+    {
+        $locale = app()->getLocale();
+        if ($locale === 'en' && !empty($this->titolo_en)) return $this->titolo_en;
+        if ($locale === 'es' && !empty($this->titolo_es)) return $this->titolo_es;
+        return $this->titolo;
+    }
+
+    // Descrizione localizzata per la lingua corrente
+    public function getDescrizioneLocaleAttribute(): ?string
+    {
+        $locale = app()->getLocale();
+        if ($locale === 'en' && !empty($this->descrizione_html_en)) return $this->descrizione_html_en;
+        if ($locale === 'es' && !empty($this->descrizione_html_es)) return $this->descrizione_html_es;
+        return $this->descrizione_html;
+    }
+
+    // Slug localizzato per la lingua corrente
+    public function getSlugLocaleAttribute(): string
+    {
+        $locale = app()->getLocale();
+        if ($locale === 'en' && !empty($this->slug_en)) return $this->slug_en;
+        if ($locale === 'es' && !empty($this->slug_es)) return $this->slug_es;
+        return $this->slug;
     }
 
     // Dimensioni formattate "L x H cm"

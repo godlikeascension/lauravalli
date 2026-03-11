@@ -65,13 +65,23 @@
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="titolo" class="form-label">Titolo dell'opera</label>
+                                        <label for="titolo" class="form-label">Titolo dell'opera (IT)</label>
                                         <input type="text"
                                                name="titolo"
                                                id="titolo"
                                                class="form-control"
                                                value="{{ old('titolo') }}"
                                                required>
+                                    </div>
+                                    <div class="row g-3 mb-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">🇬🇧 Titolo EN</label>
+                                            <input type="text" name="titolo_en" class="form-control" value="{{ old('titolo_en') }}">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">🇪🇸 Titolo ES</label>
+                                            <input type="text" name="titolo_es" class="form-control" value="{{ old('titolo_es') }}">
+                                        </div>
                                     </div>
 
                                     <div class="row">
@@ -170,12 +180,22 @@
 
                                     <div class="mb-3">
                                         <label for="descrizione_html" class="form-label">
-                                            Descrizione lunga (può contenere grassetti, corsivi, ecc.)
+                                            Descrizione (IT)
                                         </label>
                                         <textarea name="descrizione_html"
                                                   id="descrizione_html"
                                                   rows="6"
                                                   class="form-control">{{ old('descrizione_html') }}</textarea>
+                                    </div>
+                                    <div class="row g-3 mb-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">🇬🇧 Descrizione EN</label>
+                                            <textarea name="descrizione_html_en" rows="5" class="form-control">{{ old('descrizione_html_en') }}</textarea>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">🇪🇸 Descrizione ES</label>
+                                            <textarea name="descrizione_html_es" rows="5" class="form-control">{{ old('descrizione_html_es') }}</textarea>
+                                        </div>
                                     </div>
 
                                     <div class="text-end">

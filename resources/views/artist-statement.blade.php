@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="it">
+<html class="no-js" lang="{{ app()->getLocale() }}">
 
 <head>
     <title>Laura Valli Art | Oil Paintings & Jewllery</title>

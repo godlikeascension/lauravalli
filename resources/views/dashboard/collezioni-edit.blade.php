@@ -60,7 +60,7 @@
                                     @method('PUT')
 
                                     <div class="mb-3">
-                                        <label for="nome" class="form-label">Nome della collezione <span class="text-danger">*</span></label>
+                                        <label for="nome" class="form-label">Nome della collezione (IT) <span class="text-danger">*</span></label>
                                         <input type="text"
                                                name="nome"
                                                id="nome"
@@ -68,13 +68,33 @@
                                                value="{{ old('nome', $collezione->nome) }}"
                                                required>
                                     </div>
+                                    <div class="row g-3 mb-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">🇬🇧 Nome EN</label>
+                                            <input type="text" name="nome_en" class="form-control" value="{{ old('nome_en', $collezione->nome_en) }}">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">🇪🇸 Nome ES</label>
+                                            <input type="text" name="nome_es" class="form-control" value="{{ old('nome_es', $collezione->nome_es) }}">
+                                        </div>
+                                    </div>
 
                                     <div class="mb-3">
-                                        <label for="descrizione" class="form-label">Descrizione (opzionale)</label>
+                                        <label for="descrizione" class="form-label">Descrizione (IT, opzionale)</label>
                                         <textarea name="descrizione"
                                                   id="descrizione"
                                                   rows="4"
                                                   class="form-control">{{ old('descrizione', $collezione->descrizione) }}</textarea>
+                                    </div>
+                                    <div class="row g-3 mb-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">🇬🇧 Descrizione EN</label>
+                                            <textarea name="descrizione_en" rows="4" class="form-control">{{ old('descrizione_en', $collezione->descrizione_en) }}</textarea>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">🇪🇸 Descrizione ES</label>
+                                            <textarea name="descrizione_es" rows="4" class="form-control">{{ old('descrizione_es', $collezione->descrizione_es) }}</textarea>
+                                        </div>
                                     </div>
 
                                     <div class="mb-3 form-check form-switch">

@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="it">
+<html class="no-js" lang="{{ app()->getLocale() }}">
 
 <head>
     <title>Collezioni | Laura Valli Art</title>
@@ -135,16 +135,16 @@
                  data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
                 <div class="mb-10px">
                     <span class="w-25px h-1px d-inline-block bg-base-color me-5px align-middle"></span>
-                    <span class="text-gradient-base-color fs-15 alt-font fw-700 ls-05px text-uppercase d-inline-block align-middle">Le Opere</span>
+                    <span class="text-gradient-base-color fs-15 alt-font fw-700 ls-05px text-uppercase d-inline-block align-middle">{{ trad('opere', 'section_label', 'Le Opere') }}</span>
                 </div>
-                <h2 class="alt-font fw-600 text-dark-gray ls-minus-2px mb-0">Esplora le Collezioni</h2>
+                <h2 class="alt-font fw-600 text-dark-gray ls-minus-2px mb-0">{{ trad('opere', 'section_titolo', 'Esplora le Collezioni') }}</h2>
             </div>
         </div>
 
         @if($collezioni->isEmpty())
             <div class="row">
                 <div class="col-12 text-center">
-                    <p class="text-muted pb-70">Le collezioni verranno presto aggiornate.</p>
+                    <p class="text-muted pb-70">{{ __('ui.collezioni_vuote') }}</p>
                 </div>
             </div>
         @else
@@ -160,9 +160,9 @@
                                         type="button"
                                         role="tab"
                                         aria-selected="{{ $i === 0 ? 'true' : 'false' }}">
-                                    {{ $col->nome }}
+                                    {{ $col->nome_locale }}
                                     @if($col->opere->isEmpty())
-                                        <span class="tab-badge-arrivo">In arrivo</span>
+                                        <span class="tab-badge-arrivo">{{ __('ui.in_arrivo') }}</span>
                                     @endif
                                 </button>
                             </li>
@@ -178,11 +178,11 @@
                      role="tabpanel">
 
                     {{-- Collection description (desktop only) --}}
-                    @if($col->descrizione)
+                    @if($col->descrizione_locale)
                         <div class="row mb-40px d-none d-md-flex">
                             <div class="col-12">
                                 <div class="text-muted">
-                                    {!! $col->descrizione !!}
+                                    {!! $col->descrizione_locale !!}
                                 </div>
                             </div>
                         </div>
@@ -203,7 +203,7 @@
                                     {{-- Image --}}
                                     <div style="position:relative; overflow:hidden;">
                                         <img src="{{ $opera->immagine ? asset('storage/' . $opera->immagine) : '/images/placeholder.jpg' }}"
-                                             alt="{{ $opera->titolo }}"
+                                             alt="{{ $opera->titolo_locale }}"
                                              loading="lazy"
                                              style="aspect-ratio:4/5; object-fit:cover; width:100%; display:block;" />
 
@@ -218,7 +218,7 @@
                                                         style="opacity:0; transition:opacity .3s;"
                                                         data-image="{{ asset('storage/' . $opera->immagine) }}"
                                                         onclick="openOperaLightbox(this)">
-                                                    <span>Ingrandisci</span>
+                                                    <span>{{ __('ui.ingrandisci') }}</span>
                                                     <i class="feather icon-feather-search ms-5px"></i>
                                                 </button>
                                             </div>
@@ -228,7 +228,7 @@
                                     {{-- Info --}}
                                     <div class="p-20px opera-card-info text-center">
                                         <p class="text-dark-gray alt-font fs-16 mb-5px fw-600">
-                                            {{ $opera->titolo }}
+                                            {{ $opera->titolo_locale }}
                                         </p>
 
                                         @if($opera->dimensioni)
@@ -239,14 +239,14 @@
 
                                         @if($opera->venduto)
                                             <p class="mb-0 alt-font fw-700 fs-14" style="color:#b5341a;">
-                                                SOLD
+                                                {{ __('ui.sold') }}
                                             </p>
                                         @elseif(!is_null($opera->prezzo))
                                             <p class="mb-0 text-dark-gray alt-font fw-500 fs-14">
                                                 {{ number_format($opera->prezzo, 2, ',', '.') }} €
                                             </p>
                                         @else
-                                            <p class="mb-0 text-muted fs-13">Su richiesta</p>
+                                            <p class="mb-0 text-muted fs-13">{{ __('ui.su_richiesta') }}</p>
                                         @endif
 
                                         {{-- Buttons wrapper --}}
@@ -257,15 +257,15 @@
                                                             class="btn btn-large btn-dark-gray d-flex justify-content-center align-items-center"
                                                             data-image="{{ asset('storage/' . $opera->immagine) }}"
                                                             onclick="openOperaLightbox(this)">
-                                                        <span>Ingrandisci</span>
+                                                        <span>{{ __('ui.ingrandisci') }}</span>
                                                         <i class="feather icon-feather-search ms-5px"></i>
                                                     </button>
                                                 </div>
                                             @endif
                                             <div class="d-grid d-md-block">
-                                                <a href="{{ route('opera.show', $opera->slug) }}"
+                                                <a href="{{ operaUrl($opera) }}"
                                                    class="btn btn-large btn-dark-gray d-flex justify-content-center align-items-center">
-                                                    Scopri l'opera <i class="feather icon-feather-arrow-right ms-10px"></i>
+                                                    {{ __('ui.scopri_opera') }} <i class="feather icon-feather-arrow-right ms-10px"></i>
                                                 </a>
                                             </div>
                                         </div>
@@ -276,7 +276,7 @@
                             <div class="col-12">
                                 <div class="empty-collection">
                                     <i class="feather icon-feather-image" style="font-size:48px; opacity:.3; display:block; margin-bottom:16px;"></i>
-                                    Nessuna opera in questa collezione per ora.
+                                    {{ __('ui.opera_vuota') }}
                                 </div>
                             </div>
                         @endforelse

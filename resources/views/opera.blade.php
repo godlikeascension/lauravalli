@@ -1,8 +1,8 @@
 <!doctype html>
-<html class="no-js" lang="it">
+<html class="no-js" lang="{{ app()->getLocale() }}">
 <head>
-    <title>{{ $opera->titolo }} | Laura Valli Art</title>
-    <meta name="description" content="{{ $opera->titolo }}{{ $opera->collezione ? ' · ' . $opera->collezione->nome : '' }} | Dipinti ad olio di Laura Valli">
+    <title>{{ $opera->titolo_locale }} | Laura Valli Art</title>
+    <meta name="description" content="{{ $opera->titolo_locale }}{{ $opera->collezione ? ' · ' . $opera->collezione->nome_locale : '' }} | Dipinti ad olio di Laura Valli">
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -229,6 +229,7 @@
 </head>
 
 <body data-mobile-nav-trigger-alignment="right" data-mobile-nav-style="modern" data-mobile-nav-bg-color="#1d1d1d">
+@php $currentOpera = $opera; @endphp
 @include('inc.front.header')
 
 @php
@@ -249,18 +250,18 @@
                 <div class="mb-12px">
                     <span class="w-25px h-1px d-inline-block bg-base-color me-5px align-middle"></span>
                     <span class="text-gradient-base-color fs-13 alt-font fw-700 ls-05px text-uppercase align-middle">
-                        {{ $opera->collezione->nome }}
+                        {{ $opera->collezione->nome_locale }}
                     </span>
                 </div>
             @endif
             <h1 class="alt-font fw-600 text-dark-gray ls-minus-2px mb-8px">
-                {{ $opera->titolo }}
+                {{ $opera->titolo_locale }}
             </h1>
             @if($opera->meta)
                 <p class="text-muted alt-font fs-14 mb-0">{{ $opera->meta }}</p>
             @endif
             @if($opera->commissione)
-                <p class="text-muted alt-font fs-13 mb-0">Opera su commissione</p>
+                <p class="text-muted alt-font fs-13 mb-0">{{ trad('opera', 'commissione', 'Opera su commissione') }}</p>
             @endif
         </div>
 
@@ -276,7 +277,7 @@
                             @foreach($allImages as $imgPath)
                                 <div class="swiper-slide">
                                     <img src="{{ asset('storage/' . $imgPath) }}"
-                                         alt="{{ $opera->titolo }}"
+                                         alt="{{ $opera->titolo_locale }}"
                                          loading="{{ $loop->first ? 'eager' : 'lazy' }}"
                                          data-lb-index="{{ $loop->index }}"
                                          onclick="openLightbox({{ $loop->index }})" />
@@ -305,7 +306,7 @@
                     {{-- Single image --}}
                     <div class="opera-single-img">
                         <img src="{{ $imgCount ? asset('storage/' . $allImages->first()) : '/images/placeholder.jpg' }}"
-                             alt="{{ $opera->titolo }}"
+                             alt="{{ $opera->titolo_locale }}"
                              style="width:100%;"
                              onclick="openLightbox(0)" />
                     </div>
@@ -313,7 +314,7 @@
 
                 @if($imgCount)
                     <p class="text-muted fs-12 text-center mt-12px" style="letter-spacing:.03em;">
-                        Clicca {{ $hasMultiple ? "un'immagine" : "sull'immagine" }} per ingrandirla
+                        {{ $hasMultiple ? __('ui.clicca_multipla') : __('ui.clicca_singola') }}
                     </p>
                 @endif
             </div>
@@ -328,18 +329,18 @@
                             <div class="mb-15px">
                                 <span class="w-25px h-1px d-inline-block bg-base-color me-5px align-middle"></span>
                                 <span class="text-gradient-base-color fs-13 alt-font fw-700 ls-05px text-uppercase align-middle">
-                                    {{ $opera->collezione->nome }}
+                                    {{ $opera->collezione->nome_locale }}
                                 </span>
                             </div>
                         @endif
                         <h1 class="alt-font fw-600 text-dark-gray ls-minus-2px mb-10px">
-                            {{ $opera->titolo }}
+                            {{ $opera->titolo_locale }}
                         </h1>
                         @if($opera->meta)
                             <p class="text-muted alt-font fs-14 mb-0">{{ $opera->meta }}</p>
                         @endif
                         @if($opera->commissione)
-                            <p class="text-muted alt-font fs-13 mb-0">Opera su commissione</p>
+                            <p class="text-muted alt-font fs-13 mb-0">{{ trad('opera', 'commissione', 'Opera su commissione') }}</p>
                         @endif
                         <hr class="info-divider">
                     </div>
@@ -347,19 +348,19 @@
                     {{-- Price --}}
                     <div class="mb-0">
                         @if($opera->venduto)
-                            <p class="opera-sold-tag mb-0">SOLD</p>
+                            <p class="opera-sold-tag mb-0">{{ __('ui.sold') }}</p>
                         @elseif(!is_null($opera->prezzo))
                             <p class="opera-price-tag mb-0">{{ number_format($opera->prezzo, 2, ',', '.') }} €</p>
                         @else
-                            <p class="alt-font fs-18 text-dark-gray fw-500 mb-0">Prezzo su richiesta</p>
+                            <p class="alt-font fs-18 text-dark-gray fw-500 mb-0">{{ __('ui.prezzo_richiesta') }}</p>
                         @endif
                     </div>
 
                     {{-- Description --}}
-                    @if($opera->descrizione_html)
+                    @if($opera->descrizione_locale)
                         <hr class="info-divider">
                         <div class="opera-description mb-10px">
-                            {!! $opera->descrizione_html !!}
+                            {!! $opera->descrizione_locale !!}
                         </div>
                     @endif
 
@@ -367,16 +368,16 @@
 
                     {{-- CTA --}}
                     @if(!$opera->venduto)
-                        <a href="/#contatti"
+                        <a href="{{ localeUrl('home') }}#contatti"
                            class="btn btn-large btn-dark-gray d-flex align-items-center justify-content-center w-100"
                            style="margin-bottom: 12px;">
-                            Invia una richiesta
+                            {{ __('ui.invia_messaggio') }}
                             <i class="fa-regular fa-envelope ms-10px"></i>
                         </a>
                     @endif
-                    <a href="/opere"
+                    <a href="{{ localeUrl('opere') }}"
                        class="btn btn-large btn-dark-gray d-flex align-items-center justify-content-center w-100">
-                        Torna alle opere
+                        {{ __('ui.torna_opere') }}
                         <i class="feather icon-feather-arrow-left ms-10px"></i>
                     </a>
 
@@ -398,10 +399,10 @@
                 <div class="mb-10px">
                     <span class="w-25px h-1px d-inline-block bg-base-color me-5px align-middle"></span>
                     <span class="text-gradient-base-color fs-13 alt-font fw-700 ls-05px text-uppercase align-middle">
-                        {{ $opera->collezione->nome }}
+                        {{ $opera->collezione->nome_locale }}
                     </span>
                 </div>
-                <h3 class="alt-font fw-600 text-dark-gray ls-minus-2px mb-0">Altre opere della collezione</h3>
+                <h3 class="alt-font fw-600 text-dark-gray ls-minus-2px mb-0">{{ trad('opera', 'altre_opere', 'Altre opere della collezione') }}</h3>
             </div>
         </div>
 
@@ -419,9 +420,9 @@
                          style="box-shadow: rgba(0,0,0,.10) 0 6px 24px 0, rgba(0,0,0,.04) 0 0 0 1px; border-radius: 6px; overflow: hidden; background:#fff;">
 
                         {{-- Image --}}
-                        <a href="{{ route('opera.show', $altraOpera->slug) }}" style="display:block; overflow:hidden;">
+                        <a href="{{ operaUrl($altraOpera) }}" style="display:block; overflow:hidden;">
                             <img src="{{ $altraOpera->immagine ? asset('storage/' . $altraOpera->immagine) : '/images/placeholder.jpg' }}"
-                                 alt="{{ $altraOpera->titolo }}"
+                                 alt="{{ $altraOpera->titolo_locale }}"
                                  loading="lazy"
                                  style="aspect-ratio:4/5; object-fit:cover; width:100%; display:block; transition: transform .4s ease;"
                                  onmouseenter="this.style.transform='scale(1.04)'"
@@ -430,26 +431,26 @@
 
                         {{-- Info --}}
                         <div class="p-20px opera-card-info text-center">
-                            <p class="text-dark-gray alt-font fs-16 mb-5px fw-600">{{ $altraOpera->titolo }}</p>
+                            <p class="text-dark-gray alt-font fs-16 mb-5px fw-600">{{ $altraOpera->titolo_locale }}</p>
 
                             @if($altraOpera->dimensioni)
                                 <p class="alt-font fs-12 text-muted mb-5px">{{ $altraOpera->dimensioni }}</p>
                             @endif
 
                             @if($altraOpera->venduto)
-                                <p class="mb-0 text-gradient-base-color alt-font fw-700 fs-14">SOLD</p>
+                                <p class="mb-0 text-gradient-base-color alt-font fw-700 fs-14">{{ __('ui.sold') }}</p>
                             @elseif(!is_null($altraOpera->prezzo))
                                 <p class="mb-0 text-dark-gray alt-font fw-500 fs-14">
                                     {{ number_format($altraOpera->prezzo, 2, ',', '.') }} €
                                 </p>
                             @else
-                                <p class="mb-0 text-muted fs-13">Su richiesta</p>
+                                <p class="mb-0 text-muted fs-13">{{ __('ui.su_richiesta') }}</p>
                             @endif
 
                             <div class="d-grid" style="margin-top: 16px;">
-                                <a href="{{ route('opera.show', $altraOpera->slug) }}"
+                                <a href="{{ operaUrl($altraOpera) }}"
                                    class="btn btn-large btn-dark-gray d-flex justify-content-center align-items-center">
-                                    Scopri l'opera <i class="feather icon-feather-arrow-right ms-10px"></i>
+                                    {{ __('ui.scopri_opera') }} <i class="feather icon-feather-arrow-right ms-10px"></i>
                                 </a>
                             </div>
                         </div>
@@ -474,7 +475,7 @@
             @foreach($allImages as $imgPath)
                 <div class="swiper-slide">
                     <img src="{{ asset('storage/' . $imgPath) }}"
-                         alt="{{ $opera->titolo }}"
+                         alt="{{ $opera->titolo_locale }}"
                          loading="lazy" />
                 </div>
             @endforeach

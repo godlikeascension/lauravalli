@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="it">
+<html class="no-js" lang="{{ app()->getLocale() }}">
 
 <head>
     <title>Gift Card | Laura Valli Art</title>
@@ -132,13 +132,13 @@
                         <span class="w-25px h-1px d-inline-block bg-base-color me-5px align-middle"></span>
                         <span class="text-gradient-base-color fs-15 alt-font fw-700 ls-05px text-uppercase d-inline-block align-middle">Gift Card</span>
                     </div>
-                    <h1 style="font-size: 3rem !important;" class="text-dark-gray fw-600 alt-font ls-minus-2px">Il regalo perfetto è quello che si sceglie col cuore.</h1>
-                    <p class="fw-500 text-dark-gray fst-italic mb-25px fs-18">"Sorprendi chi ami con un dono che sceglierà da sé."</p>
+                    <h1 style="font-size: 3rem !important;" class="text-dark-gray fw-600 alt-font ls-minus-2px">{{ trad('gift_card', 'hero_titolo', "Il regalo perfetto è quello che si sceglie col cuore.") }}</h1>
+                    <p class="fw-500 text-dark-gray fst-italic mb-25px fs-18">"{{ trad('gift_card', 'hero_citazione', 'Sorprendi chi ami con un dono che sceglierà da sé.') }}"</p>
                     <p class="w-85 mb-35px lg-w-100 sm-w-100">
-                        Con una gift card puoi donare a chi ami l'esperienza di avere un'opera d'arte creata su misura, oppure permettergli di scegliere tra le opere già disponibili nella mia galleria o sul sito web.
+                        {{ trad('gift_card', 'hero_intro', "Con una gift card puoi donare a chi ami l'esperienza di avere un'opera d'arte creata su misura, oppure permettergli di scegliere tra le opere già disponibili nella mia galleria o sul sito web.") }}
                     </p>
                     <a href="#" onclick="event.preventDefault(); document.getElementById('come-funziona').scrollIntoView({behavior:'smooth'});" class="btn btn-large btn-dark-gray">
-                        Scopri come funziona <i class="feather icon-feather-arrow-down ms-10px"></i>
+                        {{ trad('gift_card', 'hero_btn', 'Scopri come funziona') }} <i class="feather icon-feather-arrow-down ms-10px"></i>
                     </a>
                 </div>
             </div>
@@ -156,8 +156,8 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-xxl-7 col-lg-7 md-mb-15 sm-mb-20 text-center text-lg-start" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-                <span class="text-gradient-base-color fs-15 alt-font fw-700 ls-05px text-uppercase d-inline-block align-middle">Come funziona</span>
-                <h3 class="alt-font fw-700 text-dark-gray ls-minus-1px">Tre semplici passi per regalare un'opera d'arte</h3>
+                <span class="text-gradient-base-color fs-15 alt-font fw-700 ls-05px text-uppercase d-inline-block align-middle">{{ trad('gift_card', 'come_funziona_label', 'Come funziona') }}</span>
+                <h3 class="alt-font fw-700 text-dark-gray ls-minus-1px">{{ trad('gift_card', 'come_funziona_titolo', "Tre semplici passi per regalare un'opera d'arte") }}</h3>
 
                 <div class="row row-cols-1 mt-40">
                     <div class="col-12 process-step-style-05 position-relative hover-box">
@@ -170,8 +170,8 @@
                                 <span class="progress-step-separator bg-dark-gray opacity-1"></span>
                             </div>
                             <div class="process-content ps-30px last-paragraph-no-margin mb-30px">
-                                <span class="d-block fw-600 text-dark-gray mb-5px fs-18">Scegli l'importo</span>
-                                <p class="w-90 lg-w-100">Seleziona il valore della gift card tra le opzioni disponibili, oppure richiedi un importo personalizzato. Non c'è limite al dono.</p>
+                                <span class="d-block fw-600 text-dark-gray mb-5px fs-18">{{ trad('gift_card', 'step1_titolo', "Scegli l'importo") }}</span>
+                                <p class="w-90 lg-w-100">{{ trad('gift_card', 'step1_testo', 'Seleziona il valore della gift card tra le opzioni disponibili, oppure richiedi un importo personalizzato. Non c\'è limite al dono.') }}</p>
                             </div>
                         </div>
                     </div>
@@ -185,8 +185,8 @@
                                 <span class="progress-step-separator bg-dark-gray opacity-1"></span>
                             </div>
                             <div class="process-content ps-30px last-paragraph-no-margin mb-30px">
-                                <span class="d-block fw-600 text-dark-gray mb-5px fs-18">Ricevi la card digitale</span>
-                                <p class="w-90 lg-w-100">Dopo l'acquisto riceverai un elegante PDF via email, pronto da stampare o inoltrare direttamente al destinatario.</p>
+                                <span class="d-block fw-600 text-dark-gray mb-5px fs-18">{{ trad('gift_card', 'step2_titolo', 'Ricevi la card digitale') }}</span>
+                                <p class="w-90 lg-w-100">{{ trad('gift_card', 'step2_testo', "Dopo l'acquisto riceverai un elegante PDF via email, pronto da stampare o inoltrare direttamente al destinatario.") }}</p>
                             </div>
                         </div>
                     </div>
@@ -199,8 +199,8 @@
                                 </div>
                             </div>
                             <div class="process-content ps-30px last-paragraph-no-margin">
-                                <span class="d-block fw-600 text-dark-gray mb-5px fs-18">Chi la riceve sceglie l'opera</span>
-                                <p class="w-90 lg-w-100">Il destinatario potrà contattarmi per trasformare il buono in un dipinto personalizzato — se il prezzo finale sarà superiore, potrà semplicemente saldare la differenza — oppure acquistare un'opera già disponibile in galleria o sul sito.</p>
+                                <span class="d-block fw-600 text-dark-gray mb-5px fs-18">{{ trad('gift_card', 'step3_titolo', "Chi la riceve sceglie l'opera") }}</span>
+                                <p class="w-90 lg-w-100">{{ trad('gift_card', 'step3_testo', "Il destinatario potrà contattarmi per trasformare il buono in un dipinto personalizzato — se il prezzo finale sarà superiore, potrà semplicemente saldare la differenza — oppure acquistare un'opera già disponibile in galleria o sul sito.") }}</p>
                             </div>
                         </div>
                     </div>
@@ -223,8 +223,8 @@
         <div class="row mb-60px text-center" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
             <div class="col-12">
                 <span class="w-25px h-1px d-inline-block bg-base-color me-5px align-middle"></span>
-                <span class="text-gradient-base-color fs-15 alt-font fw-700 ls-05px text-uppercase d-inline-block align-middle">Perché sceglierla</span>
-                <h3 class="alt-font fw-600 text-white ls-minus-1px mt-10px mb-0">Un regalo che va oltre l'oggetto</h3>
+                <span class="text-gradient-base-color fs-15 alt-font fw-700 ls-05px text-uppercase d-inline-block align-middle">{{ trad('gift_card', 'perche_label', 'Perché sceglierla') }}</span>
+                <h3 class="alt-font fw-600 text-white ls-minus-1px mt-10px mb-0">{{ trad('gift_card', 'perche_titolo', "Un regalo che va oltre l'oggetto") }}</h3>
             </div>
         </div>
         <div class="row row-cols-1 row-cols-md-2 g-4" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 150, "easing": "easeOutQuad" }'>
@@ -233,8 +233,8 @@
                     <div class="benefit-icon">
                         <i class="feather icon-feather-heart"></i>
                     </div>
-                    <h5 class="alt-font fw-600 text-dark-gray mb-10px">Un dono irripetibile</h5>
-                    <p class="text-medium-gray mb-0">Ogni opera è creata esclusivamente per chi la riceve. Non esiste in nessun altro posto al mondo.</p>
+                    <h5 class="alt-font fw-600 text-dark-gray mb-10px">{{ trad('gift_card', 'benefit1_titolo', 'Un dono irripetibile') }}</h5>
+                    <p class="text-medium-gray mb-0">{{ trad('gift_card', 'benefit1_testo', 'Ogni opera è creata esclusivamente per chi la riceve. Non esiste in nessun altro posto al mondo.') }}</p>
                 </div>
             </div>
             <div class="col">
@@ -242,8 +242,8 @@
                     <div class="benefit-icon">
                         <i class="feather icon-feather-clock"></i>
                     </div>
-                    <h5 class="alt-font fw-600 text-dark-gray mb-10px">Nessuna scadenza</h5>
-                    <p class="text-medium-gray mb-0">La gift card è valida per sempre. Il destinatario potrà riscattarla quando lo desidera, senza fretta.</p>
+                    <h5 class="alt-font fw-600 text-dark-gray mb-10px">{{ trad('gift_card', 'benefit2_titolo', 'Nessuna scadenza') }}</h5>
+                    <p class="text-medium-gray mb-0">{{ trad('gift_card', 'benefit2_testo', 'La gift card è valida per sempre. Il destinatario potrà riscattarla quando lo desidera, senza fretta.') }}</p>
                 </div>
             </div>
             <div class="col">
@@ -251,8 +251,8 @@
                     <div class="benefit-icon">
                         <i class="feather icon-feather-star"></i>
                     </div>
-                    <h5 class="alt-font fw-600 text-dark-gray mb-10px">Esperienza unica</h5>
-                    <p class="text-medium-gray mb-0">Non un semplice regalo, ma un percorso creativo condiviso. Un'emozione che dura nel tempo.</p>
+                    <h5 class="alt-font fw-600 text-dark-gray mb-10px">{{ trad('gift_card', 'benefit3_titolo', 'Esperienza unica') }}</h5>
+                    <p class="text-medium-gray mb-0">{{ trad('gift_card', 'benefit3_testo', "Non un semplice regalo, ma un percorso creativo condiviso. Un'emozione che dura nel tempo.") }}</p>
                 </div>
             </div>
             <div class="col">
@@ -260,8 +260,8 @@
                     <div class="benefit-icon">
                         <i class="feather icon-feather-gift"></i>
                     </div>
-                    <h5 class="alt-font fw-600 text-dark-gray mb-10px">Perfetta per ogni occasione</h5>
-                    <p class="text-medium-gray mb-0">Compleanni, anniversari, matrimoni, nuove nascite — ogni momento speciale merita un ricordo eterno.</p>
+                    <h5 class="alt-font fw-600 text-dark-gray mb-10px">{{ trad('gift_card', 'benefit4_titolo', 'Perfetta per ogni occasione') }}</h5>
+                    <p class="text-medium-gray mb-0">{{ trad('gift_card', 'benefit4_testo', 'Compleanni, anniversari, matrimoni, nuove nascite — ogni momento speciale merita un ricordo eterno.') }}</p>
                 </div>
             </div>
         </div>
@@ -277,9 +277,9 @@
             <div class="col-lg-7">
                 <div class="mb-10px">
                     <span class="w-25px h-1px d-inline-block bg-base-color me-5px align-middle"></span>
-                    <span class="text-gradient-base-color fs-15 alt-font fw-700 ls-05px text-uppercase d-inline-block align-middle">Domande frequenti</span>
+                    <span class="text-gradient-base-color fs-15 alt-font fw-700 ls-05px text-uppercase d-inline-block align-middle">{{ trad('gift_card', 'faq_label', 'Domande frequenti') }}</span>
                 </div>
-                <h3 class="alt-font fw-600 text-dark-gray ls-minus-1px mb-40px">Se hai altre domande, non esitare a contattarmi</h3>
+                <h3 class="alt-font fw-600 text-dark-gray ls-minus-1px mb-40px">{{ trad('gift_card', 'faq_titolo', 'Se hai altre domande, non esitare a contattarmi') }}</h3>
 
                 <div class="accordion accordion-style-02" id="faq-accordion-gc" data-active-icon="icon-feather-minus" data-inactive-icon="icon-feather-plus">
                     @forelse($faqs as $faq)
@@ -299,7 +299,7 @@
                                         @else
                                         <i class="feather icon-feather-plus fs-20"></i>
                                         @endif
-                                        <span class="fw-500">{{ $faq->domanda }}</span>
+                                        <span class="fw-500">{{ $faq->domanda_locale }}</span>
                                     </div>
                                 </a>
                             </div>
@@ -310,13 +310,13 @@
                             @endif
                                 <div class="accordion-body last-paragraph-no-margin border-bottom border-color-transparent-dark-very-light">
                                     <div class="w-90 sm-w-95 xs-w-100">
-                                        {!! $faq->risposta_html !!}
+                                        {!! $faq->risposta_locale !!}
                                     </div>
                                 </div>
                             </div>
                         </div>
                     @empty
-                        <p class="text-muted">Nessuna domanda frequente al momento.</p>
+                        <p class="text-muted">{{ trad('gift_card', 'faq_vuote', 'Nessuna domanda frequente al momento.') }}</p>
                     @endforelse
                 </div>
             </div>
@@ -335,9 +335,9 @@
         <div class="row">
             <div class="col-12 text-center mb-60px" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
                 <span class="w-25px h-1px d-inline-block bg-base-color me-5px align-middle"></span>
-                <span class="text-gradient-base-color fs-15 alt-font fw-700 ls-05px text-uppercase d-inline-block align-middle">Acquista ora</span>
-                <h3 class="alt-font fw-600 text-dark-gray ls-minus-1px mt-10px mb-10px">La tua gift card, in pochi passi</h3>
-                <p class="text-medium-gray fs-18 fst-italic">Un gesto semplice, un ricordo eterno.</p>
+                <span class="text-gradient-base-color fs-15 alt-font fw-700 ls-05px text-uppercase d-inline-block align-middle">{{ trad('gift_card', 'acquista_label', 'Acquista ora') }}</span>
+                <h3 class="alt-font fw-600 text-dark-gray ls-minus-1px mt-10px mb-10px">{{ trad('gift_card', 'acquista_titolo', 'La tua gift card, in pochi passi') }}</h3>
+                <p class="text-medium-gray fs-18 fst-italic">{{ trad('gift_card', 'acquista_sottotitolo', 'Un gesto semplice, un ricordo eterno.') }}</p>
             </div>
         </div>
 
@@ -347,8 +347,8 @@
 
                     <div id="gc-success" class="text-center py-50px" style="display:none;">
                         <i class="feather icon-feather-check-circle text-dark-gray" style="font-size:48px;"></i>
-                        <h4 class="alt-font fw-600 text-dark-gray mt-20px mb-10px">Richiesta inviata!</h4>
-                        <p class="text-medium-gray">Ti contatterò presto per tutti i dettagli.</p>
+                        <h4 class="alt-font fw-600 text-dark-gray mt-20px mb-10px">{{ trad('gift_card', 'successo_titolo', 'Richiesta inviata!') }}</h4>
+                        <p class="text-medium-gray">{{ trad('gift_card', 'successo_testo', 'Ti contatterò presto per tutti i dettagli.') }}</p>
                     </div>
 
                     <form id="gift-card-form" action="{{ route('gift-card.send') }}" method="POST">
@@ -358,7 +358,7 @@
 
                             {{-- VALORE --}}
                             <div class="col-12 mb-20px">
-                                <label class="form-label alt-font fs-14 text-dark-gray">Scegli il valore della gift card</label>
+                                <label class="form-label alt-font fs-14 text-dark-gray">{{ trad('gift_card', 'label_valore', 'Scegli il valore della gift card') }}</label>
                                 <div class="valore-options" id="valoreOptions">
                                     <button type="button" class="valore-btn" data-value="200€ (valore minimo)">200€</button>
                                     <button type="button" class="valore-btn" data-value="500€">500€</button>
@@ -375,27 +375,30 @@
 
                             {{-- NOME --}}
                             <div class="col-md-6 sm-mb-20px">
-                                <label class="form-label alt-font fs-14 text-dark-gray">Il tuo nome</label>
+                                <label class="form-label alt-font fs-14 text-dark-gray">{{ __('ui.form_nome_label') }}</label>
                                 <input class="mb-20px border-color-transparent-dark-very-light form-control bg-transparent required @error('nome') is-invalid @enderror"
                                        type="text" name="nome"
+                                       placeholder="{{ __('ui.form_nome_placeholder') }}"
                                        value="{{ old('nome') }}" required />
                                 @error('nome')<small class="text-danger">{{ $message }}</small>@enderror
                             </div>
 
                             {{-- TELEFONO --}}
                             <div class="col-md-6 sm-mb-20px">
-                                <label class="form-label alt-font fs-14 text-dark-gray">Il tuo numero di telefono</label>
+                                <label class="form-label alt-font fs-14 text-dark-gray">{{ __('ui.form_telefono_label') }}</label>
                                 <input class="mb-20px border-color-transparent-dark-very-light form-control bg-transparent required @error('telefono') is-invalid @enderror"
                                        type="tel" name="telefono"
+                                       placeholder="{{ __('ui.form_telefono_placeholder') }}"
                                        value="{{ old('telefono') }}" required />
                                 @error('telefono')<small class="text-danger">{{ $message }}</small>@enderror
                             </div>
 
                             {{-- EMAIL --}}
                             <div class="col-12 sm-mb-20px">
-                                <label class="form-label alt-font fs-14 text-dark-gray">Il tuo indirizzo email</label>
+                                <label class="form-label alt-font fs-14 text-dark-gray">{{ __('ui.form_email_label') }}</label>
                                 <input class="mb-20px border-color-transparent-dark-very-light form-control bg-transparent required @error('email') is-invalid @enderror"
                                        type="email" name="email"
+                                       placeholder="{{ __('ui.form_email_placeholder') }}"
                                        value="{{ old('email') }}" required />
                                 @error('email')<small class="text-danger">{{ $message }}</small>@enderror
                             </div>
@@ -403,7 +406,7 @@
                             {{-- MESSAGGIO --}}
                             <div class="col-12">
                                 <div class="mb-20px">
-                                    <label class="form-label alt-font fs-14 text-dark-gray">Vuoi aggiungere qualcosa? (opzionale)</label>
+                                    <label class="form-label alt-font fs-14 text-dark-gray">{{ trad('gift_card', 'label_messaggio', 'Vuoi aggiungere qualcosa? (opzionale)') }}</label>
                                     <textarea class="border-color-transparent-dark-very-light form-control bg-transparent @error('messaggio') is-invalid @enderror"
                                               name="messaggio" rows="4">{{ old('messaggio') }}</textarea>
                                     @error('messaggio')<small class="text-danger">{{ $message }}</small>@enderror
@@ -412,7 +415,7 @@
 
                             <div class="col-12 text-center">
                                 <button id="gift-card-submit" class="btn btn-large btn-dark-gray btn-box-shadow" type="button">
-                                    Invia la richiesta <i class="feather icon-feather-arrow-right ms-10px"></i>
+                                    {{ __('ui.invia_richiesta') }} <i class="feather icon-feather-arrow-right ms-10px"></i>
                                 </button>
                             </div>
 
@@ -446,14 +449,14 @@
     // AJAX submit
     document.getElementById('gift-card-submit').addEventListener('click', function() {
         if (!valoreInput.value) {
-            alert('Seleziona un valore per la gift card.');
+            alert('{{ __('ui.gc_alert_valore') }}');
             return;
         }
 
         var submitBtn = document.getElementById('gift-card-submit');
         var originalHtml = submitBtn.innerHTML;
         submitBtn.disabled = true;
-        submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-10px" role="status" aria-hidden="true"></span>Invio in corso...';
+        submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-10px" role="status" aria-hidden="true"></span>{{ __('ui.gc_invio_corso') }}';
 
         var form = document.getElementById('gift-card-form');
         var data = new FormData(form);
@@ -471,7 +474,7 @@
             } else {
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = originalHtml;
-                alert('Si è verificato un errore. Riprova.');
+                alert('{{ __('ui.gc_errore') }}');
             }
         })
         .catch(function() {

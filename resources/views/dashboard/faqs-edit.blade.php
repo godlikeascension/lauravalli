@@ -67,12 +67,36 @@
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="risposta_html" class="form-label fw-semibold">Risposta</label>
+                                        <label for="risposta_html" class="form-label fw-semibold">Risposta (IT)</label>
                                         <textarea name="risposta_html"
                                                   id="risposta_html"
                                                   rows="8"
                                                   class="form-control">{{ old('risposta_html', $faq->risposta_html) }}</textarea>
                                     </div>
+
+                                    <hr>
+                                    <p class="text-muted small mb-3"><i class="mdi mdi-translate me-1"></i> Traduzioni (opzionali)</p>
+                                    <div class="row g-3 mb-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">🇬🇧 Domanda EN</label>
+                                            <input type="text" name="domanda_en" class="form-control" value="{{ old('domanda_en', $faq->domanda_en) }}">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">🇪🇸 Domanda ES</label>
+                                            <input type="text" name="domanda_es" class="form-control" value="{{ old('domanda_es', $faq->domanda_es) }}">
+                                        </div>
+                                    </div>
+                                    <div class="row g-3 mb-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">🇬🇧 Risposta EN</label>
+                                            <textarea name="risposta_html_en" rows="5" class="form-control">{{ old('risposta_html_en', $faq->risposta_html_en) }}</textarea>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">🇪🇸 Risposta ES</label>
+                                            <textarea name="risposta_html_es" rows="5" class="form-control">{{ old('risposta_html_es', $faq->risposta_html_es) }}</textarea>
+                                        </div>
+                                    </div>
+                                    <hr>
 
                                     <div class="mb-3" style="max-width:160px;">
                                         <label for="ordine" class="form-label fw-semibold">Ordine</label>

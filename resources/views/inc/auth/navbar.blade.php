@@ -91,6 +91,11 @@
                             <i class="mdi mdi-fountain-pen-tip me-1"></i> Artist Statement
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('dashboard.lingue') }}">
+                            <i class="mdi mdi-translate me-1"></i> Lingue & Traduzioni
+                        </a>
+                    </li>
                 </ul>
             </div>
             <!-- end .collapsed -->

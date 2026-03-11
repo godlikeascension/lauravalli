@@ -56,11 +56,43 @@
                                 <form action="{{ route('dashboard.artist-statement.update') }}" method="POST">
                                     @csrf
 
-                                    <div class="mb-3">
-                                        <textarea name="contenuto"
-                                                  id="artist-statement-editor"
-                                                  rows="30"
-                                                  class="form-control">{!! old('contenuto', $contenuto) !!}</textarea>
+                                    <ul class="nav nav-tabs mb-3" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" data-bs-toggle="tab" href="#tab-it" role="tab">🇮🇹 Italiano</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-bs-toggle="tab" href="#tab-en" role="tab">🇬🇧 English</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-bs-toggle="tab" href="#tab-es" role="tab">🇪🇸 Español</a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content">
+                                        <div class="tab-pane fade show active" id="tab-it" role="tabpanel">
+                                            <div class="mb-3">
+                                                <textarea name="contenuto"
+                                                          id="artist-statement-editor"
+                                                          rows="30"
+                                                          class="form-control">{!! old('contenuto', $contenuto) !!}</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="tab-en" role="tabpanel">
+                                            <div class="mb-3">
+                                                <textarea name="contenuto_en"
+                                                          id="artist-statement-editor-en"
+                                                          rows="30"
+                                                          class="form-control">{!! old('contenuto_en', $contenuto_en) !!}</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="tab-es" role="tabpanel">
+                                            <div class="mb-3">
+                                                <textarea name="contenuto_es"
+                                                          id="artist-statement-editor-es"
+                                                          rows="30"
+                                                          class="form-control">{!! old('contenuto_es', $contenuto_es) !!}</textarea>
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <div class="text-end">
@@ -177,27 +209,41 @@
 
     // ── CKEditor init ────────────────────────────────────────────────────────
     var editorInstance = null;
+    var editorInstanceEn = null;
+    var editorInstanceEs = null;
+
+    var ckeditorConfig = {
+        extraPlugins: [UploadAdapterPlugin],
+        toolbar: [
+            'heading', '|',
+            'bold', 'italic', 'underline', 'link', '|',
+            'insertImage', '|',
+            'bulletedList', 'numberedList', '|',
+            'blockQuote', '|',
+            'undo', 'redo', '|',
+            'removeFormat'
+        ],
+        image: {
+            toolbar: ['imageTextAlternative', '|', 'imageStyle:inline', 'imageStyle:block', 'imageStyle:side']
+        },
+        htmlSupport: {
+            allow: [{ name: /.*/, attributes: true, classes: true, styles: true }]
+        }
+    };
 
     ClassicEditor
-        .create(document.querySelector('#artist-statement-editor'), {
-            extraPlugins: [UploadAdapterPlugin],
-            toolbar: [
-                'heading', '|',
-                'bold', 'italic', 'underline', 'link', '|',
-                'insertImage', '|',
-                'bulletedList', 'numberedList', '|',
-                'blockQuote', '|',
-                'undo', 'redo', '|',
-                'removeFormat'
-            ],
-            image: {
-                toolbar: ['imageTextAlternative', '|', 'imageStyle:inline', 'imageStyle:block', 'imageStyle:side']
-            },
-            htmlSupport: {
-                allow: [{ name: /.*/, attributes: true, classes: true, styles: true }]
-            }
-        })
+        .create(document.querySelector('#artist-statement-editor'), ckeditorConfig)
         .then(function (editor) { editorInstance = editor; })
+        .catch(function (err) { console.error(err); });
+
+    ClassicEditor
+        .create(document.querySelector('#artist-statement-editor-en'), ckeditorConfig)
+        .then(function (editor) { editorInstanceEn = editor; })
+        .catch(function (err) { console.error(err); });
+
+    ClassicEditor
+        .create(document.querySelector('#artist-statement-editor-es'), ckeditorConfig)
+        .then(function (editor) { editorInstanceEs = editor; })
         .catch(function (err) { console.error(err); });
 
     // ── Standalone image uploader ────────────────────────────────────────────
@@ -248,8 +294,13 @@
 
     document.getElementById('img-insert-btn').addEventListener('click', function () {
         var url = document.getElementById('img-upload-url').value;
-        if (!url || !editorInstance) return;
-        editorInstance.execute('insertImage', { source: url });
+        if (!url) return;
+        var activeTab = document.querySelector('.nav-tabs .nav-link.active');
+        var activeEditor = editorInstance;
+        if (activeTab && activeTab.getAttribute('href') === '#tab-en') activeEditor = editorInstanceEn;
+        if (activeTab && activeTab.getAttribute('href') === '#tab-es') activeEditor = editorInstanceEs;
+        if (!activeEditor) return;
+        activeEditor.execute('insertImage', { source: url });
         var btn = this;
         btn.innerHTML = '<i class="mdi mdi-check"></i> Inserita!';
         setTimeout(function () { btn.innerHTML = '<i class="mdi mdi-image-plus"></i> Inserisci nell\'editor'; }, 2000);

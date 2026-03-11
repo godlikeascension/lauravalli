@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="it">
+<html class="no-js" lang="{{ app()->getLocale() }}">
 
 <head>
     <title>Laura Valli Art | Oil Paintings & Jewllery</title>
@@ -31,15 +31,15 @@
 <section class="big-section bg-spring-wood">
     <div class="container text-center" style="padding: 120px 0;">
         <h2 class="alt-font fw-700 text-dark-gray mb-20px">
-            Grazie per la tua richiesta!
+            {{ trad('commissioni_grazie', 'titolo', 'Grazie per la tua richiesta!') }}
         </h2>
 
         <p class="fs-18 mb-40px">
-            Ti contatterò al più presto per iniziare il percorso creativo insieme.
+            {{ trad('commissioni_grazie', 'testo', 'Ti contatterò al più presto per iniziare il percorso creativo insieme.') }}
         </p>
 
-        <a href="/" class="btn btn-dark-gray btn-large">
-            Torna alla Home <i class="feather icon-feather-arrow-right ms-10px"></i>
+        <a href="{{ localeUrl('home') }}" class="btn btn-dark-gray btn-large">
+            {{ trad('commissioni_grazie', 'btn_home', 'Torna alla Home') }} <i class="feather icon-feather-arrow-right ms-10px"></i>
         </a>
     </div>
 </section>
