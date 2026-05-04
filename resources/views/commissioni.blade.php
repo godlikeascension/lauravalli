@@ -255,7 +255,7 @@
                                         @endif
                                         <div class="rec-card-gradient"></div>
                                         <div class="rec-card-body">
-                                            <p class="rec-card-text">"{{ $testo }}"</p>
+                                            <p class="rec-card-text">"{{ strip_tags($testo) }}"</p>
                                             <div class="rec-card-nome">— {{ $nome }}</div>
                                         </div>
                                         <button type="button" class="btn btn-medium btn-white btn-rounded rec-zoom">
@@ -592,7 +592,7 @@
         var img = document.getElementById('rec-lightbox-img');
         img.src = imgUrl || '';
         img.style.display = imgUrl ? 'block' : 'none';
-        document.getElementById('rec-lightbox-text').textContent = '\u201C' + text + '\u201D';
+        document.getElementById('rec-lightbox-text').innerHTML = '\u201C' + text + '\u201D';
         document.getElementById('rec-lightbox-nome').textContent = '\u2014 ' + nome;
         document.getElementById('rec-lightbox').classList.add('open');
         document.body.style.overflow = 'hidden';
