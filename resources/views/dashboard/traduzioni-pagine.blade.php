@@ -157,6 +157,18 @@
                 document.execCommand('insertLineBreak');
             }
         });
+        // Force plain-text paste — strips HTML pasted from web pages, chats, docs
+        content.addEventListener('paste', function (e) {
+            e.preventDefault();
+            var cd   = e.clipboardData || window.clipboardData;
+            var text = cd ? (cd.getData('text/plain') || '') : '';
+            var lines = text.replace(/\r\n?/g, '\n').split('\n');
+            lines.forEach(function (line, i) {
+                if (i > 0) document.execCommand('insertLineBreak');
+                if (line) document.execCommand('insertText', false, line);
+            });
+            syncHidden(content);
+        });
         content.addEventListener('input', function () { syncHidden(content); });
     });
 

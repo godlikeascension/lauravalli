@@ -638,14 +638,58 @@ class AdminController extends Controller
             TraduzionePagina::updateOrCreate(
                 ['pagina' => $pagina, 'chiave' => $chiave],
                 [
-                    'it' => $valori['it'] ?? null,
-                    'en' => $valori['en'] ?? null,
-                    'es' => $valori['es'] ?? null,
+                    'it' => self::sanitizeTraduzione($valori['it'] ?? null),
+                    'en' => self::sanitizeTraduzione($valori['en'] ?? null),
+                    'es' => self::sanitizeTraduzione($valori['es'] ?? null),
                 ]
             );
         }
 
         return back()->with('success', 'Traduzioni salvate.');
+    }
+
+    /**
+     * Strip pasted-from-the-web markup (sections, divs, inline classes/styles, etc.)
+     * down to the small inline whitelist the editor actually exposes. Public/static so
+     * the cleanup script can reuse the same rules.
+     */
+    public static function sanitizeTraduzione(?string $html): ?string
+    {
+        if ($html === null || $html === '') {
+            return $html;
+        }
+
+        $allowed = '<br><b><strong><i><em><u><a>';
+        $clean   = strip_tags($html, $allowed);
+
+        $clean = preg_replace_callback(
+            '/<([a-zA-Z]+)\b([^>]*)>/',
+            function ($m) {
+                $tag = strtolower($m[1]);
+                if ($tag === 'a') {
+                    $attrs = '';
+                    if (preg_match('/\bhref\s*=\s*"([^"]*)"/i', $m[2], $hm)
+                        && preg_match('#^(https?:|mailto:|tel:|/|\#)#i', $hm[1])) {
+                        $href = htmlspecialchars($hm[1], ENT_QUOTES, 'UTF-8');
+                        $attrs .= " href=\"{$href}\"";
+                    }
+                    if (preg_match('/\btarget\s*=\s*"([^"]*)"/i', $m[2], $tm)) {
+                        $target = htmlspecialchars($tm[1], ENT_QUOTES, 'UTF-8');
+                        $attrs .= " target=\"{$target}\"";
+                    }
+                    return "<a{$attrs}>";
+                }
+                return "<{$tag}>";
+            },
+            $clean
+        );
+
+        $clean = preg_replace('#<br\s*/?>#i', '<br>', $clean);
+        // Collapse runs of whitespace introduced by stripping inline tags
+        $clean = preg_replace('/[ \t]+/', ' ', $clean);
+        $clean = trim($clean);
+
+        return $clean;
     }
 
 }

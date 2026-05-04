@@ -1,13 +1,15 @@
 <?php
 
 use App\Models\TraduzionePagina;
+use Illuminate\Support\HtmlString;
 
 if (!function_exists('trad')) {
     /**
-     * Get a translated string for the current locale.
-     * Falls back to Italian, then to $fallback.
+     * Get a translated string for the current locale, falling back to Italian then $fallback.
+     * Returns HtmlString so Blade `{{ }}` renders the sanitizer's whitelisted inline tags
+     * (<br>, <b>, <i>, <a>…) without escaping. For attribute contexts use `strip_tags(trad(...))`.
      */
-    function trad(string $pagina, string $chiave, string $fallback = ''): string
+    function trad(string $pagina, string $chiave, string $fallback = ''): HtmlString
     {
         static $loaded = [];
         static $cache  = [];
@@ -26,7 +28,7 @@ if (!function_exists('trad')) {
             $loaded["{$locale}.{$pagina}"] = true;
         }
 
-        return $cache["{$locale}.{$pagina}.{$chiave}"] ?? $fallback;
+        return new HtmlString($cache["{$locale}.{$pagina}.{$chiave}"] ?? $fallback);
     }
 }
 

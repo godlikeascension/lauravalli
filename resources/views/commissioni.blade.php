@@ -431,7 +431,7 @@
                                     <textarea class="border-color-transparent-dark-very-light form-control bg-transparent @error('messaggio') is-invalid @enderror"
                                               name="messaggio"
                                               rows="4"
-                                              placeholder="{{ trad('commissioni', 'placeholder_messaggio', 'Raccontami la tua idea, un ricordo, un\'emozione… ogni dettaglio mi aiuta a creare qualcosa di davvero tuo.') }}">{{ old('messaggio') }}</textarea>
+                                              placeholder="{{ strip_tags((string) trad('commissioni', 'placeholder_messaggio', 'Raccontami la tua idea, un ricordo, un\'emozione… ogni dettaglio mi aiuta a creare qualcosa di davvero tuo.')) }}">{{ old('messaggio') }}</textarea>
                                     @error('messaggio')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
