@@ -54,6 +54,12 @@ function sanitizeTraduzione(?string $html): ?string
     $clean = preg_replace('/\r\n?/', "\n", $clean);
     $clean = str_replace("\n", '<br>', $clean);
     $clean = preg_replace('#(<br>){3,}#', '<br><br>', $clean);
+    do {
+        $prev  = $clean;
+        $clean = preg_replace('#<(b|strong|i|em|u|a)\b[^>]*>(\s|<br>)*</\1>#i', '', $clean);
+    } while ($clean !== $prev);
+    $clean = preg_replace('#^(\s|<br>)+#i', '', $clean);
+    $clean = preg_replace('#(\s|<br>)+$#i', '', $clean);
     $clean = preg_replace('/[ \t]+/', ' ', $clean);
     return trim($clean);
 }

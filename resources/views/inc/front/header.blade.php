@@ -64,4 +64,9 @@
 <style>
 .lang-flag { width: 18px; height: auto; vertical-align: middle; border-radius: 2px; }
 .lang-chevron-icon { font-size: 12px; margin-left: 2px; vertical-align: middle; opacity: .6; }
+/* Re-enable list bullets inside FAQ answers (theme strips them globally via `ul li { list-style: none }`) */
+.accordion-body ul,
+.accordion-body ol { padding-left: 1.5rem; margin: 0 0 1rem; }
+.accordion-body ul li { list-style: disc; }
+.accordion-body ol li { list-style: decimal; }
 </style>

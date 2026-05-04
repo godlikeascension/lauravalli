@@ -691,6 +691,16 @@ class AdminController extends Controller
         $clean = str_replace("\n", '<br>', $clean);
         // Cap runs of consecutive <br>s at 2 so paragraph spacing stays sane.
         $clean = preg_replace('#(<br>){3,}#', '<br><br>', $clean);
+        // Drop empty inline wrappers like <b></b>, <b><br></b>, <i><br></i>;
+        // loop until stable for nested cases.
+        do {
+            $prev  = $clean;
+            $clean = preg_replace('#<(b|strong|i|em|u|a)\b[^>]*>(\s|<br>)*</\1>#i', '', $clean);
+        } while ($clean !== $prev);
+        // Strip leading/trailing <br>s — they're almost always editor artifacts
+        // and break templates that add prefix/suffix chars (e.g. wrapping quotes).
+        $clean = preg_replace('#^(\s|<br>)+#i', '', $clean);
+        $clean = preg_replace('#(\s|<br>)+$#i', '', $clean);
         // Collapse runs of horizontal whitespace introduced by stripping inline tags
         $clean = preg_replace('/[ \t]+/', ' ', $clean);
         $clean = trim($clean);
