@@ -123,7 +123,7 @@
 {{-- ══════════════════════════════════════════════════════════
      HERO
 ══════════════════════════════════════════════════════════ --}}
-<section class="p-0 ipad-top-space-margin position-relative overflow-hidden">
+<section class="p-0 ipad-top-space-margin position-relative overflow-hidden" style="padding-top: 96px;">
     <div class="container-fluid p-0 position-relative">
         <div class="row g-0 align-items-stretch">
             <div class="col-xl-5 col-lg-6 d-flex justify-content-center flex-column ps-10 xxl-ps-5 xl-ps-2 md-ps-0 position-relative order-2 order-lg-1 py-5">
