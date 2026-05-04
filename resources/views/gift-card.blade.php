@@ -123,10 +123,10 @@
 {{-- ══════════════════════════════════════════════════════════
      HERO
 ══════════════════════════════════════════════════════════ --}}
-<section class="p-0 ipad-top-space-margin position-relative overflow-hidden" style="padding-top: 96px;">
-    <div class="container-fluid p-0 position-relative">
-        <div class="row g-0 align-items-stretch">
-            <div class="col-xl-5 col-lg-6 d-flex justify-content-center flex-column ps-10 xxl-ps-5 xl-ps-2 md-ps-0 position-relative order-2 order-lg-1 py-5">
+<section class="p-0 full-screen ipad-top-space-margin position-relative overflow-hidden md-h-auto sm-h-auto">
+    <div class="container-fluid p-0 h-100 position-relative">
+        <div class="row h-100 g-0">
+            <div class="col-xl-5 col-lg-6 d-flex justify-content-center flex-column ps-10 xxl-ps-5 xl-ps-2 md-ps-0 position-relative order-2 order-lg-1">
                 <div class="border-start border-color-extra-medium-gray ps-60px ms-100px lg-ps-30px lg-ms-70px position-relative z-index-9 sm-ps-30px sm-pe-30px sm-ms-0 border-0" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
                     <div class="mb-10px">
                         <span class="w-25px h-1px d-inline-block bg-base-color me-5px align-middle"></span>
@@ -142,8 +142,8 @@
                     </a>
                 </div>
             </div>
-            <div class="col-xl-7 col-lg-6 position-relative order-1 order-lg-2" id="hero-img-col">
-                <img src="/images/giftcard.png" alt="" class="w-100 h-auto d-block">
+            <div class="col-xl-7 col-lg-6 position-relative md-h-500px order-1 order-lg-2 md-mb-50px" id="hero-img-col">
+                <div class="position-absolute left-0px top-0px w-100 h-100 cover-background background-position-center-top" style="background-image:url('/images/giftcard.png');"></div>
             </div>
         </div>
     </div>
