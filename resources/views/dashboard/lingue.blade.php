@@ -75,7 +75,7 @@
                                 <h5 class="header-title mb-3">Traduzioni pagine</h5>
                                 <p class="text-muted mb-3">Clicca su una pagina per modificare i testi tradotti in inglese e spagnolo.</p>
                                 <div class="list-group">
-                                    @foreach(['navbar' => 'Navbar', 'home' => 'Homepage', 'opere' => 'Opere (collezioni)', 'commissioni' => 'Commissioni', 'commissioni_grazie' => 'Commissioni — pagina grazie', 'gift_card' => 'Gift Card'] as $slug => $nome)
+                                    @foreach(['navbar' => 'Navbar', 'home' => 'Homepage', 'opere' => 'Opere (collezioni)', 'commissioni' => 'Commissioni', 'commissioni_grazie' => 'Commissioni — pagina grazie', 'gift_card' => 'Gift Card', 'footer' => 'Footer'] as $slug => $nome)
                                         <a href="{{ route('dashboard.traduzioni.edit', $slug) }}"
                                            class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
                                             {{ $nome }}
