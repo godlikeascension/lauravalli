@@ -685,7 +685,13 @@ class AdminController extends Controller
         );
 
         $clean = preg_replace('#<br\s*/?>#i', '<br>', $clean);
-        // Collapse runs of whitespace introduced by stripping inline tags
+        // Treat literal newlines as line breaks (HTML otherwise collapses them
+        // to whitespace, so a "paragraph break" in the editor would vanish).
+        $clean = preg_replace('/\r\n?/', "\n", $clean);
+        $clean = str_replace("\n", '<br>', $clean);
+        // Cap runs of consecutive <br>s at 2 so paragraph spacing stays sane.
+        $clean = preg_replace('#(<br>){3,}#', '<br><br>', $clean);
+        // Collapse runs of horizontal whitespace introduced by stripping inline tags
         $clean = preg_replace('/[ \t]+/', ' ', $clean);
         $clean = trim($clean);
 
