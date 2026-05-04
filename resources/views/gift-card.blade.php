@@ -123,7 +123,7 @@
 {{-- ══════════════════════════════════════════════════════════
      HERO
 ══════════════════════════════════════════════════════════ --}}
-<section class="p-0 full-screen ipad-top-space-margin position-relative overflow-hidden md-h-auto sm-h-auto" style="padding-top:96px; box-sizing:border-box;">
+<section class="p-0 full-screen ipad-top-space-margin position-relative overflow-hidden md-h-auto sm-h-auto" id="gift-hero" style="box-sizing:border-box;">
     <div class="container-fluid p-0 h-100 position-relative">
         <div class="row h-100 g-0">
             <div class="col-xl-5 col-lg-6 d-flex justify-content-center flex-column ps-10 xxl-ps-5 xl-ps-2 md-ps-0 position-relative order-2 order-lg-1">
@@ -148,6 +148,17 @@
         </div>
     </div>
 </section>
+<script>
+(function () {
+    var hero = document.getElementById('gift-hero');
+    var nav  = document.querySelector('header .navbar');
+    if (!hero || !nav) return;
+    var apply = function () { hero.style.paddingTop = nav.offsetHeight + 'px'; };
+    apply();
+    window.addEventListener('load',   apply);
+    window.addEventListener('resize', apply);
+})();
+</script>
 
 {{-- ══════════════════════════════════════════════════════════
      COME FUNZIONA
