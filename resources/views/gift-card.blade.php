@@ -123,10 +123,10 @@
 {{-- ══════════════════════════════════════════════════════════
      HERO
 ══════════════════════════════════════════════════════════ --}}
-<section class="position-relative overflow-hidden" style="padding: 160px 0 0 0;">
-    <div class="container-fluid p-0 position-relative">
-        <div class="row g-0">
-            <div class="col-xl-5 col-lg-6 d-flex justify-content-center flex-column ps-10 xxl-ps-5 xl-ps-2 md-ps-0 position-relative order-2 order-lg-1 py-5">
+<section class="position-relative overflow-hidden" style="height: 100vh; padding: 130px 0 0 0; box-sizing: border-box;">
+    <div class="container-fluid p-0 position-relative" style="height: 100%;">
+        <div class="row g-0" style="height: 100%;">
+            <div class="col-xl-5 col-lg-6 d-flex justify-content-center flex-column ps-10 xxl-ps-5 xl-ps-2 md-ps-0 position-relative order-2 order-lg-1">
                 <div class="border-start border-color-extra-medium-gray ps-60px ms-100px lg-ps-30px lg-ms-70px position-relative z-index-9 sm-ps-30px sm-pe-30px sm-ms-0 border-0" data-anime='{ "el": "childs", "translateY": [30, 0], "opacity": [0,1], "duration": 600, "delay":0, "staggervalue": 300, "easing": "easeOutQuad" }'>
                     <div class="mb-10px">
                         <span class="w-25px h-1px d-inline-block bg-base-color me-5px align-middle"></span>
@@ -142,8 +142,8 @@
                     </a>
                 </div>
             </div>
-            <div class="col-xl-7 col-lg-6 order-1 order-lg-2 d-flex align-items-center justify-content-center" id="hero-img-col">
-                <img src="/images/giftcard.png" alt="" class="d-block" style="width:auto; height:auto; max-width:100%; max-height: calc(100vh - 160px);">
+            <div class="col-xl-7 col-lg-6 order-1 order-lg-2 position-relative" id="hero-img-col">
+                <img src="/images/giftcard.png" alt="" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; object-position:center;">
             </div>
         </div>
     </div>
