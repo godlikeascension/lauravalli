@@ -123,13 +123,29 @@ class Opera extends Model
         return null;
     }
 
-    // Meta line: "Olio su tela 300gr - 30 x 40 cm - Anno 2025"
+    // Meta line: "Olio su tela · 30 x 40 cm · Anno 2025" (localized)
     public function getMetaAttribute(): ?string
     {
+        $locale = app()->getLocale();
+
+        // opera_type values are stored in Italian (closed set from the dashboard
+        // dropdown); translate at render time only.
+        $tecnicaMap = [
+            'Olio su tela'       => ['en' => 'Oil on canvas',     'es' => 'Óleo sobre lienzo'],
+            'Olio su legno'      => ['en' => 'Oil on wood',       'es' => 'Óleo sobre madera'],
+            'Olio su carta 300g' => ['en' => 'Oil on paper 300gsm','es' => 'Óleo sobre papel 300g'],
+        ];
+        $annoLabel = ['en' => 'Year', 'es' => 'Año'][$locale] ?? 'Anno';
+
+        $tipo = $this->opera_type ?: null;
+        if ($tipo && $locale !== 'it' && isset($tecnicaMap[$tipo][$locale])) {
+            $tipo = $tecnicaMap[$tipo][$locale];
+        }
+
         $parts = array_filter([
-            $this->opera_type ?: null,
+            $tipo,
             $this->getDimensioniAttribute(),
-            $this->year ? 'Anno ' . $this->year : null,
+            $this->year ? $annoLabel . ' ' . $this->year : null,
         ]);
 
         return $parts ? implode(' · ', $parts) : null;
