@@ -365,7 +365,7 @@
                                     <button type="button" class="valore-btn" data-value="1.000€">1.000€</button>
                                     <button type="button" class="valore-btn" data-value="1.500€">1.500€</button>
                                     <button type="button" class="valore-btn" data-value="2.000€">2.000€</button>
-                                    <button type="button" class="valore-btn" data-value="Altro importo">Altro importo</button>
+                                    <button type="button" class="valore-btn" data-value="Altro importo">{{ trad('gift_card', 'btn_altro_importo', 'Altro importo') }}</button>
                                 </div>
                                 <input type="hidden" name="valore" id="valoreInput" value="{{ old('valore') }}" required>
                                 @error('valore')
