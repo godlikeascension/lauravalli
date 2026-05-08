@@ -104,7 +104,6 @@
         }
 
         @media (max-width: 991px) {
-            #gift-hero { padding-top: 80px !important; }
             #hero-img-col { padding-bottom: 40px; }
             #come-funziona { padding-top: 40px !important; padding-bottom: 40px !important; }
             #come-funziona .col-xxl-7 { margin-bottom: 0 !important; }
