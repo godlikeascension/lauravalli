@@ -69,4 +69,7 @@
 .accordion-body ol { padding-left: 1.5rem; margin: 0 0 1rem; }
 .accordion-body ul li { list-style: disc; }
 .accordion-body ol li { list-style: decimal; }
+/* Theme sets body { word-break: break-word } which lets long ES/EN words split mid-word
+   inside headings (e.g. "imperfecciones" → "imperfeccione" / "s"). Keep word boundaries on. */
+h1, h2, h3, h4, h5, h6 { word-break: normal; overflow-wrap: normal; hyphens: none; }
 </style>

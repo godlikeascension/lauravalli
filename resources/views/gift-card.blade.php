@@ -104,7 +104,18 @@
         }
 
         @media (max-width: 991px) {
-            #hero-img-col { padding-bottom: 40px; }
+            /* On mobile/tablet: stack image (100% wide, natural aspect) above text instead
+               of squeezing both into a fixed-height viewport row */
+            #gift-hero { height: auto !important; padding-top: 80px !important; }
+            #gift-hero > .container-fluid,
+            #gift-hero .row { height: auto !important; }
+            #hero-img-col { position: static !important; padding-bottom: 40px; }
+            #hero-img-col img {
+                position: static !important;
+                width: 100% !important;
+                height: auto !important;
+                object-fit: initial !important;
+            }
             #come-funziona { padding-top: 40px !important; padding-bottom: 40px !important; }
             #come-funziona .col-xxl-7 { margin-bottom: 0 !important; }
             #s2-img-col { margin-top: 15px !important; }
@@ -123,7 +134,7 @@
 {{-- ══════════════════════════════════════════════════════════
      HERO
 ══════════════════════════════════════════════════════════ --}}
-<section class="position-relative overflow-hidden" style="height: 100vh; padding: 130px 0 0 0; box-sizing: border-box;">
+<section class="position-relative overflow-hidden" id="gift-hero" style="height: 100vh; padding: 130px 0 0 0; box-sizing: border-box;">
     <div class="container-fluid p-0 position-relative" style="height: 100%;">
         <div class="row g-0" style="height: 100%;">
             <div class="col-xl-5 col-lg-6 d-flex justify-content-center flex-column ps-10 xxl-ps-5 xl-ps-2 md-ps-0 position-relative order-2 order-lg-1">
