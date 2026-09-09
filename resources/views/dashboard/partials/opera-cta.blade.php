@@ -82,8 +82,9 @@
                value="{{ old('cta_whatsapp', $opera->cta_whatsapp ?? '') }}">
         <small class="form-text text-muted">
             Formato internazionale con prefisso, es. <code>+39 333 1234567</code>.
-            Il messaggio precompilato è sempre in spagnolo:
-            <em>«Hola, estoy interesado en la obra …»</em>.
+            Il messaggio precompilato è in spagnolo se il sito è in spagnolo
+            (<em>«Hola, estoy interesado en la obra …»</em>), altrimenti in inglese
+            (<em>«Hi, I'm interested in the artwork …»</em>).
         </small>
     </div>
 

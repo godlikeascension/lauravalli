@@ -140,10 +140,13 @@ class Opera extends Model
             }
             if ($numero === '') return null;
 
-            // Il messaggio precompilato è sempre in spagnolo, qualunque sia la lingua del sito
-            $messaggio = __('ui.whatsapp_interesse', [
-                'opera' => $this->titolo_es ?: $this->titolo,
-            ], 'es');
+            // Messaggio precompilato: spagnolo solo col sito in ES, inglese per IT ed EN
+            $lingua = app()->getLocale() === 'es' ? 'es' : 'en';
+            $titolo = $lingua === 'es'
+                ? ($this->titolo_es ?: $this->titolo)
+                : ($this->titolo_en ?: $this->titolo);
+
+            $messaggio = __('ui.whatsapp_interesse', ['opera' => $titolo], $lingua);
 
             return 'https://wa.me/' . $numero . '?text=' . rawurlencode($messaggio);
         }

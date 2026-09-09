@@ -15,6 +15,10 @@ return [
     'invia_richiesta'        => 'Send a request',
     'esplora_opere'          => 'Explore works',
 
+    // Messaggio precompilato WhatsApp (bottone personalizzato opera).
+    // Usato col sito in IT e in EN: vedi Opera::getCtaHrefAttribute()
+    'whatsapp_interesse'     => "Hi, I'm interested in the artwork «:opera»",
+
     // Form selects
     'seleziona_opzione'      => 'Select an option',
 
