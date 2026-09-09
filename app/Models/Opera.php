@@ -28,16 +28,24 @@ class Opera extends Model
         'descrizione_html_es',
         'commissione',
         'collezione_id',
+        'cta_personalizzata',
+        'cta_tipo',
+        'cta_label',
+        'cta_label_en',
+        'cta_label_es',
+        'cta_whatsapp',
+        'cta_url',
     ];
 
     protected $casts = [
-        'venduto'       => 'boolean',
-        'commissione'   => 'boolean',
-        'prezzo'        => 'decimal:2',
-        'larghezza_cm'  => 'decimal:2',
-        'altezza_cm'    => 'decimal:2',
-        'year'          => 'integer',
-        'collezione_id' => 'integer',
+        'venduto'            => 'boolean',
+        'commissione'        => 'boolean',
+        'prezzo'             => 'decimal:2',
+        'larghezza_cm'       => 'decimal:2',
+        'altezza_cm'         => 'decimal:2',
+        'year'               => 'integer',
+        'collezione_id'      => 'integer',
+        'cta_personalizzata' => 'boolean',
     ];
 
     // Generazione automatica dello slug dal titolo
@@ -110,6 +118,51 @@ class Opera extends Model
         if ($locale === 'en' && !empty($this->slug_en)) return $this->slug_en;
         if ($locale === 'es' && !empty($this->slug_es)) return $this->slug_es;
         return $this->slug;
+    }
+
+    // Etichetta localizzata del bottone personalizzato
+    public function getCtaLabelLocaleAttribute(): ?string
+    {
+        $locale = app()->getLocale();
+        if ($locale === 'en' && !empty($this->cta_label_en)) return $this->cta_label_en;
+        if ($locale === 'es' && !empty($this->cta_label_es)) return $this->cta_label_es;
+        return $this->cta_label;
+    }
+
+    // Destinazione del bottone personalizzato (null se non configurato o non valido)
+    public function getCtaHrefAttribute(): ?string
+    {
+        if ($this->cta_tipo === 'whatsapp') {
+            $numero = preg_replace('/\D/', '', (string) $this->cta_whatsapp);
+            // wa.me vuole il prefisso internazionale senza "+" né "00"
+            if (str_starts_with($numero, '00')) {
+                $numero = substr($numero, 2);
+            }
+            if ($numero === '') return null;
+
+            // Il messaggio precompilato è sempre in spagnolo, qualunque sia la lingua del sito
+            $messaggio = __('ui.whatsapp_interesse', [
+                'opera' => $this->titolo_es ?: $this->titolo,
+            ], 'es');
+
+            return 'https://wa.me/' . $numero . '?text=' . rawurlencode($messaggio);
+        }
+
+        if ($this->cta_tipo === 'link') {
+            $url = trim((string) $this->cta_url);
+            // Solo https: blocca schemi come javascript: o data:
+            return preg_match('#^https://#i', $url) ? $url : null;
+        }
+
+        return null;
+    }
+
+    // true solo se il bottone personalizzato è attivo e completamente configurato
+    public function getHasCtaPersonalizzataAttribute(): bool
+    {
+        return $this->cta_personalizzata
+            && !empty($this->cta_label_locale)
+            && !empty($this->cta_href);
     }
 
     // Dimensioni formattate "L x H cm"

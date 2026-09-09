@@ -215,6 +215,8 @@
                                         </div>
                                     </div>
 
+                                    @include('dashboard.partials.opera-cta')
+
                                     <div class="text-end">
                                         <a href="{{ route('dashboard.opere.index') }}" class="btn btn-light me-2">
                                             Annulla

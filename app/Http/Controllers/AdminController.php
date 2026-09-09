@@ -122,8 +122,82 @@ class AdminController extends Controller
         return view('dashboard.opere-create', compact('collezioni'));
     }
 
+    /**
+     * Azzera i campi del bottone personalizzato non pertinenti prima della validazione,
+     * così un valore rimasto da una scelta precedente non blocca il salvataggio.
+     */
+    private function normalizzaCtaRequest(Request $request): void
+    {
+        if (!$request->boolean('cta_personalizzata')) {
+            $request->merge([
+                'cta_tipo'     => null,
+                'cta_label'    => null,
+                'cta_label_en' => null,
+                'cta_label_es' => null,
+                'cta_whatsapp' => null,
+                'cta_url'      => null,
+            ]);
+            return;
+        }
+
+        if ($request->input('cta_tipo') !== 'whatsapp') {
+            $request->merge(['cta_whatsapp' => null]);
+        }
+        if ($request->input('cta_tipo') !== 'link') {
+            $request->merge(['cta_url' => null]);
+        }
+    }
+
+    /**
+     * Regole di validazione del bottone personalizzato, condivise fra store e update.
+     */
+    private function regoleCta(): array
+    {
+        return [
+            'cta_personalizzata' => 'nullable|boolean',
+            'cta_tipo'           => 'nullable|required_if:cta_personalizzata,1|in:whatsapp,link',
+            'cta_label'          => 'nullable|required_if:cta_personalizzata,1|string|max:60',
+            'cta_label_en'       => 'nullable|string|max:60',
+            'cta_label_es'       => 'nullable|string|max:60',
+            'cta_whatsapp'       => ['nullable', 'required_if:cta_tipo,whatsapp', 'regex:/^\+[0-9][0-9\s\-\.\(\)]{6,24}$/'],
+            'cta_url'            => 'nullable|required_if:cta_tipo,link|url:https|max:2048',
+        ];
+    }
+
+    private function messaggiCta(): array
+    {
+        return [
+            'cta_tipo.required_if'     => 'Scegli il tipo di bottone personalizzato (WhatsApp o Link).',
+            'cta_label.required_if'    => 'Inserisci l\'etichetta italiana del bottone personalizzato.',
+            'cta_whatsapp.required_if' => 'Inserisci il numero WhatsApp del bottone personalizzato.',
+            'cta_whatsapp.regex'       => 'Il numero WhatsApp deve essere in formato internazionale, es. +39 333 1234567.',
+            'cta_url.required_if'      => 'Inserisci il link del bottone personalizzato.',
+            'cta_url.url'              => 'Il link del bottone personalizzato deve essere un URL valido che inizia con https://.',
+        ];
+    }
+
+    /**
+     * Campi del bottone personalizzato pronti per il salvataggio.
+     */
+    private function datiCta(Request $request, array $data): array
+    {
+        $attivo = $request->boolean('cta_personalizzata');
+
+        return [
+            'cta_personalizzata' => $attivo,
+            'cta_tipo'           => $attivo ? ($data['cta_tipo'] ?? null) : null,
+            'cta_label'          => $attivo ? ($data['cta_label'] ?? null) : null,
+            'cta_label_en'       => $attivo ? ($data['cta_label_en'] ?? null) : null,
+            'cta_label_es'       => $attivo ? ($data['cta_label_es'] ?? null) : null,
+            'cta_whatsapp'       => $attivo ? ($data['cta_whatsapp'] ?? null) : null,
+            'cta_url'            => $attivo ? ($data['cta_url'] ?? null) : null,
+        ];
+    }
+
     public function opereStore(Request $request)
     {
+        $this->normalizzaCtaRequest($request);
+
         $data = $request->validate([
             'immagine'            => 'nullable|image|max:4096',
             'titolo'              => 'required|string|max:255',
@@ -140,7 +214,7 @@ class AdminController extends Controller
             'descrizione_html_es' => 'nullable|string',
             'commissione'         => 'nullable|boolean',
             'collezione_id'       => 'nullable|exists:collezioni,id',
-        ]);
+        ] + $this->regoleCta(), $this->messaggiCta());
 
         $pathImmagine = null;
 
@@ -148,7 +222,7 @@ class AdminController extends Controller
             $pathImmagine = $request->file('immagine')->store('opere', 'public');
         }
 
-        Opera::create([
+        Opera::create($this->datiCta($request, $data) + [
             'immagine'            => $pathImmagine,
             'titolo'              => $data['titolo'],
             'titolo_en'           => $data['titolo_en'] ?? null,
@@ -210,6 +284,8 @@ class AdminController extends Controller
 
     public function opereUpdate(Request $request, Opera $opera)
     {
+        $this->normalizzaCtaRequest($request);
+
         $data = $request->validate([
             'immagine'            => 'nullable|image|max:4096',
             'titolo'              => 'required|string|max:255',
@@ -226,7 +302,7 @@ class AdminController extends Controller
             'descrizione_html_es' => 'nullable|string',
             'commissione'         => 'nullable|boolean',
             'collezione_id'       => 'nullable|exists:collezioni,id',
-        ]);
+        ] + $this->regoleCta(), $this->messaggiCta());
 
         if ($request->hasFile('immagine')) {
             $pathImmagine = $request->file('immagine')->store('opere', 'public');
@@ -247,6 +323,8 @@ class AdminController extends Controller
         $opera->descrizione_html_es = $data['descrizione_html_es'] ?? null;
         $opera->commissione         = $request->boolean('commissione');
         $opera->collezione_id       = $data['collezione_id'] ?? null;
+
+        $opera->fill($this->datiCta($request, $data));
 
         $opera->save();
 

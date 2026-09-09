@@ -143,7 +143,10 @@
                 </div>
             </div>
             <div class="col-xl-7 col-lg-6 order-1 order-lg-2" id="hero-img-col">
-                <img src="/images/giftcard.png" alt="" class="d-block w-100" style="height:auto;">
+                @php
+                    $cardLocale = in_array(app()->getLocale(), ['it', 'en', 'es'], true) ? app()->getLocale() : 'it';
+                @endphp
+                <img src="/images/{{ $cardLocale }}-card.png" alt="Gift Card Laura Valli" class="d-block w-100" style="height:auto;">
             </div>
         </div>
     </div>

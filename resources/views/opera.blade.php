@@ -368,12 +368,27 @@
 
                     {{-- CTA --}}
                     @if(!$opera->venduto)
-                        <a href="{{ localeUrl('home') }}#contatti"
-                           class="btn btn-large btn-dark-gray d-flex align-items-center justify-content-center w-100"
-                           style="margin-bottom: 12px;">
-                            {{ __('ui.invia_messaggio') }}
-                            <i class="fa-regular fa-envelope ms-10px"></i>
-                        </a>
+                        @if($opera->has_cta_personalizzata)
+                            <a href="{{ $opera->cta_href }}"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="btn btn-large btn-dark-gray d-flex align-items-center justify-content-center w-100"
+                               style="margin-bottom: 12px;">
+                                {{ $opera->cta_label_locale }}
+                                @if($opera->cta_tipo === 'whatsapp')
+                                    <i class="fa-brands fa-whatsapp ms-10px"></i>
+                                @else
+                                    <i class="feather icon-feather-external-link ms-10px"></i>
+                                @endif
+                            </a>
+                        @else
+                            <a href="{{ localeUrl('home') }}#contatti"
+                               class="btn btn-large btn-dark-gray d-flex align-items-center justify-content-center w-100"
+                               style="margin-bottom: 12px;">
+                                {{ __('ui.invia_messaggio') }}
+                                <i class="fa-regular fa-envelope ms-10px"></i>
+                            </a>
+                        @endif
                     @endif
                     <a href="{{ localeUrl('opere') }}"
                        class="btn btn-large btn-dark-gray d-flex align-items-center justify-content-center w-100">
